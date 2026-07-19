@@ -1,0 +1,32 @@
+# Configuração de exemplo do Nginx para o website (SPA estática).
+# Ajuste server_name e root conforme o seu ambiente.
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name seudominio.com.br www.seudominio.com.br;
+
+    root /var/www/salmon-website;
+    index index.html;
+
+    # SPA: qualquer rota (ex.: /privacidade) cai no index.html
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache longo para assets com hash no nome
+    location /assets/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Compressão
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml;
+    gzip_min_length 1024;
+
+    # Cabeçalhos de segurança básicos
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+}
