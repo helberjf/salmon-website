@@ -1,28 +1,22 @@
-import { Header } from '../components/Header';
-import { Hero } from '../components/Hero';
-import { About } from '../components/About';
-import { NorwegianSalmon } from '../components/NorwegianSalmon';
-import { Products } from '../components/Products';
-import { Process } from '../components/Process';
-import { Founder } from '../components/Founder';
-import { InternationalExperience } from '../components/InternationalExperience';
-import { Differentials } from '../components/Differentials';
-import { Clients } from '../components/Clients';
-import { CallToAction } from '../components/CallToAction';
-import { ContactForm } from '../components/ContactForm';
-import { Footer } from '../components/Footer';
-import { WhatsAppButton } from '../components/WhatsAppButton';
-import { BackToTop } from '../components/BackToTop';
-import { company } from '../data/company';
-import { useEffect } from 'react';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
+import { BackToTop } from '@/components/layout/BackToTop';
+import { Hero } from '@/components/sections/Hero';
+import { About } from '@/components/sections/About';
+import { NorwegianSalmon } from '@/components/sections/NorwegianSalmon';
+import { Products } from '@/components/sections/Products';
+import { Process } from '@/components/sections/Process';
+import { Founder } from '@/components/sections/Founder';
+import { Differentials } from '@/components/sections/Differentials';
+import { Audiences } from '@/components/sections/Audiences';
+import { Trust } from '@/components/sections/Trust';
+import { CallToAction } from '@/components/sections/CallToAction';
+import { ContactSection } from '@/components/sections/ContactSection';
 
 export default function Home() {
-  useEffect(() => {
-    document.title = `${company.name} | Importação de Salmão Norueguês`;
-  }, []);
-
   return (
-    <div className="font-sans antialiased text-foreground bg-background">
+    <>
       <Header />
       <main>
         <Hero />
@@ -31,15 +25,15 @@ export default function Home() {
         <Products />
         <Process />
         <Founder />
-        <InternationalExperience />
         <Differentials />
-        <Clients />
+        <Audiences />
+        <Trust />
         <CallToAction />
-        <ContactForm />
+        <ContactSection />
       </main>
       <Footer />
       <WhatsAppButton />
       <BackToTop />
-    </div>
+    </>
   );
 }
