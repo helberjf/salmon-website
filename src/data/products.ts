@@ -30,6 +30,18 @@ export const products: Product[] = [
     imageAlt: 'Filé de salmão servido em prato escuro',
   },
   {
+    id: 'defumado',
+    name: 'Salmão Defumado',
+    description:
+      'Salmão curado e defumado, fatiado finamente, para uso imediato em cardápios e serviços de alta gastronomia.',
+    preservation: 'Resfriado',
+    presentation: 'Fatias finas, peça inteira ou porcionado',
+    audience: 'Hotéis, delicatessens e alta gastronomia',
+    image:
+      'https://images.unsplash.com/photo-1498604819470-d34ff92b1341?auto=format&fit=crop&w=800&q=80',
+    imageAlt: 'Fatias de salmão curado e defumado com endro e pimenta-rosa',
+  },
+  {
     id: 'porcoes',
     name: 'Porções Padronizadas',
     description:
