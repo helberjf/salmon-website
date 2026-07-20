@@ -2,26 +2,29 @@
  * IMAGENS DO SITE — URLs centralizadas para facilitar substituição.
  * Ao trocar por fotografias próprias, basta atualizar as URLs abaixo
  * (arquivos locais podem ser colocados em src/assets e importados aqui).
+ *
+ * As paisagens abaixo foram conferidas individualmente e são todas de
+ * Lofoten, Noruega (Hamnøy / Reine / Vestvågøy).
  */
 export const images = {
   hero: {
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80',
-    alt: 'Cordilheira nórdica acima das nuvens ao entardecer',
+    src: 'https://images.unsplash.com/photo-1728394956158-c192db524926?auto=format&fit=crop&w=1920&q=80',
+    alt: 'Fiorde tranquilo entre montanhas nas Ilhas Lofoten, Noruega',
   },
   about: {
-    src: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Cânion com rio em paisagem nórdica preservada',
+    src: 'https://images.unsplash.com/photo-1554140781-33058d9962b9?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Vila de pescadores de Hamnøy, com casas vermelhas típicas, Lofoten',
   },
   salmon: {
-    src: 'https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Vale verde com cachoeira em paisagem nórdica preservada',
+    src: 'https://images.unsplash.com/photo-1593291727757-b016fd4f0055?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Vila de Reine ao entardecer, entre montanhas nevadas, Lofoten',
   },
   callToAction: {
     src: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1920&q=80',
     alt: '',
   },
   differentials: {
-    src: 'https://images.unsplash.com/photo-1512273222628-4daea6e55abb?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Montanhas nevadas sob céu azul na Escandinávia',
+    src: 'https://images.unsplash.com/photo-1705413868931-607cb15b521b?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Costa nevada de Vestvågøy ao entardecer, Lofoten, Noruega',
   },
 };
