@@ -14,8 +14,8 @@ export const products: Product[] = [
     presentation: 'Inteiro eviscerado, calibres variados',
     audience: 'Peixarias e restaurantes de grande volume',
     image:
-      'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Pescados frescos dispostos sobre gelo em bancada',
+      'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=800&q=80',
+    imageAlt: 'Corte de salmão fresco de coloração vibrante',
   },
   {
     id: 'file',
