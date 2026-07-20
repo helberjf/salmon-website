@@ -13,8 +13,8 @@ export const images = {
     alt: 'Cânion com rio em paisagem nórdica preservada',
   },
   salmon: {
-    src: 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Corte de salmão cru fresco de coloração vibrante',
+    src: 'https://images.unsplash.com/photo-1476610182048-b716b8518aae?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Vale verde com cachoeira em paisagem nórdica preservada',
   },
   callToAction: {
     src: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1920&q=80',
