@@ -2,6 +2,7 @@ import { ChefHat, Dna, MapPin, Search, Snowflake } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { images } from '@/data/images';
+import { useI18n } from '@/i18n/I18nProvider';
 
 const attributes = [
   {
@@ -37,22 +38,25 @@ const qualityMarks = [
 ];
 
 export function NorwegianSalmon() {
+  const { t } = useI18n();
+
   return (
     <section id="salmao" className="overflow-hidden bg-ice py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20">
-          <Reveal className="order-2 lg:order-1">
+          <Reveal direction="right" className="order-2 lg:order-1">
             <figure className="relative overflow-hidden rounded-[2rem] bg-mist">
               <img
                 src={images.salmon.src}
-                alt={images.salmon.alt}
+                alt={t(images.salmon.alt)}
                 loading="lazy"
+                decoding="async"
                 className="aspect-[5/4] w-full object-cover"
               />
               <figcaption className="absolute inset-x-5 bottom-5 rounded-2xl bg-navy/90 p-5 text-white backdrop-blur sm:inset-x-auto sm:right-6 sm:max-w-xs">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon">Salmo salar</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/75">
-                  Textura firme, sabor delicado e qualidade consistente ao longo das estações.
+                  {t('Textura firme, sabor delicado e qualidade consistente ao longo das estações.')}
                 </p>
               </figcaption>
             </figure>
@@ -60,15 +64,15 @@ export function NorwegianSalmon() {
 
           <div className="order-1 lg:order-2">
             <SectionHeading
-              eyebrow="Origem norueguesa"
-              title="Qualidade que começa muito antes do embarque"
-              description="Criado nas águas frias e cristalinas da costa norueguesa, o salmão se desenvolve em uma cadeia monitorada — da ova ao produto final."
+              eyebrow={t('Origem norueguesa')}
+              title={t('Qualidade que começa muito antes do embarque')}
+              description={t('Criado nas águas frias e cristalinas da costa norueguesa, o salmão se desenvolve em uma cadeia monitorada — da ova ao produto final.')}
             />
             <div className="mt-8 flex flex-wrap gap-3">
               {qualityMarks.map(({ icon: Icon, label }) => (
                 <span key={label} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-xs font-bold text-navy">
                   <Icon size={15} aria-hidden="true" className="text-ocean" />
-                  {label}
+                  {t(label)}
                 </span>
               ))}
             </div>
@@ -80,8 +84,8 @@ export function NorwegianSalmon() {
                       <Icon size={20} aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-navy">{title}</h3>
-                      <p className="mt-1.5 leading-relaxed text-muted">{description}</p>
+                      <h3 className="text-lg font-semibold text-navy">{t(title)}</h3>
+                      <p className="mt-1.5 leading-relaxed text-muted">{t(description)}</p>
                     </div>
                   </div>
                 </Reveal>

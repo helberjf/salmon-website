@@ -1,9 +1,12 @@
+import { useI18n } from '@/i18n/I18nProvider';
+
 interface BrandMarkProps {
   inverse?: boolean;
   compact?: boolean;
 }
 
 export function BrandMark({ inverse = false, compact = false }: BrandMarkProps) {
+  const { t } = useI18n();
   const primary = inverse ? 'text-white' : 'text-navy';
   const secondary = inverse ? 'text-white/55' : 'text-slate-blue';
 
@@ -24,7 +27,7 @@ export function BrandMark({ inverse = false, compact = false }: BrandMarkProps) 
             Nordic Salmon
           </span>
           <span className={`mt-1.5 block text-[0.58rem] font-semibold uppercase tracking-[0.2em] ${secondary}`}>
-            Norway · Brazil
+            {t('Norway · Brazil')}
           </span>
         </span>
       )}

@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
 import { company } from '@/data/company';
+import { LanguageSelector } from '@/components/layout/LanguageSelector';
+import { useI18n } from '@/i18n/I18nProvider';
 import type { ReactNode } from 'react';
 
 interface LegalPageProps {
@@ -11,29 +13,34 @@ interface LegalPageProps {
 
 /** Layout compartilhado das páginas legais (Privacidade e Termos). */
 export function LegalPage({ title, children }: LegalPageProps) {
+  const { language, t } = useI18n();
+
   useEffect(() => {
     document.title = `${title} | ${company.name}`;
     window.scrollTo(0, 0);
     return () => {
-      document.title = `${company.name} | Salmão Norueguês para o Mercado Brasileiro`;
+      document.title = `${company.name} | ${t('Salmão Norueguês para o Mercado Brasileiro')}`;
     };
-  }, [title]);
+  }, [language, t, title]);
 
   return (
     <div className="min-h-dvh bg-background">
       <header className="bg-navy">
         <div aria-hidden="true" className="nordic-stripe h-0.5 w-full opacity-80" />
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-5 lg:px-0">
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-5 lg:px-0">
           <Link href="/" className="font-serif text-lg font-semibold text-white">
             {company.name}
           </Link>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-frost transition-colors hover:text-white"
-          >
-            <ArrowLeft size={16} aria-hidden="true" />
-            Voltar ao site
-          </Link>
+          <div className="flex items-center gap-3">
+            <LanguageSelector />
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-sm font-medium text-frost transition-colors hover:text-white"
+            >
+              <ArrowLeft size={16} aria-hidden="true" />
+              {t('Voltar ao site')}
+            </Link>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-3xl px-5 py-14 lg:px-0">
@@ -42,8 +49,7 @@ export function LegalPage({ title, children }: LegalPageProps) {
           {children}
         </div>
         <p className="mt-12 rounded-md bg-mist px-5 py-4 text-sm text-slate-blue">
-          Este documento é um modelo institucional básico e deve ser revisado e complementado pela
-          empresa, preferencialmente com apoio jurídico, antes da publicação definitiva.
+          {t('Este documento é um modelo institucional básico e deve ser revisado e complementado pela empresa, preferencialmente com apoio jurídico, antes da publicação definitiva.')}
         </p>
       </main>
     </div>

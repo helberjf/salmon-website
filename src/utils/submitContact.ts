@@ -15,21 +15,26 @@ export interface ContactPayload {
   message?: string;
 }
 
-export function submitContact(data: ContactPayload): Promise<void> {
+type Translate = (source: string, vars?: Record<string, string | number>) => string;
+
+export function submitContact(
+  data: ContactPayload,
+  t: Translate = (source) => source,
+): Promise<void> {
   const message = [
-    'Olá, Mai! Gostaria de solicitar uma cotação de salmão norueguês.',
+    t('Olá, Mai! Gostaria de solicitar uma cotação de salmão norueguês.'),
     '',
-    `Nome: ${data.name}`,
-    `Empresa: ${data.companyName}`,
-    `Cargo: ${data.role}`,
-    `E-mail: ${data.email}`,
-    `Telefone: ${data.phone}`,
-    `Local: ${data.city}/${data.state}`,
-    `Tipo de operação: ${data.businessType}`,
-    `Produto: ${data.productInterest}`,
-    data.volume ? `Volume estimado: ${data.volume}` : '',
-    data.frequency ? `Frequência: ${data.frequency}` : '',
-    data.message ? `Observações: ${data.message}` : '',
+    `${t('Nome')}: ${data.name}`,
+    `${t('Empresa')}: ${data.companyName}`,
+    `${t('Cargo')}: ${data.role}`,
+    `${t('E-mail')}: ${data.email}`,
+    `${t('Telefone')}: ${data.phone}`,
+    `${t('Local')}: ${data.city}/${data.state}`,
+    `${t('Tipo de operação')}: ${data.businessType}`,
+    `${t('Produto')}: ${data.productInterest}`,
+    data.volume ? `${t('Volume estimado')}: ${data.volume}` : '',
+    data.frequency ? `${t('Frequência')}: ${data.frequency}` : '',
+    data.message ? `${t('Observações')}: ${data.message}` : '',
   ]
     .filter(Boolean)
     .join('\n');

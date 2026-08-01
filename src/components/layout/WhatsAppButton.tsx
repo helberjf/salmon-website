@@ -1,19 +1,22 @@
 import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
+import { company } from '@/data/company';
+import { useI18n } from '@/i18n/I18nProvider';
 
 /**
  * Botão flutuante de WhatsApp. Só é exibido quando o número estiver
  * configurado em src/data/company.ts (campo `whatsapp`).
  */
 export function WhatsAppButton() {
+  const { t } = useI18n();
   if (!hasWhatsApp) return null;
 
   return (
     <a
-      href={whatsAppLink()}
+      href={whatsAppLink(t(company.whatsappMessage))}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Conversar pelo WhatsApp"
-      className="fixed bottom-5 right-5 z-40 flex h-13 w-13 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-lg transition-transform hover:scale-105 focus-visible:scale-105"
+      aria-label={t('Conversar pelo WhatsApp')}
+      className="whatsapp-pulse fixed bottom-5 right-5 z-40 hidden h-13 w-13 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-lg transition-transform hover:scale-105 focus-visible:scale-105 sm:flex"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
