@@ -2,7 +2,9 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Globe2, MessageCircle, ShieldCheck, Ship, Snowflake } from 'lucide-react';
 import { images } from '@/data/images';
+import { norwell } from '@/data/norwell';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
+import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
 import { company } from '@/data/company';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -114,6 +116,24 @@ export function Hero() {
               </a>
             )}
           </motion.div>
+
+          <motion.a
+            href={norwell.site}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
+            className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
+          >
+            <span className="text-[0.6rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
+              {t('Representante')}
+              <br />
+              {t('oficial no Brasil')}
+            </span>
+            <span aria-hidden="true" className="h-9 w-px bg-white/20" />
+            <NorwellLogo variant="white" height={26} />
+          </motion.a>
         </div>
 
         <motion.div

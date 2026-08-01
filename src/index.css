@@ -1,25 +1,39 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Paleta institucional — Noruega, oceano e comércio internacional */
-  --color-navy: #0b2545;
-  --color-navy-dark: #081c36;
-  --color-ocean: #1d4e7c;
-  --color-ocean-light: #2d6da3;
-  --color-ice: #f5f8fb;
-  --color-mist: #e6edf4;
-  --color-slate-blue: #52708c;
-  --color-frost: #b9d3e8;
-  --color-salmon: #e8927c;
+  /**
+   * Paleta institucional da Norwell AS, exportadora norueguesa representada no
+   * Brasil. Os valores vêm do site oficial (norwell.no) e do logotipo:
+   *   #005357  primary (verde-petróleo)   #c1e4f2  blue
+   *   #0b6d72  teal do logotipo           #dd6c67  red
+   *   #52958a  teal médio do logotipo     #f7dfd5  peach
+   * Os nomes de token foram mantidos para não quebrar as classes existentes.
+   */
+  --color-navy: #00383b;
+  --color-navy-dark: #002225;
+  --color-ocean: #005357;
+  --color-ocean-light: #0b6d72;
+  --color-ice: #f2f7f7;
+  --color-mist: #dceaea;
+  --color-slate-blue: #4a6a6b;
+  --color-frost: #c1e4f2;
+  --color-salmon: #dd6c67;
+  /* Tom claro do coral: o #dd6c67 não alcança 4.5:1 em texto pequeno sobre o
+     verde escuro, então os rótulos em caixa-alta usam esta variação. */
+  --color-salmon-light: #f0a09a;
+  --color-peach: #f7dfd5;
+  --color-seagrass: #52958a;
+  /* Vermelho e azul da bandeira norueguesa — usados só na faixa decorativa */
   --color-nordic-red: #ba0c2f;
-  /* Verde-petróleo institucional da Norwell AS, exportadora representada no Brasil */
+  --color-nordic-blue: #002868;
+  /* Fundo exato do selo "Seafood from Norway" */
   --color-norwell: #005357;
-  --color-norwell-dark: #003b3e;
+  --color-norwell-dark: #00383b;
 
   --color-background: var(--color-ice);
   --color-foreground: var(--color-navy);
-  --color-muted: #52708c;
-  --color-border: #dbe4ec;
+  --color-muted: #4a6a6b;
+  --color-border: #d3e3e2;
 
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -101,7 +115,7 @@ body {
       to right,
       var(--color-nordic-red) 0 25%,
       #ffffff 25% 40%,
-      var(--color-navy) 40% 60%,
+      var(--color-nordic-blue) 40% 60%,
       #ffffff 60% 75%,
       var(--color-nordic-red) 75% 100%
     );

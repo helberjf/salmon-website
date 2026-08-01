@@ -28,7 +28,7 @@ function FounderVisual() {
     <div className="relative flex min-h-[23rem] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-navy p-7 text-white lg:min-h-[24rem] lg:p-8">
       <div aria-hidden="true" className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[50px] border-ocean-light/15" />
       <div aria-hidden="true" className="absolute -bottom-28 -left-20 h-80 w-80 rounded-full border-[60px] border-salmon/10" />
-      <span className="relative text-xs font-bold uppercase tracking-[0.18em] text-salmon">
+      <span className="relative text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">
         {t('Noruega · Brasil')}
       </span>
       <div className="relative">

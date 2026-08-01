@@ -1221,6 +1221,19 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Los datos se conservan únicamente durante el período necesario para los fines descritos y se protegen mediante medidas técnicas y organizativas adecuadas.',
     no: 'Opplysningene lagres bare så lenge det er nødvendig for de beskrevne formålene, og beskyttes med egnede tekniske og organisatoriske tiltak.',
   },
+  // Assinatura de representação (logotipo da Norwell)
+  Representante: { en: 'Official', es: 'Representante', no: 'Offisiell' },
+  'oficial no Brasil': {
+    en: 'representative in Brazil',
+    es: 'oficial en Brasil',
+    no: 'representant i Brasil',
+  },
+  'Parceiro exportador': {
+    en: 'Exporting partner',
+    es: 'Socio exportador',
+    no: 'Eksportpartner',
+  },
+
   // Norwell AS — missão, valores e certificações na origem
   'Fundada em 1996, a Norwell tem cerca de 70% do seu capital nas mãos dos próprios produtores e 30% com colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta. Da sede em Florø, a operação se estende a escritórios comerciais em Aalborg, Londres e Kuala Lumpur.':
     {
