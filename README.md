@@ -68,7 +68,6 @@ site com essa atribuição explícita:
 | Arquivo | Uso |
 |---|---|
 | `public/images/norwell-hero.webp` | Plano de fundo do topo da home |
-| `public/images/norwell-team.webp` | Equipe da Norwell na seção "Quem somos" |
 | `public/images/norwell-salmon-dish.webp` | Galeria "Da origem à mesa" |
 | `public/brand/seafood-from-norway.svg` | Selo de origem "Seafood from Norway" |
 | `public/brand/norwell.svg` | Logotipo da Norwell (versão colorida, para fundos claros) |
