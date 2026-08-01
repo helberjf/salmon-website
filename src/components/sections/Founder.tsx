@@ -4,17 +4,21 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { founder } from '@/data/founder';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 function FounderVisual() {
   const { t } = useI18n();
 
-  if (founder.photo) {
+  if (founder.homePhoto) {
     return (
-      <img
-        src={founder.photo}
+      <ResponsiveImage
+        src={founder.homePhoto}
         alt={t(`Fotografia de ${founder.name}`)}
+        sizes="(min-width: 1280px) 410px, (min-width: 1024px) 32vw, (min-width: 640px) 448px, calc(100vw - 40px)"
+        maxWidth={800}
         loading="lazy"
-        className="aspect-[4/3] w-full rounded-[2rem] object-cover object-top lg:aspect-square"
+        pictureClassName="block overflow-hidden rounded-[2rem]"
+        className="aspect-square w-full object-cover object-top"
       />
     );
   }
@@ -41,7 +45,7 @@ function FounderVisual() {
       </div>
       <div className="relative border-t border-white/15 pt-5">
         <p className="font-serif text-2xl font-semibold">{t(founder.name)}</p>
-        <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-frost/60">
+        <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-frost/70">
           {t(founder.title)}
         </p>
       </div>
@@ -50,7 +54,7 @@ function FounderVisual() {
 }
 
 export function Founder() {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
 
   return (
     <section id="fundadora" className="bg-white py-24 md:py-32">
@@ -82,7 +86,7 @@ export function Founder() {
 
             <Reveal delay={0.2} className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link
-                href="/sobre"
+                href={localizedHref('/sobre')}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-ocean"
               >
                 {t('Conheça a trajetória completa')}

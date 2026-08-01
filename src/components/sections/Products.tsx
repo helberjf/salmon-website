@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { products } from '@/data/products';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 interface ProductsProps {
   /** Quantos itens exibir. Sem valor, mostra o portfólio inteiro. */
@@ -13,7 +14,7 @@ interface ProductsProps {
 }
 
 export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
   const shown = typeof limit === 'number' ? products.slice(0, limit) : products;
   const isPreview = shown.length < products.length;
 
@@ -35,12 +36,13 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
             >
               <article className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-ice transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ocean/25 hover:shadow-xl hover:shadow-navy/10 focus-within:-translate-y-1 focus-within:shadow-xl sm:flex-row">
                 <div className="relative min-h-64 overflow-hidden sm:w-[46%]">
-                  <img
+                  <ResponsiveImage
                     src={product.image}
                     alt={t(product.imageAlt)}
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 1280px) 260px, (min-width: 1024px) 22vw, (min-width: 640px) 46vw, calc(100vw - 40px)"
+                    maxWidth={1200}
+                    pictureClassName="absolute inset-0 block h-full w-full"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-ocean backdrop-blur">
                     {t(product.preservation)}
@@ -68,7 +70,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
                     </div>
                   </dl>
                   <a
-                    href="/#contato"
+                    href={localizedHref('/#contato')}
                     className="mt-5 inline-flex items-center gap-1.5 py-2.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
                   >
                     {t('Consultar disponibilidade')}
@@ -87,7 +89,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
         {isPreview && (
           <Reveal delay={0.1} className="mt-10 flex justify-center">
             <Link
-              href="/produtos"
+              href={localizedHref('/produtos')}
               className="group inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:border-ocean/30 hover:bg-ice"
             >
               {t('Ver o portfólio completo')}
@@ -108,7 +110,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
               )}
             </p>
             <a
-              href="/#contato"
+              href={localizedHref('/#contato')}
               className="inline-flex shrink-0 items-center gap-2 py-1.5 text-sm font-bold text-white"
             >
               {t('Pedir especificação')}

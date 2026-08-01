@@ -10,10 +10,8 @@ interface BrandMarkProps {
 /**
  * Assinatura tipográfica da empresa.
  *
- * Sem símbolo por decisão consciente: o nome fantasia ainda é provisório
- * (ver "Dados pendentes" no README) e o topo já carrega o logotipo da Norwell,
- * de modo que um segundo símbolo competiria com ele. Quando o nome for
- * definitivo, este componente é o único ponto a trocar.
+ * A assinatura tipográfica mantém o protagonismo do nome Bridge Point sem
+ * competir com o logotipo da Norwell exibido nas áreas de produto e origem.
  */
 export function BrandMark({ inverse = false, compact = false }: BrandMarkProps) {
   const { t } = useI18n();

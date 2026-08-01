@@ -4,19 +4,22 @@ import { images } from '@/data/images';
 import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
 import { company } from '@/data/company';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 export function CallToAction() {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
 
   return (
     <section className="relative overflow-hidden bg-ocean py-24 md:py-32">
       {images.callToAction.src && (
-        <img
+        <ResponsiveImage
           src={images.callToAction.src}
           alt=""
           aria-hidden="true"
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          sizes="100vw"
+          maxWidth={1600}
+          pictureClassName="absolute inset-0 block h-full w-full"
+          className="h-full w-full object-cover opacity-30"
         />
       )}
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-ocean/60" />
@@ -33,7 +36,7 @@ export function CallToAction() {
           </p>
           <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <a
-              href="#contato"
+              href={localizedHref('/#contato')}
               className="inline-flex items-center justify-center rounded-full bg-white px-7 py-4 font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
             >
               {t('Solicitar proposta')}

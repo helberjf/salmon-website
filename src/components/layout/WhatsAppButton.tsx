@@ -16,7 +16,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={t('Conversar pelo WhatsApp')}
-      className="whatsapp-pulse fixed bottom-5 right-5 z-40 hidden h-13 w-13 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-lg transition-transform hover:scale-105 focus-visible:scale-105 sm:flex"
+      className="whatsapp-pulse fixed bottom-5 right-5 z-40 hidden h-13 w-13 items-center justify-center rounded-full bg-[#25D366] p-3.5 text-white shadow-lg transition-transform hover:scale-105 focus-visible:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy sm:flex"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

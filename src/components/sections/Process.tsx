@@ -3,6 +3,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { processSteps } from '@/data/process';
 import { processImages } from '@/data/images';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 const stages = [
   { label: 'Ova', image: processImages.eggs },
@@ -27,7 +28,13 @@ export function Process() {
             <div className="mt-10 grid grid-cols-2 gap-3">
               {stages.map((stage) => (
                 <figure key={stage.label} className="group relative overflow-hidden rounded-2xl bg-mist">
-                  <img src={stage.image} alt="" loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <ResponsiveImage
+                    src={stage.image}
+                    alt=""
+                    sizes="(min-width: 1280px) 250px, (min-width: 1024px) 20vw, calc((100vw - 52px) / 2)"
+                    maxWidth={800}
+                    className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   <figcaption className="absolute bottom-3 left-3 rounded-full bg-navy/85 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-white backdrop-blur">
                     {t(stage.label)}
                   </figcaption>

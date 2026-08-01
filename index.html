@@ -3,17 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nordic Salmon | Salmão Norueguês B2B no Brasil</title>
+    <title>Bridge Point | Salmão Norueguês B2B no Brasil</title>
     <meta
       name="description"
       content="Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida."
     />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.nordicsalmon.com.br/" />
+    <link data-i18n-alternate rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt" />
+    <link data-i18n-alternate rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en" />
+    <link data-i18n-alternate rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es" />
+    <link data-i18n-alternate rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no" />
+    <link data-i18n-alternate rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bridge Point" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="Nordic Salmon | Salmão Norueguês B2B no Brasil" />
+    <meta data-og-locale-alternate property="og:locale:alternate" content="en_US" />
+    <meta data-og-locale-alternate property="og:locale:alternate" content="es_ES" />
+    <meta data-og-locale-alternate property="og:locale:alternate" content="nb_NO" />
+    <meta property="og:title" content="Bridge Point | Salmão Norueguês B2B no Brasil" />
     <meta
       property="og:description"
       content="Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida."
@@ -23,50 +32,82 @@
     <meta property="og:image:alt" content="Produtor norueguês segurando um salmão inteiro junto a um fiorde" />
     <meta name="theme-color" content="#00383b" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Nordic Salmon | Salmão Norueguês B2B no Brasil" />
+    <meta name="twitter:title" content="Bridge Point | Salmão Norueguês B2B no Brasil" />
     <meta
       name="twitter:description"
       content="Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida."
     />
     <meta name="twitter:image" content="https://www.nordicsalmon.com.br/images/catalog/fisherman-salmon.webp" />
+    <meta name="twitter:image:alt" content="Produtor norueguês segurando um salmão inteiro junto a um fiorde" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="/fonts/plus-jakarta-sans-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/playfair-display-latin-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
-    <script type="application/ld+json">
+    <script id="structured-data" type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Nordic Salmon",
-        "description": "Representação comercial no Brasil da exportadora norueguesa Norwell AS, com fornecimento B2B de salmão norueguês.",
-        "url": "https://www.nordicsalmon.com.br/",
-        "image": "https://www.nordicsalmon.com.br/images/catalog/fisherman-salmon.webp",
-        "founder": {
-          "@type": "Person",
-          "name": "Mai Tonheim",
-          "jobTitle": "Fundadora",
-          "sameAs": "https://www.linkedin.com/in/mai-tonheim-iam/"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Rio de Janeiro",
-          "addressRegion": "RJ",
-          "addressCountry": "BR"
-        },
-        "areaServed": "BR",
-        "email": "mai@bridgepoint.international",
-        "telephone": "+55 21 96569-0982",
-        "knowsAbout": [
-          "Salmão norueguês",
-          "Comércio internacional",
-          "Food service",
-          "Distribuição de pescados"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.nordicsalmon.com.br/#organization",
+            "name": "Bridge Point",
+            "url": "https://www.nordicsalmon.com.br/",
+            "taxID": "62.548.504/0001-06",
+            "description": "Representação comercial no Brasil da exportadora norueguesa Norwell AS, com fornecimento B2B de salmão norueguês.",
+            "image": "https://www.nordicsalmon.com.br/images/catalog/fisherman-salmon.webp",
+            "founder": { "@id": "https://www.nordicsalmon.com.br/#mai-tonheim" },
+            "areaServed": { "@type": "Country", "name": "Brasil" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Rio de Janeiro",
+              "addressRegion": "RJ",
+              "addressCountry": "BR"
+            },
+            "knowsAbout": [
+              "Salmão norueguês",
+              "Comércio internacional",
+              "Food service",
+              "Distribuição de pescados"
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "sales",
+              "telephone": "+55 21 96569-0982",
+              "email": "mai@bridgepoint.international",
+              "areaServed": "BR",
+              "availableLanguage": ["Portuguese", "English", "Spanish", "Norwegian"]
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.nordicsalmon.com.br/#mai-tonheim",
+            "name": "Mai Tonheim",
+            "jobTitle": "Fundadora e representante comercial no Brasil",
+            "sameAs": "https://www.linkedin.com/in/mai-tonheim-iam/",
+            "worksFor": { "@id": "https://www.nordicsalmon.com.br/#organization" }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.nordicsalmon.com.br/#website",
+            "url": "https://www.nordicsalmon.com.br/",
+            "name": "Bridge Point",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://www.nordicsalmon.com.br/#organization" }
+          }
         ]
       }
     </script>

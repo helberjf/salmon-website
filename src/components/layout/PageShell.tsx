@@ -38,7 +38,9 @@ export function PageShell({
   return (
     <>
       <Header />
-      <main className={mainClassName}>{children}</main>
+      <main id="main-content" tabIndex={-1} className={mainClassName}>
+        {children}
+      </main>
       <Footer />
       <WhatsAppButton />
       <BackToTop />

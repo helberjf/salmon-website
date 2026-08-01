@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from 'wouter';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -13,13 +13,13 @@ interface PageHeroProps {
 
 /** Cabeçalho padrão das páginas internas. */
 export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
 
   return (
     <section className="relative isolate overflow-hidden bg-navy pb-20 pt-32 text-white md:pb-28 md:pt-40">
       <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10 opacity-80" />
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="absolute -right-48 top-12 -z-10 h-[32rem] w-[32rem] rounded-full bg-ocean-light/15 blur-3xl"
         initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.88 }}
@@ -32,13 +32,13 @@ export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) 
           aside ? 'lg:grid-cols-[1.25fr_0.75fr] lg:items-center lg:gap-20' : ''
         }`}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
+        <m.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <Link
-            href="/"
+            href={localizedHref('/')}
             className="mb-8 inline-flex items-center gap-2 py-1 text-sm font-semibold text-frost transition-colors hover:text-white"
           >
             <ArrowLeft size={16} aria-hidden="true" />
@@ -51,17 +51,17 @@ export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) 
           {description && (
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-frost">{description}</p>
           )}
-        </motion.div>
+        </m.div>
 
         {aside && (
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
+          <m.div
+            initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.75, delay: 0.12, ease: 'easeOut' }}
             className="lg:justify-self-end"
           >
             {aside}
-          </motion.div>
+          </m.div>
         )}
       </div>
     </section>

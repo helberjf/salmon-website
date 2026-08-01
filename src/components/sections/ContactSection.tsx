@@ -54,7 +54,7 @@ const createFormSchema = (t: Translate) =>
 type FormValues = z.infer<ReturnType<typeof createFormSchema>>;
 
 const inputClass =
-  'w-full rounded-md border border-border bg-white px-4 py-2.5 text-navy placeholder:text-muted/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-ocean-light aria-[invalid=true]:border-nordic-red sm:py-3';
+  'w-full rounded-md border border-border bg-white px-4 py-2.5 text-navy placeholder:text-muted focus:outline-none focus-visible:outline-2 focus-visible:outline-ocean-light aria-[invalid=true]:border-nordic-red sm:py-3';
 
 interface FieldProps {
   label: string;
@@ -88,10 +88,14 @@ function Field({ label, error, required, children }: FieldProps) {
 }
 
 export function ContactSection() {
-  const { language, t } = useI18n();
+  const { href: localizedHref, language, t } = useI18n();
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const sectionRef = useRef<HTMLElement>(null);
   const successTitleRef = useRef<HTMLHeadingElement>(null);
   const consentErrorId = useId();
+  const consentId = useId();
+  const consentLabelId = `${consentId}-label`;
+  const consentPolicyId = `${consentId}-policy`;
   const formSchema = useMemo(() => createFormSchema(t), [language, t]);
 
   const {
@@ -112,6 +116,15 @@ export function ContactSection() {
   useEffect(() => {
     if (status === 'success') successTitleRef.current?.focus();
   }, [status]);
+
+  useEffect(() => {
+    if (window.location.hash !== '#contato') return undefined;
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      sectionRef.current?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(animationFrame);
+  }, []);
 
   const onSubmit = async (data: FormValues) => {
     if (status === 'submitting') return;
@@ -143,7 +156,13 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="bg-background py-16 sm:py-24 md:py-32">
+    <section
+      ref={sectionRef}
+      id="contato"
+      tabIndex={-1}
+      aria-label={t('Contato')}
+      className="bg-background py-16 focus:outline-none sm:py-24 md:py-32"
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-3 lg:gap-16">
           <div>
@@ -452,22 +471,33 @@ export function ContactSection() {
                   </details>
 
                   <div className="mt-6">
-                    <label className="flex cursor-pointer items-start gap-3 text-sm text-muted">
+                    <div className="flex items-start gap-3 text-sm text-muted">
                       <input
+                        id={consentId}
                         type="checkbox"
+                        required
                         className="mt-0.5 h-4 w-4 accent-ocean"
                         aria-invalid={!!errors.consent}
+                        aria-required="true"
+                        aria-labelledby={`${consentLabelId} ${consentPolicyId}`}
                         aria-describedby={errors.consent ? consentErrorId : undefined}
                         {...register('consent')}
                       />
                       <span>
-                        {t('Autorizo o uso dos dados informados para retorno desta solicitação e envio de propostas comerciais, conforme a')}{' '}
-                        <a href="/privacidade" className="font-medium text-ocean underline">
+                        <label id={consentLabelId} htmlFor={consentId} className="cursor-pointer">
+                          {t('Autorizo o uso dos dados informados para retorno desta solicitação e envio de propostas comerciais, conforme a')}
+                          <span aria-hidden="true" className="text-nordic-red"> *</span>
+                        </label>{' '}
+                        <a
+                          id={consentPolicyId}
+                          href={localizedHref('/privacidade')}
+                          className="font-medium text-ocean underline"
+                        >
                           {t('Política de Privacidade')}
                         </a>
                         .
                       </span>
-                    </label>
+                    </div>
                     {errors.consent && (
                       <p id={consentErrorId} role="alert" className="mt-1.5 text-xs text-nordic-red">
                         {errors.consent.message}
