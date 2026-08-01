@@ -10,7 +10,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
 
   return (
     <footer className="bg-navy-dark text-frost">
@@ -55,7 +55,7 @@ export function Footer() {
                 <li key={link.href}>
                   {/* py generoso: no celular estes links tinham 18px de altura. */}
                   <a
-                    href={link.href}
+                    href={localizedHref(link.href)}
                     className="inline-block py-2 transition-colors hover:text-white"
                   >
                     {t(link.label)}
@@ -121,7 +121,7 @@ export function Footer() {
               </p>
             </div>
             <a
-              href="/#contato"
+              href={localizedHref('/#contato')}
               className="mt-6 inline-block rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white hover:text-navy"
             >
               {t('Falar com a equipe')}
@@ -136,10 +136,16 @@ export function Footer() {
               {company.cnpj && ` CNPJ ${company.cnpj}.`} {t('Todos os direitos reservados.')}
             </p>
             <div className="flex gap-5">
-              <Link href="/privacidade" className="inline-block py-1.5 transition-colors hover:text-white">
+              <Link
+                href={localizedHref('/privacidade')}
+                className="inline-block py-1.5 transition-colors hover:text-white"
+              >
                 {t('Política de Privacidade')}
               </Link>
-              <Link href="/termos" className="inline-block py-1.5 transition-colors hover:text-white">
+              <Link
+                href={localizedHref('/termos')}
+                className="inline-block py-1.5 transition-colors hover:text-white"
+              >
                 {t('Termos de Uso')}
               </Link>
             </div>

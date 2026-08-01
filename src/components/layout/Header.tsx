@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { navLinks } from '@/data/navigation';
@@ -8,13 +8,18 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { BrandMark } from '@/components/ui/BrandMark';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
+import { stripLanguagePrefix } from '@/i18n/routing';
 
 export function Header() {
   const isScrolled = useScrolled(40);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const { t } = useI18n();
+  const shouldReduceMotion = useReducedMotion();
+  const { href: localizedHref, t } = useI18n();
   const [location] = useLocation();
+  const contentLocation = stripLanguagePrefix(location);
+  const canonicalContentLocation = contentLocation === '/norwell' ? '/a-norwell' : contentLocation;
   const sectionIds = useMemo(
     () => navLinks.map((link) => link.sectionId).filter(Boolean),
     [],
@@ -22,7 +27,9 @@ export function Header() {
   const activeSection = useScrollSpy(sectionIds);
 
   const isLinkActive = (href: string, sectionId: string) =>
-    sectionId ? location === '/' && activeSection === sectionId : location === href;
+    sectionId
+      ? canonicalContentLocation === '/' && activeSection === sectionId
+      : canonicalContentLocation === href;
 
   const solid = isScrolled || mobileOpen;
 
@@ -30,25 +37,60 @@ export function Header() {
     if (!mobileOpen) return undefined;
 
     const previousOverflow = document.body.style.overflow;
-    const closeOnEscape = (event: KeyboardEvent) => {
+    const handleMenuKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         setMobileOpen(false);
-        window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+        menuButtonRef.current?.focus();
+        return;
       }
+
+      if (event.key === 'Tab') {
+        const focusableElements = Array.from(
+          headerRef.current?.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ) ?? [],
+        ).filter((element) => element.getClientRects().length > 0);
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements.at(-1);
+
+        if (!firstElement || !lastElement) return;
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setMobileOpen(false);
+      }
+    };
+    const desktopQuery = window.matchMedia('(min-width: 1280px)');
+    const closeAtDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setMobileOpen(false);
     };
 
     document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', closeOnEscape);
+    window.addEventListener('keydown', handleMenuKeyDown);
+    document.addEventListener('pointerdown', closeOnOutsidePointer);
+    desktopQuery.addEventListener('change', closeAtDesktop);
 
     return () => {
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', closeOnEscape);
+      window.removeEventListener('keydown', handleMenuKeyDown);
+      document.removeEventListener('pointerdown', closeOnOutsidePointer);
+      desktopQuery.removeEventListener('change', closeAtDesktop);
     };
   }, [mobileOpen]);
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -18 }}
+    <m.header
+      ref={headerRef}
+      initial={shouldReduceMotion ? false : { opacity: 0, y: -18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -57,7 +99,7 @@ export function Header() {
     >
       <div aria-hidden="true" className="nordic-stripe h-[3px] w-full" />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href="/#inicio" aria-label={t('Nordic Salmon — voltar ao início')}>
+        <a href={localizedHref('/#inicio')} aria-label={t('Bridge Point — voltar ao início')}>
           <BrandMark inverse />
         </a>
 
@@ -65,7 +107,7 @@ export function Header() {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={localizedHref(link.href)}
               aria-current={isLinkActive(link.href, link.sectionId) ? 'location' : undefined}
               className={`group relative py-1 text-[0.82rem] font-semibold transition-colors hover:text-white ${
                 isLinkActive(link.href, link.sectionId) ? 'text-white' : 'text-white/70'
@@ -83,7 +125,7 @@ export function Header() {
           ))}
           <LanguageSelector />
           <a
-            href="/#contato"
+            href={localizedHref('/#contato')}
             className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
           >
             {t('Cotação B2B')}
@@ -106,19 +148,19 @@ export function Header() {
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.nav
+          <m.nav
             id="menu-mobile"
             aria-label={t('Navegação principal (celular)')}
-            initial={{ opacity: 0, y: -12 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
             className="max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-t border-white/10 bg-navy px-5 pb-7 pt-2 shadow-2xl xl:hidden"
           >
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={localizedHref(link.href)}
                 onClick={() => setMobileOpen(false)}
                 aria-current={isLinkActive(link.href, link.sectionId) ? 'location' : undefined}
                 className={`block border-b border-white/10 py-3.5 font-medium transition-colors hover:text-frost ${
@@ -135,16 +177,16 @@ export function Header() {
                 onSelect={() => setMobileOpen(false)}
               />
               <a
-                href="/#contato"
+                href={localizedHref('/#contato')}
                 onClick={() => setMobileOpen(false)}
                 className="flex-1 rounded-full bg-white px-4 py-3.5 text-center text-sm font-bold text-navy"
               >
                 {t('Solicitar cotação B2B')}
               </a>
             </div>
-          </motion.nav>
+          </m.nav>
         )}
       </AnimatePresence>
-    </motion.header>
+    </m.header>
   );
 }

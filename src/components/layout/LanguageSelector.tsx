@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { Check, Languages } from 'lucide-react';
 import { useI18n, type LanguagePreference } from '@/i18n/I18nProvider';
 
@@ -43,6 +43,7 @@ export function LanguageSelector({
   direction = 'down',
 }: LanguageSelectorProps) {
   const { preference, setPreference, t } = useI18n();
+  const shouldReduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -56,6 +57,8 @@ export function LanguageSelector({
     };
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return;
+      event.preventDefault();
+      event.stopPropagation();
       setOpen(false);
       buttonRef.current?.focus();
     };
@@ -81,7 +84,6 @@ export function LanguageSelector({
         ref={buttonRef}
         type="button"
         onClick={() => setOpen((isOpen) => !isOpen)}
-        aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={open ? menuId : undefined}
         aria-label={t('Selecionar idioma')}
@@ -96,13 +98,17 @@ export function LanguageSelector({
 
       <AnimatePresence>
         {open && (
-          <motion.ul
+          <m.ul
             id={menuId}
-            role="menu"
-            initial={{ opacity: 0, y: direction === 'up' ? 6 : -6, scale: 0.97 }}
+            aria-label={t('Selecionar idioma')}
+            initial={
+              shouldReduceMotion
+                ? false
+                : { opacity: 0, y: direction === 'up' ? 6 : -6, scale: 0.97 }
+            }
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: direction === 'up' ? 6 : -6, scale: 0.97 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.16, ease: 'easeOut' }}
             className={`absolute z-50 w-52 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark p-1.5 shadow-2xl shadow-navy-dark/50 ${
               align === 'start' ? 'left-0' : 'right-0'
             } ${
@@ -114,11 +120,10 @@ export function LanguageSelector({
             {languageOptions.map((option) => {
               const selected = preference === option.value;
               return (
-                <li key={option.value} role="none">
+                <li key={option.value}>
                   <button
                     type="button"
-                    role="menuitemradio"
-                    aria-checked={selected}
+                    aria-pressed={selected}
                     onClick={() => choose(option.value)}
                     className={`flex w-full items-center justify-between gap-3 rounded-xl px-3.5 py-3 text-left text-sm font-semibold transition-colors ${
                       selected ? 'bg-white/12 text-white' : 'text-white/75 hover:bg-white/8 hover:text-white'
@@ -130,7 +135,7 @@ export function LanguageSelector({
                 </li>
               );
             })}
-          </motion.ul>
+          </m.ul>
         )}
       </AnimatePresence>
     </div>

@@ -25,45 +25,70 @@ export const translations: Record<string, LocalizedText> = {
   'Selecionar idioma': { en: 'Select language', es: 'Seleccionar idioma', no: 'Velg språk' },
 
   // Metadata and company-level copy
-  'Nordic Salmon | Salmão Norueguês B2B no Brasil': {
-    en: 'Nordic Salmon | Norwegian Salmon B2B in Brazil',
-    es: 'Nordic Salmon | Salmón noruego B2B en Brasil',
-    no: 'Nordic Salmon | Norsk laks for bedriftsmarkedet i Brasil',
+  'Bridge Point | Salmão Norueguês B2B no Brasil': {
+    en: 'Bridge Point | Norwegian Salmon B2B in Brazil',
+    es: 'Bridge Point | Salmón noruego B2B en Brasil',
+    no: 'Bridge Point | Norsk laks for bedriftsmarkedet i Brasil',
   },
-  'Nordic Salmon | Salmão Norueguês para o Mercado Brasileiro': {
-    en: 'Nordic Salmon | Norwegian Salmon for the Brazilian Market',
-    es: 'Nordic Salmon | Salmón noruego para el mercado brasileño',
-    no: 'Nordic Salmon | Norsk laks for det brasilianske markedet',
+  'Bridge Point | Salmão Norueguês para o Mercado Brasileiro': {
+    en: 'Bridge Point | Norwegian Salmon for the Brazilian Market',
+    es: 'Bridge Point | Salmón noruego para el mercado brasileño',
+    no: 'Bridge Point | Norsk laks for det brasilianske markedet',
   },
   'Salmão Norueguês para o Mercado Brasileiro': {
     en: 'Norwegian Salmon for the Brazilian Market',
     es: 'Salmón noruego para el mercado brasileño',
     no: 'Norsk laks for det brasilianske markedet',
   },
-  'Política de Privacidade | Nordic Salmon': {
-    en: 'Privacy Policy | Nordic Salmon',
-    es: 'Política de Privacidad | Nordic Salmon',
-    no: 'Personvernerklæring | Nordic Salmon',
+  'Política de Privacidade | Bridge Point': {
+    en: 'Privacy Policy | Bridge Point',
+    es: 'Política de Privacidad | Bridge Point',
+    no: 'Personvernerklæring | Bridge Point',
   },
-  'Termos de Uso | Nordic Salmon': {
-    en: 'Terms of Use | Nordic Salmon',
-    es: 'Términos de Uso | Nordic Salmon',
-    no: 'Bruksvilkår | Nordic Salmon',
+  'Termos de Uso | Bridge Point': {
+    en: 'Terms of Use | Bridge Point',
+    es: 'Términos de Uso | Bridge Point',
+    no: 'Bruksvilkår | Bridge Point',
   },
-  'Sobre Mai Tonheim | Nordic Salmon': {
-    en: 'About Mai Tonheim | Nordic Salmon',
-    es: 'Sobre Mai Tonheim | Nordic Salmon',
-    no: 'Om Mai Tonheim | Nordic Salmon',
+  'Sobre Mai Tonheim | Bridge Point': {
+    en: 'About Mai Tonheim | Bridge Point',
+    es: 'Sobre Mai Tonheim | Bridge Point',
+    no: 'Om Mai Tonheim | Bridge Point',
   },
-  'Página não encontrada | Nordic Salmon': {
-    en: 'Page not found | Nordic Salmon',
-    es: 'Página no encontrada | Nordic Salmon',
-    no: 'Siden ble ikke funnet | Nordic Salmon',
+  'Página não encontrada | Bridge Point': {
+    en: 'Page not found | Bridge Point',
+    es: 'Página no encontrada | Bridge Point',
+    no: 'Siden ble ikke funnet | Bridge Point',
   },
   'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida.': {
     en: 'Commercial representation and B2B supply of Norwegian salmon in Brazil, directly connected to exporter Norwell. Fresh, frozen and tailor-made products.',
     es: 'Representación comercial y suministro B2B de salmón noruego en Brasil, en conexión directa con la exportadora Norwell. Productos frescos, congelados y a medida.',
     no: 'Kommersiell representasjon og B2B-leveranser av norsk laks i Brasil, i direkte kontakt med eksportøren Norwell. Ferske, fryste og skreddersydde produkter.',
+  },
+  'Conheça Mai Tonheim, fundadora da Bridge Point, e sua trajetória conectando Noruega e Brasil por meio de comércio sustentável, entrada em mercados e parcerias estratégicas.': {
+    en: 'Meet Mai Tonheim, founder of Bridge Point, and discover her career connecting Norway and Brazil through sustainable trade, market entry and strategic partnerships.',
+    es: 'Conozca a Mai Tonheim, fundadora de Bridge Point, y su trayectoria conectando Noruega y Brasil mediante comercio sostenible, entrada en mercados y alianzas estratégicas.',
+    no: 'Bli kjent med Mai Tonheim, grunnleggeren av Bridge Point, og hennes karriere med å knytte Norge og Brasil sammen gjennom bærekraftig handel, markedsetablering og strategiske partnerskap.',
+  },
+  'Saiba como a Bridge Point trata os dados informados em seus canais de contato e solicitações comerciais.': {
+    en: 'Learn how Bridge Point handles the data provided through its contact channels and commercial enquiries.',
+    es: 'Conozca cómo Bridge Point trata los datos proporcionados a través de sus canales de contacto y solicitudes comerciales.',
+    no: 'Les om hvordan Bridge Point behandler opplysninger som oppgis gjennom kontaktkanalene og kommersielle forespørsler.',
+  },
+  'Consulte as condições de uso do website institucional da Bridge Point e as informações aplicáveis ao conteúdo publicado.': {
+    en: 'Review the terms of use for Bridge Point’s corporate website and the information applicable to its published content.',
+    es: 'Consulte las condiciones de uso del sitio web corporativo de Bridge Point y la información aplicable al contenido publicado.',
+    no: 'Les bruksvilkårene for Bridge Points nettsted og informasjonen som gjelder for det publiserte innholdet.',
+  },
+  'Salmão norueguês fresco apresentado pela Bridge Point': {
+    en: 'Fresh Norwegian salmon presented by Bridge Point',
+    es: 'Salmón noruego fresco presentado por Bridge Point',
+    no: 'Fersk norsk laks presentert av Bridge Point',
+  },
+  'Fundadora e representante comercial no Brasil': {
+    en: 'Founder and commercial representative in Brazil',
+    es: 'Fundadora y representante comercial en Brasil',
+    no: 'Grunnlegger og kommersiell representant i Brasil',
   },
   'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell.': {
     en: 'Commercial representation and B2B supply of Norwegian salmon in Brazil, directly connected to exporter Norwell.',
@@ -97,10 +122,10 @@ export const translations: Record<string, LocalizedText> = {
     no: 'B2B-salgsoppfølging i hele Brasil',
   },
   Brasil: { en: 'Brazil', es: 'Brasil', no: 'Brasil' },
-  'Olá, Mai! Conheci a Nordic Salmon pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.': {
-    en: 'Hello, Mai! I found Nordic Salmon through the website and would like to discuss supplying Norwegian salmon to my company.',
-    es: '¡Hola, Mai! Conocí Nordic Salmon a través del sitio web y me gustaría conversar sobre el suministro de salmón noruego para mi empresa.',
-    no: 'Hei, Mai! Jeg fant Nordic Salmon via nettstedet og ønsker å snakke om levering av norsk laks til selskapet mitt.',
+  'Olá, Mai! Conheci a Bridge Point pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.': {
+    en: 'Hello, Mai! I found Bridge Point through the website and would like to discuss supplying Norwegian salmon to my company.',
+    es: '¡Hola, Mai! Conocí Bridge Point a través del sitio web y me gustaría conversar sobre el suministro de salmón noruego para mi empresa.',
+    no: 'Hei, Mai! Jeg fant Bridge Point via nettstedet og ønsker å snakke om levering av norsk laks til selskapet mitt.',
   },
 
   // Navigation and shared layout
@@ -110,10 +135,10 @@ export const translations: Record<string, LocalizedText> = {
   Produtos: { en: 'Products', es: 'Productos', no: 'Produkter' },
   Galeria: { en: 'Gallery', es: 'Galería', no: 'Galleri' },
   Processo: { en: 'Process', es: 'Proceso', no: 'Prosess' },
-  'Nordic Salmon — voltar ao início': {
-    en: 'Nordic Salmon — back to the beginning',
-    es: 'Nordic Salmon — volver al inicio',
-    no: 'Nordic Salmon — tilbake til starten',
+  'Bridge Point — voltar ao início': {
+    en: 'Bridge Point — back to the beginning',
+    es: 'Bridge Point — volver al inicio',
+    no: 'Bridge Point — tilbake til starten',
   },
   'Navegação principal': {
     en: 'Main navigation',
@@ -182,13 +207,13 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Representación comercial · Noruega → Brasil',
     no: 'Kommersiell representasjon · Norge → Brasil',
   },
-  'Salmão norueguês, direto da origem.': {
-    en: 'Norwegian salmon, direct from the source.',
-    es: 'Salmón noruego, directo del origen.',
-    no: 'Norsk laks, direkte fra opprinnelsen.',
+  'Salmão norueguês, direto dos fiordes.': {
+    en: 'Norwegian salmon, straight from the fjords.',
+    es: 'Salmón noruego, directo de los fiordos.',
+    no: 'Norsk laks, rett fra fjordene.',
   },
   'Salmão norueguês,': { en: 'Norwegian salmon,', es: 'Salmón noruego,', no: 'Norsk laks,' },
-  'direto da origem.': { en: 'direct from the source.', es: 'directo del origen.', no: 'direkte fra opprinnelsen.' },
+  'direto dos fiordes.': { en: 'straight from the fjords.', es: 'directo de los fiordos.', no: 'rett fra fjordene.' },
   'Conectamos empresas brasileiras à exportadora Norwell e a produtores selecionados da costa norueguesa, com especificação sob medida e logística de ponta a ponta.': {
     en: 'We connect Brazilian companies with exporter Norwell and selected producers along the Norwegian coast, providing tailor-made specifications and end-to-end logistics.',
     es: 'Conectamos empresas brasileñas con la exportadora Norwell y productores seleccionados de la costa noruega, con especificaciones a medida y logística integral.',
@@ -251,10 +276,10 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Un puente comercial firmemente arraigado en el origen',
     no: 'En kommersiell bro med solid forankring ved opprinnelsen',
   },
-  'Nordic Salmon + Norwell': {
-    en: 'Nordic Salmon + Norwell',
-    es: 'Nordic Salmon + Norwell',
-    no: 'Nordic Salmon + Norwell',
+  'Bridge Point + Norwell': {
+    en: 'Bridge Point + Norwell',
+    es: 'Bridge Point + Norwell',
+    no: 'Bridge Point + Norwell',
   },
   'Representamos no Brasil a Norwell, exportadora norueguesa especializada em salmão e sediada em Florø. A empresa construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia.': {
     en: 'We represent Norwell in Brazil, a Norwegian salmon exporter based in Florø. The company has built its business in partnership with producers along the Norwegian coast, combining international scale with close supply-chain relationships.',
@@ -744,6 +769,46 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Fotografía de Mai Tonheim',
     no: 'Fotografi av Mai Tonheim',
   },
+  'Mai Tonheim, à direita, no estande da Noruega, ao lado de um representante norueguês e com material sobre salmão': {
+    en: 'Mai Tonheim, on the right, at the Norway stand, alongside a Norwegian representative and holding material about salmon',
+    es: 'Mai Tonheim, a la derecha, en el estand de Noruega, junto a un representante noruego y con material sobre salmón',
+    no: 'Mai Tonheim, til høyre, på Norges stand, sammen med en norsk representant og med materiell om laks',
+  },
+  'Presença institucional': {
+    en: 'Institutional presence',
+    es: 'Presencia institucional',
+    no: 'Institusjonell tilstedeværelse',
+  },
+  'Noruega e Brasil em ação': {
+    en: 'Norway and Brazil in action',
+    es: 'Noruega y Brasil en acción',
+    no: 'Norge og Brasil i praksis',
+  },
+  'Registros de uma trajetória dedicada à diplomacia comercial, à cooperação e à criação de pontes entre os dois países.': {
+    en: 'Moments from a career dedicated to commercial diplomacy, cooperation and building bridges between the two countries.',
+    es: 'Registros de una trayectoria dedicada a la diplomacia comercial, la cooperación y la creación de puentes entre ambos países.',
+    no: 'Øyeblikk fra en karriere viet til handelsdiplomati, samarbeid og brobygging mellom de to landene.',
+  },
+  'Cartaz da Hydrogen Expo South America 2025 com Mai Tonheim como palestrante do painel internacional': {
+    en: 'Hydrogen Expo South America 2025 poster featuring Mai Tonheim as an international panel speaker',
+    es: 'Cartel de Hydrogen Expo South America 2025 con Mai Tonheim como ponente del panel internacional',
+    no: 'Plakat for Hydrogen Expo South America 2025 med Mai Tonheim som innleder i det internasjonale panelet',
+  },
+  'Painel internacional da Hydrogen Expo South America, Rio de Janeiro, junho de 2025': {
+    en: 'International panel at Hydrogen Expo South America, Rio de Janeiro, June 2025',
+    es: 'Panel internacional de Hydrogen Expo South America, Río de Janeiro, junio de 2025',
+    no: 'Internasjonalt panel under Hydrogen Expo South America, Rio de Janeiro, juni 2025',
+  },
+  'Retrato editorial em preto e branco de Mai Tonheim para a campanha Noruega no Brasil': {
+    en: 'Black-and-white editorial portrait of Mai Tonheim for the Norway in Brazil campaign',
+    es: 'Retrato editorial en blanco y negro de Mai Tonheim para la campaña Noruega en Brasil',
+    no: 'Svart-hvitt redaksjonelt portrett av Mai Tonheim for kampanjen Norge i Brasil',
+  },
+  'Atuação institucional no Consulado-Geral Real da Noruega no Rio de Janeiro': {
+    en: 'Institutional work at the Royal Norwegian Consulate General in Rio de Janeiro',
+    es: 'Labor institucional en el Consulado General Real de Noruega en Río de Janeiro',
+    no: 'Institusjonelt arbeid ved Det kongelige norske generalkonsulatet i Rio de Janeiro',
+  },
   'Noruega · Brasil': { en: 'Norway · Brazil', es: 'Noruega · Brasil', no: 'Norge · Brasil' },
   '“Relações comerciais sólidas começam com clareza, confiança e conhecimento dos dois mercados.”': {
     en: '“Strong commercial relationships begin with clarity, trust and knowledge of both markets.”',
@@ -832,10 +897,10 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Conecte su operación con los productos del mar noruegos desde una perspectiva local.',
     no: 'Koble virksomheten din til norsk sjømat med lokal innsikt.',
   },
-  'Fale com a Nordic Salmon': {
-    en: 'Talk to Nordic Salmon',
-    es: 'Hable con Nordic Salmon',
-    no: 'Snakk med Nordic Salmon',
+  'Fale com a Bridge Point': {
+    en: 'Talk to Bridge Point',
+    es: 'Hable con Bridge Point',
+    no: 'Snakk med Bridge Point',
   },
 
   // Differentials and trust
@@ -1227,16 +1292,16 @@ export const translations: Record<string, LocalizedText> = {
     no: 'Detaljer om virksomheten (valgfritt)',
   },
 
-  // Páginas internas — /a-norwell e /produtos
-  'A Norwell | Nordic Salmon': {
-    en: 'Norwell | Nordic Salmon',
-    es: 'Norwell | Nordic Salmon',
-    no: 'Norwell | Nordic Salmon',
+  // Páginas internas — /norwell e /produtos
+  'A Norwell | Bridge Point': {
+    en: 'Norwell | Bridge Point',
+    es: 'Norwell | Bridge Point',
+    no: 'Norwell | Bridge Point',
   },
-  'Produtos | Nordic Salmon': {
-    en: 'Products | Nordic Salmon',
-    es: 'Productos | Nordic Salmon',
-    no: 'Produkter | Nordic Salmon',
+  'Produtos | Bridge Point': {
+    en: 'Products | Bridge Point',
+    es: 'Productos | Bridge Point',
+    no: 'Produkter | Bridge Point',
   },
   'A Norwell': { en: 'Norwell', es: 'Norwell', no: 'Norwell' },
   'A origem do produto': {

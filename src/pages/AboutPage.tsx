@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -11,6 +11,7 @@ import {
 import { Link } from 'wouter';
 import { PageShell } from '@/components/layout/PageShell';
 import { Reveal } from '@/components/ui/Reveal';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 import { founder } from '@/data/founder';
 import { useI18n } from '@/i18n/I18nProvider';
 
@@ -18,12 +19,17 @@ function FounderPortrait() {
   const { t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
 
-  if (founder.photo) {
+  if (founder.aboutHeroPhoto) {
     return (
-      <img
-        src={founder.photo}
-        alt={t(`Fotografia de ${founder.name}`)}
-        className="aspect-[4/5] h-full w-full object-cover object-top"
+      <ResponsiveImage
+        src={founder.aboutHeroPhoto.src}
+        alt={t(founder.aboutHeroPhoto.alt)}
+        sizes="(min-width: 1024px) 384px, (min-width: 640px) 384px, calc(100vw - 40px)"
+        maxWidth={480}
+        loading="eager"
+        fetchPriority="high"
+        pictureClassName="block h-full w-full"
+        className="aspect-[3/4] h-full w-full bg-navy-dark object-contain"
       />
     );
   }
@@ -35,7 +41,7 @@ function FounderPortrait() {
 
   return (
     <div className="relative flex aspect-[4/5] min-h-[24rem] flex-col justify-between overflow-hidden bg-navy-dark p-8 text-white">
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="absolute -right-24 -top-24 h-80 w-80 rounded-full border-[54px] border-ocean-light/20"
         initial={shouldReduceMotion ? false : { opacity: 0, rotate: -12, scale: 0.9 }}
@@ -60,14 +66,14 @@ function FounderPortrait() {
 }
 
 export default function AboutPage() {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <PageShell titleSource="Sobre Mai Tonheim | Nordic Salmon" resetScroll mainClassName="overflow-hidden bg-white">
+    <PageShell titleSource="Sobre Mai Tonheim | Bridge Point" resetScroll mainClassName="overflow-hidden bg-white">
         <section className="relative isolate bg-navy pb-20 pt-32 text-white md:pb-28 md:pt-40">
           <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10 opacity-80" />
-          <motion.div
+          <m.div
             aria-hidden="true"
             className="absolute -right-48 top-12 -z-10 h-[32rem] w-[32rem] rounded-full bg-ocean-light/15 blur-3xl"
             initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.88 }}
@@ -76,13 +82,13 @@ export default function AboutPage() {
           />
 
           <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
+            <m.div
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
               <Link
-                href="/"
+                href={localizedHref('/')}
                 className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-frost transition-colors hover:text-white"
               >
                 <ArrowLeft size={16} aria-hidden="true" />
@@ -112,22 +118,22 @@ export default function AboutPage() {
                   <ArrowUpRight size={15} aria-hidden="true" />
                 </a>
                 <a
-                  href="/#contato"
+                  href={localizedHref('/#contato')}
                   className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3.5 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10"
                 >
                   {t('Conversar sobre uma parceria')}
                 </a>
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 28 }}
+            <m.div
+              initial={shouldReduceMotion ? false : { opacity: 0, x: 28 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.75, delay: 0.12, ease: 'easeOut' }}
-              className="mx-auto w-full max-w-md overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-navy-dark/40 lg:mx-0 lg:justify-self-end"
+              className="mx-auto w-full max-w-sm overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl shadow-navy-dark/40 lg:mx-0 lg:justify-self-end"
             >
               <FounderPortrait />
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -148,6 +154,51 @@ export default function AboutPage() {
                 <p key={paragraph.slice(0, 40)}>{t(paragraph)}</p>
               ))}
             </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-white py-20 md:py-28" aria-labelledby="presenca-institucional">
+          <div className="mx-auto max-w-7xl px-5 lg:px-8">
+            <Reveal className="max-w-3xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-ocean-light">
+                {t('Presença institucional')}
+              </p>
+              <h2
+                id="presenca-institucional"
+                className="mt-4 scroll-mt-28 text-4xl font-semibold leading-tight tracking-[-0.025em] text-navy md:text-5xl"
+              >
+                {t('Noruega e Brasil em ação')}
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+                {t('Registros de uma trajetória dedicada à diplomacia comercial, à cooperação e à criação de pontes entre os dois países.')}
+              </p>
+            </Reveal>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {founder.gallery.map((image, index) => (
+                <Reveal key={image.src} delay={index * 0.07}>
+                  <figure
+                    className={`mx-auto w-full overflow-hidden rounded-3xl border border-border bg-white shadow-sm ${
+                      image.src.includes('norway-brazil') ? 'max-w-xs' : 'max-w-md'
+                    }`}
+                  >
+                    <div className="aspect-[4/5] bg-navy-dark">
+                      <ResponsiveImage
+                        src={image.src}
+                        alt={t(image.alt)}
+                        sizes="(min-width: 1024px) 448px, (min-width: 768px) calc((100vw - 64px) / 2), calc(100vw - 40px)"
+                        maxWidth={800}
+                        pictureClassName="block h-full w-full"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+                    <figcaption className="p-5 text-sm font-semibold leading-relaxed text-navy">
+                      {t(image.caption)}
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -242,10 +293,10 @@ export default function AboutPage() {
               </h2>
             </div>
             <a
-              href="/#contato"
+              href={localizedHref('/#contato')}
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
             >
-              {t('Fale com a Nordic Salmon')}
+              {t('Fale com a Bridge Point')}
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </Reveal>

@@ -5,9 +5,9 @@
  * Preencha conforme os dados oficiais forem confirmados.
  */
 export const company = {
-  name: 'Nordic Salmon',
+  name: 'Bridge Point',
   legalName: '',
-  cnpj: '',
+  cnpj: '62.548.504/0001-06',
   foundationYear: '',
   description:
     'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell.',
@@ -15,7 +15,7 @@ export const company = {
   phone: '+55 21 96569-0982',
   whatsapp: '5521965690982',
   whatsappMessage:
-    'Olá, Mai! Conheci a Nordic Salmon pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.',
+    'Olá, Mai! Conheci a Bridge Point pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.',
   address: '',
   city: 'Rio de Janeiro',
   state: 'RJ',

@@ -6,6 +6,7 @@ import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { images } from '@/data/images';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 const highlights = [
   {
@@ -29,7 +30,7 @@ const partnership = [
 ];
 
 export function About() {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
 
   return (
     <section id="empresa" className="bg-white py-24 md:py-32">
@@ -38,11 +39,10 @@ export function About() {
           <Reveal direction="right">
             <div className="relative">
               <figure className="overflow-hidden rounded-[2rem] bg-mist">
-                <img
+                <ResponsiveImage
                   src={images.about.src}
                   alt={t(images.about.alt)}
-                  loading="lazy"
-                  decoding="async"
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 43vw, calc(100vw - 40px)"
                   className="aspect-[4/3] w-full object-cover"
                 />
               </figure>
@@ -64,7 +64,7 @@ export function About() {
 
           <div className="pt-8 lg:pt-0">
             <SectionHeading
-              eyebrow={t('Nordic Salmon + Norwell')}
+              eyebrow={t('Bridge Point + Norwell')}
               title={t('Uma ponte comercial com os dois pés na origem')}
             />
             <Reveal delay={0.1} className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
@@ -90,7 +90,7 @@ export function About() {
                 ))}
               </ul>
               <Link
-                href="/a-norwell"
+                href={localizedHref('/a-norwell')}
                 className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
               >
                 {t('Conhecer a Norwell, seus valores e certificações')}

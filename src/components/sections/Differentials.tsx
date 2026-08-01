@@ -4,6 +4,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { differentials } from '@/data/differentials';
 import { images } from '@/data/images';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 export function Differentials() {
   const { t } = useI18n();
@@ -19,18 +20,15 @@ export function Differentials() {
               description={t('Não prometemos o que não podemos cumprir. Estes são os pontos em que nossa atuação se diferencia de fato.')}
             />
             <Reveal delay={0.15} className="mt-10 hidden lg:block">
-              <picture>
-                <source media="(min-width: 1024px)" srcSet={images.differentials.src} />
-                <img
-                  src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-                  alt={t(images.differentials.alt)}
-                  loading="lazy"
-                  decoding="async"
-                  width={2200}
-                  height={1466}
-                  className="aspect-[4/3] w-full rounded-2xl object-cover"
-                />
-              </picture>
+              <ResponsiveImage
+                src={images.differentials.src}
+                alt={t(images.differentials.alt)}
+                sizes="(min-width: 1280px) 520px, 46vw"
+                maxWidth={1200}
+                media="(min-width: 1024px)"
+                preventFallbackDownload
+                className="aspect-[4/3] w-full rounded-2xl object-cover"
+              />
             </Reveal>
           </div>
 

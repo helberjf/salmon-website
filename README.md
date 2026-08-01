@@ -1,4 +1,4 @@
-# Nordic Salmon — Website Institucional
+# Bridge Point — Website Institucional
 
 Website institucional de empresa especializada na importação e comercialização de **salmão norueguês** no Brasil, apresentando também a trajetória internacional da fundadora, **Mai Tonheim**.
 
@@ -9,7 +9,7 @@ Site estático (SPA) construído com **React + Vite + TypeScript + Tailwind CSS 
 ```bash
 npm install      # instalar dependências
 npm run dev      # ambiente de desenvolvimento (http://localhost:5173)
-npm run build    # typecheck + build de produção (gera a pasta dist/)
+npm run build    # valida assets, faz typecheck e gera o build localizado em dist/
 npm run preview  # servir localmente o build de produção
 ```
 
@@ -23,6 +23,7 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 |---|---|
 | `/` | Topo, quem somos, 2 produtos em destaque, quem atendemos, processo, fundadora, CTA e contato |
 | `/a-norwell` | História, missão, valores e certificações da Norwell, por que o salmão norueguês e galeria |
+| `/norwell` | Alias compatível que abre a mesma página Norwell |
 | `/produtos` | Portfólio completo, diferenciais e relação de confiança |
 | `/sobre` | Trajetória de Mai Tonheim |
 
@@ -58,17 +59,34 @@ Em `src/data/company.ts`, o campo `whatsapp` usa o formato internacional apenas 
 
 ### Foto da fundadora
 
-Em `src/data/founder.ts`, preencha `photo` com a URL (ou importe um arquivo de `src/assets`). Enquanto vazio, o site exibe um monograma elegante no lugar.
+As fotos oficiais de Mai ficam em `public/images/people`. `src/data/founder.ts`
+separa a foto da home, a imagem de abertura da página Sobre e a galeria
+institucional, com textos alternativos e legendas traduzidos.
 
 ### Formulário de contato
 
-O formulário valida e organiza os dados comerciais e abre uma conversa real no WhatsApp da representante. Não depende de backend e não exibe uma confirmação de envio fictícia.
+O formulário valida e organiza os dados comerciais e abre uma conversa real no WhatsApp da representante. Não depende de backend e não exibe uma confirmação de envio fictícia. Seu código é priorizado quando o visitante se aproxima da seção de contato e possui fallback para tecnologias assistivas.
+
+## Idiomas e SEO
+
+O site oferece português, inglês, espanhol e norueguês. A URL sem prefixo usa o idioma do sistema (ou a preferência salva), enquanto as versões indexáveis usam prefixos estáveis:
+
+- `/pt`, `/en`, `/es` e `/no`
+- `/pt/a-norwell`, `/en/a-norwell`, `/es/a-norwell` e `/no/a-norwell`
+- `/pt/norwell`, `/en/norwell`, `/es/norwell` e `/no/norwell` funcionam como aliases compatíveis
+- `/pt/produtos`, `/en/produtos`, `/es/produtos` e `/no/produtos`
+- `/pt/sobre`, `/en/sobre`, `/es/sobre` e `/no/sobre` (mesma estratégia para as páginas legais)
+
+Trocar o idioma mantém a página atual e atualiza a URL. A opção **Sistema** remove o prefixo e volta à detecção automática. As URLs antigas sem prefixo continuam funcionando como gateways compatíveis.
+
+Metadados de título e descrição, canonical, `hreflang`, Open Graph, Twitter Cards e JSON-LD são atualizados conforme o idioma e a página. O `sitemap.xml` lista todas as variantes localizadas; a raiz sem prefixo é indicada como `x-default`.
+
+Durante o build, o script `generate-route-html.mjs` cria HTML estático para as 24 rotas localizadas, os seis gateways `x-default` e os cinco aliases compatíveis da Norwell. Assim, crawlers e previews de redes sociais recebem os metadados corretos mesmo sem executar JavaScript. `verify-build.mjs` valida esses arquivos automaticamente.
 
 ## Dados pendentes (a preencher pela empresa)
 
-- Confirmação do nome definitivo da empresa (hoje: "Nordic Salmon"), razão social e CNPJ
+- Confirmação da razão social completa
 - Endereço completo
-- Foto profissional da fundadora
 - Domínio definitivo para URL canônica e metadados sociais
 - Revisão jurídica da Política de Privacidade e dos Termos de Uso
 
@@ -118,6 +136,19 @@ Todos os pares de texto/fundo do site foram conferidos contra o mínimo de
 > **Antes de publicar:** confirmar com a Norwell AS a autorização de uso das
 > fotografias, do logotipo e do selo "Seafood from Norway" (marca licenciada pelo
 > Norwegian Seafood Council a exportadores autorizados).
+## Imagens responsivas
+
+Além dos WebP originais, o site entrega variantes AVIF/WebP responsivas de `public/images/responsive`, escolhidas pelo navegador conforme a tela. Ao substituir ou adicionar imagens, regenere essas variantes com Pillow:
+
+```bash
+python scripts/generate-responsive-images.py
+```
+
+O componente `ResponsiveImage` centraliza `srcset`, `sizes`, dimensões, lazy loading e evita baixar imagens ocultas no breakpoint atual.
+
+## Tipografia
+
+Playfair Display e Plus Jakarta Sans são hospedadas localmente em `public/fonts`, sem dependência de terceiros durante a navegação. As licenças OFL acompanham os arquivos em `public/fonts/licenses`.
 
 ## Deploy em VPS
 
@@ -155,6 +186,8 @@ sudo certbot --nginx -d seudominio.com.br -d www.seudominio.com.br
 docker build -t salmon-website .
 docker run -d -p 80:80 --restart unless-stopped salmon-website
 ```
+
+A imagem Docker inclui healthcheck. As configurações Nginx fornecidas aplicam revalidação do HTML, cache para assets e fotografias, compressão e cabeçalhos básicos de segurança.
 
 ### Após definir o domínio
 

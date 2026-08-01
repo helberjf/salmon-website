@@ -7,9 +7,23 @@ import type { CareerEntry } from '@/types';
 export const founder = {
   name: 'Mai Tonheim',
   title: 'Representante da Norwell no Brasil',
-  // Foto profissional — substituir pela fotografia oficial quando disponível.
-  // Enquanto vazio, o site exibe um monograma elegante no lugar da imagem.
-  photo: '',
+  homePhoto: '/images/people/mai-tonheim-portrait.jpg',
+  aboutHeroPhoto: {
+    src: '/images/people/mai-tonheim-diplomacy.jpg',
+    alt: 'Mai Tonheim, à direita, no estande da Noruega, ao lado de um representante norueguês e com material sobre salmão',
+  },
+  gallery: [
+    {
+      src: '/images/people/mai-tonheim-consulate.jpg',
+      alt: 'Cartaz da Hydrogen Expo South America 2025 com Mai Tonheim como palestrante do painel internacional',
+      caption: 'Painel internacional da Hydrogen Expo South America, Rio de Janeiro, junho de 2025',
+    },
+    {
+      src: '/images/people/mai-tonheim-norway-brazil.jpg',
+      alt: 'Retrato editorial em preto e branco de Mai Tonheim para a campanha Noruega no Brasil',
+      caption: 'Atuação institucional no Consulado-Geral Real da Noruega no Rio de Janeiro',
+    },
+  ],
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
   headline: 'Conectando a excelência norueguesa às oportunidades do mercado brasileiro',
   profileHeadline:

@@ -1,33 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.nordicsalmon.com.br/</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/pt</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/" />
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.nordicsalmon.com.br/produtos</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/en</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/pt/produtos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/produtos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/produtos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/produtos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/produtos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/produtos" />
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.nordicsalmon.com.br/a-norwell</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/en/produtos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/produtos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/produtos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/produtos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/produtos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/produtos" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es/produtos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/produtos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/produtos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/produtos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/produtos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/produtos" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no/produtos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/produtos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/produtos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/produtos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/produtos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/produtos" />
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/pt/a-norwell</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/a-norwell" />
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nordicsalmon.com.br/sobre</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/en/a-norwell</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/a-norwell" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es/a-norwell</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/a-norwell" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no/a-norwell</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/a-norwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/a-norwell" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/pt/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/sobre" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/sobre" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/sobre" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/sobre" />
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nordicsalmon.com.br/privacidade</loc>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/en/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/sobre" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/sobre" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/sobre" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/sobre" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/sobre" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/sobre" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/sobre" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/sobre" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/sobre" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/sobre" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/sobre" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/sobre" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/sobre" />
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/pt/privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/privacidade" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/privacidade" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/privacidade" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/privacidade" />
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://www.nordicsalmon.com.br/termos</loc>
-    <changefreq>yearly</changefreq>
+    <loc>https://www.nordicsalmon.com.br/en/privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/privacidade" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/privacidade" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/privacidade" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/privacidade" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es/privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/privacidade" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/privacidade" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/privacidade" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/privacidade" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no/privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/privacidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/privacidade" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/privacidade" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/privacidade" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/privacidade" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/pt/termos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/termos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/termos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/termos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/termos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/termos" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/en/termos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/termos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/termos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/termos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/termos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/termos" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/es/termos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/termos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/termos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/termos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/termos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/termos" />
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://www.nordicsalmon.com.br/no/termos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.nordicsalmon.com.br/pt/termos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.nordicsalmon.com.br/en/termos" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.nordicsalmon.com.br/es/termos" />
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://www.nordicsalmon.com.br/no/termos" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.nordicsalmon.com.br/termos" />
     <priority>0.2</priority>
   </url>
 </urlset>

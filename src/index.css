@@ -1,5 +1,21 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-latin-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin-variable.woff2') format('woff2');
+}
+
 @theme {
   /**
    * Paleta institucional da Norwell AS, exportadora norueguesa representada no
@@ -59,8 +75,10 @@ body {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-delay: 0ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-delay: 0ms !important;
     transition-duration: 0.01ms !important;
   }
 }

@@ -11,7 +11,7 @@ export default function ProductsPage() {
   const { t } = useI18n();
 
   return (
-    <PageShell titleSource="Produtos | Nordic Salmon" resetScroll>
+    <PageShell titleSource="Produtos | Bridge Point" resetScroll>
       <PageHero
         eyebrow={t('Portfólio')}
         title={t('Formatos, cortes e conservação para cada operação')}

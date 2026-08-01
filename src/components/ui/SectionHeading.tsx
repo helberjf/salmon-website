@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 
 interface SectionHeadingProps {
   title: string;
@@ -15,6 +15,7 @@ export function SectionHeading({
   align = 'left',
   dark = false,
 }: SectionHeadingProps) {
+  const shouldReduceMotion = useReducedMotion();
   const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left';
   const child = {
     hidden: { opacity: 0, y: 18 },
@@ -26,8 +27,8 @@ export function SectionHeading({
   };
 
   return (
-    <motion.div
-      initial="hidden"
+    <m.div
+      initial={shouldReduceMotion ? false : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, margin: '-80px' }}
       variants={{
@@ -37,24 +38,24 @@ export function SectionHeading({
       className={`max-w-2xl ${alignment}`}
     >
       {eyebrow && (
-        <motion.p
+        <m.p
           variants={child}
           className={`mb-3 text-xs font-semibold uppercase tracking-[0.2em] ${
             dark ? 'text-frost' : 'text-ocean-light'
           }`}
         >
           {eyebrow}
-        </motion.p>
+        </m.p>
       )}
-      <motion.h2
+      <m.h2
         variants={child}
         className={`text-4xl font-semibold leading-[1.08] tracking-[-0.025em] md:text-5xl ${
           dark ? 'text-white' : 'text-navy'
         }`}
       >
         {title}
-      </motion.h2>
-      <motion.div
+      </m.h2>
+      <m.div
         aria-hidden="true"
         variants={{
           hidden: { scaleX: 0 },
@@ -67,13 +68,13 @@ export function SectionHeading({
         className={`mt-6 h-1 w-10 rounded-full bg-salmon ${align === 'center' ? 'mx-auto' : ''}`}
       />
       {description && (
-        <motion.p
+        <m.p
           variants={child}
           className={`mt-5 text-lg leading-relaxed ${dark ? 'text-frost' : 'text-muted'}`}
         >
           {description}
-        </motion.p>
+        </m.p>
       )}
-    </motion.div>
+    </m.div>
   );
 }

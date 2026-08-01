@@ -3,6 +3,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { images } from '@/data/images';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 const attributes = [
   {
@@ -46,11 +47,10 @@ export function NorwegianSalmon() {
         <div className="grid items-center gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:gap-20">
           <Reveal direction="right" className="order-2 lg:order-1">
             <figure className="relative overflow-hidden rounded-[2rem] bg-mist">
-              <img
+              <ResponsiveImage
                 src={images.salmon.src}
                 alt={t(images.salmon.alt)}
-                loading="lazy"
-                decoding="async"
+                sizes="(min-width: 1280px) 570px, (min-width: 1024px) 47vw, calc(100vw - 40px)"
                 className="aspect-[5/4] w-full object-cover"
               />
               <figcaption className="absolute inset-x-5 bottom-5 rounded-2xl bg-navy/90 p-5 text-white backdrop-blur sm:inset-x-auto sm:right-6 sm:max-w-xs">

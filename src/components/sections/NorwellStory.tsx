@@ -88,7 +88,7 @@ export function NorwellStory() {
             <figure className="relative overflow-hidden rounded-[2rem] bg-norwell px-7 py-12 text-white md:px-14 md:py-16">
               <Quote size={140} aria-hidden="true" className="absolute -right-6 -top-8 text-white/[0.07]" />
               <div className="relative max-w-3xl">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/60">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/70">
                   {t('Missão')}
                 </p>
                 <blockquote className="mt-5 font-serif text-3xl font-semibold leading-tight md:text-4xl">

@@ -13,7 +13,7 @@ export default function NorwellPage() {
   const { t } = useI18n();
 
   return (
-    <PageShell titleSource="A Norwell | Nordic Salmon" resetScroll>
+    <PageShell titleSource="A Norwell | Bridge Point" resetScroll>
       <PageHero
         eyebrow={t('A origem do produto')}
         title={t('Norwell AS, a exportadora norueguesa que representamos')}

@@ -2,6 +2,7 @@ import { galleryImages } from '@/data/images';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 export function Gallery() {
   const { t } = useI18n();
@@ -32,11 +33,18 @@ export function Gallery() {
               } ${index >= 4 ? 'hidden sm:block' : ''} h-full`}
             >
               <figure className="group relative h-full overflow-hidden rounded-2xl bg-navy-dark">
-                <img
+                <ResponsiveImage
                   src={item.src}
                   alt={t(item.alt)}
-                  loading="lazy"
-                  decoding="async"
+                  sizes={
+                    index === 0 || index === 3
+                      ? '(min-width: 1280px) 604px, (min-width: 1024px) calc((100vw - 80px) / 2), (min-width: 640px) calc((100vw - 56px) / 2), calc(100vw - 40px)'
+                      : '(min-width: 1280px) 294px, (min-width: 1024px) calc((100vw - 96px) / 4), (min-width: 640px) calc((100vw - 56px) / 2), calc(100vw - 40px)'
+                  }
+                  maxWidth={index === 0 || index === 3 ? 1200 : 800}
+                  media={index >= 4 ? '(min-width: 640px)' : undefined}
+                  preventFallbackDownload={index >= 4}
+                  pictureClassName="block h-full w-full"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent" />
