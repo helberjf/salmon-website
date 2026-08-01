@@ -143,8 +143,8 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+    <section id="contato" className="bg-background py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
           <div>
             <SectionHeading

@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Globe2, MessageCircle, ShieldCheck, Ship, Snowflake } from 'lucide-react';
 import { images } from '@/data/images';
+import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
 import { company } from '@/data/company';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -22,9 +23,28 @@ export function Hero() {
   });
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 70]);
   const glowY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  // Deslocamento inicial para o retrato do plano de fundo não encostar no cabeçalho.
+  const backdropY = useTransform(scrollYProgress, [0, 1], [48, 168]);
 
   return (
     <section ref={sectionRef} id="inicio" className="relative overflow-hidden bg-navy text-white">
+      {/* Fotografia institucional da Norwell AS (norwell.no) como plano de fundo */}
+      <motion.img
+        aria-hidden="true"
+        src={images.heroBackground.src}
+        alt=""
+        style={{ y: backdropY }}
+        className="absolute inset-0 h-[112%] w-full scale-105 object-cover object-center opacity-25 sm:opacity-30 lg:opacity-55"
+        decoding="async"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/80 lg:bg-gradient-to-r lg:from-navy lg:via-navy/80 lg:to-navy/25"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-navy/55"
+      />
       <div aria-hidden="true" className="hero-grid absolute inset-0 opacity-30" />
       <motion.div
         aria-hidden="true"
@@ -54,7 +74,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-            className="max-w-[13ch] text-5xl font-semibold leading-[0.98] tracking-[-0.035em] text-white sm:text-6xl lg:text-7xl"
+            className="text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:max-w-[15ch] sm:text-6xl sm:leading-[0.98] sm:tracking-[-0.035em] lg:max-w-[13ch] lg:text-7xl"
           >
             {t('Salmão norueguês,')}{' '}
             <span className="text-salmon">{t('direto da origem.')}</span>
@@ -104,6 +124,14 @@ export function Hero() {
           className="relative mx-auto w-full max-w-[540px] lg:mx-0"
         >
           <div className="absolute -right-4 -top-4 h-full w-full rounded-[2rem] border border-white/10" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute -right-3 -top-8 z-20 shadow-xl shadow-navy-dark/40 sm:-right-6 sm:-top-10"
+          >
+            <SeafoodFromNorway size={88} />
+          </motion.div>
           <motion.figure
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -119,8 +147,9 @@ export function Hero() {
               animate={{ scale: 1 }}
               transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
-            <figcaption className="absolute inset-x-0 bottom-0 p-7">
+            {/* Legenda no topo: o cartão flutuante ocupa o canto inferior esquerdo. */}
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy/85 via-transparent to-navy/40" />
+            <figcaption className="absolute inset-x-0 top-0 p-7 pr-24">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-frost">{t('Costa da Noruega')}</p>
               <p className="mt-2 max-w-xs font-serif text-2xl font-semibold leading-tight text-white">
                 {t('Qualidade construída na origem')}
@@ -148,11 +177,17 @@ export function Hero() {
 
       <div className="relative z-10 border-t border-white/10 bg-navy-dark/70 py-5 backdrop-blur-xl lg:absolute lg:inset-x-0 lg:bottom-0">
         <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 text-xs font-semibold text-white/80 sm:text-sm lg:grid-cols-4 lg:px-8">
-          {trustItems.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex items-center gap-2.5">
+          {trustItems.map(({ icon: Icon, label }, index) => (
+            <motion.li
+              key={label}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.75 + index * 0.09, ease: 'easeOut' }}
+              className="flex items-center gap-2.5"
+            >
               <Icon size={17} aria-hidden="true" className="text-salmon" />
               {t(label)}
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

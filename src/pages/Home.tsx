@@ -8,9 +8,11 @@ import { About } from '@/components/sections/About';
 import { NorwegianSalmon } from '@/components/sections/NorwegianSalmon';
 import { Products } from '@/components/sections/Products';
 import { Gallery } from '@/components/sections/Gallery';
+import { Audiences } from '@/components/sections/Audiences';
 import { Process } from '@/components/sections/Process';
 import { Founder } from '@/components/sections/Founder';
 import { Differentials } from '@/components/sections/Differentials';
+import { Trust } from '@/components/sections/Trust';
 import { CallToAction } from '@/components/sections/CallToAction';
 
 const ContactSection = lazy(() =>
@@ -29,9 +31,11 @@ export default function Home() {
         <NorwegianSalmon />
         <Products />
         <Gallery />
+        <Audiences />
         <Process />
         <Founder />
         <Differentials />
+        <Trust />
         <CallToAction />
         <Suspense
           fallback={<section id="contato" aria-hidden="true" className="min-h-96 bg-background" />}

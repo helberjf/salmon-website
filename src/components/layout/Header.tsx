@@ -67,13 +67,18 @@ export function Header() {
               key={link.href}
               href={link.href}
               aria-current={isLinkActive(link.href, link.sectionId) ? 'location' : undefined}
-              className={`text-[0.82rem] font-semibold transition-colors hover:text-white ${
-                isLinkActive(link.href, link.sectionId)
-                  ? 'text-white underline decoration-salmon decoration-2 underline-offset-8'
-                  : 'text-white/70'
+              className={`group relative py-1 text-[0.82rem] font-semibold transition-colors hover:text-white ${
+                isLinkActive(link.href, link.sectionId) ? 'text-white' : 'text-white/70'
               }`}
             >
               {t(link.label)}
+              {/* Sublinhado que cresce a partir do centro no hover e fica fixo no item ativo. */}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1 left-0 h-0.5 w-full origin-center bg-salmon transition-transform duration-300 group-hover:scale-x-100 ${
+                  isLinkActive(link.href, link.sectionId) ? 'scale-x-100' : 'scale-x-0'
+                }`}
+              />
             </a>
           ))}
           <LanguageSelector />

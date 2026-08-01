@@ -38,15 +38,19 @@ export function Process() {
 
           <ol className="grid gap-4 sm:grid-cols-2">
           {processSteps.map((step, index) => (
-            <Reveal key={step.title} delay={(index % 2) * 0.08} direction={index % 2 ? 'left' : 'right'}>
-              <li className="group flex h-full flex-col rounded-2xl border border-border bg-white p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ocean/25 hover:shadow-lg">
-                <span aria-hidden="true" className="font-serif text-3xl font-semibold text-ocean/30">
+            <li key={step.title} className="h-full">
+              <Reveal
+                delay={(index % 2) * 0.08}
+                direction={index % 2 ? 'left' : 'right'}
+                className="group flex h-full flex-col rounded-2xl border border-border bg-white p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ocean/25 hover:shadow-lg"
+              >
+                <span aria-hidden="true" className="font-serif text-3xl font-semibold text-ocean/30 transition-colors duration-300 group-hover:text-ocean/60">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mt-6 text-lg font-semibold text-navy">{t(step.title)}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{t(step.description)}</p>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
           </ol>
         </div>
