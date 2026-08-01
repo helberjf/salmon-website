@@ -156,7 +156,7 @@ export function ContactSection() {
               {company.email && (
                 <p className="flex items-center gap-3.5">
                   <Mail size={18} aria-hidden="true" className="shrink-0 text-ocean" />
-                  <a href={`mailto:${company.email}`} className="text-muted hover:text-navy">
+                  <a href={`mailto:${company.email}`} className="inline-block break-all py-1.5 text-muted hover:text-navy">
                     {company.email}
                   </a>
                 </p>
@@ -180,7 +180,7 @@ export function ContactSection() {
                     href={company.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted hover:text-navy"
+                    className="inline-block break-all py-1.5 text-muted hover:text-navy"
                   >
                     LinkedIn
                   </a>

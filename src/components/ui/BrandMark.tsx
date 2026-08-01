@@ -34,7 +34,7 @@ export function BrandMark({ inverse = false, compact = false }: BrandMarkProps) 
             className={`h-px w-5 ${inverse ? 'bg-salmon-light' : 'bg-salmon'}`}
           />
           <span
-            className={`text-[0.55rem] font-bold uppercase tracking-[0.26em] ${
+            className={`text-[0.625rem] font-bold uppercase tracking-[0.26em] ${
               inverse ? 'text-white/60' : 'text-slate-blue'
             }`}
           >
