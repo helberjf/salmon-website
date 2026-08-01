@@ -13,6 +13,23 @@ npm run build    # typecheck + build de produção (gera a pasta dist/)
 npm run preview  # servir localmente o build de produção
 ```
 
+## Estrutura de páginas
+
+A home é a página de conversão; a profundidade fica nas páginas internas. Todas
+compartilham `src/components/layout/PageShell.tsx` (cabeçalho, rodapé, botões
+flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`.
+
+| Rota | Conteúdo |
+|---|---|
+| `/` | Topo, quem somos, 2 produtos em destaque, quem atendemos, processo, fundadora, CTA e contato |
+| `/a-norwell` | História, missão, valores e certificações da Norwell, por que o salmão norueguês e galeria |
+| `/produtos` | Portfólio completo, diferenciais e relação de confiança |
+| `/sobre` | Trajetória de Mai Tonheim |
+
+Ao criar uma rota nova, registre-a em `src/App.tsx`, em `titleSourceForCurrentPath`
+(`src/i18n/I18nProvider.tsx`), em `src/data/navigation.ts` e em
+`public/sitemap.xml`.
+
 ## Onde editar o conteúdo
 
 Todo o conteúdo editável está centralizado em `src/data`:

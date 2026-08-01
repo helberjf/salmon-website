@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -10,12 +9,8 @@ import {
   MapPin,
 } from 'lucide-react';
 import { Link } from 'wouter';
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
-import { BackToTop } from '@/components/layout/BackToTop';
+import { PageShell } from '@/components/layout/PageShell';
 import { Reveal } from '@/components/ui/Reveal';
-import { company } from '@/data/company';
 import { founder } from '@/data/founder';
 import { useI18n } from '@/i18n/I18nProvider';
 
@@ -68,19 +63,8 @@ export default function AboutPage() {
   const { t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
 
-  useEffect(() => {
-    document.title = `${t('Sobre Mai Tonheim')} | ${company.name}`;
-    window.scrollTo({ top: 0, behavior: 'auto' });
-
-    return () => {
-      document.title = `${company.name} | ${t('Salmão Norueguês para o Mercado Brasileiro')}`;
-    };
-  }, [t]);
-
   return (
-    <>
-      <Header />
-      <main className="overflow-hidden bg-white">
+    <PageShell titleSource="Sobre Mai Tonheim | Nordic Salmon" resetScroll mainClassName="overflow-hidden bg-white">
         <section className="relative isolate bg-navy pb-20 pt-32 text-white md:pb-28 md:pt-40">
           <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10 opacity-80" />
           <motion.div
@@ -266,10 +250,6 @@ export default function AboutPage() {
             </a>
           </Reveal>
         </section>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <BackToTop />
-    </>
+    </PageShell>
   );
 }

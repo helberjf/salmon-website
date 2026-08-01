@@ -1,33 +1,44 @@
+import { company } from '@/data/company';
 import { useI18n } from '@/i18n/I18nProvider';
 
 interface BrandMarkProps {
   inverse?: boolean;
+  /** Esconde o descritor — usado onde o espaço é curto. */
   compact?: boolean;
 }
 
+/**
+ * Assinatura tipográfica da empresa.
+ *
+ * Sem símbolo por decisão consciente: o nome fantasia ainda é provisório
+ * (ver "Dados pendentes" no README) e o topo já carrega o logotipo da Norwell,
+ * de modo que um segundo símbolo competiria com ele. Quando o nome for
+ * definitivo, este componente é o único ponto a trocar.
+ */
 export function BrandMark({ inverse = false, compact = false }: BrandMarkProps) {
   const { t } = useI18n();
-  const primary = inverse ? 'text-white' : 'text-navy';
-  const secondary = inverse ? 'text-white/55' : 'text-slate-blue';
 
   return (
-    <span className="inline-flex items-center gap-3">
+    <span className="inline-flex flex-col leading-none">
       <span
-        aria-hidden="true"
-        className={`relative flex h-10 w-10 items-center justify-center rounded-full border ${
-          inverse ? 'border-white/30' : 'border-navy/20'
+        className={`font-serif text-[1.35rem] font-semibold tracking-[-0.015em] ${
+          inverse ? 'text-white' : 'text-navy'
         }`}
       >
-        <span className="absolute h-6 w-6 rounded-full border-2 border-salmon border-l-transparent" />
-        <span className={`h-1.5 w-1.5 rounded-full ${inverse ? 'bg-white' : 'bg-navy'}`} />
+        {company.name}
       </span>
       {!compact && (
-        <span className="leading-none">
-          <span className={`block text-[0.82rem] font-bold uppercase tracking-[0.18em] ${primary}`}>
-            Nordic Salmon
-          </span>
-          <span className={`mt-1.5 block text-[0.58rem] font-semibold uppercase tracking-[0.2em] ${secondary}`}>
-            {t('Norway · Brazil')}
+        <span className="mt-2 flex items-center gap-2.5">
+          <span
+            aria-hidden="true"
+            className={`h-px w-5 ${inverse ? 'bg-salmon-light' : 'bg-salmon'}`}
+          />
+          <span
+            className={`text-[0.55rem] font-bold uppercase tracking-[0.26em] ${
+              inverse ? 'text-white/60' : 'text-slate-blue'
+            }`}
+          >
+            {t('Noruega · Brasil')}
           </span>
         </span>
       )}

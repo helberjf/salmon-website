@@ -2,6 +2,8 @@ import { MotionConfig } from 'framer-motion';
 import { Route, Switch } from 'wouter';
 import Home from '@/pages/Home';
 import AboutPage from '@/pages/AboutPage';
+import NorwellPage from '@/pages/NorwellPage';
+import ProductsPage from '@/pages/ProductsPage';
 import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfUse from '@/pages/TermsOfUse';
 import NotFound from '@/pages/not-found';
@@ -13,6 +15,8 @@ function App() {
     <MotionConfig reducedMotion="user">
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/a-norwell" component={NorwellPage} />
+        <Route path="/produtos" component={ProductsPage} />
         <Route path="/sobre" component={AboutPage} />
         <Route path="/privacidade" component={PrivacyPolicy} />
         <Route path="/termos" component={TermsOfUse} />
