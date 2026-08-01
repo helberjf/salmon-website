@@ -22,18 +22,18 @@ Todo o conteúdo editável está centralizado em `src/data`:
 | `src/data/company.ts` | Nome, razão social, CNPJ, e-mail, telefone, **WhatsApp**, endereço, redes sociais, URL canônica |
 | `src/data/founder.ts` | Dados da fundadora: bio, formação, idiomas, trajetória profissional e **foto** |
 | `src/data/products.ts` | Produtos: nomes, descrições, conservação, público e imagens |
-| `src/data/images.ts` | Imagens das seções (hero, empresa, salmão, diferenciais, CTA) |
+| `src/data/images.ts` | Imagens das seções, galeria e processo extraídas do catálogo oficial |
 | `src/data/differentials.ts` | Diferenciais |
 | `src/data/process.ts` | Etapas do processo de trabalho |
 | `src/data/audiences.ts` | Públicos atendidos |
 | `src/data/trust.ts` | Compromissos, presença em eventos, depoimentos (vazio até haver dados reais) |
 | `src/data/navigation.ts` | Itens do menu |
 
-Campos vazios (`''`) são **ocultados automaticamente** no site — por exemplo, o botão de WhatsApp só aparece após preencher `company.whatsapp`.
+Campos vazios (`''`) são **ocultados automaticamente** no site. Os dados comerciais e o WhatsApp já estão preenchidos com as informações do catálogo institucional.
 
 ### WhatsApp
 
-Em `src/data/company.ts`, preencha `whatsapp` no formato internacional apenas com dígitos (ex.: `5521999999999`). A mensagem pré-preenchida está em `whatsappMessage`.
+Em `src/data/company.ts`, o campo `whatsapp` usa o formato internacional apenas com dígitos. A mensagem pré-preenchida está em `whatsappMessage`.
 
 ### Foto da fundadora
 
@@ -41,18 +41,19 @@ Em `src/data/founder.ts`, preencha `photo` com a URL (ou importe um arquivo de `
 
 ### Formulário de contato
 
-O envio hoje é **simulado**. A integração com API real está documentada em
-`src/utils/submitContact.ts` — basta substituir o corpo da função por um `fetch`
-para o seu endpoint (Formspree, Resend ou rota própria no servidor).
+O formulário valida e organiza os dados comerciais e abre uma conversa real no WhatsApp da representante. Não depende de backend e não exibe uma confirmação de envio fictícia.
 
 ## Dados pendentes (a preencher pela empresa)
 
-- Nome definitivo da empresa (hoje: "Nordic Salmon", provisório), razão social e CNPJ
-- E-mail, telefone e número de WhatsApp comerciais
+- Confirmação do nome definitivo da empresa (hoje: "Nordic Salmon"), razão social e CNPJ
 - Endereço completo
 - Foto profissional da fundadora
-- Fotografias próprias dos produtos (hoje: banco de imagens)
+- Domínio definitivo para URL canônica e metadados sociais
 - Revisão jurídica da Política de Privacidade e dos Termos de Uso
+
+## Imagens do catálogo
+
+As fotografias em `public/images/catalog` foram extraídas do arquivo institucional disponibilizado pela empresa no Google Drive e convertidas para WebP para reduzir o peso de carregamento sem perder qualidade visual.
 
 ## Deploy em VPS
 

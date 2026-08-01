@@ -27,6 +27,11 @@ html {
   scroll-padding-top: 5rem;
 }
 
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -36,6 +41,10 @@ html {
 @layer base {
   body {
     @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  img {
+    @apply block;
   }
 
   h1,
@@ -73,5 +82,13 @@ html {
       #ffffff 60% 75%,
       var(--color-nordic-red) 75% 100%
     );
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
   }
 }

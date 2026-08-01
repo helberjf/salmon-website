@@ -5,11 +5,10 @@ export interface NavLink {
 }
 
 export const navLinks: NavLink[] = [
-  { href: '#inicio', sectionId: 'inicio', label: 'Início' },
-  { href: '#empresa', sectionId: 'empresa', label: 'Empresa' },
-  { href: '#salmao', sectionId: 'salmao', label: 'Salmão Norueguês' },
-  { href: '#como-trabalhamos', sectionId: 'como-trabalhamos', label: 'Como Trabalhamos' },
-  { href: '#fundadora', sectionId: 'fundadora', label: 'Fundadora' },
-  { href: '#diferenciais', sectionId: 'diferenciais', label: 'Diferenciais' },
-  { href: '#contato', sectionId: 'contato', label: 'Contato' },
+  { href: '#empresa', sectionId: 'empresa', label: 'Quem somos' },
+  { href: '#salmao', sectionId: 'salmao', label: 'Origem' },
+  { href: '#produtos', sectionId: 'produtos', label: 'Produtos' },
+  { href: '#galeria', sectionId: 'galeria', label: 'Galeria' },
+  { href: '#como-trabalhamos', sectionId: 'como-trabalhamos', label: 'Processo' },
+  { href: '#fundadora', sectionId: 'fundadora', label: 'Mai Tonheim' },
 ];

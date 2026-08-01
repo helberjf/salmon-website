@@ -1,20 +1,5 @@
-/**
- * ENVIO DO FORMULÁRIO DE CONTATO
- *
- * Hoje o envio é simulado (não há backend). Para integrar uma API real:
- *  1. Substitua o corpo desta função por um fetch/POST para o seu endpoint
- *     (ex.: Formspree, Resend, ou uma rota própria no servidor da VPS).
- *  2. Lance um erro em caso de falha — o formulário já exibe a mensagem
- *     de erro e mantém os dados preenchidos.
- *
- * Exemplo com endpoint próprio:
- *   const res = await fetch('/api/contato', {
- *     method: 'POST',
- *     headers: { 'Content-Type': 'application/json' },
- *     body: JSON.stringify(data),
- *   });
- *   if (!res.ok) throw new Error('Falha no envio');
- */
+import { company } from '@/data/company';
+
 export interface ContactPayload {
   name: string;
   companyName: string;
@@ -30,10 +15,28 @@ export interface ContactPayload {
   message?: string;
 }
 
-export async function submitContact(data: ContactPayload): Promise<void> {
-  // Simulação de latência de rede — remover ao integrar a API real.
-  await new Promise((resolve) => setTimeout(resolve, 1200));
-  if (import.meta.env.DEV) {
-    console.info('[contato] dados prontos para envio à API:', data);
-  }
+export function submitContact(data: ContactPayload): Promise<void> {
+  const message = [
+    'Olá, Mai! Gostaria de solicitar uma cotação de salmão norueguês.',
+    '',
+    `Nome: ${data.name}`,
+    `Empresa: ${data.companyName}`,
+    `Cargo: ${data.role}`,
+    `E-mail: ${data.email}`,
+    `Telefone: ${data.phone}`,
+    `Local: ${data.city}/${data.state}`,
+    `Tipo de operação: ${data.businessType}`,
+    `Produto: ${data.productInterest}`,
+    data.volume ? `Volume estimado: ${data.volume}` : '',
+    data.frequency ? `Frequência: ${data.frequency}` : '',
+    data.message ? `Observações: ${data.message}` : '',
+  ]
+    .filter(Boolean)
+    .join('\n');
+
+  const number = company.whatsapp.replace(/\D/g, '');
+  const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  const opened = window.open(url, '_blank', 'noopener,noreferrer');
+  if (!opened) window.location.href = url;
+  return Promise.resolve();
 }

@@ -2,33 +2,23 @@ import type { ProcessStep } from '@/types';
 
 export const processSteps: ProcessStep[] = [
   {
-    title: 'Entendimento da necessidade',
+    title: 'Diagnóstico da operação',
     description:
-      'Conversa inicial sobre o perfil da operação, exigências de qualidade e rotina de consumo.',
+      'Entendemos canal, volume, frequência, conservação e especificações necessárias para o seu negócio.',
   },
   {
-    title: 'Definição de produto e volume',
+    title: 'Produto sob medida',
     description:
-      'Especificação de cortes, gramaturas, conservação e volumes adequados ao seu negócio.',
+      'Definimos apresentação, corte, gramatura, embalagem e possibilidade de private label.',
   },
   {
-    title: 'Planejamento comercial e logístico',
+    title: 'Plano comercial e logístico',
     description:
-      'Estruturação de prazos, condições comerciais e cadeia refrigerada de ponta a ponta.',
+      'Estruturamos condições, prazos e modal aéreo ou marítimo, com cadeia refrigerada de ponta a ponta.',
   },
   {
-    title: 'Acompanhamento da operação',
+    title: 'Acompanhamento próximo',
     description:
-      'Monitoramento das etapas de importação e da integridade do produto até a chegada.',
-  },
-  {
-    title: 'Entrega e conferência',
-    description:
-      'Recebimento conforme especificado, com verificação de qualidade e documentação.',
-  },
-  {
-    title: 'Relacionamento contínuo',
-    description:
-      'Avaliação conjunta de cada ciclo e ajustes para um fornecimento estável e de longo prazo.',
+      'Monitoramos a operação, a documentação e os próximos ciclos para construir uma relação estável.',
   },
 ];

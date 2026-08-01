@@ -35,7 +35,7 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`text-3xl font-semibold leading-tight md:text-4xl ${
+        className={`text-4xl font-semibold leading-[1.08] tracking-[-0.025em] md:text-5xl ${
           dark ? 'text-white' : 'text-navy'
         }`}
       >
@@ -43,7 +43,7 @@ export function SectionHeading({
       </h2>
       <div
         aria-hidden="true"
-        className={`mt-5 h-px w-16 bg-salmon ${align === 'center' ? 'mx-auto' : ''}`}
+        className={`mt-6 h-1 w-10 rounded-full bg-salmon ${align === 'center' ? 'mx-auto' : ''}`}
       />
       {description && (
         <p className={`mt-5 text-lg leading-relaxed ${dark ? 'text-frost' : 'text-muted'}`}>

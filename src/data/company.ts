@@ -5,25 +5,21 @@
  * Preencha conforme os dados oficiais forem confirmados.
  */
 export const company = {
-  // Nome fantasia exibido no site. Substituir pelo nome definitivo da empresa.
   name: 'Nordic Salmon',
-  // Razão social e CNPJ — exibidos no rodapé apenas quando preenchidos.
   legalName: '',
   cnpj: '',
   foundationYear: '',
   description:
-    'Importação e fornecimento de salmão norueguês para o mercado brasileiro, com procedência, conhecimento internacional e atendimento comercial personalizado.',
-  // Contatos — preencher com os dados comerciais oficiais.
-  email: '',
-  phone: '',
-  // WhatsApp em formato internacional, somente dígitos. Ex.: "5521999999999".
-  whatsapp: '',
+    'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell.',
+  email: 'mai@bridgepoint.international',
+  phone: '+55 21 96569-0982',
+  whatsapp: '5521965690982',
   whatsappMessage:
-    'Olá! Conheci a empresa pelo website e gostaria de receber informações sobre o fornecimento de salmão norueguês.',
+    'Olá, Mai! Conheci a Nordic Salmon pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.',
   address: '',
   city: 'Rio de Janeiro',
   state: 'RJ',
-  serviceArea: 'Atendimento comercial em todo o Brasil',
+  serviceArea: 'Atendimento comercial B2B em todo o Brasil',
   instagram: '',
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
   // URL canônica do site em produção — usada no SEO. Ajustar quando o domínio for definido.

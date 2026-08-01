@@ -6,17 +6,16 @@ import type { CareerEntry } from '@/types';
  */
 export const founder = {
   name: 'Mai Tonheim',
-  title: 'Fundadora',
+  title: 'Representante da Norwell no Brasil',
   // Foto profissional — substituir pela fotografia oficial quando disponível.
   // Enquanto vazio, o site exibe um monograma elegante no lugar da imagem.
   photo: '',
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
-  headline:
-    'Conectando Noruega e Brasil por meio do comércio sustentável de alto padrão',
+  headline: 'Conectando a excelência norueguesa às oportunidades do mercado brasileiro',
   summary: [
     'Mai Tonheim é norueguesa, radicada no Rio de Janeiro, e dedicou quase duas décadas ao Serviço Exterior da Noruega, no qual ingressou em 2007. Entre 2021 e 2025, foi Cônsul e Vice-Chefe de Missão do Consulado-Geral Real da Noruega no Rio de Janeiro, com atuação dedicada à promoção de negócios noruegueses e ao apoio a investimentos no Brasil.',
     'Sua trajetória inclui postos diplomáticos na Itália e no Líbano, a Academia Diplomática do Ministério das Relações Exteriores da Noruega, em Oslo, e o Escritório das Nações Unidas sobre Drogas e Crime (UNODC), em Viena. Representou a Noruega na OCDE em grupos sobre conduta empresarial responsável.',
-    'Hoje, aplica essa experiência ao setor que é o segundo maior da pauta exportadora norueguesa: os produtos do mar. Como Representante no Brasil da Norwell AS, empresa norueguesa de pescados, trabalha na introdução do salmão norueguês no mercado brasileiro — a ponte comercial que esta empresa materializa.',
+    'Hoje, aplica essa experiência ao setor de produtos do mar. Como Representante no Brasil da Norwell AS, trabalha na introdução do salmão norueguês no mercado brasileiro — a ponte comercial que esta empresa materializa.',
   ],
   education: [
     {

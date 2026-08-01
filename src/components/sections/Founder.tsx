@@ -1,122 +1,116 @@
-import { GraduationCap, Languages, Linkedin } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, Languages, Linkedin, Mail } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { founder } from '@/data/founder';
+import { company } from '@/data/company';
 
-function FounderPortrait() {
+function FounderVisual() {
   if (founder.photo) {
     return (
       <img
         src={founder.photo}
         alt={`Fotografia de ${founder.name}`}
         loading="lazy"
-        className="aspect-[3/4] w-full rounded-lg object-cover object-top"
+        className="aspect-[4/5] w-full rounded-[2rem] object-cover object-top"
       />
     );
   }
 
-  // Monograma exibido enquanto a fotografia oficial não é definida em src/data/founder.ts.
   const initials = founder.name
     .split(' ')
     .map((part) => part[0])
     .join('');
 
   return (
-    <div
-      role="img"
-      aria-label={`Monograma de ${founder.name} — fotografia em breve`}
-      className="flex aspect-[3/4] w-full items-center justify-center rounded-lg bg-gradient-to-br from-navy to-ocean"
-    >
-      <span aria-hidden="true" className="font-serif text-7xl font-semibold text-frost/60">
-        {initials}
+    <div className="relative flex aspect-[4/5] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-navy p-8 text-white">
+      <div aria-hidden="true" className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[50px] border-ocean-light/15" />
+      <div aria-hidden="true" className="absolute -bottom-28 -left-20 h-80 w-80 rounded-full border-[60px] border-salmon/10" />
+      <span className="relative text-xs font-bold uppercase tracking-[0.18em] text-salmon">
+        Noruega · Brasil
       </span>
+      <div className="relative">
+        <span aria-hidden="true" className="font-serif text-8xl font-semibold tracking-tight text-white/12">
+          {initials}
+        </span>
+        <blockquote className="mt-4 max-w-sm font-serif text-2xl font-medium leading-snug text-white">
+          “Relações comerciais sólidas começam com clareza, confiança e conhecimento dos dois mercados.”
+        </blockquote>
+      </div>
+      <div className="relative border-t border-white/15 pt-5">
+        <p className="font-serif text-2xl font-semibold">{founder.name}</p>
+        <p className="mt-1 text-xs font-bold uppercase tracking-[0.14em] text-frost/60">{founder.title}</p>
+      </div>
     </div>
   );
 }
 
 export function Founder() {
-  return (
-    <section id="fundadora" className="bg-background py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="mx-auto w-full max-w-sm lg:col-span-4 lg:max-w-none">
-            <FounderPortrait />
-            <div className="mt-6">
-              <p className="font-serif text-2xl font-semibold text-navy">{founder.name}</p>
-              <p className="mt-1 text-sm font-medium uppercase tracking-wider text-ocean">
-                {founder.title}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{founder.headline}</p>
-              {founder.linkedin && (
-                <a
-                  href={founder.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ocean transition-colors hover:text-navy"
-                >
-                  <Linkedin size={16} aria-hidden="true" />
-                  Perfil no LinkedIn
-                </a>
-              )}
-            </div>
+  const selectedCareer = founder.career.slice(0, 4);
 
-            <div className="mt-8 space-y-5 rounded-lg border border-border bg-white p-6">
-              <div className="flex items-start gap-3.5">
-                <GraduationCap size={19} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
-                <div>
-                  <h3 className="text-sm font-semibold text-navy">Formação</h3>
-                  <ul className="mt-1.5 space-y-1 text-sm text-muted">
-                    {founder.education.map((item) => (
-                      <li key={item.degree}>
-                        {item.degree} — {item.institution}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="flex items-start gap-3.5">
-                <Languages size={19} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
-                <div>
-                  <h3 className="text-sm font-semibold text-navy">Idiomas</h3>
-                  <p className="mt-1.5 text-sm text-muted">{founder.languagesNote}</p>
-                </div>
-              </div>
+  return (
+    <section id="fundadora" className="bg-white py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <Reveal className="mx-auto w-full max-w-lg lg:mx-0">
+            <FounderVisual />
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <a
+                href={`mailto:${company.email}`}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-ice"
+              >
+                <Mail size={16} aria-hidden="true" />
+                Enviar e-mail
+              </a>
+              <a
+                href={founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-bold text-navy transition-colors hover:bg-ice"
+              >
+                <Linkedin size={16} aria-hidden="true" />
+                LinkedIn
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
             </div>
           </Reveal>
 
-          <div className="lg:col-span-8">
+          <div>
             <SectionHeading
-              eyebrow="Fundadora"
-              title="Experiência internacional a serviço de relações comerciais sólidas"
+              eyebrow="Representação no Brasil"
+              title="Experiência internacional transformada em acesso comercial"
             />
-            <Reveal delay={0.1} className="mt-6 space-y-5 text-lg leading-relaxed text-muted">
+            <Reveal delay={0.1} className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
               {founder.summary.map((paragraph) => (
                 <p key={paragraph.slice(0, 40)}>{paragraph}</p>
               ))}
             </Reveal>
 
-            <div id="experiencia" className="mt-12 scroll-mt-24">
-              <Reveal>
-                <h3 className="font-serif text-2xl font-semibold text-navy">
-                  Trajetória internacional
-                </h3>
-              </Reveal>
-              <ol className="mt-7 space-y-0 border-l border-border">
-                {founder.career.map((entry, index) => (
-                  <Reveal key={`${entry.period}-${entry.organization}`} delay={(index % 4) * 0.05}>
-                    <li className="relative pb-8 pl-7 last:pb-0">
-                      <span
-                        aria-hidden="true"
-                        className="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border-2 border-ocean bg-white"
-                      />
-                      <p className="text-xs font-semibold uppercase tracking-wider text-ocean">
-                        {entry.period}
-                      </p>
-                      <h4 className="mt-1 font-semibold text-navy">
-                        {entry.role} · {entry.organization}
-                      </h4>
-                      <p className="mt-0.5 text-xs text-muted">{entry.location}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{entry.description}</p>
+            <Reveal delay={0.15} className="mt-9 grid gap-4 rounded-2xl bg-ice p-6 sm:grid-cols-2">
+              <div className="flex items-start gap-3.5">
+                <GraduationCap size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
+                <div>
+                  <h3 className="text-sm font-bold text-navy">Formação internacional</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">MSc pela SOAS University of London e formação diplomática norueguesa.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3.5">
+                <Languages size={20} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
+                <div>
+                  <h3 className="text-sm font-bold text-navy">Comunicação sem fronteiras</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">Experiência multicultural e atuação profissional em sete idiomas.</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="mt-10">
+              <h3 className="font-serif text-2xl font-semibold text-navy">Trajetória em destaque</h3>
+              <ol className="mt-6 grid gap-4 sm:grid-cols-2">
+                {selectedCareer.map((entry, index) => (
+                  <Reveal key={`${entry.period}-${entry.organization}`} delay={(index % 2) * 0.05}>
+                    <li className="h-full rounded-2xl border border-border p-5">
+                      <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-ocean">{entry.period}</p>
+                      <h4 className="mt-2 font-semibold text-navy">{entry.role}</h4>
+                      <p className="mt-1 text-sm text-muted">{entry.organization}</p>
                     </li>
                   </Reveal>
                 ))}
