@@ -11,13 +11,9 @@ export const images = {
     src: '/images/catalog/norway-fjord.webp',
     alt: 'Fiorde norueguês cercado por montanhas nevadas',
   },
-  heroDetail: {
-    src: '/images/catalog/salmon-fillet.webp',
-    alt: 'Lombo de salmão norueguês sobre gelo',
-  },
   about: {
-    src: '/images/norwell-team.webp',
-    alt: 'Equipe da Norwell AS reunida no cais, em Florø, na Noruega',
+    src: '/images/catalog/salmon-farm.webp',
+    alt: 'Tanque de criação de salmão em um fiorde norueguês, entre montanhas nevadas',
   },
   norwellDish: {
     src: '/images/norwell-salmon-dish.webp',
@@ -73,6 +69,6 @@ export const galleryImages = [
 export const processImages = {
   eggs: '/images/catalog/salmon-eggs.webp',
   smolt: '/images/catalog/smolt.webp',
-  farm: '/images/catalog/salmon-farm.webp',
+  farm: '/images/catalog/salmon-underwater.webp',
   processing: '/images/catalog/processing.webp',
 };

@@ -1221,6 +1221,12 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Los datos se conservan únicamente durante el período necesario para los fines descritos y se protegen mediante medidas técnicas y organizativas adecuadas.',
     no: 'Opplysningene lagres bare så lenge det er nødvendig for de beskrevne formålene, og beskyttes med egnede tekniske og organisatoriske tiltak.',
   },
+  'Detalhes da operação (opcional)': {
+    en: 'Operation details (optional)',
+    es: 'Detalles de la operación (opcional)',
+    no: 'Detaljer om virksomheten (valgfritt)',
+  },
+
   // Assinatura de representação (logotipo da Norwell)
   Representante: { en: 'Official', es: 'Representante', no: 'Offisiell' },
   'oficial no Brasil': {
@@ -1331,10 +1337,10 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Organismo oficial de certificación orgánica de Noruega, para las líneas que cumplen el estándar.',
     no: 'Norges offisielle organ for økologisk sertifisering, for produktlinjene som oppfyller standarden.',
   },
-  'Equipe da Norwell AS reunida no cais, em Florø, na Noruega': {
-    en: 'The Norwell AS team gathered on the quay in Florø, Norway',
-    es: 'El equipo de Norwell AS reunido en el muelle de Florø, Noruega',
-    no: 'Norwell AS-teamet samlet på kaia i Florø, Norge',
+  'Tanque de criação de salmão em um fiorde norueguês, entre montanhas nevadas': {
+    en: 'Salmon pen in a Norwegian fjord, surrounded by snow-covered mountains',
+    es: 'Jaula de cría de salmón en un fiordo noruego, entre montañas nevadas',
+    no: 'Lakse-merd i en norsk fjord, omgitt av snødekte fjell',
   },
   'Posta de salmão norueguês grelhada, servida com legumes': {
     en: 'Grilled Norwegian salmon portion served with vegetables',

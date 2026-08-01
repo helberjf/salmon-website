@@ -167,29 +167,12 @@ export function Hero() {
               animate={{ scale: 1 }}
               transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
             />
-            {/* Legenda no topo: o cartão flutuante ocupa o canto inferior esquerdo. */}
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-navy/85 via-transparent to-navy/40" />
-            <figcaption className="absolute inset-x-0 top-0 p-7 pr-24">
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-7">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-frost">{t('Costa da Noruega')}</p>
               <p className="mt-2 max-w-xs font-serif text-2xl font-semibold leading-tight text-white">
                 {t('Qualidade construída na origem')}
               </p>
-            </figcaption>
-          </motion.figure>
-          <motion.figure
-            initial={{ opacity: 0, y: 24, rotate: -2 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -bottom-12 -left-8 hidden w-48 overflow-hidden rounded-2xl border-4 border-navy bg-white shadow-2xl sm:block lg:-left-16 lg:w-56"
-          >
-            <img
-              src={images.heroDetail.src}
-              alt={t(images.heroDetail.alt)}
-              decoding="async"
-              className="aspect-[4/3] w-full object-cover"
-            />
-            <figcaption className="bg-white px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-navy">
-              Atlantic salmon · premium
             </figcaption>
           </motion.figure>
         </motion.div>
