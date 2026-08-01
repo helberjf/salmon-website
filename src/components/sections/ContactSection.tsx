@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CheckCircle2, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { company } from '@/data/company';
@@ -54,7 +54,7 @@ const createFormSchema = (t: Translate) =>
 type FormValues = z.infer<ReturnType<typeof createFormSchema>>;
 
 const inputClass =
-  'w-full rounded-md border border-border bg-white px-4 py-3 text-navy placeholder:text-muted/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-ocean-light aria-[invalid=true]:border-nordic-red';
+  'w-full rounded-md border border-border bg-white px-4 py-2.5 text-navy placeholder:text-muted/60 focus:outline-none focus-visible:outline-2 focus-visible:outline-ocean-light aria-[invalid=true]:border-nordic-red sm:py-3';
 
 interface FieldProps {
   label: string;
@@ -68,7 +68,7 @@ function Field({ label, error, required, children }: FieldProps) {
   const errorId = `${id}-erro`;
   return (
     <div>
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-navy">
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-navy">
         {label}
         {required && (
           <span aria-hidden="true" className="text-nordic-red">
@@ -143,9 +143,9 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contato" className="bg-background py-24 md:py-32">
+    <section id="contato" className="bg-background py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-3 lg:gap-16">
           <div>
             <SectionHeading
               eyebrow={t('Contato')}
@@ -215,9 +215,9 @@ export function ContactSection() {
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   noValidate
-                  className="rounded-lg border border-border bg-white p-7 md:p-9"
+                  className="rounded-lg border border-border bg-white p-5 sm:p-7 md:p-9"
                 >
-                  <div className="grid gap-5 md:grid-cols-2">
+                  <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
                     <Field label={t('Nome completo')} required error={errors.name?.message}>
                       {({ id, describedBy }) => (
                         <input
@@ -294,7 +294,7 @@ export function ContactSection() {
                         />
                       )}
                     </Field>
-                    <div className="grid gap-4 sm:grid-cols-[1fr_auto]">
+                    <div className="grid grid-cols-[1fr_auto] gap-3 sm:gap-4">
                       <Field label={t('Cidade')} required error={errors.city?.message}>
                         {({ id, describedBy }) => (
                           <input
@@ -390,49 +390,66 @@ export function ContactSection() {
                         </select>
                       )}
                     </Field>
-                    <Field label={t('Volume estimado (kg/mês)')} error={errors.volume?.message}>
-                      {({ id }) => (
-                        <input
-                          id={id}
-                          type="text"
-                          placeholder={t('Ex.: 500 kg')}
-                          className={inputClass}
-                          {...register('volume')}
-                        />
-                      )}
-                    </Field>
-                    <Field label={t('Frequência de compra')} error={errors.frequency?.message}>
-                      {({ id }) => (
-                        <select
-                          id={id}
-                          className={inputClass}
-                          defaultValue=""
-                          {...register('frequency')}
-                        >
-                          <option value="">{t('Selecione…')}</option>
-                          {frequencies.map((frequency) => (
-                            <option key={frequency.id} value={frequency.id}>
-                              {t(frequency.label)}
-                            </option>
-                          ))}
-                        </select>
-                      )}
-                    </Field>
                   </div>
 
-                  <div className="mt-5">
-                    <Field label={t('Mensagem')} error={errors.message?.message}>
-                      {({ id }) => (
-                        <textarea
-                          id={id}
-                          rows={4}
-                          placeholder={t('Detalhes adicionais sobre a sua operação e necessidade')}
-                          className={`${inputClass} resize-none`}
-                          {...register('message')}
-                        />
-                      )}
-                    </Field>
-                  </div>
+                  {/**
+                   * Os três campos opcionais ficam recolhidos: no celular eles
+                   * respondiam por quase um terço da altura do formulário e
+                   * empurravam o botão de envio para muito longe.
+                   */}
+                  <details className="group mt-5 rounded-md border border-border bg-background">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-semibold text-navy [&::-webkit-details-marker]:hidden">
+                      {t('Detalhes da operação (opcional)')}
+                      <ChevronDown
+                        size={18}
+                        aria-hidden="true"
+                        className="shrink-0 text-ocean transition-transform duration-300 group-open:rotate-180"
+                      />
+                    </summary>
+                    <div className="grid gap-4 border-t border-border px-4 py-4 sm:gap-5 md:grid-cols-2">
+                      <Field label={t('Volume estimado (kg/mês)')} error={errors.volume?.message}>
+                        {({ id }) => (
+                          <input
+                            id={id}
+                            type="text"
+                            placeholder={t('Ex.: 500 kg')}
+                            className={inputClass}
+                            {...register('volume')}
+                          />
+                        )}
+                      </Field>
+                      <Field label={t('Frequência de compra')} error={errors.frequency?.message}>
+                        {({ id }) => (
+                          <select
+                            id={id}
+                            className={inputClass}
+                            defaultValue=""
+                            {...register('frequency')}
+                          >
+                            <option value="">{t('Selecione…')}</option>
+                            {frequencies.map((frequency) => (
+                              <option key={frequency.id} value={frequency.id}>
+                                {t(frequency.label)}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      </Field>
+                      <div className="md:col-span-2">
+                        <Field label={t('Mensagem')} error={errors.message?.message}>
+                          {({ id }) => (
+                            <textarea
+                              id={id}
+                              rows={3}
+                              placeholder={t('Detalhes adicionais sobre a sua operação e necessidade')}
+                              className={`${inputClass} resize-none`}
+                              {...register('message')}
+                            />
+                          )}
+                        </Field>
+                      </div>
+                    </div>
+                  </details>
 
                   <div className="mt-6">
                     <label className="flex cursor-pointer items-start gap-3 text-sm text-muted">
