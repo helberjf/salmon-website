@@ -67,7 +67,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-frost backdrop-blur"
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-frost backdrop-blur"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-salmon" />
             {t('Representação comercial · Noruega → Brasil')}
@@ -127,7 +127,7 @@ export function Hero() {
             className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
           >
             {/* Frase única: quebrada com <br> o leitor de tela juntava as palavras. */}
-            <span className="max-w-[7.5rem] text-[0.6rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
+            <span className="max-w-[7.5rem] text-[0.72rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
               {t('Representante oficial no Brasil')}
             </span>
             <span aria-hidden="true" className="h-9 w-px bg-white/20" />

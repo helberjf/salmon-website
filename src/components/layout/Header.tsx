@@ -128,12 +128,12 @@ export function Header() {
                 {t(link.label)}
               </a>
             ))}
-            <div className="mt-5 flex items-center justify-between gap-4">
-              <LanguageSelector />
+            <div className="mt-5 flex items-center gap-4">
+              <LanguageSelector align="start" onSelect={() => setMobileOpen(false)} />
               <a
                 href="/#contato"
                 onClick={() => setMobileOpen(false)}
-                className="flex-1 rounded-full bg-white px-4 py-3 text-center text-sm font-bold text-navy"
+                className="flex-1 rounded-full bg-white px-4 py-3.5 text-center text-sm font-bold text-navy"
               >
                 {t('Solicitar cotação B2B')}
               </a>

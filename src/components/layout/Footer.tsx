@@ -50,10 +50,14 @@ export function Footer() {
 
           <nav aria-label={t('Links do rodapé')}>
             <h2 className="font-serif text-base font-semibold text-white">{t('Navegação')}</h2>
-            <ul className="mt-5 space-y-2.5 text-sm">
+            <ul className="mt-4 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="transition-colors hover:text-white">
+                  {/* py generoso: no celular estes links tinham 18px de altura. */}
+                  <a
+                    href={link.href}
+                    className="inline-block py-2 transition-colors hover:text-white"
+                  >
                     {t(link.label)}
                   </a>
                 </li>
@@ -67,7 +71,10 @@ export function Footer() {
               {company.email && (
                 <li className="flex items-start gap-3">
                   <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-salmon" />
-                  <a href={`mailto:${company.email}`} className="break-all hover:text-white">
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="inline-block break-all py-1 hover:text-white"
+                  >
                     {company.email}
                   </a>
                 </li>
@@ -102,7 +109,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-5 block w-fit rounded-lg py-1 opacity-90 transition-opacity hover:opacity-100"
             >
-              <span className="block text-[0.6rem] font-bold uppercase tracking-[0.18em] text-frost/60">
+              <span className="block text-[0.65rem] font-bold uppercase tracking-[0.18em] text-frost/60">
                 {t('Parceiro exportador')}
               </span>
               <NorwellLogo variant="white" height={26} className="mt-2.5" />
@@ -129,10 +136,10 @@ export function Footer() {
               {company.cnpj && ` CNPJ ${company.cnpj}.`} {t('Todos os direitos reservados.')}
             </p>
             <div className="flex gap-5">
-              <Link href="/privacidade" className="transition-colors hover:text-white">
+              <Link href="/privacidade" className="inline-block py-1.5 transition-colors hover:text-white">
                 {t('Política de Privacidade')}
               </Link>
-              <Link href="/termos" className="transition-colors hover:text-white">
+              <Link href="/termos" className="inline-block py-1.5 transition-colors hover:text-white">
                 {t('Termos de Uso')}
               </Link>
             </div>

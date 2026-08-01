@@ -42,7 +42,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
                     decoding="async"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-wider text-ocean backdrop-blur">
+                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-ocean backdrop-blur">
                     {t(product.preservation)}
                   </span>
                 </div>
@@ -69,7 +69,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
                   </dl>
                   <a
                     href="/#contato"
-                    className="mt-6 inline-flex items-center gap-1.5 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
+                    className="mt-5 inline-flex items-center gap-1.5 py-2.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
                   >
                     {t('Consultar disponibilidade')}
                     <ArrowRight
