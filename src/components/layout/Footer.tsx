@@ -5,6 +5,7 @@ import { navLinks } from '@/data/navigation';
 import { norwell } from '@/data/norwell';
 import { BrandMark } from '@/components/ui/BrandMark';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
+import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { useI18n } from '@/i18n/I18nProvider';
 
 export function Footer() {
@@ -99,11 +100,14 @@ export function Footer() {
               href={norwell.site}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 block text-sm text-frost/60 transition-colors hover:text-white"
+              className="mt-5 block w-fit rounded-lg py-1 opacity-90 transition-opacity hover:opacity-100"
             >
-              {t('Parceiro exportador: Norwell AS')}
+              <span className="block text-[0.6rem] font-bold uppercase tracking-[0.18em] text-frost/60">
+                {t('Parceiro exportador')}
+              </span>
+              <NorwellLogo variant="white" height={26} className="mt-2.5" />
             </a>
-            <div className="mt-5 flex items-center gap-3">
+            <div className="mt-6 flex items-center gap-3">
               <SeafoodFromNorway size={54} className="rounded-md" />
               <p className="text-xs leading-relaxed text-frost/60">
                 {t('Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.')}

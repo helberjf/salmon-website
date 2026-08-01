@@ -22,7 +22,7 @@ export function CallToAction() {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-ocean/60" />
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center lg:px-8">
         <Reveal>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-salmon">{t('Próximo embarque')}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-salmon-light">{t('Próximo embarque')}</p>
           <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-white md:text-5xl">
             {t('O salmão certo para a sua operação começa com uma boa conversa.')}
           </h2>

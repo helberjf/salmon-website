@@ -71,10 +71,33 @@ site com essa atribuição explícita:
 | `public/images/norwell-team.webp` | Equipe da Norwell na seção "Quem somos" |
 | `public/images/norwell-salmon-dish.webp` | Galeria "Da origem à mesa" |
 | `public/brand/seafood-from-norway.svg` | Selo de origem "Seafood from Norway" |
-| `public/brand/norwell.svg` | Logotipo institucional da Norwell (não usado hoje) |
+| `public/brand/norwell.svg` | Logotipo da Norwell (versão colorida, para fundos claros) |
+| `public/brand/norwell-white.svg` | Mesmo logotipo em versão monocromática branca |
 
-O verde-petróleo `--color-norwell: #005357` em `src/index.css` é a cor institucional
-da Norwell e sustenta o selo e o bloco de missão.
+O logotipo é renderizado pelo componente `src/components/ui/NorwellLogo.tsx` e
+aparece no topo (assinatura "Representante oficial no Brasil"), na seção
+"Quem somos" e no rodapé. Use `variant="white"` sobre fundos escuros.
+
+### Paleta
+
+O site adota as cores institucionais da Norwell, definidas em `src/index.css`.
+Os nomes dos tokens foram preservados para não quebrar as classes existentes:
+
+| Token | Valor | Origem |
+|---|---|---|
+| `navy` | `#00383b` | Tom profundo do verde-petróleo — superfícies escuras e títulos |
+| `navy-dark` | `#002225` | Rodapé |
+| `ocean` | `#005357` | `norwell-primary` do site oficial |
+| `ocean-light` | `#0b6d72` | Verde do logotipo |
+| `seagrass` | `#52958a` | Verde médio do logotipo |
+| `frost` | `#c1e4f2` | `norwell-blue` |
+| `salmon` | `#dd6c67` | `norwell-red` |
+| `salmon-light` | `#f0a09a` | Clareado do coral — texto pequeno sobre fundo escuro (contraste AA) |
+| `peach` | `#f7dfd5` | `norwell-peach` |
+| `nordic-red` / `nordic-blue` | `#ba0c2f` / `#002868` | Bandeira norueguesa, só na faixa decorativa |
+
+Todos os pares de texto/fundo do site foram conferidos contra o mínimo de
+4.5:1 (3:1 para texto grande) da WCAG AA.
 
 > **Antes de publicar:** confirmar com a Norwell AS a autorização de uso das
 > fotografias, do logotipo e do selo "Seafood from Norway" (marca licenciada pelo

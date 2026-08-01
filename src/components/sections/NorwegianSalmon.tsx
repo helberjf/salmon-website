@@ -54,7 +54,7 @@ export function NorwegianSalmon() {
                 className="aspect-[5/4] w-full object-cover"
               />
               <figcaption className="absolute inset-x-5 bottom-5 rounded-2xl bg-navy/90 p-5 text-white backdrop-blur sm:inset-x-auto sm:right-6 sm:max-w-xs">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon">Salmo salar</p>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">Salmo salar</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/75">
                   {t('Textura firme, sabor delicado e qualidade consistente ao longo das estações.')}
                 </p>

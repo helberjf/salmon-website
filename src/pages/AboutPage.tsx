@@ -48,7 +48,7 @@ function FounderPortrait() {
         transition={{ duration: 1, delay: 0.25, ease: 'easeOut' }}
       />
       <div aria-hidden="true" className="absolute -bottom-28 -left-24 h-80 w-80 rounded-full border-[58px] border-salmon/10" />
-      <span className="relative text-xs font-bold uppercase tracking-[0.2em] text-salmon">
+      <span className="relative text-xs font-bold uppercase tracking-[0.2em] text-salmon-light">
         {t('Noruega · Brasil')}
       </span>
       <span aria-hidden="true" className="relative font-serif text-8xl font-semibold text-white/15 sm:text-9xl">
@@ -104,7 +104,7 @@ export default function AboutPage() {
                 <ArrowLeft size={16} aria-hidden="true" />
                 {t('Voltar ao site')}
               </Link>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-salmon">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-salmon-light">
                 {t('Liderança e representação no Brasil')}
               </p>
               <h1 className="mt-4 text-5xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl lg:text-7xl">
@@ -250,7 +250,7 @@ export default function AboutPage() {
         <section className="bg-navy py-16 text-white md:py-20">
           <Reveal className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center lg:px-8">
             <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-salmon">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-salmon-light">
                 {t('Construa a próxima parceria')}
               </p>
               <h2 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">

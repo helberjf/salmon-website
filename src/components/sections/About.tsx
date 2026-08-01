@@ -2,6 +2,7 @@ import { ArrowUpRight, BadgeCheck, CheckCircle2, Quote } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
+import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { images } from '@/data/images';
 import { norwell, values } from '@/data/norwell';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -50,9 +51,9 @@ export function About() {
                 className="absolute -right-3 -top-6 rounded-xl shadow-xl shadow-navy/20 sm:-right-6"
               />
               <div className="relative mx-4 -mt-8 max-w-sm rounded-2xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-8 sm:right-8 sm:mx-0 sm:mt-0 sm:max-w-xs">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon">{t('Parceiro na origem')}</p>
-                <p className="mt-2 font-serif text-2xl font-semibold">Norwell AS</p>
-                <p className="mt-2 text-sm leading-relaxed text-white/65">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">{t('Parceiro na origem')}</p>
+                <NorwellLogo variant="white" height={30} className="mt-3.5" />
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
                   {t('Exportadora norueguesa com presença global e relações de longo prazo com produtores.')}
                 </p>
               </div>
