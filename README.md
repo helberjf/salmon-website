@@ -28,6 +28,10 @@ Todo o conteúdo editável está centralizado em `src/data`:
 | `src/data/audiences.ts` | Públicos atendidos |
 | `src/data/trust.ts` | Compromissos, presença em eventos, depoimentos (vazio até haver dados reais) |
 | `src/data/navigation.ts` | Itens do menu |
+| `src/data/norwell.ts` | Dados públicos da Norwell AS: missão, **valores**, certificações, escritórios e portfólio |
+
+> Textos novos precisam de tradução em `src/i18n/translations.ts` (en/es/no). A chave
+> de tradução é a própria frase em português.
 
 Campos vazios (`''`) são **ocultados automaticamente** no site. Os dados comerciais e o WhatsApp já estão preenchidos com as informações do catálogo institucional.
 
@@ -54,6 +58,27 @@ O formulário valida e organiza os dados comerciais e abre uma conversa real no 
 ## Imagens do catálogo
 
 As fotografias em `public/images/catalog` foram extraídas do arquivo institucional disponibilizado pela empresa no Google Drive e convertidas para WebP para reduzir o peso de carregamento sem perder qualidade visual.
+
+## Material da Norwell AS
+
+A Norwell AS é a exportadora norueguesa representada no Brasil pela fundadora. Os
+arquivos abaixo vieram do site oficial (<https://www.norwell.no>) e são usados no
+site com essa atribuição explícita:
+
+| Arquivo | Uso |
+|---|---|
+| `public/images/norwell-hero.webp` | Plano de fundo do topo da home |
+| `public/images/norwell-team.webp` | Equipe da Norwell na seção "Quem somos" |
+| `public/images/norwell-salmon-dish.webp` | Galeria "Da origem à mesa" |
+| `public/brand/seafood-from-norway.svg` | Selo de origem "Seafood from Norway" |
+| `public/brand/norwell.svg` | Logotipo institucional da Norwell (não usado hoje) |
+
+O verde-petróleo `--color-norwell: #005357` em `src/index.css` é a cor institucional
+da Norwell e sustenta o selo e o bloco de missão.
+
+> **Antes de publicar:** confirmar com a Norwell AS a autorização de uso das
+> fotografias, do logotipo e do selo "Seafood from Norway" (marca licenciada pelo
+> Norwegian Seafood Council a exportadores autorizados).
 
 ## Deploy em VPS
 

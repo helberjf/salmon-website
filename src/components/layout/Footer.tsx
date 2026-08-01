@@ -2,7 +2,9 @@ import { Link } from 'wouter';
 import { Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/data/company';
 import { navLinks } from '@/data/navigation';
+import { norwell } from '@/data/norwell';
 import { BrandMark } from '@/components/ui/BrandMark';
+import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { useI18n } from '@/i18n/I18nProvider';
 
 export function Footer() {
@@ -94,13 +96,19 @@ export function Footer() {
             <h2 className="font-serif text-base font-semibold text-white">{t('Atendimento')}</h2>
             <p className="mt-5 text-sm leading-relaxed text-frost/80">{t(company.serviceArea)}</p>
             <a
-              href="https://www.norwell.no"
+              href={norwell.site}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 block text-sm text-frost/60 transition-colors hover:text-white"
             >
               {t('Parceiro exportador: Norwell AS')}
             </a>
+            <div className="mt-5 flex items-center gap-3">
+              <SeafoodFromNorway size={54} className="rounded-md" />
+              <p className="text-xs leading-relaxed text-frost/60">
+                {t('Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.')}
+              </p>
+            </div>
             <a
               href="/#contato"
               className="mt-6 inline-block rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white hover:text-navy"

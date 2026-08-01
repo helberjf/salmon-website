@@ -53,7 +53,7 @@ export function Founder() {
   const { t } = useI18n();
 
   return (
-    <section id="fundadora" className="bg-white py-20 md:py-24">
+    <section id="fundadora" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
           <Reveal className="mx-auto w-full max-w-md lg:mx-0">

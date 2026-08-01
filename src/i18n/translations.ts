@@ -1221,6 +1221,120 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Los datos se conservan únicamente durante el período necesario para los fines descritos y se protegen mediante medidas técnicas y organizativas adecuadas.',
     no: 'Opplysningene lagres bare så lenge det er nødvendig for de beskrevne formålene, og beskyttes med egnede tekniske og organisatoriske tiltak.',
   },
+  // Norwell AS — missão, valores e certificações na origem
+  'Fundada em 1996, a Norwell tem cerca de 70% do seu capital nas mãos dos próprios produtores e 30% com colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta. Da sede em Florø, a operação se estende a escritórios comerciais em Aalborg, Londres e Kuala Lumpur.':
+    {
+      en: 'Founded in 1996, Norwell is roughly 70% owned by the farmers themselves and 30% by key employees — an ownership structure that keeps those who raise the fish close to those who export it. From its headquarters in Florø, the operation extends to sales offices in Aalborg, London and Kuala Lumpur.',
+      es: 'Fundada en 1996, Norwell tiene cerca del 70% de su capital en manos de los propios productores y el 30% en las de colaboradores clave, una estructura societaria que acerca a quien cría el pescado con quien lo exporta. Desde su sede en Florø, la operación se extiende a oficinas comerciales en Aalborg, Londres y Kuala Lumpur.',
+      no: 'Norwell ble etablert i 1996 og eies med rundt 70 % av oppdretterne selv og 30 % av nøkkelansatte — en eierstruktur som holder dem som produserer fisken tett på dem som eksporterer den. Fra hovedkontoret i Florø strekker virksomheten seg til salgskontorer i Aalborg, London og Kuala Lumpur.',
+    },
+  'Missão': { en: 'Mission', es: 'Misión', no: 'Formål' },
+  'Construímos parcerias de longo prazo que geram o máximo de valor.': {
+    en: 'We build long term partnerships at maximum value.',
+    es: 'Construimos alianzas de largo plazo que generan el máximo valor.',
+    no: 'Vi bygger langsiktige partnerskap med maksimal verdi.',
+  },
+  'Missão da Norwell AS, aplicada por sua representação comercial no Brasil: usar bem os recursos por meio de planejamento, precisão e prioridades claras — para que o parceiro tenha previsibilidade em toda a cadeia.':
+    {
+      en: 'Norwell AS’s mission, applied by its commercial representation in Brazil: use resources well through planning, precision and clear priorities — so that partners get predictability across the whole chain.',
+      es: 'La misión de Norwell AS, aplicada por su representación comercial en Brasil: usar bien los recursos mediante planificación, precisión y prioridades claras, para que el socio tenga previsibilidad en toda la cadena.',
+      no: 'Formålet til Norwell AS, videreført av selskapets kommersielle representasjon i Brasil: bruke ressursene godt gjennom planlegging, presisjon og tydelige prioriteringer — slik at partneren får forutsigbarhet i hele verdikjeden.',
+    },
+  Valores: { en: 'Values', es: 'Valores', no: 'Verdier' },
+  'Os mesmos três princípios, dos fiordes ao cliente brasileiro': {
+    en: 'The same three principles, from the fjords to the Brazilian client',
+    es: 'Los mismos tres principios, desde los fiordos hasta el cliente brasileño',
+    no: 'De samme tre prinsippene, fra fjordene til den brasilianske kunden',
+  },
+  Respeito: { en: 'Respect', es: 'Respeto', no: 'Respekt' },
+  'Tratar todas as pessoas com dignidade, dentro e fora da empresa — de quem cria o peixe a quem o recebe na cozinha.':
+    {
+      en: 'Treating everyone with dignity, inside and outside the company — from those who raise the fish to those who receive it in the kitchen.',
+      es: 'Tratar a todas las personas con dignidad, dentro y fuera de la empresa, desde quien cría el pescado hasta quien lo recibe en la cocina.',
+      no: 'Å behandle alle med verdighet, både internt og eksternt — fra dem som produserer fisken til dem som tar imot den på kjøkkenet.',
+    },
+  Confiabilidade: { en: 'Trustworthy', es: 'Confiabilidad', no: 'Troverdighet' },
+  'Parcerias construídas sobre honestidade e sobre o cumprimento do que foi acordado, operação após operação.':
+    {
+      en: 'Partnerships built on honesty and on delivering what was agreed, shipment after shipment.',
+      es: 'Alianzas construidas sobre la honestidad y el cumplimiento de lo acordado, operación tras operación.',
+      no: 'Partnerskap bygget på ærlighet og på å levere det som er avtalt, leveranse etter leveranse.',
+    },
+  'Competência': { en: 'Competent', es: 'Competencia', no: 'Kompetanse' },
+  'Conhecimento técnico e de mercado permanentemente atualizado, reconhecido pelo profissionalismo na condução de cada negócio.':
+    {
+      en: 'Technical and market expertise kept continuously up to date, recognised for the professionalism it brings to every deal.',
+      es: 'Conocimiento técnico y de mercado permanentemente actualizado, reconocido por el profesionalismo con que se conduce cada negocio.',
+      no: 'Faglig og markedsmessig kunnskap som holdes kontinuerlig oppdatert, anerkjent for profesjonaliteten i hver forretning.',
+    },
+  'Certificações na origem': {
+    en: 'Certifications at source',
+    es: 'Certificaciones en el origen',
+    no: 'Sertifiseringer i opprinnelsen',
+  },
+  'A procedência é auditada antes de virar promessa comercial': {
+    en: 'Provenance is audited before it becomes a sales claim',
+    es: 'La procedencia se audita antes de convertirse en una promesa comercial',
+    no: 'Opprinnelsen revideres før den blir et salgsargument',
+  },
+  'As certificações abaixo são mantidas pela Norwell AS e cobrem a produção e a cadeia de custódia na Noruega. Os certificados em vigor, com suas validades, são publicados pela própria exportadora.':
+    {
+      en: 'The certifications below are held by Norwell AS and cover production and chain of custody in Norway. The certificates in force, with their expiry dates, are published by the exporter itself.',
+      es: 'Las certificaciones a continuación son mantenidas por Norwell AS y cubren la producción y la cadena de custodia en Noruega. Los certificados vigentes, con sus fechas de validez, son publicados por la propia exportadora.',
+      no: 'Sertifiseringene nedenfor innehas av Norwell AS og dekker produksjon og sporbarhetskjede i Norge. Gyldige sertifikater, med utløpsdato, publiseres av eksportøren selv.',
+    },
+  'Ver os certificados da Norwell': {
+    en: 'View Norwell’s certificates',
+    es: 'Ver los certificados de Norwell',
+    no: 'Se sertifikatene til Norwell',
+  },
+  'Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.': {
+    en: 'Origin mark of the Norwegian seafood industry, displayed by Norwell AS.',
+    es: 'Sello de origen del sector pesquero noruego, exhibido por Norwell AS.',
+    no: 'Opprinnelsesmerket til norsk sjømatnæring, brukt av Norwell AS.',
+  },
+  'Padrão internacional de aquicultura responsável, com critérios ambientais e sociais auditados.': {
+    en: 'International standard for responsible aquaculture, with audited environmental and social criteria.',
+    es: 'Estándar internacional de acuicultura responsable, con criterios ambientales y sociales auditados.',
+    no: 'Internasjonal standard for ansvarlig havbruk, med reviderte miljø- og sosialkriterier.',
+  },
+  'Certificação de cadeia de custódia para pescado de origem sustentável e rastreável.': {
+    en: 'Chain-of-custody certification for seafood from sustainable, traceable sources.',
+    es: 'Certificación de cadena de custodia para pescado de origen sostenible y trazable.',
+    no: 'Sporbarhetssertifisering for sjømat fra bærekraftige og sporbare kilder.',
+  },
+  'Boas práticas de produção aplicadas à aquicultura, com foco em segurança do alimento.': {
+    en: 'Good production practices applied to aquaculture, focused on food safety.',
+    es: 'Buenas prácticas de producción aplicadas a la acuicultura, con foco en la seguridad alimentaria.',
+    no: 'God produksjonspraksis anvendt på havbruk, med vekt på mattrygghet.',
+  },
+  'Certificação orgânica norueguesa': {
+    en: 'Norwegian organic certification',
+    es: 'Certificación orgánica noruega',
+    no: 'Norsk økologisk sertifisering',
+  },
+  'Organismo oficial de certificação orgânica da Noruega, para as linhas que atendem ao padrão.': {
+    en: 'Norway’s official organic certification body, for the lines that meet the standard.',
+    es: 'Organismo oficial de certificación orgánica de Noruega, para las líneas que cumplen el estándar.',
+    no: 'Norges offisielle organ for økologisk sertifisering, for produktlinjene som oppfyller standarden.',
+  },
+  'Equipe da Norwell AS reunida no cais, em Florø, na Noruega': {
+    en: 'The Norwell AS team gathered on the quay in Florø, Norway',
+    es: 'El equipo de Norwell AS reunido en el muelle de Florø, Noruega',
+    no: 'Norwell AS-teamet samlet på kaia i Florø, Norge',
+  },
+  'Posta de salmão norueguês grelhada, servida com legumes': {
+    en: 'Grilled Norwegian salmon portion served with vegetables',
+    es: 'Porción de salmón noruego a la parrilla servida con verduras',
+    no: 'Grillet porsjon norsk laks servert med grønnsaker',
+  },
+  'Serviço à la carte': { en: 'À la carte service', es: 'Servicio a la carta', no: 'À la carte-servering' },
+  'Fotografias do catálogo oficial da empresa e do acervo da Norwell AS.': {
+    en: 'Photographs from the company’s official catalogue and from the Norwell AS archive.',
+    es: 'Fotografías del catálogo oficial de la empresa y del archivo de Norwell AS.',
+    no: 'Fotografier fra selskapets offisielle katalog og fra arkivet til Norwell AS.',
+  },
+
   'Erro 404': { en: 'Error 404', es: 'Error 404', no: 'Feil 404' },
   'Página não encontrada': { en: 'Page not found', es: 'Página no encontrada', no: 'Siden ble ikke funnet' },
   'O endereço acessado não existe ou foi movido. Volte para a página inicial da {company}.': {

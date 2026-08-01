@@ -1,15 +1,27 @@
 export const images = {
+  /**
+   * Plano de fundo do topo do site: fotografia institucional da Norwell AS,
+   * exportadora representada no Brasil (fonte: norwell.no).
+   */
+  heroBackground: {
+    src: '/images/norwell-hero.webp',
+    alt: '',
+  },
   hero: {
-    src: '/images/catalog/fisherman-salmon.webp',
-    alt: 'Produtor norueguês segurando um salmão inteiro junto a um fiorde',
+    src: '/images/catalog/norway-fjord.webp',
+    alt: 'Fiorde norueguês cercado por montanhas nevadas',
   },
   heroDetail: {
     src: '/images/catalog/salmon-fillet.webp',
     alt: 'Lombo de salmão norueguês sobre gelo',
   },
   about: {
-    src: '/images/catalog/norway-fjord.webp',
-    alt: 'Fiorde norueguês cercado por montanhas nevadas',
+    src: '/images/norwell-team.webp',
+    alt: 'Equipe da Norwell AS reunida no cais, em Florø, na Noruega',
+  },
+  norwellDish: {
+    src: '/images/norwell-salmon-dish.webp',
+    alt: 'Posta de salmão norueguês grelhada, servida com legumes',
   },
   salmon: {
     src: '/images/catalog/salmon-origin.webp',
@@ -50,6 +62,11 @@ export const galleryImages = [
     src: '/images/catalog/culinary-05.webp',
     alt: 'Torradas com salmão defumado e creme',
     label: 'Versatilidade no menu',
+  },
+  {
+    src: images.norwellDish.src,
+    alt: images.norwellDish.alt,
+    label: 'Serviço à la carte',
   },
 ];
 

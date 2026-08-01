@@ -9,7 +9,7 @@ export function CallToAction() {
   const { t } = useI18n();
 
   return (
-    <section className="relative overflow-hidden bg-ocean py-24 md:py-28">
+    <section className="relative overflow-hidden bg-ocean py-24 md:py-32">
       {images.callToAction.src && (
         <img
           src={images.callToAction.src}

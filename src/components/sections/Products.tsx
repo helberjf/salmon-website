@@ -59,7 +59,7 @@ export function Products() {
                   </dl>
                   <a
                     href="#contato"
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
+                    className="mt-6 inline-flex items-center gap-1.5 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
                   >
                     {t('Consultar disponibilidade')}
                     <ArrowRight

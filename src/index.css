@@ -12,6 +12,9 @@
   --color-frost: #b9d3e8;
   --color-salmon: #e8927c;
   --color-nordic-red: #ba0c2f;
+  /* Verde-petróleo institucional da Norwell AS, exportadora representada no Brasil */
+  --color-norwell: #005357;
+  --color-norwell-dark: #003b3e;
 
   --color-background: var(--color-ice);
   --color-foreground: var(--color-navy);
