@@ -129,7 +129,11 @@ export function Header() {
               </a>
             ))}
             <div className="mt-5 flex items-center gap-4">
-              <LanguageSelector align="start" onSelect={() => setMobileOpen(false)} />
+              <LanguageSelector
+                align="start"
+                direction="up"
+                onSelect={() => setMobileOpen(false)}
+              />
               <a
                 href="/#contato"
                 onClick={() => setMobileOpen(false)}
