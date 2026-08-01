@@ -12,6 +12,12 @@ interface LanguageSelectorProps {
    * esquerda da linha, então ancorar à direita jogaria a lista para fora da tela.
    */
   align?: 'start' | 'end';
+  /**
+   * Para que lado a lista cresce. No cabeçalho móvel ela precisa subir: o
+   * painel do menu tem `overflow-y-auto` e recortaria qualquer coisa que
+   * passasse da sua borda inferior — e o botão fica justamente no rodapé dele.
+   */
+  direction?: 'down' | 'up';
 }
 
 /**
@@ -34,6 +40,7 @@ export function LanguageSelector({
   className = '',
   onSelect,
   align = 'end',
+  direction = 'down',
 }: LanguageSelectorProps) {
   const { preference, setPreference, t } = useI18n();
   const [open, setOpen] = useState(false);
@@ -92,12 +99,16 @@ export function LanguageSelector({
           <motion.ul
             id={menuId}
             role="menu"
-            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+            initial={{ opacity: 0, y: direction === 'up' ? 6 : -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.97 }}
+            exit={{ opacity: 0, y: direction === 'up' ? 6 : -6, scale: 0.97 }}
             transition={{ duration: 0.16, ease: 'easeOut' }}
-            className={`absolute z-50 mt-2 w-52 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark p-1.5 shadow-2xl shadow-navy-dark/50 ${
-              align === 'start' ? 'left-0 origin-top-left' : 'right-0 origin-top-right'
+            className={`absolute z-50 w-52 overflow-hidden rounded-2xl border border-white/15 bg-navy-dark p-1.5 shadow-2xl shadow-navy-dark/50 ${
+              align === 'start' ? 'left-0' : 'right-0'
+            } ${
+              direction === 'up'
+                ? `bottom-full mb-2 ${align === 'start' ? 'origin-bottom-left' : 'origin-bottom-right'}`
+                : `top-full mt-2 ${align === 'start' ? 'origin-top-left' : 'origin-top-right'}`
             }`}
           >
             {languageOptions.map((option) => {
