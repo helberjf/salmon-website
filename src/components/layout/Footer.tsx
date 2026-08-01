@@ -2,6 +2,7 @@ import { Link } from 'wouter';
 import { Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/data/company';
 import { navLinks } from '@/data/navigation';
+import { BrandMark } from '@/components/ui/BrandMark';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,10 +10,10 @@ export function Footer() {
   return (
     <footer className="bg-navy-dark text-frost">
       <div aria-hidden="true" className="nordic-stripe h-0.5 w-full opacity-60" />
-      <div className="mx-auto max-w-6xl px-5 pb-10 pt-16 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-serif text-xl font-semibold text-white">{company.name}</p>
+            <BrandMark inverse />
             <p className="mt-4 text-sm leading-relaxed text-frost/80">{company.description}</p>
             {(company.instagram || company.linkedin) && (
               <div className="mt-6 flex gap-3">
@@ -90,6 +91,14 @@ export function Footer() {
           <div>
             <h2 className="font-serif text-base font-semibold text-white">Atendimento</h2>
             <p className="mt-5 text-sm leading-relaxed text-frost/80">{company.serviceArea}</p>
+            <a
+              href="https://www.norwell.no"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 block text-sm text-frost/60 transition-colors hover:text-white"
+            >
+              Parceiro exportador: Norwell AS
+            </a>
             <a
               href="#contato"
               className="mt-6 inline-block rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white hover:text-navy"

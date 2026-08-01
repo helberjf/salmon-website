@@ -160,11 +160,11 @@ export function ContactSection() {
                 >
                   <CheckCircle2 size={44} aria-hidden="true" className="text-ocean" />
                   <h3 className="mt-5 font-serif text-2xl font-semibold text-navy">
-                    Solicitação enviada
+                    Solicitação pronta no WhatsApp
                   </h3>
                   <p className="mt-3 max-w-md text-muted">
-                    Agradecemos o seu interesse. Nossa equipe analisará as informações e retornará
-                    em breve.
+                    Os dados foram organizados em uma mensagem. Basta confirmar o envio na conversa
+                    aberta com a Mai.
                   </p>
                   <button
                     type="button"
@@ -415,7 +415,7 @@ export function ContactSection() {
                     disabled={status === 'submitting'}
                     className="mt-7 w-full rounded-md bg-navy py-4 font-semibold text-white transition-colors hover:bg-ocean disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {status === 'submitting' ? 'Enviando…' : 'Enviar solicitação'}
+                    {status === 'submitting' ? 'Preparando…' : 'Continuar pelo WhatsApp'}
                   </button>
                 </form>
               )}

@@ -6,75 +6,47 @@ import type { Product } from '@/types';
  */
 export const products: Product[] = [
   {
-    id: 'inteiro',
-    name: 'Salmão Inteiro',
+    id: 'hog',
+    name: 'Salmão inteiro HOG',
     description:
-      'Peixe inteiro eviscerado, ideal para operações com processamento próprio e vitrines de alto padrão.',
-    preservation: 'Resfriado',
-    presentation: 'Inteiro eviscerado, calibres variados',
-    audience: 'Peixarias e restaurantes de grande volume',
-    image:
-      'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Corte de salmão fresco de coloração vibrante',
+      'Salmão Atlântico de cultivo, eviscerado e com cabeça, para operações que valorizam flexibilidade de corte e rendimento.',
+    preservation: 'Fresco ou congelado',
+    presentation: 'Calibres de 3–4 kg a +9 kg',
+    audience: 'Distribuidores, peixarias e processamento',
+    image: '/images/catalog/salmon-whole.webp',
+    imageAlt: 'Salmões inteiros sobre gelo',
   },
   {
-    id: 'file',
-    name: 'Filé de Salmão',
+    id: 'filets',
+    name: 'Lombo e filés',
     description:
-      'Filé limpo, com padronização de corte e rendimento previsível para a cozinha profissional.',
-    preservation: 'Resfriado ou congelado',
-    presentation: 'Filé com ou sem pele',
-    audience: 'Restaurantes, sushi bars e chefs',
-    image:
-      'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Filé de salmão servido em prato escuro',
+      'Filés pré-rigor, com pele, sem espinhas e corte D-trim. Outros trims podem ser desenvolvidos conforme a operação.',
+    preservation: 'Congelado · IVP',
+    presentation: 'Faixas de 1,0–1,4 kg a 1,8–2,2 kg',
+    audience: 'Restaurantes, sushi bars, hotéis e varejo',
+    image: '/images/catalog/salmon-fillet.webp',
+    imageAlt: 'Lombo de salmão norueguês sobre gelo',
   },
   {
-    id: 'defumado',
-    name: 'Salmão Defumado',
+    id: 'portions',
+    name: 'Porções IVP',
     description:
-      'Salmão curado e defumado, fatiado finamente, para uso imediato em cardápios e serviços de alta gastronomia.',
-    preservation: 'Resfriado',
-    presentation: 'Fatias finas, peça inteira ou porcionado',
-    audience: 'Hotéis, delicatessens e alta gastronomia',
-    image:
-      'https://images.unsplash.com/photo-1498604819470-d34ff92b1341?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Fatias de salmão curado e defumado com endro e pimenta-rosa',
+      'Porções padronizadas, sem pele e sem espinhas, pensadas para controle de custo, agilidade e consistência no serviço.',
+    preservation: 'Congelado · IVP',
+    presentation: '125 g · caixas de 3, 5 ou 10 kg',
+    audience: 'Food service, catering e private label',
+    image: '/images/catalog/salmon-portions.webp',
+    imageAlt: 'Quatro porções padronizadas de salmão sobre gelo',
   },
   {
-    id: 'porcoes',
-    name: 'Porções Padronizadas',
+    id: 'smoked',
+    name: 'Defumado e gravlax',
     description:
-      'Cortes em gramatura definida, que reduzem perdas e agilizam o serviço em operações de escala.',
-    preservation: 'Resfriado ou congelado',
-    presentation: 'Porções em gramatura sob especificação',
-    audience: 'Hotéis, catering e food service',
-    image:
-      'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Porção de salmão empratada em restaurante',
-  },
-  {
-    id: 'congelado',
-    name: 'Linha Congelada',
-    description:
-      'Produtos congelados para maior prazo de validade e planejamento de estoque com segurança.',
-    preservation: 'Congelado (-18 °C)',
-    presentation: 'Filés e porções congeladas',
-    audience: 'Distribuidores, atacadistas e indústria',
-    image:
-      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Armazém logístico com estoque organizado',
-  },
-  {
-    id: 'distribuidores',
-    name: 'Fornecimento para Distribuição',
-    description:
-      'Estruturação de volume, paletização e logística para quem abastece redes e regiões inteiras.',
-    preservation: 'Conforme a operação',
-    presentation: 'Volumes e formatos sob demanda',
-    audience: 'Grandes distribuidores e redes',
-    image:
-      'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80',
-    imageAlt: 'Navio cargueiro com contêineres em porto internacional',
+      'Filé defumado a quente, fatiados e gravlax curado para aplicações de alto valor agregado e consumo imediato.',
+    preservation: 'Congelado',
+    presentation: '100 g, 200 g ou filés de 900 g–1,2 kg',
+    audience: 'Empórios, hotéis, varejo e alta gastronomia',
+    image: '/images/catalog/salmon-smoked.webp',
+    imageAlt: 'Fatias de salmão defumado sobre gelo',
   },
 ];
