@@ -1,20 +1,23 @@
 import { galleryImages } from '@/data/images';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { useI18n } from '@/i18n/I18nProvider';
 
 export function Gallery() {
+  const { t } = useI18n();
+
   return (
     <section id="galeria" className="bg-navy py-24 text-white md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading
             dark
-            eyebrow="Da origem à mesa"
-            title="Um produto, muitas possibilidades"
-            description="Cor vibrante, textura delicada e versatilidade para cardápios, varejo e experiências gastronômicas de alto padrão."
+            eyebrow={t('Da origem à mesa')}
+            title={t('Um produto, muitas possibilidades')}
+            description={t('Cor vibrante, textura delicada e versatilidade para cardápios, varejo e experiências gastronômicas de alto padrão.')}
           />
           <p className="max-w-xs text-sm leading-relaxed text-white/55">
-            Fotografias do catálogo oficial disponibilizado pela empresa.
+            {t('Fotografias do catálogo oficial disponibilizado pela empresa.')}
           </p>
         </div>
 
@@ -30,13 +33,14 @@ export function Gallery() {
               <figure className="group relative h-full overflow-hidden rounded-2xl bg-navy-dark">
                 <img
                   src={item.src}
-                  alt={item.alt}
+                  alt={t(item.alt)}
                   loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-transparent to-transparent" />
                 <figcaption className="absolute inset-x-0 bottom-0 p-5 text-sm font-bold text-white">
-                  {item.label}
+                  {t(item.label)}
                 </figcaption>
               </figure>
             </Reveal>

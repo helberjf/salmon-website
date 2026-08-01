@@ -12,6 +12,15 @@ export const founder = {
   photo: '',
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
   headline: 'Conectando a excelência norueguesa às oportunidades do mercado brasileiro',
+  profileHeadline:
+    'Entrada no mercado, ESG e parcerias estratégicas entre a Noruega e o Brasil',
+  shortSummary:
+    'Mai Tonheim conecta a expertise em seafood norueguês às oportunidades do mercado brasileiro, combinando experiência em entrada no mercado, ESG e construção de parcerias estratégicas.',
+  focusAreas: [
+    'Entrada no mercado brasileiro',
+    'ESG e parcerias estratégicas',
+    'Seafood norueguês no Brasil',
+  ],
   summary: [
     'Mai Tonheim é norueguesa, radicada no Rio de Janeiro, e dedicou quase duas décadas ao Serviço Exterior da Noruega, no qual ingressou em 2007. Entre 2021 e 2025, foi Cônsul e Vice-Chefe de Missão do Consulado-Geral Real da Noruega no Rio de Janeiro, com atuação dedicada à promoção de negócios noruegueses e ao apoio a investimentos no Brasil.',
     'Sua trajetória inclui postos diplomáticos na Itália e no Líbano, a Academia Diplomática do Ministério das Relações Exteriores da Noruega, em Oslo, e o Escritório das Nações Unidas sobre Drogas e Crime (UNODC), em Viena. Representou a Noruega na OCDE em grupos sobre conduta empresarial responsável.',

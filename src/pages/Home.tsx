@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
@@ -11,7 +12,12 @@ import { Process } from '@/components/sections/Process';
 import { Founder } from '@/components/sections/Founder';
 import { Differentials } from '@/components/sections/Differentials';
 import { CallToAction } from '@/components/sections/CallToAction';
-import { ContactSection } from '@/components/sections/ContactSection';
+
+const ContactSection = lazy(() =>
+  import('@/components/sections/ContactSection').then((module) => ({
+    default: module.ContactSection,
+  })),
+);
 
 export default function Home() {
   return (
@@ -27,7 +33,11 @@ export default function Home() {
         <Founder />
         <Differentials />
         <CallToAction />
-        <ContactSection />
+        <Suspense
+          fallback={<section id="contato" aria-hidden="true" className="min-h-96 bg-background" />}
+        >
+          <ContactSection />
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />

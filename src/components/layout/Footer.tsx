@@ -3,9 +3,11 @@ import { Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/data/company';
 import { navLinks } from '@/data/navigation';
 import { BrandMark } from '@/components/ui/BrandMark';
+import { useI18n } from '@/i18n/I18nProvider';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
 
   return (
     <footer className="bg-navy-dark text-frost">
@@ -14,7 +16,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <BrandMark inverse />
-            <p className="mt-4 text-sm leading-relaxed text-frost/80">{company.description}</p>
+            <p className="mt-4 text-sm leading-relaxed text-frost/80">{t(company.description)}</p>
             {(company.instagram || company.linkedin) && (
               <div className="mt-6 flex gap-3">
                 {company.instagram && (
@@ -23,7 +25,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-white/15"
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-white/15"
                   >
                     <Instagram size={18} aria-hidden="true" />
                   </a>
@@ -34,7 +36,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-white/15"
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-white/5 transition-colors hover:bg-white/15"
                   >
                     <Linkedin size={18} aria-hidden="true" />
                   </a>
@@ -43,13 +45,13 @@ export function Footer() {
             )}
           </div>
 
-          <nav aria-label="Links do rodapé">
-            <h2 className="font-serif text-base font-semibold text-white">Navegação</h2>
+          <nav aria-label={t('Links do rodapé')}>
+            <h2 className="font-serif text-base font-semibold text-white">{t('Navegação')}</h2>
             <ul className="mt-5 space-y-2.5 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="transition-colors hover:text-white">
-                    {link.label}
+                    {t(link.label)}
                   </a>
                 </li>
               ))}
@@ -57,12 +59,12 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="font-serif text-base font-semibold text-white">Contato</h2>
+            <h2 className="font-serif text-base font-semibold text-white">{t('Contato')}</h2>
             <ul className="mt-5 space-y-3.5 text-sm">
               {company.email && (
                 <li className="flex items-start gap-3">
                   <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-salmon" />
-                  <a href={`mailto:${company.email}`} className="hover:text-white">
+                  <a href={`mailto:${company.email}`} className="break-all hover:text-white">
                     {company.email}
                   </a>
                 </li>
@@ -89,21 +91,21 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="font-serif text-base font-semibold text-white">Atendimento</h2>
-            <p className="mt-5 text-sm leading-relaxed text-frost/80">{company.serviceArea}</p>
+            <h2 className="font-serif text-base font-semibold text-white">{t('Atendimento')}</h2>
+            <p className="mt-5 text-sm leading-relaxed text-frost/80">{t(company.serviceArea)}</p>
             <a
               href="https://www.norwell.no"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 block text-sm text-frost/60 transition-colors hover:text-white"
             >
-              Parceiro exportador: Norwell AS
+              {t('Parceiro exportador: Norwell AS')}
             </a>
             <a
-              href="#contato"
+              href="/#contato"
               className="mt-6 inline-block rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white hover:text-navy"
             >
-              Falar com a equipe
+              {t('Falar com a equipe')}
             </a>
           </div>
         </div>
@@ -112,20 +114,21 @@ export function Footer() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p>
               © {currentYear} {company.legalName || company.name}.
-              {company.cnpj && ` CNPJ ${company.cnpj}.`} Todos os direitos reservados.
+              {company.cnpj && ` CNPJ ${company.cnpj}.`} {t('Todos os direitos reservados.')}
             </p>
             <div className="flex gap-5">
               <Link href="/privacidade" className="transition-colors hover:text-white">
-                Política de Privacidade
+                {t('Política de Privacidade')}
               </Link>
               <Link href="/termos" className="transition-colors hover:text-white">
-                Termos de Uso
+                {t('Termos de Uso')}
               </Link>
             </div>
           </div>
           <p className="mt-4">
-            A disponibilidade, os formatos, os volumes e as condições comerciais dos produtos devem
-            ser confirmados diretamente com a empresa.
+            {t(
+              'A disponibilidade, os formatos, os volumes e as condições comerciais dos produtos devem ser confirmados diretamente com a empresa.',
+            )}
           </p>
         </div>
       </div>

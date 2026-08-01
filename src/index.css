@@ -23,18 +23,28 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
 
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -59,10 +69,20 @@ body {
     text-wrap: pretty;
   }
 
+  main > section {
+    overflow-x: clip;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-ocean-light);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+
+  header :focus-visible,
+  footer :focus-visible,
+  [class*='bg-navy'] :focus-visible {
+    outline-color: #ffffff;
   }
 
   ::selection {
@@ -82,6 +102,8 @@ body {
       #ffffff 60% 75%,
       var(--color-nordic-red) 75% 100%
     );
+    background-size: 200% 100%;
+    animation: nordic-drift 14s linear infinite;
   }
 
   .hero-grid {
@@ -90,5 +112,51 @@ body {
       linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 54px 54px;
     mask-image: linear-gradient(to bottom, black, transparent 82%);
+    animation: grid-drift 22s linear infinite;
+  }
+
+  .whatsapp-pulse {
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .floating-safe-bottom {
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .whatsapp-pulse::before {
+    position: absolute;
+    inset: -5px;
+    z-index: -1;
+    content: '';
+    border: 1px solid rgb(37 211 102 / 45%);
+    border-radius: 9999px;
+    animation: whatsapp-ring 2.8s ease-out infinite;
+  }
+}
+
+@keyframes nordic-drift {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes grid-drift {
+  to {
+    background-position: 54px 54px;
+  }
+}
+
+@keyframes whatsapp-ring {
+  0%,
+  45% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
   }
 }
