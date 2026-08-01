@@ -36,7 +36,7 @@ export function Hero() {
         src={images.heroBackground.src}
         alt=""
         style={{ y: backdropY }}
-        className="absolute inset-0 h-[112%] w-full scale-105 object-cover object-center opacity-25 sm:opacity-30 lg:opacity-55"
+        className="absolute inset-0 h-[112%] w-full scale-105 object-cover object-center opacity-40 sm:opacity-35 lg:opacity-55"
         decoding="async"
       />
       <div
@@ -126,10 +126,9 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
             className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
           >
-            <span className="text-[0.6rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
-              {t('Representante')}
-              <br />
-              {t('oficial no Brasil')}
+            {/* Frase única: quebrada com <br> o leitor de tela juntava as palavras. */}
+            <span className="max-w-[7.5rem] text-[0.6rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
+              {t('Representante oficial no Brasil')}
             </span>
             <span aria-hidden="true" className="h-9 w-px bg-white/20" />
             <NorwellLogo variant="white" height={26} />
@@ -141,7 +140,12 @@ export function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           style={{ y: imageY }}
-          className="relative mx-auto w-full max-w-[540px] lg:mx-0"
+          /**
+           * Só a partir de lg. Abaixo disso a coluna vira uma tela inteira de
+           * foto decorativa logo depois do texto — e o próprio plano de fundo
+           * da seção já é uma fotografia da origem.
+           */
+          className="relative mx-auto hidden w-full max-w-[540px] lg:mx-0 lg:block"
         >
           <div className="absolute -right-4 -top-4 h-full w-full rounded-[2rem] border border-white/10" />
           <motion.div

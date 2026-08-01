@@ -26,9 +26,10 @@ export function Gallery() {
             <Reveal
               key={item.src}
               delay={(index % 4) * 0.06}
+              /* Além da quarta foto vira rolagem decorativa no celular. */
               className={`${index === 0 ? 'lg:col-span-2 lg:row-span-2' : ''} ${
                 index === 3 ? 'lg:col-span-2' : ''
-              } h-full`}
+              } ${index >= 4 ? 'hidden sm:block' : ''} h-full`}
             >
               <figure className="group relative h-full overflow-hidden rounded-2xl bg-navy-dark">
                 <img

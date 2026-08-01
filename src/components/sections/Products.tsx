@@ -1,23 +1,33 @@
 import { ArrowRight, PackageCheck } from 'lucide-react';
+import { Link } from 'wouter';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { products } from '@/data/products';
 import { useI18n } from '@/i18n/I18nProvider';
 
-export function Products() {
+interface ProductsProps {
+  /** Quantos itens exibir. Sem valor, mostra o portfólio inteiro. */
+  limit?: number;
+  /** Oculta o rodapé sobre especificações — usado no resumo da home. */
+  hideSpecNote?: boolean;
+}
+
+export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
   const { t } = useI18n();
+  const shown = typeof limit === 'number' ? products.slice(0, limit) : products;
+  const isPreview = shown.length < products.length;
 
   return (
     <section id="produtos" className="bg-white py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           eyebrow={t('Portfólio Norwell')}
-          title={t('Do inteiro à porção, com especificação precisa')}
+          title={isPreview ? t('Alguns dos formatos que fornecemos') : t('Do inteiro à porção, com especificação precisa')}
           description={t('Produtos frescos ou congelados, com formatos padrão e desenvolvimento sob medida para operações B2B.')}
         />
 
         <div className="mt-14 grid gap-7 lg:grid-cols-2">
-          {products.map((product, index) => (
+          {shown.map((product, index) => (
             <Reveal
               key={product.id}
               delay={(index % 2) * 0.08}
@@ -58,7 +68,7 @@ export function Products() {
                     </div>
                   </dl>
                   <a
-                    href="#contato"
+                    href="/#contato"
                     className="mt-6 inline-flex items-center gap-1.5 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
                   >
                     {t('Consultar disponibilidade')}
@@ -74,17 +84,38 @@ export function Products() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl bg-navy px-6 py-5 text-white sm:flex-row sm:items-center">
-          <p className="max-w-2xl text-sm leading-relaxed text-white/70">
-            {t(
-              'Trabalhamos também com especificações B, C, D e E-trim e soluções de private label. Disponibilidade, MOQ e condições são confirmadas na cotação.',
-            )}
-          </p>
-          <a href="#contato" className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-white">
-            {t('Pedir especificação')}
-            <ArrowRight size={16} aria-hidden="true" />
-          </a>
-        </div>
+        {isPreview && (
+          <Reveal delay={0.1} className="mt-10 flex justify-center">
+            <Link
+              href="/produtos"
+              className="group inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:border-ocean/30 hover:bg-ice"
+            >
+              {t('Ver o portfólio completo')}
+              <ArrowRight
+                size={16}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+              />
+            </Link>
+          </Reveal>
+        )}
+
+        {!hideSpecNote && (
+          <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl bg-navy px-6 py-5 text-white sm:flex-row sm:items-center">
+            <p className="max-w-2xl text-sm leading-relaxed text-white/70">
+              {t(
+                'Trabalhamos também com especificações B, C, D e E-trim e soluções de private label. Disponibilidade, MOQ e condições são confirmadas na cotação.',
+              )}
+            </p>
+            <a
+              href="/#contato"
+              className="inline-flex shrink-0 items-center gap-2 py-1.5 text-sm font-bold text-white"
+            >
+              {t('Pedir especificação')}
+              <ArrowRight size={16} aria-hidden="true" />
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );

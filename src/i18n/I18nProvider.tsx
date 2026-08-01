@@ -88,6 +88,8 @@ function titleSourceForCurrentPath(): string {
   if (path === '/privacidade') return 'Política de Privacidade | Nordic Salmon';
   if (path === '/termos') return 'Termos de Uso | Nordic Salmon';
   if (path === '/sobre') return 'Sobre Mai Tonheim | Nordic Salmon';
+  if (path === '/a-norwell') return 'A Norwell | Nordic Salmon';
+  if (path === '/produtos') return 'Produtos | Nordic Salmon';
   if (path !== '/') return 'Página não encontrada | Nordic Salmon';
   return HOME_TITLE;
 }

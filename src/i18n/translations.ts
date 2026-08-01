@@ -1227,12 +1227,149 @@ export const translations: Record<string, LocalizedText> = {
     no: 'Detaljer om virksomheten (valgfritt)',
   },
 
+  // Páginas internas — /a-norwell e /produtos
+  'A Norwell | Nordic Salmon': {
+    en: 'Norwell | Nordic Salmon',
+    es: 'Norwell | Nordic Salmon',
+    no: 'Norwell | Nordic Salmon',
+  },
+  'Produtos | Nordic Salmon': {
+    en: 'Products | Nordic Salmon',
+    es: 'Productos | Nordic Salmon',
+    no: 'Produkter | Nordic Salmon',
+  },
+  'A Norwell': { en: 'Norwell', es: 'Norwell', no: 'Norwell' },
+  'A origem do produto': {
+    en: 'Where the product comes from',
+    es: 'El origen del producto',
+    no: 'Der produktet kommer fra',
+  },
+  'Norwell AS, a exportadora norueguesa que representamos': {
+    en: 'Norwell AS, the Norwegian exporter we represent',
+    es: 'Norwell AS, la exportadora noruega que representamos',
+    no: 'Norwell AS, den norske eksportøren vi representerer',
+  },
+  'Fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores e as certificações que sustentam cada embarque para o Brasil.':
+    {
+      en: 'Founded in 1996 in Florø, it exports salmon and fjord trout to more than a hundred markets. Get to know the history, the values and the certifications behind every shipment to Brazil.',
+      es: 'Fundada en 1996 en Florø, exporta salmón y trucha de fiordo a más de un centenar de mercados. Conozca la historia, los valores y las certificaciones que respaldan cada embarque a Brasil.',
+      no: 'Etablert i 1996 i Florø, og eksporterer laks og fjordørret til over hundre markeder. Bli kjent med historien, verdiene og sertifiseringene bak hver forsendelse til Brasil.',
+    },
+  'A exportadora': { en: 'The exporter', es: 'La exportadora', no: 'Eksportøren' },
+  'Uma casa de exportação com os produtores no controle': {
+    en: 'An export house owned by the farmers themselves',
+    es: 'Una casa exportadora con los productores al mando',
+    no: 'Et eksporthus eid av oppdretterne selv',
+  },
+  'Fundada em 1996 em Florø, na costa oeste da Noruega, a Norwell é uma exportadora de porte médio de salmão e truta noruegueses. Cerca de 70% do seu capital pertence aos próprios produtores e 30% a colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta.':
+    {
+      en: 'Founded in 1996 in Florø, on Norway’s west coast, Norwell is a mid-sized exporter of Norwegian salmon and trout. Around 70% of the company is owned by the farmers themselves and 30% by key employees — an ownership structure that keeps those who raise the fish close to those who export it.',
+      es: 'Fundada en 1996 en Florø, en la costa oeste de Noruega, Norwell es una exportadora de tamaño medio de salmón y trucha noruegos. Cerca del 70% de su capital pertenece a los propios productores y el 30% a colaboradores clave, una estructura societaria que acerca a quien cría el pescado con quien lo exporta.',
+      no: 'Norwell ble etablert i 1996 i Florø på Vestlandet og er en mellomstor eksportør av norsk laks og ørret. Rundt 70 % eies av oppdretterne selv og 30 % av nøkkelansatte — en eierstruktur som holder dem som produserer fisken tett på dem som eksporterer den.',
+    },
+  'Da sede em Florø, na costa oeste norueguesa, a operação se estende a escritórios comerciais em Aalborg, Londres e Kuala Lumpur — a estrutura que sustenta o fornecimento para o Brasil.':
+    {
+      en: 'From the Florø headquarters on the Norwegian west coast, the operation extends to sales offices in Aalborg, London and Kuala Lumpur — the structure behind the supply to Brazil.',
+      es: 'Desde la sede en Florø, en la costa oeste noruega, la operación se extiende a oficinas comerciales en Aalborg, Londres y Kuala Lumpur, la estructura que sostiene el suministro a Brasil.',
+      no: 'Fra hovedkontoret i Florø strekker virksomheten seg til salgskontorer i Aalborg, London og Kuala Lumpur — strukturen som ligger bak leveransene til Brasil.',
+    },
+  'Visitar o site da Norwell': {
+    en: 'Visit the Norwell website',
+    es: 'Visitar el sitio de Norwell',
+    no: 'Besøk nettstedet til Norwell',
+  },
+  'Ano de fundação, em Florø, na costa oeste norueguesa': {
+    en: 'Year founded, in Florø on the Norwegian west coast',
+    es: 'Año de fundación, en Florø, en la costa oeste noruega',
+    no: 'Etableringsår, i Florø på Vestlandet',
+  },
+  'Do capital nas mãos dos próprios produtores; 30% com colaboradores-chave': {
+    en: 'Of the company owned by the farmers themselves; 30% by key employees',
+    es: 'Del capital en manos de los propios productores; 30% en colaboradores clave',
+    no: 'Av selskapet eies av oppdretterne selv; 30 % av nøkkelansatte',
+  },
+  'Bases comerciais: Florø, Aalborg, Londres e Kuala Lumpur': {
+    en: 'Commercial bases: Florø, Aalborg, London and Kuala Lumpur',
+    es: 'Bases comerciales: Florø, Aalborg, Londres y Kuala Lumpur',
+    no: 'Forretningssteder: Florø, Aalborg, London og Kuala Lumpur',
+  },
+  'Onde estão': { en: 'Where they are', es: 'Dónde están', no: 'Hvor de er' },
+  Dinamarca: { en: 'Denmark', es: 'Dinamarca', no: 'Danmark' },
+  'Reino Unido': { en: 'United Kingdom', es: 'Reino Unido', no: 'Storbritannia' },
+  'Malásia': { en: 'Malaysia', es: 'Malasia', no: 'Malaysia' },
+  'Sede e operação de exportação': {
+    en: 'Headquarters and export operation',
+    es: 'Sede y operación de exportación',
+    no: 'Hovedkontor og eksportvirksomhet',
+  },
+  'Escritório de vendas': {
+    en: 'Sales office',
+    es: 'Oficina de ventas',
+    no: 'Salgskontor',
+  },
+  'Conhecer a Norwell, seus valores e certificações': {
+    en: 'Explore Norwell, its values and certifications',
+    es: 'Conocer Norwell, sus valores y certificaciones',
+    no: 'Bli kjent med Norwell, verdiene og sertifiseringene',
+  },
+  'Portfólio': { en: 'Portfolio', es: 'Portafolio', no: 'Portefølje' },
+  'Alguns dos formatos que fornecemos': {
+    en: 'A few of the formats we supply',
+    es: 'Algunos de los formatos que suministramos',
+    no: 'Noen av formatene vi leverer',
+  },
+  'Formatos, cortes e conservação para cada operação': {
+    en: 'Formats, cuts and preservation for every operation',
+    es: 'Formatos, cortes y conservación para cada operación',
+    no: 'Formater, kutt og konservering for enhver drift',
+  },
+  'Todo o portfólio disponível para o mercado brasileiro, com a apresentação e o público indicado de cada item. Especificações e volumes são fechados na cotação.':
+    {
+      en: 'The full portfolio available to the Brazilian market, with the presentation and intended buyer for each item. Specifications and volumes are agreed at quotation.',
+      es: 'Todo el portafolio disponible para el mercado brasileño, con la presentación y el público indicado de cada ítem. Especificaciones y volúmenes se cierran en la cotización.',
+      no: 'Hele porteføljen som er tilgjengelig for det brasilianske markedet, med presentasjon og anbefalt kjøper for hvert produkt. Spesifikasjoner og volum avtales i tilbudet.',
+    },
+  'Linhas da exportadora': {
+    en: 'The exporter’s product lines',
+    es: 'Líneas de la exportadora',
+    no: 'Eksportørens produktlinjer',
+  },
+  'Salmão do Atlântico fresco': {
+    en: 'Fresh Atlantic salmon',
+    es: 'Salmón del Atlántico fresco',
+    no: 'Fersk atlantisk laks',
+  },
+  'Salmão do Atlântico congelado': {
+    en: 'Frozen Atlantic salmon',
+    es: 'Salmón del Atlántico congelado',
+    no: 'Fryst atlantisk laks',
+  },
+  'Produtos de valor agregado (VAP)': {
+    en: 'Value added products (VAP)',
+    es: 'Productos de valor agregado (VAP)',
+    no: 'Videreforedlede produkter (VAP)',
+  },
+  'Truta do fiorde fresca': {
+    en: 'Fresh fjord trout',
+    es: 'Trucha de fiordo fresca',
+    no: 'Fersk fjordørret',
+  },
+  'Truta do fiorde congelada': {
+    en: 'Frozen fjord trout',
+    es: 'Trucha de fiordo congelada',
+    no: 'Fryst fjordørret',
+  },
+  'Ver o portfólio completo': {
+    en: 'See the full portfolio',
+    es: 'Ver el portafolio completo',
+    no: 'Se hele porteføljen',
+  },
+
   // Assinatura de representação (logotipo da Norwell)
-  Representante: { en: 'Official', es: 'Representante', no: 'Offisiell' },
-  'oficial no Brasil': {
-    en: 'representative in Brazil',
-    es: 'oficial en Brasil',
-    no: 'representant i Brasil',
+  'Representante oficial no Brasil': {
+    en: 'Official representative in Brazil',
+    es: 'Representante oficial en Brasil',
+    no: 'Offisiell representant i Brasil',
   },
   'Parceiro exportador': {
     en: 'Exporting partner',

@@ -1,10 +1,10 @@
-import { ArrowUpRight, BadgeCheck, CheckCircle2, Quote } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'wouter';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { images } from '@/data/images';
-import { norwell, values } from '@/data/norwell';
 import { useI18n } from '@/i18n/I18nProvider';
 
 const highlights = [
@@ -29,7 +29,7 @@ const partnership = [
 ];
 
 export function About() {
-  const { t, language } = useI18n();
+  const { t } = useI18n();
 
   return (
     <section id="empresa" className="bg-white py-24 md:py-32">
@@ -51,7 +51,9 @@ export function About() {
                 className="absolute -right-3 -top-6 rounded-xl shadow-xl shadow-navy/20 sm:-right-6"
               />
               <div className="relative mx-4 -mt-8 max-w-sm rounded-2xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-8 sm:right-8 sm:mx-0 sm:mt-0 sm:max-w-xs">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">{t('Parceiro na origem')}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">
+                  {t('Parceiro na origem')}
+                </p>
                 <NorwellLogo variant="white" height={30} className="mt-3.5" />
                 <p className="mt-3 text-sm leading-relaxed text-white/65">
                   {t('Exportadora norueguesa com presença global e relações de longo prazo com produtores.')}
@@ -73,11 +75,6 @@ export function About() {
               </p>
               <p>
                 {t(
-                  'Fundada em 1996, a Norwell tem cerca de 70% do seu capital nas mãos dos próprios produtores e 30% com colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta. Da sede em Florø, a operação se estende a escritórios comerciais em Aalborg, Londres e Kuala Lumpur.',
-                )}
-              </p>
-              <p>
-                {t(
                   'Para o cliente brasileiro, isso significa acesso qualificado à origem, comunicação direta e uma solução desenhada a partir do produto, volume e ritmo de cada operação.',
                 )}
               </p>
@@ -92,19 +89,17 @@ export function About() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={norwell.site}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 group inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
+              <Link
+                href="/a-norwell"
+                className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
               >
-                {t('Conhecer a Norwell')}
-                <ArrowUpRight
+                {t('Conhecer a Norwell, seus valores e certificações')}
+                <ArrowRight
                   size={16}
                   aria-hidden="true"
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="transition-transform duration-300 group-hover:translate-x-0.5"
                 />
-              </a>
+              </Link>
             </Reveal>
 
             <ul className="mt-10 grid gap-5 border-t border-border pt-8 sm:grid-cols-3">
@@ -117,119 +112,6 @@ export function About() {
             </ul>
           </div>
         </div>
-
-        {/* Missão e valores herdados da Norwell AS e aplicados à representação no Brasil */}
-        <Reveal delay={0.1} className="mt-24 md:mt-32">
-          <figure className="relative overflow-hidden rounded-[2rem] bg-norwell px-7 py-12 text-white md:px-14 md:py-16">
-            <Quote
-              size={140}
-              aria-hidden="true"
-              className="absolute -right-6 -top-8 text-white/[0.07]"
-            />
-            <div className="relative max-w-3xl">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/60">
-                {t('Missão')}
-              </p>
-              <blockquote className="mt-5 font-serif text-3xl font-semibold leading-tight md:text-4xl">
-                “{t(norwell.mission)}”
-              </blockquote>
-              <figcaption className="mt-6 text-sm leading-relaxed text-white/70">
-                {t(
-                  'Missão da Norwell AS, aplicada por sua representação comercial no Brasil: usar bem os recursos por meio de planejamento, precisão e prioridades claras — para que o parceiro tenha previsibilidade em toda a cadeia.',
-                )}
-              </figcaption>
-            </div>
-          </figure>
-        </Reveal>
-
-        <div className="mt-16 md:mt-20">
-          <Reveal className="max-w-2xl">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-ocean-light">
-              {t('Valores')}
-            </p>
-            <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.025em] text-navy md:text-4xl">
-              {t('Os mesmos três princípios, dos fiordes ao cliente brasileiro')}
-            </h3>
-            <div aria-hidden="true" className="mt-6 h-1 w-10 rounded-full bg-salmon" />
-          </Reveal>
-
-          <ul className="mt-10 grid gap-5 md:grid-cols-3">
-            {values.map((item, index) => (
-              <li key={item.title}>
-                <Reveal
-                  delay={index * 0.08}
-                  className="h-full rounded-3xl border border-border bg-ice p-7 transition-transform duration-300 hover:-translate-y-1"
-                >
-                  <p className="font-serif text-2xl font-semibold text-navy">{t(item.title)}</p>
-                  {/* O termo original só acrescenta informação fora do inglês. */}
-                  {language !== 'en' && (
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-blue">
-                      {item.original}
-                    </p>
-                  )}
-                  <p className="mt-4 text-sm leading-relaxed text-muted">{t(item.description)}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <Reveal delay={0.1} className="mt-16 md:mt-20">
-          <div className="grid gap-10 rounded-[2rem] border border-border bg-ice p-7 md:p-11 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-ocean-light">
-                {t('Certificações na origem')}
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold leading-tight text-navy md:text-3xl">
-                {t('A procedência é auditada antes de virar promessa comercial')}
-              </h3>
-              <p className="mt-5 text-sm leading-relaxed text-muted">
-                {t(
-                  'As certificações abaixo são mantidas pela Norwell AS e cobrem a produção e a cadeia de custódia na Noruega. Os certificados em vigor, com suas validades, são publicados pela própria exportadora.',
-                )}
-              </p>
-              <a
-                href={norwell.certificatesUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 group inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
-              >
-                {t('Ver os certificados da Norwell')}
-                <ArrowUpRight
-                  size={16}
-                  aria-hidden="true"
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-              <div className="mt-8 flex items-center gap-4">
-                <SeafoodFromNorway size={64} className="rounded-lg" />
-                <p className="text-xs leading-relaxed text-slate-blue">
-                  {t('Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.')}
-                </p>
-              </div>
-            </div>
-
-            <ul className="grid gap-4 sm:grid-cols-2">
-              {norwell.certifications.map((certification) => (
-                <li
-                  key={certification.abbr}
-                  className="rounded-2xl border border-border bg-white p-5"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <BadgeCheck size={18} aria-hidden="true" className="shrink-0 text-norwell" />
-                    <p className="text-sm font-bold text-navy">{certification.abbr}</p>
-                  </div>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-slate-blue">
-                    {t(certification.name)}
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">
-                    {t(certification.description)}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
