@@ -24,6 +24,8 @@ const imageMetadata: Record<string, ImageMetadata> = {
   'mai-tonheim-diplomacy': { width: 480, height: 640, maxVariantWidth: 480 },
   'mai-tonheim-norway-brazil': { width: 388, height: 485, maxVariantWidth: 0 },
   'mai-tonheim-portrait': { width: 800, height: 800, maxVariantWidth: 800 },
+  'mai-tonheim-salmon-preparation': { width: 960, height: 1280, maxVariantWidth: 800 },
+  'mai-tonheim-salmon-presentation': { width: 1200, height: 1600, maxVariantWidth: 1200 },
   processing: { width: 1400, height: 932, maxVariantWidth: 800 },
   'salmon-eggs': { width: 1200, height: 798, maxVariantWidth: 800 },
   'salmon-farm': { width: 1536, height: 1024, maxVariantWidth: 800 },
@@ -37,7 +39,7 @@ const imageMetadata: Record<string, ImageMetadata> = {
 };
 
 function responsiveStem(src: string) {
-  return src.match(/^\/images\/(?:catalog\/|people\/)?([^/]+)\.(?:jpe?g|webp)$/i)?.[1];
+  return src.match(/^\/images\/(?:catalog\/|people\/)?([^/]+)\.(?:jpe?g|png|webp)$/i)?.[1];
 }
 
 export function getResponsiveImageSources(src: string, maxWidth?: number) {

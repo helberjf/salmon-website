@@ -809,6 +809,26 @@ export const translations: Record<string, LocalizedText> = {
     es: 'Labor institucional en el Consulado General Real de Noruega en Río de Janeiro',
     no: 'Institusjonelt arbeid ved Det kongelige norske generalkonsulatet i Rio de Janeiro',
   },
+  'Mai Tonheim, em traje tradicional norueguês, cortando um filé de salmão durante uma apresentação': {
+    en: 'Mai Tonheim, wearing traditional Norwegian attire, slicing a salmon fillet during a presentation',
+    es: 'Mai Tonheim, con traje tradicional noruego, cortando un filete de salmón durante una presentación',
+    no: 'Mai Tonheim i norsk folkedrakt, mens hun skjærer en laksefilet under en presentasjon',
+  },
+  'Demonstração do produto e da cultura norueguesa em ação': {
+    en: 'A hands-on presentation of Norwegian product and culture',
+    es: 'Demostración del producto y de la cultura noruega en acción',
+    no: 'En praktisk presentasjon av norsk produkt og kultur',
+  },
+  'Mai Tonheim, em traje tradicional norueguês, segurando uma bandeja com porções de salmão no estande Salmão da Noruega': {
+    en: 'Mai Tonheim, wearing traditional Norwegian attire, holding a tray of salmon portions at the Salmon from Norway stand',
+    es: 'Mai Tonheim, con traje tradicional noruego, sosteniendo una bandeja con porciones de salmón en el estand Salmón de Noruega',
+    no: 'Mai Tonheim i norsk folkedrakt, med et serveringsbrett med lakseporsjoner på standen for norsk laks',
+  },
+  'Apresentação e degustação de salmão norueguês em uma ação cultural no Brasil': {
+    en: 'Presentation and tasting of Norwegian salmon at a cultural event in Brazil',
+    es: 'Presentación y degustación de salmón noruego en un evento cultural en Brasil',
+    no: 'Presentasjon og smaksprøver av norsk laks under et kulturarrangement i Brasil',
+  },
   'Noruega · Brasil': { en: 'Norway · Brazil', es: 'Noruega · Brasil', no: 'Norge · Brasil' },
   '“Relações comerciais sólidas começam com clareza, confiança e conhecimento dos dois mercados.”': {
     en: '“Strong commercial relationships begin with clarity, trust and knowledge of both markets.”',

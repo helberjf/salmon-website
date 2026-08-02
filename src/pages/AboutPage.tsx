@@ -176,13 +176,15 @@ export default function AboutPage() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {founder.gallery.map((image, index) => (
-                <Reveal key={image.src} delay={index * 0.07}>
+                <Reveal key={image.src} delay={(index % 2) * 0.07}>
                   <figure
                     className={`mx-auto w-full overflow-hidden rounded-3xl border border-border bg-white shadow-sm ${
                       image.src.includes('norway-brazil') ? 'max-w-xs' : 'max-w-md'
                     }`}
                   >
-                    <div className="aspect-[4/5] bg-navy-dark">
+                    <div
+                      className={`${image.frame === '3/4' ? 'aspect-[3/4]' : 'aspect-[4/5]'} bg-navy-dark`}
+                    >
                       <ResponsiveImage
                         src={image.src}
                         alt={t(image.alt)}
