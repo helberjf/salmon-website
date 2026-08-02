@@ -30,6 +30,8 @@ const expectedVariants = {
   'mai-tonheim-consulate': [480, 800],
   'mai-tonheim-diplomacy': [480],
   'mai-tonheim-portrait': [480, 800],
+  'mai-tonheim-salmon-preparation': [480, 800],
+  'mai-tonheim-salmon-presentation': [480, 800, 1200],
   processing: [480, 800],
   'salmon-eggs': [480, 800],
   'salmon-farm': [480, 800],
