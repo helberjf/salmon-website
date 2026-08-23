@@ -51,22 +51,22 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-serif text-2xl font-semibold text-navy">{t(product.name)}</h3>
-                    <span aria-hidden="true" className="font-serif text-sm text-ocean/35">0{index + 1}</span>
+                    <span aria-hidden="true" className="font-serif text-sm text-ocean/80">0{index + 1}</span>
                   </div>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                     {t(product.description)}
                   </p>
                   <dl className="mt-5 space-y-2 border-t border-border pt-4 text-xs text-muted">
-                    <div className="flex items-start gap-2">
-                      <PackageCheck size={15} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
-                      <div>
-                        <dt className="font-bold text-navy">{t('Apresentação')}</dt>
-                        <dd className="mt-0.5">{t(product.presentation)}</dd>
-                      </div>
+                    <div>
+                      <dt className="flex items-start gap-2 font-bold text-navy">
+                        <PackageCheck size={15} aria-hidden="true" className="mt-0.5 shrink-0 text-ocean" />
+                        {t('Apresentação')}
+                      </dt>
+                      <dd className="mt-0.5 pl-[23px]">{t(product.presentation)}</dd>
                     </div>
-                    <div className="flex gap-2 pl-[23px]">
-                      <dt className="font-bold text-navy">{t('Ideal para:')}</dt>
-                      <dd>{t(product.audience)}</dd>
+                    <div className="pl-[23px]">
+                      <dt className="inline font-bold text-navy">{t('Ideal para:')}</dt>{' '}
+                      <dd className="inline">{t(product.audience)}</dd>
                     </div>
                   </dl>
                   <a

@@ -11,11 +11,14 @@ import { useLocation } from 'wouter';
 import { company } from '@/data/company';
 import { norwell } from '@/data/norwell';
 import {
+  getLoadedTranslations,
   htmlLanguageTags,
+  loadTranslations,
   supportedLanguages,
   translate,
   type Language,
   type LanguagePreference,
+  type TranslationCatalog,
   type TranslationVariables,
 } from './translations';
 import {
@@ -30,6 +33,15 @@ const DEFAULT_LANGUAGE: Language = 'pt';
 const HOME_TITLE = 'Bridge Point | Salmão Norueguês B2B no Brasil';
 const SITE_DESCRIPTION =
   'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida.';
+
+const socialImagesByPage: Record<string, string> = {
+  '/': 'home.jpg',
+  '/produtos': 'products.jpg',
+  '/a-norwell': 'norwell.jpg',
+  '/sobre': 'about.jpg',
+  '/privacidade': 'privacy.jpg',
+  '/termos': 'terms.jpg',
+};
 
 const openGraphLocales: Record<Language, string> = {
   pt: 'pt_BR',
@@ -52,6 +64,11 @@ interface PageSeo {
   path: string;
   schemaType: 'WebPage' | 'AboutPage' | 'CollectionPage';
   indexable: boolean;
+}
+
+interface LoadedLanguage {
+  language: Language;
+  catalog: TranslationCatalog;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -97,6 +114,17 @@ function readStoredPreference(): LanguagePreference {
   } catch {
     return 'system';
   }
+}
+
+/** Resolves the first language before React mounts so the page never flashes another locale. */
+export function detectInitialLanguage(
+  pathname = typeof window === 'undefined' ? '/' : window.location.pathname,
+): Language {
+  const routeLanguage = languageFromPathname(pathname);
+  if (routeLanguage) return routeLanguage;
+
+  const preference = readStoredPreference();
+  return preference === 'system' ? detectSystemLanguage() : preference;
 }
 
 function seoForCurrentPath(pathname: string): PageSeo {
@@ -239,7 +267,18 @@ export function I18nProvider({ children }: I18nProviderProps) {
   const [storedPreference, setStoredPreference] = useState<LanguagePreference>(readStoredPreference);
   const [systemLanguage, setSystemLanguage] = useState<Language>(detectSystemLanguage);
   const routeLanguage = languageFromPathname(location);
-  const language = routeLanguage ?? (storedPreference === 'system' ? systemLanguage : storedPreference);
+  const requestedLanguage =
+    routeLanguage ?? (storedPreference === 'system' ? systemLanguage : storedPreference);
+  const [loadedLanguage, setLoadedLanguage] = useState<LoadedLanguage>(() => {
+    const initialCatalog = getLoadedTranslations(requestedLanguage);
+    if (initialCatalog) return { language: requestedLanguage, catalog: initialCatalog };
+
+    return {
+      language: DEFAULT_LANGUAGE,
+      catalog: getLoadedTranslations(DEFAULT_LANGUAGE) ?? {},
+    };
+  });
+  const { language, catalog } = loadedLanguage;
   const preference: LanguagePreference = routeLanguage ?? storedPreference;
 
   const setPreference = useCallback(
@@ -269,9 +308,28 @@ export function I18nProvider({ children }: I18nProviderProps) {
 
   const href = useCallback((path: string) => localizeHref(path, language), [language]);
   const t = useCallback(
-    (source: string, variables?: TranslationVariables) => translate(language, source, variables),
-    [language],
+    (source: string, variables?: TranslationVariables) => translate(catalog, source, variables),
+    [catalog],
   );
+
+  useEffect(() => {
+    if (requestedLanguage === language && getLoadedTranslations(requestedLanguage) === catalog) {
+      return;
+    }
+
+    let cancelled = false;
+    void loadTranslations(requestedLanguage)
+      .then((nextCatalog) => {
+        if (!cancelled) {
+          setLoadedLanguage({ language: requestedLanguage, catalog: nextCatalog });
+        }
+      })
+      .catch(() => undefined);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [catalog, language, requestedLanguage]);
 
   useEffect(() => {
     const updateSystemLanguage = () => setSystemLanguage(detectSystemLanguage());
@@ -280,6 +338,8 @@ export function I18nProvider({ children }: I18nProviderProps) {
   }, []);
 
   useEffect(() => {
+    if (language !== requestedLanguage) return;
+
     const htmlLanguage = htmlLanguageTags[language];
     const page = seoForCurrentPath(location);
     const title = t(page.title);
@@ -288,8 +348,9 @@ export function I18nProvider({ children }: I18nProviderProps) {
     const canonicalUrl = page.indexable
       ? `${siteUrl}${routeLanguage ? localizeHref(page.path, routeLanguage) : page.path}`
       : `${siteUrl}${window.location.pathname}`;
-    const socialImage = `${siteUrl}/images/catalog/fisherman-salmon.webp`;
-    const socialImageAlt = t('Produtor norueguês segurando um salmão inteiro junto a um fiorde');
+    const socialImageName = socialImagesByPage[page.path] ?? socialImagesByPage['/'];
+    const socialImage = `${siteUrl}/images/social/${socialImageName}`;
+    const socialImageAlt = title;
 
     document.documentElement.lang = htmlLanguage;
     document.title = title;
@@ -307,6 +368,8 @@ export function I18nProvider({ children }: I18nProviderProps) {
     setMetaContent('meta[property="og:url"]', { property: 'og:url' }, canonicalUrl);
     setMetaContent('meta[property="og:image"]', { property: 'og:image' }, socialImage);
     setMetaContent('meta[property="og:image:alt"]', { property: 'og:image:alt' }, socialImageAlt);
+    setMetaContent('meta[property="og:image:width"]', { property: 'og:image:width' }, '1200');
+    setMetaContent('meta[property="og:image:height"]', { property: 'og:image:height' }, '630');
     setMetaContent('meta[name="twitter:title"]', { name: 'twitter:title' }, title);
     setMetaContent('meta[name="twitter:description"]', { name: 'twitter:description' }, description);
     setMetaContent('meta[name="twitter:image"]', { name: 'twitter:image' }, socialImage);
@@ -403,7 +466,7 @@ export function I18nProvider({ children }: I18nProviderProps) {
         },
       ],
     });
-  }, [language, location, routeLanguage, t]);
+  }, [language, location, requestedLanguage, routeLanguage, t]);
 
   const value = useMemo<I18nContextValue>(
     () => ({ language, preference, setPreference, href, t }),

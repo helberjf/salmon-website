@@ -12,6 +12,33 @@ function read(relativePath) {
   return readFileSync(join(projectRoot, relativePath));
 }
 
+function jpegDimensions(buffer) {
+  assert(buffer[0] === 0xff && buffer[1] === 0xd8, 'Invalid JPEG signature.');
+  let offset = 2;
+
+  while (offset + 8 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marker = buffer[offset + 1];
+    offset += 2;
+    if (marker === 0xd8 || marker === 0xd9) continue;
+    const segmentLength = buffer.readUInt16BE(offset);
+    const startOfFrame = [0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker);
+    if (startOfFrame) {
+      return {
+        height: buffer.readUInt16BE(offset + 3),
+        width: buffer.readUInt16BE(offset + 5),
+      };
+    }
+    offset += segmentLength;
+  }
+
+  throw new Error('JPEG dimensions were not found.');
+}
+
 const responsiveDirectory = join(projectRoot, 'public', 'images', 'responsive');
 const responsiveFiles = readdirSync(responsiveDirectory).filter((name) => !name.startsWith('.'));
 const responsivePairs = new Map();
@@ -88,6 +115,24 @@ for (const fontName of [
 
 for (const licenseName of ['PlayfairDisplay-OFL.txt', 'PlusJakartaSans-OFL.txt']) {
   assert(read(`public/fonts/licenses/${licenseName}`).length > 1_000, `Missing font license: ${licenseName}`);
+}
+
+for (const socialImage of [
+  'home.jpg',
+  'products.jpg',
+  'norwell.jpg',
+  'about.jpg',
+  'privacy.jpg',
+  'terms.jpg',
+]) {
+  const image = read(`public/images/social/${socialImage}`);
+  assert(image.length > 40_000, `Social image is unexpectedly small: ${socialImage}`);
+  assert(image.length < 500_000, `Social image is too large: ${socialImage}`);
+  const dimensions = jpegDimensions(image);
+  assert(
+    dimensions.width === 1200 && dimensions.height === 630,
+    `Social image must be 1200x630: ${socialImage}`,
+  );
 }
 
 const sitemap = read('public/sitemap.xml').toString('utf8');

@@ -47,8 +47,16 @@ export function Hero() {
           srcSet="/images/responsive/norwell-hero-mobile-480.webp 480w, /images/responsive/norwell-hero-mobile-694.webp 694w"
           sizes="100vw"
         />
-        <source type="image/avif" srcSet={backgroundSources.avifSrcSet} sizes="1600px" />
-        <source type="image/webp" srcSet={backgroundSources.webpSrcSet} sizes="1600px" />
+        <source
+          type="image/avif"
+          srcSet={backgroundSources.avifSrcSet}
+          sizes="(min-width: 1600px) 1600px, 100vw"
+        />
+        <source
+          type="image/webp"
+          srcSet={backgroundSources.webpSrcSet}
+          sizes="(min-width: 1600px) 1600px, 100vw"
+        />
         <m.img
           aria-hidden="true"
           src={images.heroBackground.src}

@@ -1,5 +1,6 @@
-# Build
-FROM node:22-alpine AS build
+# Imagens fixadas por versao e digest multi-arquitetura para builds reproduziveis.
+# O Dependabot acompanha novas versoes e digests deste arquivo.
+FROM node:22.23.2-alpine3.24@sha256:c610fcdfb1d5b4740dd70c284ed3cb16bb857e0f7166196e36a5501df7a3aa32 AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -9,10 +10,11 @@ COPY public ./public
 COPY scripts ./scripts
 RUN npm run build
 
-# Serve
-FROM nginx:alpine
+# A imagem oficial nginx-unprivileged executa o processo como UID 101 e usa 8080.
+FROM nginxinc/nginx-unprivileged:1.30.4-alpine3.24@sha256:44e36330f74d4f3a1d4e222acca9e23b401fb87811a7597024502bb759c4dd49 AS runtime
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY deploy/nginx.docker.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+USER 101
+EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
+  CMD wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1

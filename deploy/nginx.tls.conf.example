@@ -1,14 +1,37 @@
+# Exemplo final para uma VPS onde este Nginx serve os arquivos e termina TLS.
+# Substitua o dominio e confirme os caminhos gerados pelo Certbot antes de ativar.
+
 server {
-    # O container recebe somente HTTP em uma rede privada. TLS e HSTS pertencem
-    # ao proxy/CDN publico; consulte deploy/nginx.tls.conf.example.
-    listen 8080;
-    server_name _;
+    listen 80;
+    listen [::]:80;
+    server_name seudominio.com.br www.seudominio.com.br;
+
+    # O desafio ACME pode ser tratado pelo Certbot antes deste redirecionamento.
+    location / {
+        return 308 https://$server_name$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name seudominio.com.br www.seudominio.com.br;
     server_tokens off;
 
-    root /usr/share/nginx/html;
+    ssl_certificate /etc/letsencrypt/live/seudominio.com.br/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/seudominio.com.br/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+    ssl_session_tickets off;
+
+    root /var/www/salmon-website;
     index index.html;
     charset utf-8;
 
+    # Ative HSTS somente depois de confirmar HTTPS em todos os subdominios.
+    # "preload" foi omitido de proposito: sua inclusao exige uma decisao separada.
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
     add_header Cross-Origin-Opener-Policy "same-origin-allow-popups" always;
     add_header Cross-Origin-Resource-Policy "same-origin" always;
     add_header Origin-Agent-Cluster "?1" always;
@@ -18,9 +41,8 @@ server {
     add_header X-XSS-Protection "0" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "accelerometer=(), autoplay=(), browsing-topics=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), publickey-credentials-get=(), usb=()" always;
-    add_header Content-Security-Policy "default-src 'self'; base-uri 'self'; child-src 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src 'none'; img-src 'self' data:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; worker-src 'self'" always;
+    add_header Content-Security-Policy "default-src 'self'; base-uri 'self'; child-src 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src 'none'; img-src 'self' data:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; worker-src 'self'" always;
 
-    # Alias historico: um unico URL canonico evita conteudo duplicado.
     location ~ ^/norwell/?$ {
         return 308 /a-norwell$is_args$args;
     }

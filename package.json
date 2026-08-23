@@ -8,12 +8,16 @@
     "build": "node scripts/verify-static-assets.mjs && tsc -p tsconfig.json --noEmit && vite build && node scripts/generate-route-html.mjs && node scripts/verify-build.mjs",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:e2e": "playwright test --grep-invert @a11y",
+    "test:a11y": "playwright test --grep @a11y",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
-    "verify:assets": "node scripts/verify-static-assets.mjs"
+    "verify:assets": "node scripts/verify-static-assets.mjs",
+    "verify:infra": "node scripts/verify-infrastructure.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "framer-motion": "^11.15.0",
+    "gsap": "3.15.0",
     "lucide-react": "^0.469.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -22,6 +26,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.62.1",
     "@tailwindcss/vite": "^4.0.0",
     "@types/node": "^22.10.5",
     "@types/react": "^18.3.18",

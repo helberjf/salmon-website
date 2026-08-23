@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { BackToTop } from '@/components/layout/BackToTop';
+import { GsapExperience } from '@/components/motion/GsapExperience';
 import { useI18n } from '@/i18n/I18nProvider';
 
 interface PageShellProps {
@@ -37,6 +38,7 @@ export function PageShell({
 
   return (
     <>
+      <GsapExperience />
       <Header />
       <main id="main-content" tabIndex={-1} className={mainClassName}>
         {children}

@@ -26,7 +26,7 @@ export const founder = {
       frame: '4/5',
     },
     {
-      src: '/images/people/mai-tonheim-salmon-preparation.png',
+      src: '/images/people/mai-tonheim-salmon-preparation.jpg',
       alt: 'Mai Tonheim, em traje tradicional norueguês, cortando um filé de salmão durante uma apresentação',
       caption: 'Demonstração do produto e da cultura norueguesa em ação',
       frame: '3/4',
