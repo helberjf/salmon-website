@@ -18,7 +18,7 @@ ADDITIONAL_SOURCES = (
     ROOT / "public" / "images" / "people" / "mai-tonheim-diplomacy.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-norway-brazil.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-portrait.jpg",
-    ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-preparation.png",
+    ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-preparation.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-presentation.jpg",
 )
 OUTPUT_DIR = ROOT / "public" / "images" / "responsive"

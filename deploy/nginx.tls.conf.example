@@ -1,0 +1,80 @@
+# Exemplo final para uma VPS onde este Nginx serve os arquivos e termina TLS.
+# Substitua o dominio e confirme os caminhos gerados pelo Certbot antes de ativar.
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name seudominio.com.br www.seudominio.com.br;
+
+    # O desafio ACME pode ser tratado pelo Certbot antes deste redirecionamento.
+    location / {
+        return 308 https://$server_name$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name seudominio.com.br www.seudominio.com.br;
+    server_tokens off;
+
+    ssl_certificate /etc/letsencrypt/live/seudominio.com.br/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/seudominio.com.br/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 1d;
+    ssl_session_tickets off;
+
+    root /var/www/salmon-website;
+    index index.html;
+    charset utf-8;
+
+    # Ative HSTS somente depois de confirmar HTTPS em todos os subdominios.
+    # "preload" foi omitido de proposito: sua inclusao exige uma decisao separada.
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header Cross-Origin-Opener-Policy "same-origin-allow-popups" always;
+    add_header Cross-Origin-Resource-Policy "same-origin" always;
+    add_header Origin-Agent-Cluster "?1" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header X-Permitted-Cross-Domain-Policies "none" always;
+    add_header X-XSS-Protection "0" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+    add_header Permissions-Policy "accelerometer=(), autoplay=(), browsing-topics=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), publickey-credentials-get=(), usb=()" always;
+    add_header Content-Security-Policy "default-src 'self'; base-uri 'self'; child-src 'none'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src 'none'; img-src 'self' data:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; worker-src 'self'" always;
+
+    location ~ ^/norwell/?$ {
+        return 308 /a-norwell$is_args$args;
+    }
+
+    location ~ ^/(pt|en|es|no)/norwell/?$ {
+        return 308 /$1/a-norwell$is_args$args;
+    }
+
+    location / {
+        try_files $uri.html $uri $uri/ =404;
+        error_page 404 /index.html;
+    }
+
+    location = /index.html {
+        expires -1;
+    }
+
+    location ^~ /assets/ {
+        expires 1y;
+    }
+
+    location ~* \.(?:avif|webp|png|jpe?g|svg|ico)$ {
+        expires 30d;
+    }
+
+    location ~* \.woff2?$ {
+        expires 1y;
+    }
+
+    gzip on;
+    gzip_vary on;
+    gzip_comp_level 5;
+    gzip_types text/plain text/css application/javascript application/json application/manifest+json application/xml image/svg+xml;
+    gzip_min_length 1024;
+}

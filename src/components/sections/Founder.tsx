@@ -11,15 +11,19 @@ function FounderVisual() {
 
   if (founder.homePhoto) {
     return (
-      <ResponsiveImage
-        src={founder.homePhoto}
-        alt={t(`Fotografia de ${founder.name}`)}
-        sizes="(min-width: 1280px) 410px, (min-width: 1024px) 32vw, (min-width: 640px) 448px, calc(100vw - 40px)"
-        maxWidth={800}
-        loading="lazy"
-        pictureClassName="block overflow-hidden rounded-[2rem]"
-        className="aspect-square w-full object-cover object-top"
-      />
+      <div className="overflow-hidden rounded-[2rem]">
+        <div data-gsap-parallax className="will-change-transform">
+          <ResponsiveImage
+            src={founder.homePhoto}
+            alt={t(`Fotografia de ${founder.name}`)}
+            sizes="(min-width: 1280px) 410px, (min-width: 1024px) 32vw, (min-width: 640px) 448px, calc(100vw - 40px)"
+            maxWidth={800}
+            loading="lazy"
+            pictureClassName="block"
+            className="aspect-square w-full object-cover object-top"
+          />
+        </div>
+      </div>
     );
   }
 

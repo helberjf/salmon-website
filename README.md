@@ -11,6 +11,9 @@ npm install      # instalar dependências
 npm run dev      # ambiente de desenvolvimento (http://localhost:5173)
 npm run build    # valida assets, faz typecheck e gera o build localizado em dist/
 npm run preview  # servir localmente o build de produção
+npm run typecheck
+npm run test:e2e
+npm run test:a11y
 ```
 
 ## Estrutura de páginas
@@ -23,7 +26,7 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 |---|---|
 | `/` | Topo, quem somos, 2 produtos em destaque, quem atendemos, processo, fundadora, CTA e contato |
 | `/a-norwell` | História, missão, valores e certificações da Norwell, por que o salmão norueguês e galeria |
-| `/norwell` | Alias compatível que abre a mesma página Norwell |
+| `/norwell` | Alias histórico; no Nginx fornecido recebe `308` para `/a-norwell` |
 | `/produtos` | Portfólio completo, diferenciais e relação de confiança |
 | `/sobre` | Trajetória de Mai Tonheim |
 
@@ -48,8 +51,9 @@ Todo o conteúdo editável está centralizado em `src/data`:
 | `src/data/navigation.ts` | Itens do menu |
 | `src/data/norwell.ts` | Dados públicos da Norwell AS: missão, **valores**, certificações, escritórios e portfólio |
 
-> Textos novos precisam de tradução em `src/i18n/translations.ts` (en/es/no). A chave
-> de tradução é a própria frase em português.
+> Textos novos usam a própria frase em português como chave. Adicione a versão
+> correspondente em `src/i18n/catalogs/en.ts`, `es.ts` e `no.ts`; o arquivo
+> `src/i18n/translations.ts` mantém tipos, cache e carregadores.
 
 Campos vazios (`''`) são **ocultados automaticamente** no site. Os dados comerciais e o WhatsApp já estão preenchidos com as informações do catálogo institucional.
 
@@ -73,15 +77,48 @@ O site oferece português, inglês, espanhol e norueguês. A URL sem prefixo usa
 
 - `/pt`, `/en`, `/es` e `/no`
 - `/pt/a-norwell`, `/en/a-norwell`, `/es/a-norwell` e `/no/a-norwell`
-- `/pt/norwell`, `/en/norwell`, `/es/norwell` e `/no/norwell` funcionam como aliases compatíveis
+- `/pt/norwell`, `/en/norwell`, `/es/norwell` e `/no/norwell` recebem redirecionamento permanente para a variante canônica quando o Nginx fornecido é usado
 - `/pt/produtos`, `/en/produtos`, `/es/produtos` e `/no/produtos`
 - `/pt/sobre`, `/en/sobre`, `/es/sobre` e `/no/sobre` (mesma estratégia para as páginas legais)
 
 Trocar o idioma mantém a página atual e atualiza a URL. A opção **Sistema** remove o prefixo e volta à detecção automática. As URLs antigas sem prefixo continuam funcionando como gateways compatíveis.
 
+Os catálogos EN, ES e NO são chunks dinâmicos: o navegador carrega somente o
+idioma ativo. Português usa diretamente as frases-fonte e não baixa catálogo.
+
 Metadados de título e descrição, canonical, `hreflang`, Open Graph, Twitter Cards e JSON-LD são atualizados conforme o idioma e a página. O `sitemap.xml` lista todas as variantes localizadas; a raiz sem prefixo é indicada como `x-default`.
 
 Durante o build, o script `generate-route-html.mjs` cria HTML estático para as 24 rotas localizadas, os seis gateways `x-default` e os cinco aliases compatíveis da Norwell. Assim, crawlers e previews de redes sociais recebem os metadados corretos mesmo sem executar JavaScript. `verify-build.mjs` valida esses arquivos automaticamente.
+
+Nos exemplos Nginx, os aliases `/norwell` e `/{pt,en,es,no}/norwell` retornam
+`308 Permanent Redirect`, preservando idioma e query string. Os HTMLs de
+compatibilidade continuam no build para hospedagens estáticas que não oferecem
+redirecionamentos no servidor.
+
+## Integração contínua
+
+O workflow `.github/workflows/ci.yml` roda em pushes para `main`, pull requests e
+execuções manuais. Ele usa `npm ci`, faz typecheck, gera o build e os metadados
+localizados, executa novamente o verificador do build e roda os testes E2E e de
+acessibilidade em Chromium. O `dist/` e os relatórios do Playwright ficam
+disponíveis por sete dias, inclusive quando um teste falha.
+
+Em paralelo, um segundo job constrói a imagem Docker pelos digests fixados,
+confirma UID 101, porta 8080, redirecionamentos 308 e os cabeçalhos de segurança
+do servidor interno.
+
+Para a primeira execução local dos testes de navegador, instale o Chromium uma vez:
+
+```bash
+npx playwright install chromium
+```
+
+A suíte cobre desktop e 375×812, os quatro idiomas, navegação, 404, canonical,
+`hreflang`, JSON-LD, imagens, validação do formulário e WCAG A/AA automatizada
+com Axe.
+
+As actions são referenciadas por commit imutável. O Dependabot acompanha npm,
+Docker e GitHub Actions mensalmente.
 
 ## Dados pendentes (a preencher pela empresa)
 
@@ -93,6 +130,20 @@ Durante o build, o script `generate-route-html.mjs` cria HTML estático para as 
 ## Imagens do catálogo
 
 As fotografias em `public/images/catalog` foram extraídas do arquivo institucional disponibilizado pela empresa no Google Drive e convertidas para WebP para reduzir o peso de carregamento sem perder qualidade visual.
+
+## Imagens sociais
+
+Cada página principal possui um cartão Open Graph/Twitter específico em
+`public/images/social`, sempre com 1200×630 px. O build valida dimensões, formato,
+peso e correspondência entre rota e imagem. Para regenerá-los a partir das fotos
+aprovadas e do fundo editorial, use:
+
+```bash
+python scripts/generate-social-cards.py
+```
+
+O fundo-fonte sem texto fica em `scripts/assets`; toda tipografia é aplicada de
+forma determinística pelo script para preservar exatamente o nome Bridge Point.
 
 ## Material da Norwell AS
 
@@ -146,6 +197,14 @@ python scripts/generate-responsive-images.py
 
 O componente `ResponsiveImage` centraliza `srcset`, `sizes`, dimensões, lazy loading e evita baixar imagens ocultas no breakpoint atual.
 
+## Movimento e performance
+
+Framer Motion cuida das entradas de conteúdo e o GSAP/ScrollTrigger acrescenta
+parallax editorial e progresso de rolagem. GSAP é importado sob demanda depois do
+primeiro paint, fica fora do bundle principal e é desativado quando o visitante
+prefere movimento reduzido ou ativa economia de dados. As animações ambientais em
+CSS seguem a mesma preferência de acessibilidade.
+
 ## Tipografia
 
 Playfair Display e Plus Jakarta Sans são hospedadas localmente em `public/fonts`, sem dependência de terceiros durante a navegação. As licenças OFL acompanham os arquivos em `public/fonts/licenses`.
@@ -180,14 +239,38 @@ sudo apt install -y certbot python3-certbot-nginx
 sudo certbot --nginx -d seudominio.com.br -d www.seudominio.com.br
 ```
 
+Depois da emissão, use [`deploy/nginx.tls.conf.example`](deploy/nginx.tls.conf.example)
+como referência para o servidor final em `443`. Confirme os caminhos do
+certificado e valide com `sudo nginx -t` antes de recarregar.
+
 ### Opção 2 — Docker
 
 ```bash
 docker build -t salmon-website .
-docker run -d -p 80:80 --restart unless-stopped salmon-website
+docker run -d -p 8080:8080 --restart unless-stopped salmon-website
 ```
 
-A imagem Docker inclui healthcheck. As configurações Nginx fornecidas aplicam revalidação do HTML, cache para assets e fotografias, compressão e cabeçalhos básicos de segurança.
+A imagem Docker inclui healthcheck, usa imagens fixadas por versão e digest e
+executa o Nginx sem privilégios, como UID 101, na porta 8080. As configurações
+fornecidas aplicam revalidação do HTML, cache para assets e fotografias,
+compressão, CSP restritiva e outros cabeçalhos de segurança.
+
+### Onde o TLS termina
+
+Há duas topologias suportadas:
+
+1. **VPS sem proxy externo:** o próprio Nginx público termina TLS em `443`, serve
+   `dist/` e aplica HSTS, conforme `deploy/nginx.tls.conf.example`.
+2. **Docker atrás de CDN, balanceador ou reverse proxy:** o componente público
+   termina TLS e encaminha HTTP somente pela rede privada à porta `8080` do
+   container. Nesse caso, configure HSTS no CDN/proxy — não no container.
+
+HSTS só pode ser habilitado depois que HTTPS estiver válido e permanente. O
+exemplo usa `max-age=31536000; includeSubDomains`; remova `includeSubDomains` se
+algum subdomínio ainda não tiver HTTPS. A diretiva `preload` foi deliberadamente
+omitida, pois exige cadastro e compromisso operacional adicionais. O serviço
+HTTP interno não envia HSTS, já que navegadores ignoram esse cabeçalho quando ele
+chega por uma conexão não segura.
 
 ### Após definir o domínio
 

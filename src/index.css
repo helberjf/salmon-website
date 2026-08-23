@@ -150,6 +150,18 @@ body {
     animation: grid-drift 22s linear infinite;
   }
 
+  .ocean-glint {
+    background: linear-gradient(
+      108deg,
+      transparent 28%,
+      rgb(193 228 242 / 0.09) 47%,
+      rgb(255 255 255 / 0.15) 50%,
+      transparent 72%
+    );
+    transform: translateX(-110%);
+    animation: ocean-glint 9s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  }
+
   .whatsapp-pulse {
     bottom: max(1.25rem, env(safe-area-inset-bottom));
   }
@@ -178,6 +190,17 @@ body {
 @keyframes grid-drift {
   to {
     background-position: 54px 54px;
+  }
+}
+
+@keyframes ocean-glint {
+  0%,
+  48% {
+    transform: translateX(-110%);
+  }
+  76%,
+  100% {
+    transform: translateX(110%);
   }
 }
 
