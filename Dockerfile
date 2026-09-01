@@ -11,7 +11,7 @@ COPY scripts ./scripts
 RUN npm run build
 
 # A imagem oficial nginx-unprivileged executa o processo como UID 101 e usa 8080.
-FROM nginxinc/nginx-unprivileged:1.30.4-alpine3.24@sha256:44e36330f74d4f3a1d4e222acca9e23b401fb87811a7597024502bb759c4dd49 AS runtime
+FROM nginxinc/nginx-unprivileged:1.31.4-alpine3.24@sha256:d9083fe47768377ef55dedafd67d4da7c2f2bc2bece7554954f29359deb0dce9 AS runtime
 COPY --from=build /app/dist /usr/share/nginx/html
 COPY deploy/nginx.docker.conf /etc/nginx/conf.d/default.conf
 USER 101
