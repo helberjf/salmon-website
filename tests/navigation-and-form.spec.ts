@@ -18,12 +18,23 @@ test.describe('navigation and contact form', () => {
 
     const primaryNavigation = page.getByRole('navigation', { name: 'Navegação principal', exact: true });
     const links = primaryNavigation.getByRole('link');
-    await expect(links).toHaveText(['Norwell', 'Produtos', 'Sobre', 'Contato', 'Solicitar cotação']);
+    await expect(links).toHaveText(['Início', 'Norwell', 'Produtos', 'Sobre', 'Contato', 'Solicitar cotação']);
 
     const hrefs = await links.evaluateAll((elements) =>
       elements.map((element) => element.getAttribute('href')),
     );
-    expect(hrefs).toEqual(['/pt/a-norwell', '/pt/produtos', '/pt/sobre', '/pt#contato', '/pt#contato']);
+    expect(hrefs).toEqual([
+      '/pt#inicio',
+      '/pt/a-norwell',
+      '/pt/produtos',
+      '/pt/sobre',
+      '/pt#contato',
+      '/pt#contato',
+    ]);
+    // "Início" fica destacado só no topo da home, não no meio da página.
+    await expect(primaryNavigation.getByRole('link', { name: 'Início' })).toHaveAttribute('aria-current', 'location');
+    await page.locator('#produtos').scrollIntoViewIfNeeded();
+    await expect(primaryNavigation.getByRole('link', { name: 'Início' })).not.toHaveAttribute('aria-current', 'location');
     await expect(page.getByRole('link', { name: 'Bridge Point — voltar ao início' })).toBeVisible();
   });
 
@@ -34,6 +45,28 @@ test.describe('navigation and contact form', () => {
 
     await expect(page).toHaveURL(/\/pt\/sobre#mai$/);
     await expect(page.getByRole('heading', { name: 'Mai Sissel Tonheim', level: 2 })).toBeInViewport();
+  });
+
+  test('Norwell page links its logo and a dedicated button to the official website', async ({ page }) => {
+    await openApp(page, '/pt/a-norwell');
+
+    const officialButton = page.getByRole('link', { name: /^Visitar o site oficial da Norwell/ }).first();
+    await expect(officialButton).toHaveAttribute('href', 'https://www.norwell.no');
+    await expect(officialButton).toHaveAttribute('target', '_blank');
+    await expect(officialButton).toHaveAttribute('rel', /noopener/);
+
+    const logoLink = page.getByRole('link', { name: /norwell\.no — site oficial da Norwell AS/ });
+    await expect(logoLink).toHaveAttribute('href', 'https://www.norwell.no');
+    await expect(logoLink.getByRole('img', { name: 'Norwell AS' })).toBeVisible();
+  });
+
+  test('legal pages are final: no template notice and the legal entity is identified', async ({ page }) => {
+    for (const path of ['/pt/privacidade', '/pt/termos']) {
+      await openApp(page, path);
+      await expect(page.getByText('modelo institucional básico')).toHaveCount(0);
+      await expect(page.locator('main')).toContainText('Bridgepoint Consultancy Ltda,');
+      await expect(page.locator('main')).toContainText('Última atualização: 26 de setembro de 2026.');
+    }
   });
 
   test('empty contact form exposes translated field errors without external navigation', async ({

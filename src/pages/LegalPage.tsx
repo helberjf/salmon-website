@@ -5,6 +5,9 @@ import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
 import type { ReactNode } from 'react';
 
+/** Data da versão vigente de Privacidade e Termos — atualizar a cada revisão. */
+const legalUpdatedAt = '26 de setembro de 2026';
+
 interface LegalPageProps {
   title: string;
   children: ReactNode;
@@ -36,11 +39,11 @@ export function LegalPage({ title, children }: LegalPageProps) {
       </header>
       <main id="main-content" tabIndex={-1} className="mx-auto max-w-3xl px-5 py-14 lg:px-0">
         <h1 className="font-serif text-3xl font-semibold text-navy md:text-4xl">{title}</h1>
-        <div className="mt-8 space-y-6 leading-relaxed text-muted [&_h2]:mt-10 [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-navy [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-6">
+        <div className="mt-8 space-y-6 leading-relaxed text-muted [&_a]:font-medium [&_a]:text-ocean [&_a]:underline [&_h2]:mt-10 [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-navy [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-6">
           {children}
         </div>
-        <p className="mt-12 rounded-md bg-mist px-5 py-4 text-sm text-slate-blue">
-          {t('Este documento é um modelo institucional básico e deve ser revisado e complementado pela empresa, preferencialmente com apoio jurídico, antes da publicação definitiva.')}
+        <p className="mt-12 border-t border-border pt-6 text-sm text-slate-blue">
+          {t('Última atualização: {date}.', { date: t(legalUpdatedAt) })}
         </p>
       </main>
     </div>

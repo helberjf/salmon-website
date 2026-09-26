@@ -4,7 +4,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { audiences } from '@/data/audiences';
 import { useI18n } from '@/i18n/I18nProvider';
 
-const icons = [UtensilsCrossed, Hotel, Store, Truck, Fish, Building2];
+const icons = [Truck, Store, Fish, Building2, Hotel, UtensilsCrossed];
 
 export function Audiences() {
   const { t } = useI18n();
