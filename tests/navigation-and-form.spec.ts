@@ -55,7 +55,7 @@ test.describe('navigation and contact form', () => {
     await expect(officialButton).toHaveAttribute('target', '_blank');
     await expect(officialButton).toHaveAttribute('rel', /noopener/);
 
-    const logoLink = page.getByRole('link', { name: /norwell\.no — site oficial da Norwell AS/ });
+    const logoLink = page.getByRole('link', { name: /norwell\.no \(abre em nova aba\)/ });
     await expect(logoLink).toHaveAttribute('href', 'https://www.norwell.no');
     await expect(logoLink.getByRole('img', { name: 'Norwell AS' })).toBeVisible();
   });

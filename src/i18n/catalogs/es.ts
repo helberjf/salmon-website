@@ -415,7 +415,6 @@ const spanishCatalog = {
   "Como atendemos a sua empresa": "Cómo atendemos a su empresa",
   "Visitar o site oficial da Norwell": "Visitar el sitio oficial de Norwell",
   "Visitar o site oficial da Norwell (abre em nova aba)": "Visitar el sitio oficial de Norwell (se abre en una nueva pestaña)",
-  "norwell.no — site oficial da Norwell AS (abre em nova aba)": "norwell.no — sitio oficial de Norwell AS (se abre en una nueva pestaña)",
   "Última atualização: {date}.": "Última actualización: {date}.",
   "26 de setembro de 2026": "26 de septiembre de 2026",
   "Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ (\"Bridge Point\"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).": "Esta Política explica cómo {company}, inscrita en el CNPJ {cnpj}, con sede en Río de Janeiro/RJ (\"Bridge Point\"), trata los datos personales de quienes visitan este sitio web o se ponen en contacto con nosotros, conforme a la Ley General de Protección de Datos Personales de Brasil (Ley nº 13.709/2018 — LGPD).",
@@ -479,6 +478,8 @@ const spanishCatalog = {
   "Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro da Comarca da Capital do Estado do Rio de Janeiro para resolver eventuais controvérsias, salvo disposição legal em contrário.": "Estos Términos se rigen por las leyes brasileñas. Se elige el foro de la Comarca de la Capital del Estado de Río de Janeiro para resolver eventuales controversias, salvo disposición legal en contrario.",
   "10. Contato": "10. Contacto",
   "Dúvidas sobre estes Termos podem ser enviadas para {email}.": "Las dudas sobre estos Términos pueden enviarse a {email}.",
+  // Bridge Point + Norwell: nova navegação, /sobre e atalhos da home
+  "(abre em nova aba)": "(se abre en una nueva pestaña)",
 } as const satisfies Readonly<Record<TranslationKey, string>>;
 
 export default spanishCatalog;

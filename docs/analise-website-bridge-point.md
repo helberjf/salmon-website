@@ -66,7 +66,7 @@ O site está pronto para ir ao ar como vitrine B2B. Para campanha, ainda falta *
 | **Responsividade** | 9,5 | **9,5** | 0 problemas em 48 combinações. O menu de 5 itens cabe a partir de 1280px (termina em 1248px). |
 | **Acessibilidade** | 9,0 | **9,0** | axe WCAG 2.2 AA sem violações. Os links externos avisam "abre em nova aba". |
 | **SEO técnico** | 6,5 | **6,5** | Estrutura completa, mas ainda com o domínio provisório (C2). |
-| **Performance** | 8,0 | **8,0** | Imagens AVIF/WebP, fontes locais e chunks por rota. Os catálogos de tradução ficaram menores: 112 chaves sem uso removidas. |
+| **Performance** | 8,0 | **9,5** | Lighthouse no deploy: desktop 100 em todas as páginas; mobile 97–99, com LCP ≤ 2,5 s e CLS 0 (seção 8). |
 | **Jurídico / LGPD** | 5,5 | **8,0** | Controladora e encarregada identificadas, bases legais, retenção, transferência internacional, direitos e foro. Falta a leitura de um advogado e a autorização escrita da Norwell (A4). |
 | **Média ponderada** | 6,7 | **7,3** | Pesos: estratégia 20%, conversão 15%, confiança 15%, conteúdo 10%, visual 10%, navegação 10%, SEO 8%, responsividade 4%, acessibilidade 4%, performance 2%, jurídico 2%. |
 
@@ -102,14 +102,14 @@ O site está pronto para ir ao ar como vitrine B2B. Para campanha, ainda falta *
   - Validar também: "Non-GMO", "+100 mercados", calibres, trims e certificações vigentes.
 
 ### Médios
-- **M1. CNAE × atividade.** No registro público, o CNPJ aparece com CNAE de *consultoria em gestão empresarial*. Se a Bridge Point vai faturar comissões de representação comercial da Norwell, vale confirmar com o contador se o CNAE cobre essa atividade (ex.: representantes comerciais de alimentos).
+- ~~**M1. CNAE × atividade.**~~ Confirmado pela empresa: a atividade registrada cobre a representação comercial.
 - **M2. Idiomas.** O NO e o EN não foram revisados por falantes nativos. O ES não tem público definido.
 - **M3. Logo comemorativo da Norwell.** O logo branco usado é a versão de aniversário e vai parecer datado em 2027.
 - **M4. Redes sociais.** O Instagram está vazio e o LinkedIn aponta para o perfil pessoal da Mai.
 
 ### Baixos
 - **B2. FAQ vazio.** Cinco perguntas (MOQ, aéreo × marítimo, prazos, documentação de importação, private label) reduzem perguntas repetidas no WhatsApp.
-- **B3. Core Web Vitals.** Medir com o PageSpeed Insights após o deploy (meta: LCP < 2,5 s no 4G).
+- ~~**B3. Core Web Vitals.**~~ Medidos. Ver a seção 8.
 
 ---
 
@@ -154,7 +154,7 @@ Com o público definido, o topo da home pode ser mais concreto e comercial. Hoje
 - [ ] Revisão nativa do NO e do EN
 - [ ] Analytics com eventos de conversão, com a Política atualizada (A2)
 - [ ] Teste real do formulário → WhatsApp no celular e no desktop
-- [ ] PageSpeed Insights no domínio final (B3)
+- [x] Core Web Vitals medidos no deploy da Vercel (B3). Repetir no domínio final.
 - [x] `npm run test:e2e`, `npm run test:a11y` e `node scripts/audit-responsive.mjs` passando
 
 ---
@@ -164,9 +164,32 @@ Com o público definido, o topo da home pode ser mais concreto e comercial. Hoje
 - **Automatizados:**
   - 35 testes Playwright: navegação e menu com "Início", "Sobre a Mai", botão oficial da Norwell, páginas legais finais, formulário, i18n/SEO, movimento e acessibilidade axe WCAG 2.2 AA;
   - a auditoria `scripts/audit-responsive.mjs`, com 0 problemas em 48 combinações.
+- **Performance:** Lighthouse 13.5 (o mesmo motor do PageSpeed Insights) contra o deploy da Vercel (`salmon-website-flame.vercel.app`), em mobile com 4G simulado e em desktop. A API pública do PageSpeed estava sem cota no momento da medição.
 - **Não medido:**
-  - Core Web Vitals em produção;
   - comportamento de usuários (não há analytics);
   - validação jurídica profissional;
   - revisão nativa das traduções.
-- **As notas** avaliam o site como produto para a empresa (mensagem, conversão, confiança), e não só a qualidade técnica. A média só dos critérios técnicos (navegação, responsividade, acessibilidade, SEO e performance) é ≈ 8,4.
+- **As notas** avaliam o site como produto para a empresa (mensagem, conversão, confiança), e não só a qualidade técnica. A média só dos critérios técnicos (navegação, responsividade, acessibilidade, SEO e performance) é ≈ 8,7.
+
+---
+
+## 8. Core Web Vitals (Lighthouse, 26/09/2026)
+
+Deploy medido: `https://salmon-website-flame.vercel.app`. Mobile = celular com 4G simulado, que é o mesmo perfil do PageSpeed Insights.
+
+| Página | Perf. mobile | LCP mobile | CLS | TBT | Perf. desktop | A11y / Boas práticas / SEO |
+|---|:-:|:-:|:-:|:-:|:-:|:-:|
+| Home `/pt` | 97 | 2,48 s | 0 | 36 ms | 100 | 100 / 100 / 100 |
+| Norwell `/pt/a-norwell` | 98 | 2,13 s | 0 | 0 ms | 100 | 100* / 100 / 100 |
+| Produtos `/pt/produtos` | 98 | 2,15 s | 0 | 42 ms | 100 | 100 / 100 / 100 |
+| Sobre `/pt/sobre` | 99 | 1,98 s | 0 | 0 ms | 100 | 100 / 100 / 100 |
+
+**Meta atingida:** LCP < 2,5 s no mobile em todas as páginas, sem deslocamento de layout (CLS 0).
+
+\* Correções aplicadas depois da medição:
+- **Home, LCP de 2,48 s, no limite da meta:** a foto do topo só era descoberta depois do JavaScript. Agora o HTML da home faz o *preload* dessa imagem (AVIF, versão para celular e para desktop), para que ela baixe em paralelo ao JavaScript.
+- **Norwell, WCAG 2.5.3:** o cartão com o logo tinha um nome acessível diferente do texto visível. Agora o aviso "abre em nova aba" é texto para leitor de tela, e o nome inclui o que aparece na tela.
+
+**Oportunidades menores (não bloqueiam):**
+- ~30 KB de JavaScript não usado na primeira carga (framer-motion);
+- miniaturas dos cartões servidas em 800px onde 640px bastariam (~40–130 KB por página).

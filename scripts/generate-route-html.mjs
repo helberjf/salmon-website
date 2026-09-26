@@ -247,8 +247,22 @@ function renderRoute(language, page, localized = true) {
     'structured data',
   );
 
+  if (contentPath === '') {
+    html = replaceRequired(html, /<\/head>/i, `    ${heroImagePreloads}\n  </head>`, 'hero image preload');
+  }
+
   return { html, routePath };
 }
+
+/**
+ * A foto de fundo do topo da home é o LCP, mas só aparece no DOM depois do
+ * React. O preload no HTML inicial deixa o navegador baixá-la em paralelo ao
+ * JavaScript. Os srcset espelham exatamente as <source> AVIF de Hero.tsx.
+ */
+const heroImagePreloads = [
+  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 639px)" imagesrcset="/images/responsive/norwell-hero-mobile-480.avif 480w, /images/responsive/norwell-hero-mobile-694.avif 694w" imagesizes="100vw" />',
+  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 640px)" imagesrcset="/images/responsive/norwell-hero-480.avif 480w, /images/responsive/norwell-hero-800.avif 800w, /images/responsive/norwell-hero-1200.avif 1200w, /images/responsive/norwell-hero-1600.avif 1600w" imagesizes="(min-width: 1600px) 1600px, 100vw" />',
+].join('\n    ');
 
 function writeRoute(routePath, html) {
   if (routePath === '/') {
