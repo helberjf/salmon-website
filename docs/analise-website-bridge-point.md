@@ -187,8 +187,8 @@ Deploy medido: `https://salmon-website-flame.vercel.app`. Mobile = celular com 4
 **Meta atingida:** LCP < 2,5 s no mobile em todas as páginas, sem deslocamento de layout (CLS 0).
 
 \* Correções aplicadas depois da medição:
-- **Home, LCP de 2,48 s, no limite da meta:** a foto do topo só era descoberta depois do JavaScript. Agora o HTML da home faz o *preload* dessa imagem (AVIF, versão para celular e para desktop), para que ela baixe em paralelo ao JavaScript.
-- **Norwell, WCAG 2.5.3:** o cartão com o logo tinha um nome acessível diferente do texto visível. Agora o aviso "abre em nova aba" é texto para leitor de tela, e o nome inclui o que aparece na tela.
+- **Home, LCP de 2,48 s, no limite da meta:** a foto do topo só era descoberta depois do JavaScript. Agora o HTML da home faz o *preload* dessa imagem (AVIF, versão para celular e para desktop), para que ela baixe em paralelo ao JavaScript. **Medido de novo após o deploy: LCP entre 2,05 e 2,29 s (média de 3 execuções: 2,18 s).**
+- **Norwell, WCAG 2.5.3:** o cartão com o logo tinha um nome acessível diferente do texto visível. Agora o aviso "abre em nova aba" é texto para leitor de tela, e o nome inclui o que aparece na tela. **Medido de novo: acessibilidade 100.**
 
 **Oportunidades menores (não bloqueiam):**
 - ~30 KB de JavaScript não usado na primeira carga (framer-motion);
