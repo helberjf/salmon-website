@@ -25,7 +25,7 @@ export function Process() {
               title={t('Comercial simples. Operação rigorosa.')}
               description={t('Uma interlocução única no Brasil, conectada diretamente à equipe exportadora e à cadeia de produção norueguesa.')}
             />
-            <div className="mt-10 grid grid-cols-2 gap-3">
+            <div className="mt-10 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2">
               {stages.map((stage) => (
                 <figure
                   key={stage.label}
@@ -35,7 +35,7 @@ export function Process() {
                   <ResponsiveImage
                     src={stage.image}
                     alt=""
-                    sizes="(min-width: 1280px) 250px, (min-width: 1024px) 20vw, calc((100vw - 52px) / 2)"
+                    sizes="(min-width: 1280px) 250px, (min-width: 1024px) 20vw, (min-width: 360px) calc((100vw - 52px) / 2), calc(100vw - 40px)"
                     maxWidth={800}
                     className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

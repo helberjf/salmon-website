@@ -78,9 +78,24 @@ function inspectPage({ isPhone, scope = 'body' }) {
   const leaves = [...document.querySelectorAll(`${scope} *`)].filter(
     (el) => !['SCRIPT', 'STYLE', 'SOURCE', 'svg', 'path', 'PICTURE'].includes(el.tagName) && isVisible(el),
   );
+  const isContent = (el) =>
+    el.tagName === 'IMG' ||
+    el.matches('a[href], button, input, select, textarea') ||
+    [...el.childNodes].some((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
   for (const el of leaves) {
     const c = clippedRect(el);
     if (c.width <= 0) continue;
+    // Texto, imagem ou controle cortado na borda da tela: um ancestral com
+    // overflow escondido evita o scroll, mas o conteúdo some para o usuário.
+    const raw = el.getBoundingClientRect();
+    if (isContent(el) && (raw.right > vw + 1 || raw.left < -1) && getComputedStyle(el).position !== 'fixed') {
+      issues.push({
+        type: 'overflow',
+        detail: `${describe(el)} cortado na borda: vai de ${Math.round(raw.left)} a ${Math.round(raw.right)}px (tela ${vw}px)`,
+        y: Math.round(pageY(raw)),
+      });
+      continue;
+    }
     if (c.right > vw + 1 || c.left < -1) {
       // Reporta só o elemento mais externo que estoura.
       const parent = el.parentElement && clippedRect(el.parentElement);

@@ -38,6 +38,22 @@ test.describe('navigation and contact form', () => {
     await expect(page.getByRole('link', { name: 'Bridge Point — voltar ao início' })).toBeVisible();
   });
 
+  test('home hero offers quote, "Quem somos" and products, and contact has a WhatsApp shortcut', async ({ page }) => {
+    await openApp(page, '/pt');
+
+    const hero = page.locator('#inicio');
+    await expect(hero.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
+    await expect(hero.getByRole('link', { name: 'Quem somos' })).toHaveAttribute('href', '/pt/sobre');
+    await expect(hero.getByRole('link', { name: 'Ver produtos' })).toHaveAttribute('href', '/pt/produtos');
+
+    await page.locator('#contato').scrollIntoViewIfNeeded();
+    const contact = page.locator('section#contato');
+    const whatsApp = contact.getByRole('link', { name: 'Conversar pelo WhatsApp' });
+    await expect(whatsApp).toHaveAttribute('href', /^https:\/\/wa\.me\/5521965690982\?text=/);
+    await expect(whatsApp).toHaveAttribute('target', '_blank');
+    await expect(contact.getByRole('link', { name: '+55 21 96569-0982' })).toHaveAttribute('href', 'tel:+5521965690982');
+  });
+
   test('"Sobre a Mai" jumps to the founder section on the About page', async ({ page }) => {
     await openApp(page, '/pt/sobre');
 
