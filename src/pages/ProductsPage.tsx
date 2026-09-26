@@ -1,12 +1,15 @@
 import { PageShell } from '@/components/layout/PageShell';
 import { PageHero } from '@/components/ui/PageHero';
 import { Products } from '@/components/sections/Products';
+import { Process } from '@/components/sections/Process';
+import { Audiences } from '@/components/sections/Audiences';
 import { Differentials } from '@/components/sections/Differentials';
 import { Trust } from '@/components/sections/Trust';
 import { CallToAction } from '@/components/sections/CallToAction';
 import { norwell } from '@/data/norwell';
 import { useI18n } from '@/i18n/I18nProvider';
 
+/** Portfólio, o caminho do salmão até o cliente e para quem ele é indicado. */
 export default function ProductsPage() {
   const { t } = useI18n();
 
@@ -20,7 +23,7 @@ export default function ProductsPage() {
         )}
         aside={
           <div className="rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-salmon-light">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light">
               {t('Linhas da exportadora')}
             </p>
             <ul className="mt-5 space-y-2.5 text-sm text-frost">
@@ -28,7 +31,7 @@ export default function ProductsPage() {
                 <li key={line} className="flex items-start gap-2.5">
                   <span
                     aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-salmon-light"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-light"
                   />
                   {t(line)}
                 </li>
@@ -38,6 +41,8 @@ export default function ProductsPage() {
         }
       />
       <Products />
+      <Process />
+      <Audiences />
       <Differentials />
       <Trust />
       <CallToAction />

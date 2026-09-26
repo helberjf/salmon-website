@@ -5,7 +5,7 @@ test.describe('progressive motion enhancement', () => {
   test.use({ reducedMotion: 'no-preference' });
 
   test('loads GSAP on demand and activates the editorial scroll choreography', async ({ page }) => {
-    await openApp(page, '/pt');
+    await openApp(page, '/pt', { reducedMotion: 'no-preference' });
 
     await expect
       .poll(() =>

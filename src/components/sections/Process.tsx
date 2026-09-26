@@ -39,7 +39,7 @@ export function Process() {
                     maxWidth={800}
                     className="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <figcaption className="absolute bottom-3 left-3 rounded-full bg-navy/85 px-3 py-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-white backdrop-blur">
+                  <figcaption className="absolute bottom-3 left-3 rounded-full bg-navy/85 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur">
                     {t(stage.label)}
                   </figcaption>
                 </figure>
@@ -51,7 +51,7 @@ export function Process() {
             <div aria-hidden="true" className="mb-7 hidden h-px overflow-hidden bg-ocean/15 sm:block">
               <span
                 data-gsap-progress
-                className="block h-full origin-left bg-gradient-to-r from-ocean via-seagrass to-salmon will-change-transform"
+                className="block h-full origin-left bg-gradient-to-r from-ocean via-seagrass to-gold will-change-transform"
               />
             </div>
             <ol className="grid gap-4 sm:grid-cols-2">

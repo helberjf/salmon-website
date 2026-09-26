@@ -12,8 +12,21 @@ export const images = {
     alt: 'Fiorde norueguês cercado por montanhas nevadas',
   },
   about: {
-    src: '/images/catalog/salmon-farm.webp',
+    src: '/images/catalog/salmon-farm-mountains.webp',
     alt: 'Tanque de criação de salmão em um fiorde norueguês, entre montanhas nevadas',
+  },
+  /** Fotografias do site-base da Bridge Point (Squarespace), usadas nos atalhos da home e em /sobre. */
+  fjordFillet: {
+    src: '/images/catalog/fjord-salmon-fillet.webp',
+    alt: 'Filé de salmão fresco diante de um fiorde norueguês com montanhas nevadas',
+  },
+  bridge: {
+    src: '/images/catalog/atlantic-road-bridge.webp',
+    alt: 'Ponte da Estrada do Atlântico ligando ilhas na costa da Noruega',
+  },
+  coast: {
+    src: '/images/catalog/norway-coast-sun.webp',
+    alt: 'Mar calmo da costa norueguesa sob o sol, com montanhas ao fundo',
   },
   norwellDish: {
     src: '/images/norwell-salmon-dish.webp',

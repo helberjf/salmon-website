@@ -1,16 +1,22 @@
 import type { CareerEntry } from '@/types';
 
 /**
- * DADOS DA FUNDADORA — baseados no perfil público do LinkedIn
+ * DADOS DA FUNDADORA — a apresentação (`bio`) é o texto da própria Mai no
+ * site-base da Bridge Point; a trajetória segue o perfil público do LinkedIn
  * (linkedin.com/in/mai-tonheim-iam). Manter descrições fiéis aos cargos reais.
  */
 export const founder = {
-  name: 'Mai Tonheim',
-  title: 'Representante da Norwell no Brasil',
-  homePhoto: '/images/people/mai-tonheim-portrait.jpg',
-  aboutHeroPhoto: {
-    src: '/images/people/mai-tonheim-diplomacy.jpg',
-    alt: 'Mai Tonheim, à direita, no estande da Noruega, ao lado de um representante norueguês e com material sobre salmão',
+  name: 'Mai Sissel Tonheim',
+  title: 'Fundadora da Bridge Point · Representante da Norwell no Brasil',
+  /** Recorte com fundo transparente (site-base da Bridge Point), exibido em /sobre#mai. */
+  photo: {
+    src: '/images/people/mai-tonheim-flags.webp',
+    alt: 'Mai Sissel Tonheim sentada à mesa, entre as bandeiras da Noruega e do Brasil',
+  },
+  /** Retrato recortado usado no convite final de /sobre. */
+  ctaPhoto: {
+    src: '/images/people/mai-tonheim-rio.webp',
+    alt: 'Mai Sissel Tonheim sorrindo, apoiada em uma mesa',
   },
   gallery: [
     {
@@ -39,20 +45,17 @@ export const founder = {
     },
   ],
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
-  headline: 'Conectando a excelência norueguesa às oportunidades do mercado brasileiro',
-  profileHeadline:
-    'Entrada no mercado, ESG e parcerias estratégicas entre a Noruega e o Brasil',
-  shortSummary:
-    'Mai Tonheim conecta a expertise em seafood norueguês às oportunidades do mercado brasileiro, combinando experiência em entrada no mercado, ESG e construção de parcerias estratégicas.',
+  profileHeadline: 'Experiência internacional. Conhecimento local. Relações construídas com confiança.',
+  /** Texto de apresentação escrito pela Mai para o site-base da Bridge Point. */
+  bio: [
+    'Norueguesa e radicada no Rio de Janeiro, Mai construiu uma trajetória de quase 20 anos na diplomacia norueguesa, com atuação no Ministério das Relações Exteriores da Noruega e experiência em diferentes países e contextos internacionais. Entre 2021 e 2025, atuou como vice-cônsul geral da Noruega no Rio de Janeiro.',
+    'Ao longo dessa trajetória, desenvolveu experiência em relações institucionais, comunicação estratégica, negociação e cooperação internacional. Foi dessa experiência que nasceu a Bridge Point.',
+    'Hoje, Mai aplica esse conhecimento ao desenvolvimento de negócios, apoiando empresas norueguesas que precisam compreender o mercado brasileiro, estabelecer as conexões certas e conduzir oportunidades com continuidade — estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
+  ],
   focusAreas: [
     'Entrada no mercado brasileiro',
     'ESG e parcerias estratégicas',
     'Seafood norueguês no Brasil',
-  ],
-  summary: [
-    'Mai Tonheim é norueguesa, radicada no Rio de Janeiro, e dedicou quase duas décadas ao Serviço Exterior da Noruega, no qual ingressou em 2007. Entre 2021 e 2025, foi Cônsul e Vice-Chefe de Missão do Consulado-Geral Real da Noruega no Rio de Janeiro, com atuação dedicada à promoção de negócios noruegueses e ao apoio a investimentos no Brasil.',
-    'Sua trajetória inclui postos diplomáticos na Itália e no Líbano, a Academia Diplomática do Ministério das Relações Exteriores da Noruega, em Oslo, e o Escritório das Nações Unidas sobre Drogas e Crime (UNODC), em Viena. Representou a Noruega na OCDE em grupos sobre conduta empresarial responsável.',
-    'Hoje, aplica essa experiência ao setor de produtos do mar. Como Representante no Brasil da Norwell AS, trabalha na introdução do salmão norueguês no mercado brasileiro — a ponte comercial que esta empresa materializa.',
   ],
   education: [
     {

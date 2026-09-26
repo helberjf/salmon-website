@@ -1,5 +1,4 @@
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { Link } from 'wouter';
+import { CheckCircle2 } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
@@ -8,32 +7,21 @@ import { images } from '@/data/images';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
-const highlights = [
-  {
-    value: '1996',
-    label: 'Ano de fundação da Norwell na Noruega',
-  },
-  {
-    value: '+100',
-    label: 'Mercados alcançados pelo salmão norueguês',
-  },
-  {
-    value: '2 modais',
-    label: 'Fornecimento por via aérea ou marítima',
-  },
-];
-
 const partnership = [
   'Produtores familiares cuidadosamente selecionados',
   'Especificações padrão ou desenvolvidas sob medida',
   'Produtos frescos, congelados e de alto valor agregado',
 ];
 
+/**
+ * O que a representação da Norwell significa para o cliente brasileiro.
+ * Abre a página /a-norwell; os números da exportadora ficam em NorwellStory.
+ */
 export function About() {
-  const { href: localizedHref, t } = useI18n();
+  const { t } = useI18n();
 
   return (
-    <section id="empresa" className="bg-white py-24 md:py-32">
+    <section id="parceria" className="bg-ice py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid items-center gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
           <Reveal direction="right">
@@ -51,7 +39,7 @@ export function About() {
                 className="absolute -right-3 -top-6 rounded-xl shadow-xl shadow-navy/20 sm:-right-6"
               />
               <div className="relative mx-4 -mt-8 max-w-sm rounded-2xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-8 sm:right-8 sm:mx-0 sm:mt-0 sm:max-w-xs">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-salmon-light">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-light">
                   {t('Parceiro na origem')}
                 </p>
                 <NorwellLogo variant="white" height={30} className="mt-3.5" />
@@ -89,27 +77,7 @@ export function About() {
                   </li>
                 ))}
               </ul>
-              <Link
-                href={localizedHref('/a-norwell')}
-                className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
-              >
-                {t('Conhecer a Norwell, seus valores e certificações')}
-                <ArrowRight
-                  size={16}
-                  aria-hidden="true"
-                  className="transition-transform duration-300 group-hover:translate-x-0.5"
-                />
-              </Link>
             </Reveal>
-
-            <ul className="mt-10 grid gap-5 border-t border-border pt-8 sm:grid-cols-3">
-              {highlights.map((item) => (
-                <li key={item.value}>
-                  <p className="font-serif text-2xl font-semibold text-navy">{t(item.value)}</p>
-                  <p className="mt-1.5 text-sm leading-snug text-muted">{t(item.label)}</p>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>

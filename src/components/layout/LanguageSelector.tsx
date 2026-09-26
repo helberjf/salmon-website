@@ -130,7 +130,7 @@ export function LanguageSelector({
                     }`}
                   >
                     {option.value === 'system' ? t(option.label) : option.label}
-                    {selected && <Check size={16} aria-hidden="true" className="shrink-0 text-salmon-light" />}
+                    {selected && <Check size={16} aria-hidden="true" className="shrink-0 text-gold-light" />}
                   </button>
                 </li>
               );

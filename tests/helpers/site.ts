@@ -13,7 +13,14 @@ export function localizedPath(locale: string, contentPath: string): string {
   return contentPath === '/' ? `/${locale}` : `/${locale}${contentPath}`;
 }
 
-export async function openApp(page: Page, path: string): Promise<void> {
+export async function openApp(
+  page: Page,
+  path: string,
+  { reducedMotion = 'reduce' }: { reducedMotion?: 'reduce' | 'no-preference' } = {},
+): Promise<void> {
+  // A opção `reducedMotion` do config não chega à página nesta versão do
+  // Playwright; sem ela o axe mede o contraste no meio das animações de entrada.
+  await page.emulateMedia({ reducedMotion });
   await page.goto(path, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main')).toBeVisible();
   await expect(page.locator('h1')).toHaveCount(1);

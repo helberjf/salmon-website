@@ -43,6 +43,7 @@ const responsiveDirectory = join(projectRoot, 'public', 'images', 'responsive');
 const responsiveFiles = readdirSync(responsiveDirectory).filter((name) => !name.startsWith('.'));
 const responsivePairs = new Map();
 const expectedVariants = {
+  'atlantic-road-bridge': [480, 800, 1200],
   'culinary-01': [480, 800, 1200],
   'culinary-02': [480, 800],
   'culinary-03': [480, 800],
@@ -55,7 +56,12 @@ const expectedVariants = {
   'norwell-hero-mobile': [480, 694],
   'norwell-salmon-dish': [480, 800],
   'mai-tonheim-consulate': [480, 800],
+  'fjord-salmon-fillet': [480, 800, 1200],
   'mai-tonheim-diplomacy': [480],
+  'mai-tonheim-flags': [480, 800, 1200],
+  'mai-tonheim-rio': [480, 800],
+  'norway-coast-sun': [480, 800, 1200, 1600],
+  'salmon-farm-mountains': [480, 800, 1200],
   'mai-tonheim-portrait': [480, 800],
   'mai-tonheim-salmon-preparation': [480, 800],
   'mai-tonheim-salmon-presentation': [480, 800, 1200],
@@ -107,13 +113,13 @@ for (const [key, formats] of responsivePairs) {
 
 for (const fontName of [
   'playfair-display-latin-variable.woff2',
-  'plus-jakarta-sans-latin-variable.woff2',
+  'montserrat-latin-variable.woff2',
 ]) {
   const font = read(`public/fonts/${fontName}`);
   assert(font.subarray(0, 4).toString('ascii') === 'wOF2', `Invalid WOFF2 font: ${fontName}`);
 }
 
-for (const licenseName of ['PlayfairDisplay-OFL.txt', 'PlusJakartaSans-OFL.txt']) {
+for (const licenseName of ['PlayfairDisplay-OFL.txt', 'Montserrat-OFL.txt']) {
   assert(read(`public/fonts/licenses/${licenseName}`).length > 1_000, `Missing font license: ${licenseName}`);
 }
 

@@ -476,7 +476,7 @@ export function ContactSection() {
                         id={consentId}
                         type="checkbox"
                         required
-                        className="mt-0.5 h-4 w-4 accent-ocean"
+                        className="h-6 w-6 shrink-0 accent-ocean sm:mt-0.5 sm:h-5 sm:w-5"
                         aria-invalid={!!errors.consent}
                         aria-required="true"
                         aria-labelledby={`${consentLabelId} ${consentPolicyId}`}

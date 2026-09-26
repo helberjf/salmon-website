@@ -154,9 +154,9 @@ function seoForCurrentPath(pathname: string): PageSeo {
 
   if (path === '/sobre') {
     return {
-      title: 'Sobre Mai Tonheim | Bridge Point',
+      title: 'Sobre | Bridge Point',
       description:
-        'Conheça Mai Tonheim, fundadora da Bridge Point, e sua trajetória conectando Noruega e Brasil por meio de comércio sustentável, entrada em mercados e parcerias estratégicas.',
+        'Conheça a Bridge Point, consultoria de negócios entre a Noruega e o Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
       path,
       schemaType: 'AboutPage',
       indexable: true,
@@ -436,7 +436,7 @@ export function I18nProvider({ children }: I18nProviderProps) {
         {
           '@type': 'Person',
           '@id': `${siteUrl}/#mai-tonheim`,
-          name: 'Mai Tonheim',
+          name: 'Mai Sissel Tonheim',
           jobTitle: t('Fundadora e representante comercial no Brasil'),
           sameAs: company.linkedin,
           worksFor: { '@id': `${siteUrl}/#organization` },

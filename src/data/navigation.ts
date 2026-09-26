@@ -5,10 +5,17 @@ export interface NavLink {
   label: string;
 }
 
+/**
+ * Cada item leva a um destino próprio: a origem (Norwell), o portfólio com o
+ * processo, quem somos (Bridge Point e Mai) e o contato. O CTA "Solicitar
+ * cotação" do cabeçalho também leva ao contato, mas com peso visual de botão.
+ */
 export const navLinks: NavLink[] = [
-  { href: '/#empresa', sectionId: 'empresa', label: 'Quem somos' },
-  { href: '/a-norwell', sectionId: '', label: 'A Norwell' },
+  { href: '/a-norwell', sectionId: '', label: 'Norwell' },
   { href: '/produtos', sectionId: '', label: 'Produtos' },
-  { href: '/#como-trabalhamos', sectionId: 'como-trabalhamos', label: 'Processo' },
   { href: '/sobre', sectionId: '', label: 'Sobre' },
+  { href: '/#contato', sectionId: 'contato', label: 'Contato' },
 ];
+
+/** Rótulo único de todos os botões que levam ao formulário de contato. */
+export const quoteCtaLabel = 'Solicitar cotação';

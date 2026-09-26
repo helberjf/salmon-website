@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 @font-face {
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/plus-jakarta-sans-latin-variable.woff2') format('woff2');
+  src: url('/fonts/montserrat-latin-variable.woff2') format('woff2');
 }
 
 @font-face {
@@ -18,41 +18,40 @@
 
 @theme {
   /**
-   * Paleta institucional da Norwell AS, exportadora norueguesa representada no
-   * Brasil. Os valores vêm do site oficial (norwell.no) e do logotipo:
-   *   #005357  primary (verde-petróleo)   #c1e4f2  blue
-   *   #0b6d72  teal do logotipo           #dd6c67  red
-   *   #52958a  teal médio do logotipo     #f7dfd5  peach
+   * Cores: paleta da Norwell AS (norwell.no) + dourado da bússola do logotipo
+   * Bridge Point (manual "Branding BP 05", Pantone 7502 C).
+   *   #005357  primária Norwell (verde-petróleo)   #c1e4f2  azul-claro Norwell
+   *   #0b6d72  teal do logotipo Norwell            #d3ac68  dourado Bridge Point
    * Os nomes de token foram mantidos para não quebrar as classes existentes.
    */
   --color-navy: #00383b;
   --color-navy-dark: #002225;
   --color-ocean: #005357;
   --color-ocean-light: #0b6d72;
-  --color-ice: #f2f7f7;
+  --color-ice: #f4f7f6;
   --color-mist: #dceaea;
   --color-slate-blue: #4a6a6b;
   --color-frost: #c1e4f2;
-  --color-salmon: #dd6c67;
-  /* Tom claro do coral: o #dd6c67 não alcança 4.5:1 em texto pequeno sobre o
-     verde escuro, então os rótulos em caixa-alta usam esta variação. */
-  --color-salmon-light: #f0a09a;
-  --color-peach: #f7dfd5;
   --color-seagrass: #52958a;
-  /* Vermelho e azul da bandeira norueguesa — usados só na faixa decorativa */
+  /* Dourado da bússola Bridge Point. Em texto pequeno sobre o verde escuro use
+     a variação clara, que mantém contraste acima de 4.5:1. */
+  --color-gold: #d3ac68;
+  --color-gold-light: #e6cc98;
+  --color-gold-dark: #7a5a1e;
+  /* Azul-marinho do logotipo Bridge Point */
+  --color-bp-navy: #13324d;
+  /* Vermelho usado só em mensagens de erro do formulário */
   --color-nordic-red: #ba0c2f;
-  --color-nordic-blue: #002868;
-  /* Fundo exato do selo "Seafood from Norway" */
   --color-norwell: #005357;
   --color-norwell-dark: #00383b;
 
   --color-background: var(--color-ice);
-  --color-foreground: var(--color-navy);
+  --color-foreground: #01131c;
   --color-muted: #4a6a6b;
   --color-border: #d3e3e2;
 
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 html {
@@ -127,15 +126,13 @@ body {
 }
 
 @layer utilities {
-  /* Faixa decorativa discreta inspirada na bandeira norueguesa */
+  /* Filete dourado da identidade Bridge Point, com um brilho que percorre a faixa */
   .nordic-stripe {
     background: linear-gradient(
       to right,
-      var(--color-nordic-red) 0 25%,
-      #ffffff 25% 40%,
-      var(--color-nordic-blue) 40% 60%,
-      #ffffff 60% 75%,
-      var(--color-nordic-red) 75% 100%
+      var(--color-gold) 0 35%,
+      var(--color-gold-light) 50%,
+      var(--color-gold) 65% 100%
     );
     background-size: 200% 100%;
     animation: nordic-drift 14s linear infinite;

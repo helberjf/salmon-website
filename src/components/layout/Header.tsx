@@ -2,10 +2,10 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useLocation } from 'wouter';
-import { navLinks } from '@/data/navigation';
+import { navLinks, quoteCtaLabel } from '@/data/navigation';
 import { useScrolled } from '@/hooks/useScrolled';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import { BrandMark } from '@/components/ui/BrandMark';
+import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
 import { stripLanguagePrefix } from '@/i18n/routing';
@@ -99,8 +99,12 @@ export function Header() {
     >
       <div aria-hidden="true" className="nordic-stripe h-[3px] w-full" />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        <a href={localizedHref('/#inicio')} aria-label={t('Bridge Point — voltar ao início')}>
-          <BrandMark inverse />
+        <a
+          href={localizedHref('/#inicio')}
+          aria-label={t('Bridge Point — voltar ao início')}
+          className="-my-1 block shrink-0 py-1"
+        >
+          <BridgePointLogo variant="white" eager height={32} />
         </a>
 
         <nav aria-label={t('Navegação principal')} className="hidden items-center gap-5 xl:flex">
@@ -117,7 +121,7 @@ export function Header() {
               {/* Sublinhado que cresce a partir do centro no hover e fica fixo no item ativo. */}
               <span
                 aria-hidden="true"
-                className={`absolute -bottom-1 left-0 h-0.5 w-full origin-center bg-salmon transition-transform duration-300 group-hover:scale-x-100 ${
+                className={`absolute -bottom-1 left-0 h-0.5 w-full origin-center bg-gold transition-transform duration-300 group-hover:scale-x-100 ${
                   isLinkActive(link.href, link.sectionId) ? 'scale-x-100' : 'scale-x-0'
                 }`}
               />
@@ -128,7 +132,7 @@ export function Header() {
             href={localizedHref('/#contato')}
             className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
           >
-            {t('Cotação B2B')}
+            {t(quoteCtaLabel)}
             <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </nav>
@@ -181,7 +185,7 @@ export function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="flex-1 rounded-full bg-white px-4 py-3.5 text-center text-sm font-bold text-navy"
               >
-                {t('Solicitar cotação B2B')}
+                {t(quoteCtaLabel)}
               </a>
             </div>
           </m.nav>
