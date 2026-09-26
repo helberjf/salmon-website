@@ -1,31 +1,42 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Observa as seções informadas e retorna o id da que está visível,
- * para destacar o item ativo na navegação.
+ * Retorna o id da seção que cruza a linha de leitura (35% da altura da tela),
+ * para destacar o item ativo na navegação. Quando nenhuma das seções está na
+ * linha — no meio da home, entre o topo e o contato — retorna ''.
+ *
+ * As seções são buscadas por id a cada verificação porque o #contato da home
+ * troca o placeholder pela seção real depois do carregamento sob demanda.
  */
 export function useScrollSpy(sectionIds: string[]): string {
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
+    if (sectionIds.length === 0) return undefined;
+    let animationFrame = 0;
 
-    if (sections.length === 0) return;
+    const update = () => {
+      animationFrame = 0;
+      const readingLine = window.innerHeight * 0.35;
+      const current =
+        sectionIds.find((id) => {
+          const rect = document.getElementById(id)?.getBoundingClientRect();
+          return rect ? rect.top <= readingLine && rect.bottom > readingLine : false;
+        }) ?? '';
+      setActiveId((previous) => (previous === current ? previous : current));
+    };
+    const schedule = () => {
+      if (animationFrame === 0) animationFrame = window.requestAnimationFrame(update);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: '-30% 0px -60% 0px', threshold: [0, 0.25, 0.5] },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    update();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (animationFrame !== 0) window.cancelAnimationFrame(animationFrame);
+    };
   }, [sectionIds]);
 
   return activeId;

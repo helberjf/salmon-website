@@ -2,13 +2,13 @@ import {
   ArrowDown,
   ArrowUpRight,
   BriefcaseBusiness,
-  Compass,
-  Globe2,
   GraduationCap,
   Handshake,
   Languages,
   Linkedin,
   MapPin,
+  PackageCheck,
+  Ship,
 } from 'lucide-react';
 import { PageShell } from '@/components/layout/PageShell';
 import { PageHero } from '@/components/ui/PageHero';
@@ -22,7 +22,7 @@ import { images } from '@/data/images';
 import { quoteCtaLabel } from '@/data/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
 
-const serviceIcons = [Compass, Handshake, Globe2];
+const serviceIcons = [PackageCheck, Ship, Handshake];
 
 /**
  * Quem somos: a Bridge Point e, em seguida, a fundadora. O botão "Sobre a Mai"
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24 lg:px-8">
           <SectionHeading
             eyebrow={t('Quem somos')}
-            title={t('Uma consultoria para fazer negócios entre a Noruega e o Brasil')}
+            title={t('A representante da Norwell no Brasil')}
           />
           <Reveal delay={0.1} className="space-y-5 text-lg leading-relaxed text-muted">
             {bridgePoint.intro.map((paragraph) => (
@@ -88,7 +88,7 @@ export default function AboutPage() {
 
         <div className="mx-auto mt-16 max-w-7xl px-5 lg:px-8">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            {t('Como a Bridge Point pode apoiar sua empresa')}
+            {t('Como atendemos a sua empresa')}
           </h3>
           <ul className="mt-8 grid gap-5 md:grid-cols-3">
             {bridgePoint.services.map((service, index) => {

@@ -6,7 +6,7 @@
  */
 export const company = {
   name: 'Bridge Point',
-  legalName: '',
+  legalName: 'Bridgepoint Consultancy Ltda',
   cnpj: '62.548.504/0001-06',
   foundationYear: '',
   description:

@@ -1,64 +1,65 @@
 /**
  * BRIDGE POINT — textos institucionais da página /sobre.
  *
- * Fonte: site-base da Bridge Point preparado pela Mai no Squarespace (páginas
- * "Home" e "Sobre"). Ao editar, manter a frase em português como chave e
- * atualizar os catálogos em src/i18n/catalogs.
+ * Público do site: empresas brasileiras que compram salmão norueguês para
+ * revender ou servir no país. Base: site-base preparado pela Mai no
+ * Squarespace, adaptado a esse público. Ao editar, manter a frase em português
+ * como chave e atualizar os catálogos em src/i18n/catalogs.
  */
 export const bridgePoint = {
   tagline: 'Conectando mercados. Criando oportunidades.',
   intro: [
-    'Entrar em um novo mercado envolve mais do que identificar uma oportunidade. É preciso compreender o contexto local, definir prioridades, encontrar os parceiros certos e acompanhar as relações para que uma estratégia possa avançar na prática.',
-    'A Bridge Point é uma consultoria de entrada no mercado e de desenvolvimento de negócios que apoia empresas norueguesas a estabelecer sua atuação no Brasil. Com base no Rio de Janeiro, combinamos experiência internacional, conhecimento do mercado brasileiro e acompanhamento próximo para orientar decisões e desenvolver oportunidades comerciais.',
+    'Comprar salmão de outro país envolve mais do que escolher um fornecedor. É preciso ter a especificação certa, entender a logística, confiar na origem e contar com alguém que acompanhe cada embarque.',
+    'A Bridge Point representa no Brasil a Norwell AS, exportadora norueguesa de salmão e truta, e conecta importadores, distribuidores, varejo e food service diretamente à origem. Com base no Rio de Janeiro, combinamos experiência internacional, conhecimento do mercado brasileiro e acompanhamento próximo de cada cliente.',
   ],
   services: [
     {
-      title: 'Entrada no mercado',
+      title: 'Fornecimento sob medida',
       items: [
-        'Compreensão do mercado',
-        'Análise de oportunidades',
-        'Definição de prioridades',
-        'Posicionamento e abordagem comercial para o Brasil',
+        'Produtos frescos e congelados',
+        'Cortes, calibres e especificações para cada operação',
+        'Volumes e frequência definidos com o cliente',
+        'Cotação clara, com escopo e condições por escrito',
       ],
     },
     {
-      title: 'Desenvolvimento de negócios',
+      title: 'Importação e logística',
       items: [
-        'Identificação de potenciais clientes e parceiros',
-        'Desenvolvimento de relacionamentos e preparação de reuniões',
-        'Acompanhamento comercial',
+        'Envio por via aérea ou marítima',
+        'Documentação de origem e certificações',
+        'Coordenação direta com a exportadora na Noruega',
       ],
     },
     {
-      title: 'Comércio e representação',
+      title: 'Acompanhamento comercial',
       items: [
-        'Desenvolvimento de operações de importação e exportação',
-        'Representação local, como a da Norwell no Brasil',
-        'Coordenação com parceiros e especialistas de cada projeto',
+        'Programação de embarques',
+        'Pós-venda e ajustes de especificação',
+        'Relacionamento de longo prazo, em português, inglês e norueguês',
       ],
     },
   ],
   servicesNote:
-    'A atuação também pode incluir projetos ligados a sustentabilidade, ESG, pesquisa, inovação e novas oportunidades da economia do mar.',
+    'Disponibilidade, volumes mínimos e condições comerciais são confirmados em cada cotação.',
   approach:
-    'Trabalhamos com integridade, discrição, visão e inteligência cultural. Cada projeto parte dos objetivos e do contexto de cada empresa, para transformar uma oportunidade internacional em um caminho comercial claro e possível de executar.',
+    'Trabalhamos com integridade, transparência e inteligência cultural. Cada fornecimento parte da realidade da sua operação, para que o salmão norueguês chegue com a especificação, o volume e o ritmo de que o seu negócio precisa.',
   method: [
     {
       step: '01',
       title: 'Entender',
-      description: 'Compreender os objetivos, o contexto, as prioridades e os desafios do negócio.',
+      description: 'Conhecer a sua operação: produtos, volumes, frequência, público e exigências de especificação.',
     },
     {
       step: '02',
       title: 'Conectar',
       description:
-        'Identificar os parceiros e interlocutores relevantes e estabelecer o diálogo necessário para a oportunidade avançar.',
+        'Levar a demanda à Norwell e aos produtores noruegueses e montar a proposta com a especificação e a rota de fornecimento adequadas.',
     },
     {
       step: '03',
       title: 'Desenvolver',
       description:
-        'Acompanhar as relações, negociações e próximos passos, mantendo o projeto em movimento.',
+        'Acompanhar embarques, documentação e pós-venda, mantendo a relação comercial em movimento.',
     },
   ],
 };

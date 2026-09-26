@@ -34,7 +34,7 @@ export function NorwellStory() {
                   rel="noopener noreferrer"
                   className="group mt-8 inline-flex items-center gap-2 py-1.5 text-sm font-bold text-ocean transition-colors hover:text-navy"
                 >
-                  {t('Visitar o site da Norwell')}
+                  {t('Visitar o site oficial da Norwell')}
                   <ArrowUpRight
                     size={16}
                     aria-hidden="true"

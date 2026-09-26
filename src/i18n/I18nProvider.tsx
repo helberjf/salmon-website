@@ -156,7 +156,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
     return {
       title: 'Sobre | Bridge Point',
       description:
-        'Conheça a Bridge Point, consultoria de negócios entre a Noruega e o Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
+        'Conheça a Bridge Point, representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim, da diplomacia norueguesa ao comércio de pescados.',
       path,
       schemaType: 'AboutPage',
       indexable: true,

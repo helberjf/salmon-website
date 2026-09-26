@@ -58,10 +58,10 @@ export const pages = {
       no: 'Om oss | Bridge Point',
     },
     description: {
-      pt: 'Conheça a Bridge Point, consultoria de negócios entre a Noruega e o Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
-      en: 'Meet Bridge Point, a business consultancy between Norway and Brazil, and the career of its founder, Mai Sissel Tonheim.',
-      es: 'Conozca Bridge Point, consultoría de negocios entre Noruega y Brasil, y la trayectoria de su fundadora, Mai Sissel Tonheim.',
-      no: 'Bli kjent med Bridge Point, et rådgivningsselskap for forretninger mellom Norge og Brasil, og grunnleggeren Mai Sissel Tonheim.',
+      pt: 'Conheça a Bridge Point, representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim, da diplomacia norueguesa ao comércio de pescados.',
+      en: "Meet Bridge Point, Norwell's representative in Brazil, and the career of its founder, Mai Sissel Tonheim, from Norwegian diplomacy to the seafood trade.",
+      es: 'Conozca Bridge Point, representante de Norwell en Brasil, y la trayectoria de su fundadora, Mai Sissel Tonheim, de la diplomacia noruega al comercio de pescados.',
+      no: 'Bli kjent med Bridge Point, Norwells representant i Brasil, og grunnleggeren Mai Sissel Tonheim – fra norsk diplomati til sjømathandel.',
     },
   },
   privacy: {

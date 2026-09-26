@@ -32,7 +32,7 @@ const pathways = [
     image: images.bridge,
     eyebrow: 'Quem faz a ponte',
     title: 'Bridge Point e Mai',
-    description: 'Como apoiamos empresas entre a Noruega e o Brasil e a trajetória da fundadora.',
+    description: 'Quem representa a Norwell no Brasil e a trajetória da fundadora.',
     cta: 'Sobre nós',
   },
 ];

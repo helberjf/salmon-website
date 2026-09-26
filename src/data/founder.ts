@@ -50,7 +50,7 @@ export const founder = {
   bio: [
     'Norueguesa e radicada no Rio de Janeiro, Mai construiu uma trajetória de quase 20 anos na diplomacia norueguesa, com atuação no Ministério das Relações Exteriores da Noruega e experiência em diferentes países e contextos internacionais. Entre 2021 e 2025, atuou como vice-cônsul geral da Noruega no Rio de Janeiro.',
     'Ao longo dessa trajetória, desenvolveu experiência em relações institucionais, comunicação estratégica, negociação e cooperação internacional. Foi dessa experiência que nasceu a Bridge Point.',
-    'Hoje, Mai aplica esse conhecimento ao desenvolvimento de negócios, apoiando empresas norueguesas que precisam compreender o mercado brasileiro, estabelecer as conexões certas e conduzir oportunidades com continuidade — estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
+    'Hoje, Mai aplica esse conhecimento ao comércio de pescados, conectando empresas brasileiras ao salmão norueguês da Norwell e acompanhando cada relação com continuidade — estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
   ],
   focusAreas: [
     'Entrada no mercado brasileiro',
