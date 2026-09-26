@@ -53,7 +53,6 @@ export default function NorwellPage() {
             href={norwell.site}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t('norwell.no — site oficial da Norwell AS (abre em nova aba)')}
             className="group flex flex-col items-start gap-7 rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
           >
             <NorwellLogo variant="white" height={38} />
@@ -61,6 +60,7 @@ export default function NorwellPage() {
             <SeafoodFromNorway size={80} className="rounded-xl" />
             <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
               norwell.no
+              <span className="sr-only">{t('(abre em nova aba)')}</span>
               <ArrowUpRight
                 size={16}
                 aria-hidden="true"

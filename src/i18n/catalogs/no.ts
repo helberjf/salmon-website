@@ -415,7 +415,6 @@ const norwegianCatalog = {
   "Como atendemos a sua empresa": "Slik betjener vi din bedrift",
   "Visitar o site oficial da Norwell": "Besøk Norwells offisielle nettsted",
   "Visitar o site oficial da Norwell (abre em nova aba)": "Besøk Norwells offisielle nettsted (åpnes i ny fane)",
-  "norwell.no — site oficial da Norwell AS (abre em nova aba)": "norwell.no — Norwell AS sitt offisielle nettsted (åpnes i ny fane)",
   "Última atualização: {date}.": "Sist oppdatert: {date}.",
   "26 de setembro de 2026": "26. september 2026",
   "Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ (\"Bridge Point\"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).": "Denne erklæringen forklarer hvordan {company}, registrert med CNPJ {cnpj} og med hovedkontor i Rio de Janeiro, Brasil («Bridge Point»), behandler personopplysninger om dem som besøker nettstedet eller kontakter oss, i samsvar med Brasils personvernlov (lov nr. 13.709/2018 — LGPD).",
@@ -479,6 +478,8 @@ const norwegianCatalog = {
   "Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro da Comarca da Capital do Estado do Rio de Janeiro para resolver eventuais controvérsias, salvo disposição legal em contrário.": "Vilkårene er underlagt brasiliansk rett. Tvister avgjøres ved domstolene i byen Rio de Janeiro, med mindre loven bestemmer noe annet.",
   "10. Contato": "10. Kontakt",
   "Dúvidas sobre estes Termos podem ser enviadas para {email}.": "Spørsmål om vilkårene kan sendes til {email}.",
+  // Bridge Point + Norwell: nova navegação, /sobre e atalhos da home
+  "(abre em nova aba)": "(åpnes i ny fane)",
 } as const satisfies Readonly<Record<TranslationKey, string>>;
 
 export default norwegianCatalog;

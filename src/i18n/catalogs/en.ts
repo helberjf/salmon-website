@@ -415,7 +415,6 @@ const englishCatalog = {
   "Como atendemos a sua empresa": "How we serve your company",
   "Visitar o site oficial da Norwell": "Visit Norwell's official website",
   "Visitar o site oficial da Norwell (abre em nova aba)": "Visit Norwell's official website (opens in a new tab)",
-  "norwell.no — site oficial da Norwell AS (abre em nova aba)": "norwell.no — Norwell AS official website (opens in a new tab)",
   "Última atualização: {date}.": "Last updated: {date}.",
   "26 de setembro de 2026": "26 September 2026",
   "Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ (\"Bridge Point\"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).": "This Policy explains how {company}, registered under CNPJ {cnpj} and headquartered in Rio de Janeiro, Brazil (\"Bridge Point\"), processes the personal data of those who visit this website or contact us, in accordance with Brazil's General Data Protection Law (Law No. 13,709/2018 — LGPD).",
@@ -479,6 +478,8 @@ const englishCatalog = {
   "Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro da Comarca da Capital do Estado do Rio de Janeiro para resolver eventuais controvérsias, salvo disposição legal em contrário.": "These Terms are governed by Brazilian law. The courts of the City of Rio de Janeiro, State of Rio de Janeiro, shall have jurisdiction over any disputes, unless the law provides otherwise.",
   "10. Contato": "10. Contact",
   "Dúvidas sobre estes Termos podem ser enviadas para {email}.": "Questions about these Terms can be sent to {email}.",
+  // Bridge Point + Norwell: nova navegação, /sobre e atalhos da home
+  "(abre em nova aba)": "(opens in a new tab)",
 } as const satisfies TranslationCatalog;
 
 export type TranslationKey = keyof typeof englishCatalog;
