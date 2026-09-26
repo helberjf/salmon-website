@@ -65,7 +65,7 @@ export function SectionHeading({
           },
         }}
         style={{ transformOrigin: align === 'center' ? 'center' : 'left' }}
-        className={`mt-6 h-1 w-10 rounded-full bg-salmon ${align === 'center' ? 'mx-auto' : ''}`}
+        className={`mt-6 h-1 w-10 rounded-full bg-gold ${align === 'center' ? 'mx-auto' : ''}`}
       />
       {description && (
         <m.p

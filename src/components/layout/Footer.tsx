@@ -1,9 +1,9 @@
 import { Link } from 'wouter';
 import { Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { company } from '@/data/company';
-import { navLinks } from '@/data/navigation';
+import { navLinks, quoteCtaLabel } from '@/data/navigation';
 import { norwell } from '@/data/norwell';
-import { BrandMark } from '@/components/ui/BrandMark';
+import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <BrandMark inverse />
+            <BridgePointLogo variant="white" height={40} />
             <p className="mt-4 text-sm leading-relaxed text-frost/80">{t(company.description)}</p>
             {(company.instagram || company.linkedin) && (
               <div className="mt-6 flex gap-3">
@@ -56,7 +56,7 @@ export function Footer() {
                   {/* py generoso: no celular estes links tinham 18px de altura. */}
                   <a
                     href={localizedHref(link.href)}
-                    className="inline-block py-2 transition-colors hover:text-white"
+                    className="inline-flex min-h-11 items-center transition-colors hover:text-white"
                   >
                     {t(link.label)}
                   </a>
@@ -70,7 +70,7 @@ export function Footer() {
             <ul className="mt-5 space-y-3.5 text-sm">
               {company.email && (
                 <li className="flex items-start gap-3">
-                  <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-salmon" />
+                  <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
                   <a
                     href={`mailto:${company.email}`}
                     className="inline-block break-all py-1 hover:text-white"
@@ -81,12 +81,17 @@ export function Footer() {
               )}
               {company.phone && (
                 <li className="flex items-start gap-3">
-                  <Phone size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-salmon" />
-                  <span>{company.phone}</span>
+                  <Phone size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
+                  <a
+                    href={`tel:+${company.phone.replace(/\D/g, '')}`}
+                    className="inline-block py-1 hover:text-white"
+                  >
+                    {company.phone}
+                  </a>
                 </li>
               )}
               <li className="flex items-start gap-3">
-                <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-salmon" />
+                <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
                 <span>
                   {company.address && (
                     <>
@@ -109,7 +114,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-5 block w-fit rounded-lg py-1 opacity-90 transition-opacity hover:opacity-100"
             >
-              <span className="block text-[0.65rem] font-bold uppercase tracking-[0.18em] text-frost/60">
+              <span className="block text-xs font-bold uppercase tracking-[0.16em] text-frost/60">
                 {t('Parceiro exportador')}
               </span>
               <NorwellLogo variant="white" height={26} className="mt-2.5" />
@@ -124,7 +129,7 @@ export function Footer() {
               href={localizedHref('/#contato')}
               className="mt-6 inline-block rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-white hover:text-navy"
             >
-              {t('Falar com a equipe')}
+              {t(quoteCtaLabel)}
             </a>
           </div>
         </div>

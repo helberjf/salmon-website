@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'wouter';
-import { ArrowLeft } from 'lucide-react';
-import { company } from '@/data/company';
+import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
 import type { ReactNode } from 'react';
@@ -24,20 +23,15 @@ export function LegalPage({ title, children }: LegalPageProps) {
       <header className="bg-navy">
         <div aria-hidden="true" className="nordic-stripe h-0.5 w-full opacity-80" />
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-5 lg:px-0">
-          <Link href={localizedHref('/')} className="font-serif text-lg font-semibold text-white">
-            {company.name}
+          {/* O logotipo é o caminho de volta ao site: sem um segundo botão "voltar". */}
+          <Link
+            href={localizedHref('/')}
+            aria-label={t('Bridge Point — voltar ao início')}
+            className="-my-1 block shrink-0 py-1"
+          >
+            <BridgePointLogo variant="white" eager height={32} />
           </Link>
-          <div className="flex items-center gap-3">
-            <Link
-              href={localizedHref('/')}
-              aria-label={t('Voltar ao site')}
-              className="inline-flex items-center gap-2 text-sm font-medium text-frost transition-colors hover:text-white"
-            >
-              <ArrowLeft size={16} aria-hidden="true" />
-              <span className="hidden sm:inline">{t('Voltar ao site')}</span>
-            </Link>
-            <LanguageSelector />
-          </div>
+          <LanguageSelector />
         </div>
       </header>
       <main id="main-content" tabIndex={-1} className="mx-auto max-w-3xl px-5 py-14 lg:px-0">

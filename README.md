@@ -14,6 +14,7 @@ npm run preview  # servir localmente o build de produção
 npm run typecheck
 npm run test:e2e
 npm run test:a11y
+node scripts/audit-responsive.mjs  # com o preview no ar: auditoria de responsividade (1440/768/375/320)
 ```
 
 ## Estrutura de páginas
@@ -24,11 +25,22 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 
 | Rota | Conteúdo |
 |---|---|
-| `/` | Topo, quem somos, 2 produtos em destaque, quem atendemos, processo, fundadora, CTA e contato |
-| `/a-norwell` | História, missão, valores e certificações da Norwell, por que o salmão norueguês e galeria |
+| `/` | Topo, atalhos para Norwell / Produtos / Sobre, 2 produtos em destaque, CTA e contato |
+| `/a-norwell` | Parceria Bridge Point + Norwell, história, missão, valores e certificações, por que o salmão norueguês e galeria |
 | `/norwell` | Alias histórico; no Nginx fornecido recebe `308` para `/a-norwell` |
-| `/produtos` | Portfólio completo, diferenciais e relação de confiança |
-| `/sobre` | Trajetória de Mai Tonheim |
+| `/produtos` | Portfólio completo, processo, quem atendemos, diferenciais e relação de confiança |
+| `/sobre` | Bridge Point (frentes de atuação e método) e, na mesma página, a fundadora Mai Sissel Tonheim (`/sobre#mai`, botão "Sobre a Mai") |
+
+O menu tem um item por destino (Norwell, Produtos, Sobre, Contato) e todos os
+botões que levam ao formulário usam o mesmo rótulo, "Solicitar cotação".
+
+### Identidade visual
+
+- **Logotipo Bridge Point**: vetorizado do manual de marca (`Branding BP 05.pdf`)
+  em `public/brand/bridgepoint-*.svg` e exibido por `src/components/ui/BridgePointLogo.tsx`.
+- **Cores**: paleta da Norwell AS (verde-petróleo `#005357`, azul-claro `#c1e4f2`)
+  com o dourado da bússola Bridge Point (`#d3ac68`) como acento — tokens em `src/index.css`.
+- **Tipografia**: Montserrat (textos) e Playfair Display (títulos).
 
 Ao criar uma rota nova, registre-a em `src/App.tsx`, em `titleSourceForCurrentPath`
 (`src/i18n/I18nProvider.tsx`), em `src/data/navigation.ts` e em
@@ -207,7 +219,7 @@ CSS seguem a mesma preferência de acessibilidade.
 
 ## Tipografia
 
-Playfair Display e Plus Jakarta Sans são hospedadas localmente em `public/fonts`, sem dependência de terceiros durante a navegação. As licenças OFL acompanham os arquivos em `public/fonts/licenses`.
+Playfair Display (títulos, no lugar da The Seasons do manual da marca) e Montserrat (textos) são hospedadas localmente em `public/fonts`, sem dependência de terceiros durante a navegação. As licenças OFL acompanham os arquivos em `public/fonts/licenses`.
 
 ## Deploy em VPS
 

@@ -20,6 +20,9 @@ ADDITIONAL_SOURCES = (
     ROOT / "public" / "images" / "people" / "mai-tonheim-portrait.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-preparation.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-presentation.jpg",
+    # Recortes com fundo transparente vindos do site-base da Bridge Point.
+    ROOT / "public" / "images" / "people" / "mai-tonheim-flags.webp",
+    ROOT / "public" / "images" / "people" / "mai-tonheim-rio.webp",
 )
 OUTPUT_DIR = ROOT / "public" / "images" / "responsive"
 STANDARD_WIDTHS = (480, 800, 1200, 1600)
@@ -29,6 +32,10 @@ MAX_WIDTHS = {
     "culinary-03": 800,
     "culinary-04": 1200,
     "culinary-05": 800,
+    "atlantic-road-bridge": 1200,
+    "fjord-salmon-fillet": 1200,
+    "norway-coast-sun": 1600,
+    "salmon-farm-mountains": 1200,
     # Used only as the full-size Open Graph image; no responsive DOM variants.
     "fisherman-salmon": 0,
     "norway-farm-wide": 1200,
@@ -37,6 +44,8 @@ MAX_WIDTHS = {
     "norwell-salmon-dish": 800,
     "mai-tonheim-consulate": 800,
     "mai-tonheim-diplomacy": 480,
+    "mai-tonheim-flags": 1200,
+    "mai-tonheim-rio": 800,
     # The source is only 388 px wide; keep the compact original as fallback.
     "mai-tonheim-norway-brazil": 0,
     "mai-tonheim-portrait": 800,
@@ -99,7 +108,9 @@ def generate() -> None:
     source_paths = [*sorted(SOURCE_DIR.glob("*.webp")), *ADDITIONAL_SOURCES]
     for source_path in source_paths:
         with Image.open(source_path) as source:
-            source = ImageOps.exif_transpose(source).convert("RGB")
+            # Recortes com transparência preservam o canal alfa (WebP e AVIF suportam).
+            mode = "RGBA" if source.mode in ("RGBA", "LA", "P") and source.getextrema()[-1][0] < 255 else "RGB"
+            source = ImageOps.exif_transpose(source).convert(mode)
             save_variants(source, source_path.stem, target_widths(source_path.stem, source.width))
 
     for source_path, output_stem, aspect_ratio, focal_x, widths in ART_DIRECTED_CROPS:

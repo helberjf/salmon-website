@@ -1,12 +1,11 @@
 import { useRef } from 'react';
 import { m, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Globe2, MessageCircle, ShieldCheck, Ship, Snowflake } from 'lucide-react';
+import { ArrowRight, Globe2, ShieldCheck, Ship, Snowflake } from 'lucide-react';
 import { images } from '@/data/images';
 import { norwell } from '@/data/norwell';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
-import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
-import { company } from '@/data/company';
+import { quoteCtaLabel } from '@/data/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
 import { getResponsiveImageSources, ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
@@ -18,7 +17,7 @@ const trustItems = [
 ];
 
 export function Hero() {
-  const { t } = useI18n();
+  const { href: localizedHref, t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -99,9 +98,9 @@ export function Hero() {
             initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-frost backdrop-blur"
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-frost backdrop-blur"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-salmon" />
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
             {t('Representação comercial · Noruega → Brasil')}
           </m.p>
           <m.h1
@@ -111,7 +110,7 @@ export function Hero() {
             className="text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:max-w-[15ch] sm:text-6xl sm:leading-[0.98] sm:tracking-[-0.035em] lg:max-w-[13ch] lg:text-7xl"
           >
             {t('Salmão norueguês,')}{' '}
-            <span className="text-salmon">{t('direto dos fiordes.')}</span>
+            <span className="text-gold">{t('direto dos fiordes.')}</span>
           </m.h1>
           <m.p
             initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
@@ -130,23 +129,18 @@ export function Hero() {
             className="mt-10 flex flex-col gap-3 sm:flex-row"
           >
             <a
-              href="#produtos"
+              href={localizedHref('/#contato')}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
             >
-              {t('Conhecer o portfólio')}
+              {t(quoteCtaLabel)}
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            {hasWhatsApp && (
-              <a
-                href={whatsAppLink(t(company.whatsappMessage))}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10"
-              >
-                <MessageCircle size={18} aria-hidden="true" />
-                {t('Falar com a Mai')}
-              </a>
-            )}
+            <a
+              href={localizedHref('/produtos')}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10"
+            >
+              {t('Ver produtos')}
+            </a>
           </m.div>
 
           <m.a
@@ -159,7 +153,7 @@ export function Hero() {
             className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
           >
             {/* Frase única: quebrada com <br> o leitor de tela juntava as palavras. */}
-            <span className="max-w-[7.5rem] text-[0.72rem] font-bold uppercase leading-tight tracking-[0.18em] text-frost">
+            <span className="max-w-[8.5rem] text-xs font-bold uppercase leading-tight tracking-[0.16em] text-frost">
               {t('Representante oficial no Brasil')}
             </span>
             <span aria-hidden="true" className="h-9 w-px bg-white/20" />
@@ -235,7 +229,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.75 + index * 0.09, ease: 'easeOut' }}
               className="flex items-center gap-2.5"
             >
-              <Icon size={17} aria-hidden="true" className="text-salmon" />
+              <Icon size={17} aria-hidden="true" className="text-gold" />
               {t(label)}
             </m.li>
           ))}

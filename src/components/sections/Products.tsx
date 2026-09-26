@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { products } from '@/data/products';
+import { quoteCtaLabel } from '@/data/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
 import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
@@ -11,15 +12,17 @@ interface ProductsProps {
   limit?: number;
   /** Oculta o rodapé sobre especificações — usado no resumo da home. */
   hideSpecNote?: boolean;
+  /** Fundo da seção, para alternar com as seções vizinhas. */
+  tone?: 'white' | 'ice';
 }
 
-export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
+export function Products({ limit, hideSpecNote = false, tone = 'white' }: ProductsProps = {}) {
   const { href: localizedHref, t } = useI18n();
   const shown = typeof limit === 'number' ? products.slice(0, limit) : products;
   const isPreview = shown.length < products.length;
 
   return (
-    <section id="produtos" className="bg-white py-24 md:py-32">
+    <section id="produtos" className={`${tone === 'ice' ? 'bg-ice' : 'bg-white'} py-24 md:py-32`}>
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <SectionHeading
           eyebrow={t('Portfólio Norwell')}
@@ -44,7 +47,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
                     pictureClassName="absolute inset-0 block h-full w-full"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-ocean backdrop-blur">
+                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-ocean backdrop-blur">
                     {t(product.preservation)}
                   </span>
                 </div>
@@ -113,7 +116,7 @@ export function Products({ limit, hideSpecNote = false }: ProductsProps = {}) {
               href={localizedHref('/#contato')}
               className="inline-flex shrink-0 items-center gap-2 py-1.5 text-sm font-bold text-white"
             >
-              {t('Pedir especificação')}
+              {t(quoteCtaLabel)}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>

@@ -1,23 +1,32 @@
 import { m, useReducedMotion } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'wouter';
-import { useI18n } from '@/i18n/I18nProvider';
+import type { ReactNode } from 'react';
+import { WaveDivider } from '@/components/ui/WaveDivider';
 
 interface PageHeroProps {
   eyebrow: string;
   title: string;
   description?: string;
   /** Conteúdo opcional à direita — selo, logotipo ou números. */
-  aside?: React.ReactNode;
+  aside?: ReactNode;
+  /** Botões abaixo da descrição. */
+  actions?: ReactNode;
+  /** Cor (classe `text-*`) da seção seguinte, usada na onda de transição. */
+  waveClassName?: string;
 }
 
 /** Cabeçalho padrão das páginas internas. */
-export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) {
-  const { href: localizedHref, t } = useI18n();
+export function PageHero({
+  eyebrow,
+  title,
+  description,
+  aside,
+  actions,
+  waveClassName = 'text-white',
+}: PageHeroProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy pb-20 pt-32 text-white md:pb-28 md:pt-40">
+    <section className="relative isolate overflow-hidden bg-navy pb-24 pt-32 text-white md:pb-36 md:pt-40">
       <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10 opacity-80" />
       <m.div
         aria-hidden="true"
@@ -37,20 +46,14 @@ export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <Link
-            href={localizedHref('/')}
-            className="mb-8 inline-flex items-center gap-2 py-1 text-sm font-semibold text-frost transition-colors hover:text-white"
-          >
-            <ArrowLeft size={16} aria-hidden="true" />
-            {t('Voltar ao site')}
-          </Link>
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-salmon-light">{eyebrow}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold-light">{eyebrow}</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           {description && (
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-frost">{description}</p>
           )}
+          {actions && <div className="mt-8 flex flex-col gap-3 sm:flex-row">{actions}</div>}
         </m.div>
 
         {aside && (
@@ -64,6 +67,7 @@ export function PageHero({ eyebrow, title, description, aside }: PageHeroProps) 
           </m.div>
         )}
       </div>
+      <WaveDivider className={waveClassName} />
     </section>
   );
 }

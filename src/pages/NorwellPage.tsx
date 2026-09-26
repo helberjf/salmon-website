@@ -1,5 +1,7 @@
+import { ArrowUpRight } from 'lucide-react';
 import { PageShell } from '@/components/layout/PageShell';
 import { PageHero } from '@/components/ui/PageHero';
+import { About } from '@/components/sections/About';
 import { NorwellStory } from '@/components/sections/NorwellStory';
 import { NorwegianSalmon } from '@/components/sections/NorwegianSalmon';
 import { Gallery } from '@/components/sections/Gallery';
@@ -20,14 +22,29 @@ export default function NorwellPage() {
         description={t(
           'Fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores e as certificações que sustentam cada embarque para o Brasil.',
         )}
+        waveClassName="text-ice"
         aside={
-          <div className="flex flex-col items-start gap-7 rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur">
+          <a
+            href={norwell.site}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-start gap-7 rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
+          >
             <NorwellLogo variant="white" height={38} />
             <p className="text-sm leading-relaxed text-frost">{t(norwell.tagline)}</p>
             <SeafoodFromNorway size={80} className="rounded-xl" />
-          </div>
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
+              norwell.no
+              <ArrowUpRight
+                size={16}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </span>
+          </a>
         }
       />
+      <About />
       <NorwellStory />
       <NorwegianSalmon />
       <Gallery />

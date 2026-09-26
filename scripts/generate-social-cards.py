@@ -45,9 +45,9 @@ CARDS = {
         "focus": (0.50, 0.50),
     },
     "products.jpg": {
-        "source": PUBLIC / "catalog" / "salmon-fillet.webp",
+        "source": PUBLIC / "catalog" / "fjord-salmon-fillet.webp",
         "label": "B2B SALMON PORTFOLIO",
-        "focus": (0.64, 0.52),
+        "focus": (0.50, 0.55),
     },
     "norwell.jpg": {
         "source": PUBLIC / "catalog" / "norway-farm-wide.webp",
@@ -55,9 +55,9 @@ CARDS = {
         "focus": (0.60, 0.45),
     },
     "about.jpg": {
-        "source": PUBLIC / "people" / "mai-tonheim-portrait.jpg",
-        "label": "MAI TONHEIM · FOUNDER",
-        "focus": (0.70, 0.38),
+        "source": PUBLIC / "catalog" / "atlantic-road-bridge.webp",
+        "label": "BRIDGE POINT · MAI SISSEL TONHEIM",
+        "focus": (0.62, 0.50),
     },
     "privacy.jpg": {
         "source": ASSETS / "social-base-fjord.png",
@@ -113,14 +113,25 @@ def letterspaced_text(
 def draw_shield(draw: ImageDraw.ImageDraw) -> None:
     points = [(950, 164), (1060, 202), (1054, 350), (1005, 425), (950, 466), (895, 425), (846, 350), (840, 202)]
     draw.line(points + [points[0]], fill="#c1e4f2", width=9, joint="curve")
-    draw.line([(900, 314), (936, 350), (1009, 270)], fill="#dd6c67", width=12, joint="curve")
+    draw.line([(900, 314), (936, 350), (1009, 270)], fill="#d3ac68", width=12, joint="curve")
 
 
 def draw_document(draw: ImageDraw.ImageDraw) -> None:
     draw.rounded_rectangle((864, 150, 1037, 462), radius=14, outline="#c1e4f2", width=8)
     draw.polygon([(979, 150), (1037, 208), (979, 208)], fill="#c1e4f2")
     for y, width in ((270, 112), (320, 112), (370, 78)):
-        draw.rounded_rectangle((895, y, 895 + width, y + 9), radius=4, fill="#dd6c67")
+        draw.rounded_rectangle((895, y, 895 + width, y + 9), radius=4, fill="#d3ac68")
+
+
+def brand_logo(height: int = 96) -> Image.Image:
+    """Logotipo oficial (versão invertida) rasterizado do SVG em public/brand."""
+    import fitz  # PyMuPDF renderiza SVG sem dependências nativas extras
+
+    with fitz.open(ROOT / "public" / "brand" / "bridgepoint-horizontal-white.svg") as document:
+        page = document[0]
+        zoom = height / page.rect.height
+        pixmap = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=True)
+    return Image.frombytes("RGBA", (pixmap.width, pixmap.height), pixmap.samples)
 
 
 def render_card(name: str, config: dict[str, object]) -> None:
@@ -128,9 +139,9 @@ def render_card(name: str, config: dict[str, object]) -> None:
     image = add_overlay(image)
     draw = ImageDraw.Draw(image)
 
-    draw.rounded_rectangle((68, 62, 150, 70), radius=4, fill="#dd6c67")
-    draw.text((68, 162), "Bridge Point", font=ImageFont.truetype(SERIF, 65), fill="#ffffff")
-    draw.text((70, 245), "Norway  ·  Brazil", font=ImageFont.truetype(SANS, 24), fill="#c1e4f2")
+    draw.rounded_rectangle((68, 62, 150, 70), radius=4, fill="#d3ac68")
+    image.alpha_composite(brand_logo(), (62, 140))
+    draw.text((70, 262), "Norway  ·  Brazil", font=ImageFont.truetype(SANS, 24), fill="#c1e4f2")
 
     letterspaced_text(
         draw,
@@ -140,7 +151,7 @@ def render_card(name: str, config: dict[str, object]) -> None:
         "#ffffff",
         3,
     )
-    draw.rounded_rectangle((70, 519, 408, 525), radius=3, fill="#dd6c67")
+    draw.rounded_rectangle((70, 519, 408, 525), radius=3, fill="#d3ac68")
 
     icon = config.get("icon")
     if icon == "shield":

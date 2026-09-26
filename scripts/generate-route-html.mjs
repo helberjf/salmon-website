@@ -154,7 +154,7 @@ function structuredData({ canonicalUrl, language, locale, page, title, descripti
       {
         '@type': 'Person',
         '@id': `${siteUrl}/#mai-tonheim`,
-        name: 'Mai Tonheim',
+        name: 'Mai Sissel Tonheim',
         jobTitle: locale.founderTitle,
         sameAs: 'https://www.linkedin.com/in/mai-tonheim-iam/',
         worksFor: { '@id': `${siteUrl}/#organization` },
