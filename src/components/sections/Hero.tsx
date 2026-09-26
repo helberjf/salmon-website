@@ -126,7 +126,7 @@ export function Hero() {
             initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            className="mt-10 flex flex-col gap-3 sm:flex-row"
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <a
               href={localizedHref('/#contato')}
@@ -136,10 +136,22 @@ export function Hero() {
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a
-              href={localizedHref('/produtos')}
+              href={localizedHref('/sobre')}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10"
             >
+              {t('Quem somos')}
+            </a>
+            {/* Terceira ação com peso de link, para não competir com os dois botões. */}
+            <a
+              href={localizedHref('/produtos')}
+              className="group inline-flex min-h-11 items-center justify-center gap-2 px-3 font-bold text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline sm:justify-start"
+            >
               {t('Ver produtos')}
+              <ArrowRight
+                size={16}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+              />
             </a>
           </m.div>
 
@@ -150,14 +162,14 @@ export function Hero() {
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-            className="mt-12 inline-flex items-center gap-4 rounded-2xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
+            className="mt-12 inline-flex max-w-full items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-4 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10 sm:gap-4 sm:px-5"
           >
             {/* Frase única: quebrada com <br> o leitor de tela juntava as palavras. */}
-            <span className="max-w-[8.5rem] text-xs font-bold uppercase leading-tight tracking-[0.16em] text-frost">
+            <span className="min-w-0 max-w-[7rem] text-xs font-bold uppercase leading-tight tracking-[0.12em] text-frost sm:max-w-[8.5rem] sm:tracking-[0.16em]">
               {t('Representante oficial no Brasil')}
             </span>
-            <span aria-hidden="true" className="h-9 w-px bg-white/20" />
-            <NorwellLogo variant="white" height={26} />
+            <span aria-hidden="true" className="h-9 w-px shrink-0 bg-white/20" />
+            <NorwellLogo variant="white" height={26} className="shrink-0" />
           </m.a>
         </div>
 

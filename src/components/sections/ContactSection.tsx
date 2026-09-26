@@ -8,6 +8,8 @@ import { Reveal } from '@/components/ui/Reveal';
 import { company } from '@/data/company';
 import { products } from '@/data/products';
 import { submitContact } from '@/utils/submitContact';
+import { hasWhatsApp, whatsAppLink } from '@/utils/whatsapp';
+import { WhatsAppIcon } from '@/components/layout/WhatsAppButton';
 import { useI18n } from '@/i18n/I18nProvider';
 
 const ufs = [
@@ -171,6 +173,20 @@ export function ContactSection() {
               title={t('Solicite uma proposta')}
               description={t('Conte um pouco sobre a sua operação. Retornaremos com as possibilidades de fornecimento adequadas ao seu negócio.')}
             />
+            {hasWhatsApp && (
+              <Reveal delay={0.05} className="mt-8">
+                {/* Atalho para quem prefere uma conversa rápida a preencher o formulário. */}
+                <a
+                  href={whatsAppLink(t(company.whatsappMessage))}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border-2 border-ocean px-6 py-3.5 text-sm font-bold text-ocean transition-colors hover:bg-ocean hover:text-white sm:w-auto"
+                >
+                  <WhatsAppIcon size={18} />
+                  {t('Conversar pelo WhatsApp')}
+                </a>
+              </Reveal>
+            )}
             <Reveal delay={0.1} className="mt-9 space-y-5 text-sm">
               {company.email && (
                 <p className="flex items-center gap-3.5">
@@ -183,7 +199,12 @@ export function ContactSection() {
               {company.phone && (
                 <p className="flex items-center gap-3.5">
                   <Phone size={18} aria-hidden="true" className="shrink-0 text-ocean" />
-                  <span className="text-muted">{company.phone}</span>
+                  <a
+                    href={`tel:+${company.phone.replace(/\D/g, '')}`}
+                    className="inline-block py-1.5 text-muted hover:text-navy"
+                  >
+                    {company.phone}
+                  </a>
                 </p>
               )}
               <p className="flex items-center gap-3.5">
