@@ -32,7 +32,7 @@ const STORAGE_KEY = 'nordic-salmon.language';
 const DEFAULT_LANGUAGE: Language = 'pt';
 const HOME_TITLE = 'Bridge Point | Salmão Norueguês B2B no Brasil';
 const SITE_DESCRIPTION =
-  'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida.';
+  'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores.';
 
 const socialImagesByPage: Record<string, string> = {
   '/': 'home.jpg',
@@ -156,7 +156,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
     return {
       title: 'Sobre | Bridge Point',
       description:
-        'Conheça a Bridge Point, representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim, da diplomacia norueguesa ao comércio de pescados.',
+        'Conheça a Bridge Point, consultoria de entrada no mercado brasileiro e representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
       path,
       schemaType: 'AboutPage',
       indexable: true,

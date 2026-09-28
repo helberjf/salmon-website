@@ -44,6 +44,8 @@ const responsiveFiles = readdirSync(responsiveDirectory).filter((name) => !name.
 const responsivePairs = new Map();
 const expectedVariants = {
   'atlantic-road-bridge': [480, 800, 1200],
+  'hero-bridge-mobile': [480, 694],
+  'lofoten-bridges-winter': [480, 800, 1200, 1600],
   'culinary-01': [480, 800, 1200],
   'culinary-02': [480, 800],
   'culinary-03': [480, 800],
@@ -51,9 +53,6 @@ const expectedVariants = {
   'culinary-05': [480, 800],
   'norway-farm-wide': [480, 800, 1200],
   'norway-fjord': [480, 800, 1200],
-  'norway-fjord-portrait': [540, 1080],
-  'norwell-hero': [480, 800, 1200, 1600],
-  'norwell-hero-mobile': [480, 694],
   'norwell-salmon-dish': [480, 800],
   'mai-tonheim-consulate': [480, 800],
   'fjord-salmon-fillet': [480, 800, 1200],
@@ -111,15 +110,12 @@ for (const [key, formats] of responsivePairs) {
   assert(formats.has('avif') && formats.has('webp'), `Missing AVIF/WebP pair: ${key}`);
 }
 
-for (const fontName of [
-  'playfair-display-latin-variable.woff2',
-  'montserrat-latin-variable.woff2',
-]) {
+for (const fontName of ['montserrat-latin-variable.woff2']) {
   const font = read(`public/fonts/${fontName}`);
   assert(font.subarray(0, 4).toString('ascii') === 'wOF2', `Invalid WOFF2 font: ${fontName}`);
 }
 
-for (const licenseName of ['PlayfairDisplay-OFL.txt', 'Montserrat-OFL.txt']) {
+for (const licenseName of ['Montserrat-OFL.txt']) {
   assert(read(`public/fonts/licenses/${licenseName}`).length > 1_000, `Missing font license: ${licenseName}`);
 }
 

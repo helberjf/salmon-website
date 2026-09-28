@@ -51,7 +51,7 @@ export function Process() {
             <div aria-hidden="true" className="mb-7 hidden h-px overflow-hidden bg-ocean/15 sm:block">
               <span
                 data-gsap-progress
-                className="block h-full origin-left bg-gradient-to-r from-ocean via-seagrass to-gold will-change-transform"
+                className="block h-full origin-left bg-gradient-to-r from-ocean to-shore will-change-transform"
               />
             </div>
             <ol className="grid gap-4 sm:grid-cols-2">
@@ -62,7 +62,7 @@ export function Process() {
                     direction={index % 2 ? 'left' : 'right'}
                     className="group flex h-full flex-col rounded-2xl border border-border bg-white p-7 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-ocean/25 hover:shadow-lg"
                   >
-                    <span aria-hidden="true" className="font-serif text-3xl font-semibold text-ocean/70 transition-colors duration-300 group-hover:text-ocean">
+                    <span aria-hidden="true" className="text-3xl font-light text-ocean/70 transition-colors duration-300 group-hover:text-ocean">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <h3 className="mt-6 text-lg font-semibold text-navy">{t(step.title)}</h3>

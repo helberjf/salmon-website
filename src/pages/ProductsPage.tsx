@@ -23,15 +23,15 @@ export default function ProductsPage() {
         )}
         aside={
           <div className="rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-shore-light">
               {t('Linhas da exportadora')}
             </p>
-            <ul className="mt-5 space-y-2.5 text-sm text-frost">
+            <ul className="mt-5 space-y-2.5 text-sm font-medium text-frost">
               {norwell.portfolio.map((line) => (
                 <li key={line} className="flex items-start gap-2.5">
                   <span
                     aria-hidden="true"
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-light"
+                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-shore"
                   />
                   {t(line)}
                 </li>

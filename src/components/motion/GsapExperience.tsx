@@ -16,6 +16,23 @@ type DataSavingNavigator = Navigator & {
  * O GSAP fica em um chunk separado e só é baixado depois do primeiro paint.
  * Movimento reduzido e economia de dados desativam a experiência por completo.
  */
+/** Resolve quando a posição da página fica parada por alguns quadros seguidos. */
+function waitForScrollToSettle(): Promise<void> {
+  return new Promise((resolve) => {
+    let lastY = window.scrollY;
+    let stillFrames = 0;
+    let frames = 0;
+    const check = () => {
+      frames += 1;
+      stillFrames = Math.abs(window.scrollY - lastY) < 1 ? stillFrames + 1 : 0;
+      lastY = window.scrollY;
+      if (stillFrames >= 6 || frames > 240) resolve();
+      else window.requestAnimationFrame(check);
+    };
+    window.requestAnimationFrame(check);
+  });
+}
+
 export function GsapExperience() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -41,6 +58,9 @@ export function GsapExperience() {
       }
 
       const [{ gsap }, { ScrollTrigger }] = modules;
+      // O refresh do ScrollTrigger devolve a página à posição do momento e
+      // interromperia uma rolagem suave em andamento (ex.: clique em "Contato").
+      await waitForScrollToSettle();
       if (cancelled) return;
 
       gsap.registerPlugin(ScrollTrigger);

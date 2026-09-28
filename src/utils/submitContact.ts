@@ -1,17 +1,14 @@
 import { company } from '@/data/company';
+import type { ContactInterest } from '@/utils/contactInterest';
 
 export interface ContactPayload {
+  interest: ContactInterest;
   name: string;
   companyName: string;
-  role: string;
   email: string;
   phone: string;
-  city: string;
-  state: string;
-  businessType: string;
-  productInterest: string;
-  volume?: string;
-  frequency?: string;
+  businessType?: string;
+  productInterest?: string;
   message?: string;
 }
 
@@ -22,18 +19,16 @@ export function submitContact(
   t: Translate = (source) => source,
 ): Promise<void> {
   const message = [
-    t('Olá, Mai! Gostaria de solicitar uma cotação de salmão norueguês.'),
+    data.interest === 'market'
+      ? t('Olá, Mai! Gostaria de conversar sobre a entrada da minha empresa no mercado brasileiro.')
+      : t('Olá, Mai! Gostaria de solicitar uma cotação de salmão norueguês.'),
     '',
     `${t('Nome')}: ${data.name}`,
     `${t('Empresa')}: ${data.companyName}`,
-    `${t('Cargo')}: ${data.role}`,
     `${t('E-mail')}: ${data.email}`,
     `${t('Telefone')}: ${data.phone}`,
-    `${t('Local')}: ${data.city}/${data.state}`,
-    `${t('Tipo de operação')}: ${data.businessType}`,
-    `${t('Produto')}: ${data.productInterest}`,
-    data.volume ? `${t('Volume estimado')}: ${data.volume}` : '',
-    data.frequency ? `${t('Frequência')}: ${data.frequency}` : '',
+    data.businessType ? `${t('Tipo de operação')}: ${data.businessType}` : '',
+    data.productInterest ? `${t('Produto')}: ${data.productInterest}` : '',
     data.message ? `${t('Observações')}: ${data.message}` : '',
   ]
     .filter(Boolean)
@@ -41,7 +36,10 @@ export function submitContact(
 
   const number = company.whatsapp.replace(/\D/g, '');
   const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-  const opened = window.open(url, '_blank', 'noopener,noreferrer');
-  if (!opened) window.location.href = url;
+  // Com o recurso "noopener" o window.open sempre devolve null, e a página também
+  // era redirecionada. Abre normalmente e corta o vínculo com a aba nova.
+  const opened = window.open(url, '_blank');
+  if (opened) opened.opener = null;
+  else window.location.href = url;
   return Promise.resolve();
 }

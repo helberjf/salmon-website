@@ -52,7 +52,7 @@ export function NorwellStory() {
                       delay={index * 0.07}
                       className="h-full rounded-2xl border border-border bg-ice p-6 lg:flex lg:items-baseline lg:gap-6"
                     >
-                      <p className="font-serif text-3xl font-semibold text-navy lg:shrink-0 lg:basis-28">
+                      <p className="text-3xl font-light text-navy lg:shrink-0 lg:basis-28">
                         {t(fact.value)}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-muted lg:mt-0">
@@ -64,7 +64,7 @@ export function NorwellStory() {
               </ul>
 
               <Reveal delay={0.24} className="mt-5 rounded-2xl border border-border bg-ice p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-ocean-light">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-ocean">
                   {t('Onde estão')}
                 </p>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
@@ -85,16 +85,16 @@ export function NorwellStory() {
           </div>
 
           <Reveal delay={0.1} className="mt-20 md:mt-24">
-            <figure className="relative overflow-hidden rounded-[2rem] bg-norwell px-7 py-12 text-white md:px-14 md:py-16">
+            <figure className="relative overflow-hidden rounded-[2rem] bg-navy px-7 py-12 text-white md:px-14 md:py-16">
               <Quote size={140} aria-hidden="true" className="absolute -right-6 -top-8 text-white/[0.07]" />
               <div className="relative max-w-3xl">
-                <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/70">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-shore-light">
                   {t('Missão')}
                 </p>
-                <blockquote className="mt-5 font-serif text-3xl font-semibold leading-tight md:text-4xl">
+                <blockquote className="mt-5 text-3xl font-normal leading-tight md:text-4xl">
                   “{t(norwell.mission)}”
                 </blockquote>
-                <figcaption className="mt-6 text-sm leading-relaxed text-white/70">
+                <figcaption className="mt-6 text-sm font-medium leading-relaxed text-white/80">
                   {t(
                     'Missão da Norwell AS, aplicada por sua representação comercial no Brasil: usar bem os recursos por meio de planejamento, precisão e prioridades claras — para que o parceiro tenha previsibilidade em toda a cadeia.',
                   )}
@@ -119,10 +119,10 @@ export function NorwellStory() {
                   delay={index * 0.08}
                   className="h-full rounded-3xl border border-border bg-white p-8 transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <p className="font-serif text-2xl font-semibold text-navy">{t(item.title)}</p>
+                  <p className="text-2xl font-light text-navy">{t(item.title)}</p>
                   {/* O termo original só acrescenta informação fora do inglês. */}
                   {language !== 'en' && (
-                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-slate-blue">
+                    <p className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-muted">
                       {item.original}
                     </p>
                   )}
@@ -161,7 +161,7 @@ export function NorwellStory() {
                 </a>
                 <div className="mt-8 flex items-center gap-4">
                   <SeafoodFromNorway size={64} className="rounded-lg" />
-                  <p className="max-w-[16rem] text-xs leading-relaxed text-slate-blue">
+                  <p className="max-w-[16rem] text-xs leading-relaxed text-muted">
                     {t('Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.')}
                   </p>
                 </div>
@@ -176,10 +176,10 @@ export function NorwellStory() {
                     className="h-full rounded-2xl border border-border bg-ice p-6"
                   >
                     <div className="flex items-center gap-2.5">
-                      <BadgeCheck size={18} aria-hidden="true" className="shrink-0 text-norwell" />
+                      <BadgeCheck size={18} aria-hidden="true" className="shrink-0 text-ocean" />
                       <p className="text-sm font-bold text-navy">{certification.abbr}</p>
                     </div>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-slate-blue">
+                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-muted">
                       {t(certification.name)}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-muted">

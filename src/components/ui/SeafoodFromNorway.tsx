@@ -15,7 +15,7 @@ interface SeafoodFromNorwayProps {
 export function SeafoodFromNorway({ size = 96, className = '' }: SeafoodFromNorwayProps) {
   return (
     <span
-      className={`inline-flex shrink-0 items-center justify-center bg-norwell ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center bg-navy ${className}`}
       style={{ width: size, height: size }}
     >
       <img

@@ -25,22 +25,40 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 
 | Rota | Conteúdo |
 |---|---|
-| `/` | Topo, atalhos para Norwell / Produtos / Sobre, 2 produtos em destaque, CTA e contato |
-| `/a-norwell` | Parceria Bridge Point + Norwell, história, missão, valores e certificações, por que o salmão norueguês e galeria |
+| `/` | Na ordem do site-base: topo "ponte de negócios entre a Noruega e o Brasil" (com a faixa da Norwell no pé), quem somos (Mai), a parceria principal com a Norwell (salmão para importadores, atacadistas e distribuidores), 2 produtos em destaque, CTA e contato |
+| `/a-norwell` | A Bridge Point como representante da Norwell no Brasil, história, missão, valores e certificações, por que o salmão norueguês e galeria |
 | `/norwell` | Alias histórico; no Nginx fornecido recebe `308` para `/a-norwell` |
 | `/produtos` | Portfólio completo, processo, quem atendemos, diferenciais e relação de confiança |
-| `/sobre` | Bridge Point (frentes de atuação e método) e, na mesma página, a fundadora Mai Sissel Tonheim (`/sobre#mai`, botão "Sobre a Mai") |
+| `/sobre` | Bridge Point (consultoria de entrada no mercado, destaque da parceria com a Norwell, frentes de atuação e método) e, na mesma página, a fundadora Mai Sissel Tonheim (`/sobre#mai`, botão "Sobre a Mai") |
 
 O menu tem um item por destino (Norwell, Produtos, Sobre, Contato) e todos os
 botões que levam ao formulário usam o mesmo rótulo, "Solicitar cotação".
 
 ### Identidade visual
 
+O visual segue o manual de perfil da Norwell (`Brand Norwell_Profilmanual_Original_CMYK.PDF`,
+2016), mantendo o logotipo da Bridge Point como marca do site.
+
 - **Logotipo Bridge Point**: vetorizado do manual de marca (`Branding BP 05.pdf`)
   em `public/brand/bridgepoint-*.svg` e exibido por `src/components/ui/BridgePointLogo.tsx`.
-- **Cores**: paleta da Norwell AS (verde-petróleo `#005357`, azul-claro `#c1e4f2`)
-  com o dourado da bússola Bridge Point (`#d3ac68`) como acento — tokens em `src/index.css`.
-- **Tipografia**: Montserrat (textos) e Playfair Display (títulos).
+  O dourado da bússola fica só dentro do logotipo. No desktop o cabeçalho segue o
+  site-base: links à esquerda, logotipo no centro (vertical e grande no topo da
+  página, horizontal ao rolar) e idioma + cotação à direita.
+- **Cores**: sjøgrønn e fjæregrønn do manual da Norwell dominam; texto em nattgrå
+  — tokens em `src/index.css` (ver "Paleta" abaixo).
+- **Fjærestreken**: a linha fjæregrønn de borda a borda que liga foto e bloco de
+  informação (`src/components/ui/ShoreLine.tsx`). 4px na web; 2px no menu do celular.
+- **Tipografia**: Montserrat, com os pesos do manual: títulos grandes em Light
+  sobre fundo claro e em Book (400) sobre fundo escuro; texto corrido em Book, e
+  em Medium sobre fundo escuro.
+
+### Posicionamento
+
+Primeiro a Bridge Point como consultoria de entrada no mercado e de
+desenvolvimento de negócios entre Noruega e Brasil; em seguida, com destaque, a
+parceria principal: a representação da Norwell no Brasil. A operação de salmão é
+voltada a **importadores que atuam como atacadistas e distribuidores** — eles vêm
+primeiro em "Quem atendemos", no formulário e nos textos de produto.
 
 Ao criar uma rota nova, registre-a em `src/App.tsx`, em `titleSourceForCurrentPath`
 (`src/i18n/I18nProvider.tsx`), em `src/data/navigation.ts` e em
@@ -81,7 +99,16 @@ institucional, com textos alternativos e legendas traduzidos.
 
 ### Formulário de contato
 
-O formulário valida e organiza os dados comerciais e abre uma conversa real no WhatsApp da representante. Não depende de backend e não exibe uma confirmação de envio fictícia. Seu código é priorizado quando o visitante se aproxima da seção de contato e possui fallback para tecnologias assistivas.
+O formulário atende os dois assuntos da Bridge Point: **cotação de salmão** (padrão) e
+**entrada no mercado brasileiro**. Pede só nome, empresa, e-mail e telefone — na
+cotação, também o tipo de empresa e o produto — e uma mensagem opcional. Ele
+valida, organiza os dados e abre uma conversa real no WhatsApp da representante,
+sem backend e sem confirmação fictícia.
+
+Os links que levam a `#contato` escolhem o assunto: `data-contact-interest="market"`
+pré-seleciona a entrada no mercado; sem o atributo, vale a cotação
+(`src/utils/contactInterest.ts`). Quem chega à home já em `#contato`, vindo de
+outra página, é levado direto ao formulário, sem rolagem animada.
 
 ## Idiomas e SEO
 
@@ -165,33 +192,41 @@ site com essa atribuição explícita:
 
 | Arquivo | Uso |
 |---|---|
-| `public/images/norwell-hero.webp` | Plano de fundo do topo da home |
 | `public/images/norwell-salmon-dish.webp` | Galeria "Da origem à mesa" |
 | `public/brand/seafood-from-norway.svg` | Selo de origem "Seafood from Norway" |
-| `public/brand/norwell.svg` | Logotipo da Norwell (versão colorida, para fundos claros) |
-| `public/brand/norwell-white.svg` | Mesmo logotipo em versão monocromática branca |
+| `public/brand/norwell.svg` | Logotipo lateral ("sidestilt") em cores, para fundo branco |
+| `public/brand/norwell-negative.svg` | Logotipo lateral em negativo, para fundo sjøgrønn |
+| `public/brand/norwell-main-negative.svg` | Logotipo principal (símbolo sobre o nome) em negativo |
+
+Os três SVGs do logotipo foram extraídos dos vetores do manual de perfil da
+Norwell (p. 3 e 4), com as cores RGB oficiais. O manual só admite o logotipo em
+cores sobre branco ou, em negativo, sobre sjøgrønn (`bg-navy`) — nunca sobre
+fotos ou outras cores — e pede uma área livre de meio símbolo ao redor.
 
 O logotipo é renderizado pelo componente `src/components/ui/NorwellLogo.tsx` e
-aparece no topo (assinatura "Representante oficial no Brasil"), na seção
-"Quem somos" e no rodapé. Use `variant="white"` sobre fundos escuros.
+aparece no topo (assinatura "Representante oficial no Brasil"), na página
+`/a-norwell` (logotipo principal com o slogan no estilo "payoff": fjæregrønn,
+em inglês original e alinhado à base do logotipo) e no rodapé.
 
 ### Paleta
 
-O site adota as cores institucionais da Norwell, definidas em `src/index.css`.
-Os nomes dos tokens foram preservados para não quebrar as classes existentes:
+Cores do manual de perfil da Norwell (p. 11), na versão RGB que o manual pede
+para tela. Os nomes dos tokens em `src/index.css` foram preservados para não
+quebrar as classes existentes:
 
 | Token | Valor | Origem |
 |---|---|---|
-| `navy` | `#00383b` | Tom profundo do verde-petróleo — superfícies escuras e títulos |
-| `navy-dark` | `#002225` | Rodapé |
-| `ocean` | `#005357` | `norwell-primary` do site oficial |
-| `ocean-light` | `#0b6d72` | Verde do logotipo |
-| `seagrass` | `#52958a` | Verde médio do logotipo |
-| `frost` | `#c1e4f2` | `norwell-blue` |
-| `salmon` | `#dd6c67` | `norwell-red` |
-| `salmon-light` | `#f0a09a` | Clareado do coral — texto pequeno sobre fundo escuro (contraste AA) |
-| `peach` | `#f7dfd5` | `norwell-peach` |
-| `nordic-red` / `nordic-blue` | `#ba0c2f` / `#002868` | Bandeira norueguesa, só na faixa decorativa |
+| `navy` | `#145353` | **Sjøgrønn** (PMS 2214) — superfícies escuras e títulos |
+| `navy-dark` | `#0d3a3a` | Sjøgrønn escurecido — sombras e véus sobre foto |
+| `ocean` | `#0e6e73` | Sjøgrønn mais claro — links, ícones e hover |
+| `shore` | `#78c496` | **Fjæregrønn** (PMS 2247) — fjærestreken, ícones e destaques |
+| `shore-light` | `#a8dbbc` | Fjæregrønn clareado — texto pequeno sobre sjøgrønn |
+| `frost` / `mist` / `ice` | `#d0eada` / `#ddf0e5` / `#f2f9f5` | Fjæregrønn a 35%, 25% e 10% |
+| `foreground` / `muted` | `#3d3d3f` / `#595a5e` | **Nattgrå** e sua versão mais clara |
+| `nordic-red` | `#ba0c2f` | Só nas mensagens de erro do formulário |
+
+Fjordblå (`#093f63`) e solgul (`#f0b43e`) são cores de apoio do manual e ainda
+não foram necessárias.
 
 Todos os pares de texto/fundo do site foram conferidos contra o mínimo de
 4.5:1 (3:1 para texto grande) da WCAG AA.
@@ -199,6 +234,15 @@ Todos os pares de texto/fundo do site foram conferidos contra o mínimo de
 > **Antes de publicar:** confirmar com a Norwell AS a autorização de uso das
 > fotografias, do logotipo e do selo "Seafood from Norway" (marca licenciada pelo
 > Norwegian Seafood Council a exportadores autorizados).
+## Foto do topo da home
+
+`public/images/catalog/lofoten-bridges-winter.webp` — Hamnøy, nas Lofoten, no
+inverno, de Tomáš Malík, baixada do Pexels
+(<https://www.pexels.com/photo/aerial-view-of-lofoten-islands-norway-27245718/>).
+A licença do Pexels permite uso comercial sem atribuição; o crédito fica aqui como
+registro da origem. No celular o topo usa o recorte vertical
+`hero-bridge-mobile-*`, gerado pelo script abaixo.
+
 ## Imagens responsivas
 
 Além dos WebP originais, o site entrega variantes AVIF/WebP responsivas de `public/images/responsive`, escolhidas pelo navegador conforme a tela. Ao substituir ou adicionar imagens, regenere essas variantes com Pillow:
@@ -219,7 +263,12 @@ CSS seguem a mesma preferência de acessibilidade.
 
 ## Tipografia
 
-Playfair Display (títulos, no lugar da The Seasons do manual da marca) e Montserrat (textos) são hospedadas localmente em `public/fonts`, sem dependência de terceiros durante a navegação. As licenças OFL acompanham os arquivos em `public/fonts/licenses`.
+A fonte do manual da Norwell é a Sharp Sans No1, que é paga (<https://vllg.com/incubator/sharp-sans-1>).
+Enquanto não houver licença para web, o site usa a Montserrat, geométrica como
+ela, hospedada localmente em `public/fonts` (fonte variável, pesos 100–900) sem
+dependência de terceiros durante a navegação. A licença OFL acompanha o arquivo
+em `public/fonts/licenses`. Para adotar a Sharp Sans basta trocar o `@font-face`
+e `--font-sans` em `src/index.css`.
 
 ## Deploy em VPS
 

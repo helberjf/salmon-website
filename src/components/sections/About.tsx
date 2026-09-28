@@ -39,11 +39,11 @@ export function About() {
                 className="absolute -right-3 -top-6 rounded-xl shadow-xl shadow-navy/20 sm:-right-6"
               />
               <div className="relative mx-4 -mt-8 max-w-sm rounded-2xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-8 sm:right-8 sm:mx-0 sm:mt-0 sm:max-w-xs">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-gold-light">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-shore-light">
                   {t('Parceiro na origem')}
                 </p>
-                <NorwellLogo variant="white" height={30} className="mt-3.5" />
-                <p className="mt-3 text-sm leading-relaxed text-white/65">
+                <NorwellLogo variant="negative" height={34} className="mt-5" />
+                <p className="mt-5 text-sm font-medium leading-relaxed text-white/80">
                   {t('Exportadora norueguesa com presença global e relações de longo prazo com produtores.')}
                 </p>
               </div>
@@ -52,18 +52,18 @@ export function About() {
 
           <div className="pt-8 lg:pt-0">
             <SectionHeading
-              eyebrow={t('Bridge Point + Norwell')}
-              title={t('Uma ponte comercial com os dois pés na origem')}
+              eyebrow={t('A parceria')}
+              title={t('Representação oficial, com os dois pés na origem')}
             />
             <Reveal delay={0.1} className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 {t(
-                  'Representamos no Brasil a Norwell, exportadora norueguesa especializada em salmão e sediada em Florø. A empresa construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia.',
+                  'A Bridge Point representa oficialmente a Norwell no Brasil. Sediada em Florø, a exportadora norueguesa especializada em salmão construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia.',
                 )}
               </p>
               <p>
                 {t(
-                  'Para o cliente brasileiro, isso significa acesso qualificado à origem, comunicação direta e uma solução desenhada a partir do produto, volume e ritmo de cada operação.',
+                  'Para importadores, atacadistas e distribuidores, isso significa acesso qualificado à origem, comunicação direta e uma solução desenhada a partir do produto, do volume e do ritmo de cada operação.',
                 )}
               </p>
             </Reveal>

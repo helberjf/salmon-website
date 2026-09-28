@@ -17,6 +17,11 @@ OUTPUT = PUBLIC / "social"
 ASSETS = ROOT / "scripts" / "assets"
 SIZE = (1200, 630)
 
+# Cores do manual de perfil da Norwell (as mesmas de src/index.css).
+SEA_DARK = (13, 58, 58)  # sjøgrønn escurecido, para o véu sobre a foto
+SHORE = "#78c496"  # fjæregrønn
+FROST = "#d0eada"  # fjæregrønn a 35%
+
 def available_font(*candidates: str) -> Path:
     for candidate in candidates:
         path = Path(candidate)
@@ -92,7 +97,7 @@ def add_overlay(image: Image.Image) -> Image.Image:
         alpha = int(max(52, 232 - ratio * 238))
         for y in range(SIZE[1]):
             bottom = max(0, int((y / SIZE[1] - 0.68) * 118))
-            pixels[x, y] = (0, 34, 39, min(238, alpha + bottom))
+            pixels[x, y] = (*SEA_DARK, min(238, alpha + bottom))
     return Image.alpha_composite(image.convert("RGBA"), overlay)
 
 
@@ -112,15 +117,15 @@ def letterspaced_text(
 
 def draw_shield(draw: ImageDraw.ImageDraw) -> None:
     points = [(950, 164), (1060, 202), (1054, 350), (1005, 425), (950, 466), (895, 425), (846, 350), (840, 202)]
-    draw.line(points + [points[0]], fill="#c1e4f2", width=9, joint="curve")
-    draw.line([(900, 314), (936, 350), (1009, 270)], fill="#d3ac68", width=12, joint="curve")
+    draw.line(points + [points[0]], fill=FROST, width=9, joint="curve")
+    draw.line([(900, 314), (936, 350), (1009, 270)], fill=SHORE, width=12, joint="curve")
 
 
 def draw_document(draw: ImageDraw.ImageDraw) -> None:
-    draw.rounded_rectangle((864, 150, 1037, 462), radius=14, outline="#c1e4f2", width=8)
-    draw.polygon([(979, 150), (1037, 208), (979, 208)], fill="#c1e4f2")
+    draw.rounded_rectangle((864, 150, 1037, 462), radius=14, outline=FROST, width=8)
+    draw.polygon([(979, 150), (1037, 208), (979, 208)], fill=FROST)
     for y, width in ((270, 112), (320, 112), (370, 78)):
-        draw.rounded_rectangle((895, y, 895 + width, y + 9), radius=4, fill="#d3ac68")
+        draw.rounded_rectangle((895, y, 895 + width, y + 9), radius=4, fill=SHORE)
 
 
 def brand_logo(height: int = 96) -> Image.Image:
@@ -139,9 +144,10 @@ def render_card(name: str, config: dict[str, object]) -> None:
     image = add_overlay(image)
     draw = ImageDraw.Draw(image)
 
-    draw.rounded_rectangle((68, 62, 150, 70), radius=4, fill="#d3ac68")
+    # Fjærestreken: linha fjæregrønn de borda a borda, como no topo do site.
+    draw.rectangle((0, 0, SIZE[0], 5), fill=SHORE)
     image.alpha_composite(brand_logo(), (62, 140))
-    draw.text((70, 262), "Norway  ·  Brazil", font=ImageFont.truetype(SANS, 24), fill="#c1e4f2")
+    draw.text((70, 262), "Norway  ·  Brazil", font=ImageFont.truetype(SANS, 24), fill=FROST)
 
     letterspaced_text(
         draw,
@@ -151,7 +157,6 @@ def render_card(name: str, config: dict[str, object]) -> None:
         "#ffffff",
         3,
     )
-    draw.rounded_rectangle((70, 519, 408, 525), radius=3, fill="#d3ac68")
 
     icon = config.get("icon")
     if icon == "shield":

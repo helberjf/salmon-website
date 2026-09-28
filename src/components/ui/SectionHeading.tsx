@@ -41,7 +41,7 @@ export function SectionHeading({
         <m.p
           variants={child}
           className={`mb-3 text-xs font-semibold uppercase tracking-[0.2em] ${
-            dark ? 'text-frost' : 'text-ocean-light'
+            dark ? 'text-shore-light' : 'text-ocean'
           }`}
         >
           {eyebrow}
@@ -49,28 +49,18 @@ export function SectionHeading({
       )}
       <m.h2
         variants={child}
-        className={`text-4xl font-semibold leading-[1.08] tracking-[-0.025em] md:text-5xl ${
-          dark ? 'text-white' : 'text-navy'
+        // Manual da Norwell: títulos grandes em Light sobre fundo claro e em
+        // Book (400) sobre fundo escuro.
+        className={`text-4xl leading-[1.1] tracking-[-0.025em] md:text-5xl ${
+          dark ? 'font-normal text-white' : 'font-light text-navy'
         }`}
       >
         {title}
       </m.h2>
-      <m.div
-        aria-hidden="true"
-        variants={{
-          hidden: { scaleX: 0 },
-          visible: {
-            scaleX: 1,
-            transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-          },
-        }}
-        style={{ transformOrigin: align === 'center' ? 'center' : 'left' }}
-        className={`mt-6 h-1 w-10 rounded-full bg-gold ${align === 'center' ? 'mx-auto' : ''}`}
-      />
       {description && (
         <m.p
           variants={child}
-          className={`mt-5 text-lg leading-relaxed ${dark ? 'text-frost' : 'text-muted'}`}
+          className={`mt-5 text-lg leading-relaxed ${dark ? 'font-medium text-frost' : 'text-muted'}`}
         >
           {description}
         </m.p>

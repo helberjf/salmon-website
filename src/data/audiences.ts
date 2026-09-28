@@ -1,11 +1,25 @@
 import type { Audience } from '@/types';
 
-/** Ordenado por quem compra para revender ou servir em escala — o público principal do site. */
+/**
+ * O foco da operação são os importadores que atuam como atacadistas e
+ * distribuidores (os três primeiros). Os demais compram em escala e costumam
+ * ser abastecidos por eles.
+ */
 export const audiences: Audience[] = [
   {
-    title: 'Distribuidores e atacadistas',
+    title: 'Importadores',
     description:
-      'Estruturação de volumes, logística e condições comerciais para quem abastece outras empresas.',
+      'Importação direta da Norwell, com especificação, documentação de origem e programação de embarques definidas com a exportadora.',
+  },
+  {
+    title: 'Atacadistas',
+    description:
+      'Volumes regulares e condições comerciais para quem revende salmão norueguês em escala.',
+  },
+  {
+    title: 'Distribuidores',
+    description:
+      'Calibres, frequência e logística planejados para abastecer varejo, peixarias e food service.',
   },
   {
     title: 'Supermercados e empórios',
@@ -13,23 +27,13 @@ export const audiences: Audience[] = [
       'Produto com procedência clara e apelo de vitrine para o varejo que atende consumidores exigentes.',
   },
   {
-    title: 'Peixarias',
+    title: 'Processadores e indústria',
     description:
-      'Salmão inteiro ou em cortes com frescor e apresentação impecável para o balcão.',
+      'Matéria-prima com calibre e qualidade constantes para porcionamento, defumação e produtos de valor agregado.',
   },
   {
-    title: 'Empresas de alimentação',
+    title: 'Food service',
     description:
-      'Cadeia de suprimento confiável para cozinhas industriais e operações de refeições coletivas.',
-  },
-  {
-    title: 'Hotéis e catering',
-    description:
-      'Porcionamento previsível e planejamento de volume para banquetes, eventos e operações de grande escala.',
-  },
-  {
-    title: 'Restaurantes e chefs',
-    description:
-      'Regularidade de fornecimento e padrão de corte para cardápios que dependem de qualidade constante.',
+      'Fornecimento regular para redes de restaurantes, hotéis e catering que dependem de padrão de corte e volume previsível.',
   },
 ];

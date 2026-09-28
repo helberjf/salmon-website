@@ -7,7 +7,7 @@ export default function TermsOfUse() {
   const owner = { company: company.legalName || company.name, cnpj: company.cnpj };
 
   return (
-    <LegalPage title={t('Termos de Uso')}>
+    <LegalPage title={t('Termos de Uso')} updatedAt="26 de setembro de 2026">
       <p>
         {t(
           'Estes Termos regulam o uso deste website, mantido pela {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("Bridge Point"). Ao navegar pelo site, você concorda com as condições abaixo.',

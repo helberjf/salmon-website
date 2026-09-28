@@ -98,7 +98,7 @@ test.describe('system-language gateway', () => {
     await openApp(page, '/');
 
     await expect(page.locator('html')).toHaveAttribute('lang', 'es');
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('Salmón noruego');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Un puente de negocios');
     await expect(page).toHaveURL(/\/$/);
   });
 });

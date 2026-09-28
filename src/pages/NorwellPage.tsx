@@ -18,10 +18,10 @@ export default function NorwellPage() {
   return (
     <PageShell titleSource="A Norwell | Bridge Point" resetScroll>
       <PageHero
-        eyebrow={t('A origem do produto')}
-        title={t('Norwell AS, a exportadora norueguesa que representamos')}
+        eyebrow={t('Bridge Point + Norwell')}
+        title={t('A Bridge Point é a representante da Norwell no Brasil')}
         description={t(
-          'Fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores e as certificações que sustentam cada embarque para o Brasil.',
+          'A Norwell AS, fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. No Brasil, a Bridge Point desenvolve a marca e atende importadores, atacadistas e distribuidores.',
         )}
         waveClassName="text-ice"
         actions={
@@ -49,24 +49,36 @@ export default function NorwellPage() {
           </>
         }
         aside={
+          /**
+           * Cartão sjøgrønn sólido: o manual da Norwell só admite o logotipo em
+           * negativo sobre essa cor. O slogan segue a regra do "payoff" (p. 15):
+           * fjæregrønn, em inglês original e alinhado à base do logotipo. Os
+           * espaçamentos respeitam a área de proteção de meio símbolo.
+           */
           <a
             href={norwell.site}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-start gap-7 rounded-[2rem] border border-white/12 bg-white/5 p-8 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10"
+            className="group flex flex-col gap-9 rounded-[2rem] border border-white/15 bg-navy p-9 transition-colors hover:border-shore/60"
           >
-            <NorwellLogo variant="white" height={38} />
-            <p className="text-sm leading-relaxed text-frost">{t(norwell.tagline)}</p>
-            <SeafoodFromNorway size={80} className="rounded-xl" />
-            <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
-              norwell.no
-              <span className="sr-only">{t('(abre em nova aba)')}</span>
-              <ArrowUpRight
-                size={16}
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </span>
+            <div className="flex items-end justify-between gap-9">
+              <p lang="en" className="text-xl font-bold leading-snug text-shore">
+                {norwell.tagline}
+              </p>
+              <NorwellLogo layout="main" variant="negative" height={96} className="shrink-0" />
+            </div>
+            <div className="flex items-center justify-between gap-6">
+              <SeafoodFromNorway size={72} className="rounded-xl" />
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
+                norwell.no
+                <span className="sr-only">{t('(abre em nova aba)')}</span>
+                <ArrowUpRight
+                  size={16}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </span>
+            </div>
           </a>
         }
       />

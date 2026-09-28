@@ -12,6 +12,7 @@ type ImageMetadata = {
 
 const imageMetadata: Record<string, ImageMetadata> = {
   'atlantic-road-bridge': { width: 2000, height: 1499, maxVariantWidth: 1200 },
+  'lofoten-bridges-winter': { width: 2400, height: 1800, maxVariantWidth: 1600 },
   'fjord-salmon-fillet': { width: 2200, height: 1465, maxVariantWidth: 1200 },
   'norway-coast-sun': { width: 2200, height: 1464, maxVariantWidth: 1600 },
   'salmon-farm-mountains': { width: 1800, height: 1198, maxVariantWidth: 1200 },
@@ -24,7 +25,6 @@ const imageMetadata: Record<string, ImageMetadata> = {
   'culinary-05': { width: 1200, height: 800, maxVariantWidth: 800 },
   'norway-farm-wide': { width: 2200, height: 1466, maxVariantWidth: 1200 },
   'norway-fjord': { width: 2200, height: 1465, maxVariantWidth: 1200 },
-  'norwell-hero': { width: 1920, height: 925, maxVariantWidth: 1600 },
   'norwell-salmon-dish': { width: 1200, height: 800, maxVariantWidth: 800 },
   'mai-tonheim-consulate': { width: 800, height: 1000, maxVariantWidth: 800 },
   'mai-tonheim-diplomacy': { width: 480, height: 640, maxVariantWidth: 480 },

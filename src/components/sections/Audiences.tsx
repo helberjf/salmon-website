@@ -1,10 +1,10 @@
-import { Building2, Hotel, Store, Truck, UtensilsCrossed, Fish } from 'lucide-react';
+import { Factory, Ship, Store, Truck, UtensilsCrossed, Warehouse } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { audiences } from '@/data/audiences';
 import { useI18n } from '@/i18n/I18nProvider';
 
-const icons = [Truck, Store, Fish, Building2, Hotel, UtensilsCrossed];
+const icons = [Ship, Warehouse, Truck, Store, Factory, UtensilsCrossed];
 
 export function Audiences() {
   const { t } = useI18n();
@@ -15,7 +15,7 @@ export function Audiences() {
         <SectionHeading
           align="center"
           eyebrow={t('Quem atendemos')}
-          title={t('Fornecimento pensado para cada tipo de operação')}
+          title={t('Para quem importa, revende e distribui salmão em escala')}
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

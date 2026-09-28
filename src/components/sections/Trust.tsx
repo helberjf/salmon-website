@@ -26,7 +26,7 @@ export function Trust() {
 
         {industryPresence.length > 0 && (
           <Reveal delay={0.1} className="mt-14 rounded-[2rem] bg-background p-7 md:p-11">
-            <h3 className="font-serif text-xl font-semibold text-navy">
+            <h3 className="text-xl font-semibold text-navy">
               {t('Presença no setor')}
             </h3>
             <p className="mt-2 text-sm text-muted">

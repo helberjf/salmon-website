@@ -12,7 +12,6 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIR = ROOT / "public" / "images" / "catalog"
 ADDITIONAL_SOURCES = (
-    ROOT / "public" / "images" / "norwell-hero.webp",
     ROOT / "public" / "images" / "norwell-salmon-dish.webp",
     ROOT / "public" / "images" / "people" / "mai-tonheim-consulate.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-diplomacy.jpg",
@@ -34,13 +33,14 @@ MAX_WIDTHS = {
     "culinary-05": 800,
     "atlantic-road-bridge": 1200,
     "fjord-salmon-fillet": 1200,
+    # Plano de fundo do topo da home, que chega a 1600 px.
+    "lofoten-bridges-winter": 1600,
     "norway-coast-sun": 1600,
     "salmon-farm-mountains": 1200,
     # Used only as the full-size Open Graph image; no responsive DOM variants.
     "fisherman-salmon": 0,
     "norway-farm-wide": 1200,
     "norway-fjord": 1200,
-    "norwell-hero": 1600,
     "norwell-salmon-dish": 800,
     "mai-tonheim-consulate": 800,
     "mai-tonheim-diplomacy": 480,
@@ -66,8 +66,7 @@ MAX_WIDTHS = {
 # Art-directed crops avoid stretching panoramic source files inside tall hero
 # frames. Each tuple is: source, output stem, aspect ratio, focal x, widths.
 ART_DIRECTED_CROPS = (
-    (ROOT / "public" / "images" / "norwell-hero.webp", "norwell-hero-mobile", 3 / 4, 0.535, (480, 694)),
-    (SOURCE_DIR / "norway-fjord.webp", "norway-fjord-portrait", 4 / 5, 0.5, (540, 1080)),
+    (SOURCE_DIR / "lofoten-bridges-winter.webp", "hero-bridge-mobile", 3 / 4, 0.42, (480, 694)),
 )
 
 

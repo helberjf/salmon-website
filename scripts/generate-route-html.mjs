@@ -32,7 +32,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora e representante comercial no Brasil',
     organizationDescription:
-      'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell.',
+      'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país, com salmão norueguês para importadores, atacadistas e distribuidores.',
     norwellDescription:
       'Fundada em 1996 em Florø, na costa oeste da Noruega, a Norwell é uma exportadora de porte médio de salmão e truta noruegueses. Cerca de 70% do seu capital pertence aos próprios produtores e 30% a colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta.',
     knowsAbout: ['Salmão norueguês', 'Comércio internacional', 'Food service', 'Distribuição de pescados'],
@@ -44,7 +44,7 @@ const languages = {
     country: 'Brazil',
     founderTitle: 'Founder and commercial representative in Brazil',
     organizationDescription:
-      'Commercial representation and B2B supply of Norwegian salmon in Brazil, directly connected to exporter Norwell.',
+      "Business consultancy between Norway and Brazil and Norwell's representative in the country, supplying Norwegian salmon to importers, wholesalers and distributors.",
     norwellDescription:
       'Founded in 1996 in Florø, on Norway’s west coast, Norwell is a mid-sized exporter of Norwegian salmon and trout. Around 70% of the company is owned by the farmers themselves and 30% by key employees — an ownership structure that keeps those who raise the fish close to those who export it.',
     knowsAbout: ['Norwegian salmon', 'International trade', 'Food service', 'Seafood distribution'],
@@ -56,7 +56,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora y representante comercial en Brasil',
     organizationDescription:
-      'Representación comercial y suministro B2B de salmón noruego en Brasil, en conexión directa con la exportadora Norwell.',
+      'Consultoría de negocios entre Noruega y Brasil y representante de Norwell en el país, con salmón noruego para importadores, mayoristas y distribuidores.',
     norwellDescription:
       'Fundada en 1996 en Florø, en la costa oeste de Noruega, Norwell es una exportadora de tamaño medio de salmón y trucha noruegos. Cerca del 70% de su capital pertenece a los propios productores y el 30% a colaboradores clave, una estructura societaria que acerca a quien cría el pescado con quien lo exporta.',
     knowsAbout: ['Salmón noruego', 'Comercio internacional', 'Food service', 'Distribución de productos del mar'],
@@ -68,7 +68,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Grunnlegger og kommersiell representant i Brasil',
     organizationDescription:
-      'Kommersiell representasjon og B2B-leveranser av norsk laks i Brasil, i direkte kontakt med eksportøren Norwell.',
+      'Forretningsrådgivning mellom Norge og Brasil og Norwells representant i landet, med norsk laks til importører, grossister og distributører.',
     norwellDescription:
       'Norwell ble etablert i 1996 i Florø på Vestlandet og er en mellomstor eksportør av norsk laks og ørret. Rundt 70 % eies av oppdretterne selv og 30 % av nøkkelansatte — en eierstruktur som holder dem som produserer fisken tett på dem som eksporterer den.',
     knowsAbout: ['Norsk laks', 'Internasjonal handel', 'Food service', 'Distribusjon av sjømat'],
@@ -260,8 +260,8 @@ function renderRoute(language, page, localized = true) {
  * JavaScript. Os srcset espelham exatamente as <source> AVIF de Hero.tsx.
  */
 const heroImagePreloads = [
-  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 639px)" imagesrcset="/images/responsive/norwell-hero-mobile-480.avif 480w, /images/responsive/norwell-hero-mobile-694.avif 694w" imagesizes="100vw" />',
-  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 640px)" imagesrcset="/images/responsive/norwell-hero-480.avif 480w, /images/responsive/norwell-hero-800.avif 800w, /images/responsive/norwell-hero-1200.avif 1200w, /images/responsive/norwell-hero-1600.avif 1600w" imagesizes="(min-width: 1600px) 1600px, 100vw" />',
+  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 639px)" imagesrcset="/images/responsive/hero-bridge-mobile-480.avif 480w, /images/responsive/hero-bridge-mobile-694.avif 694w" imagesizes="100vw" />',
+  '<link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 640px)" imagesrcset="/images/responsive/lofoten-bridges-winter-480.avif 480w, /images/responsive/lofoten-bridges-winter-800.avif 800w, /images/responsive/lofoten-bridges-winter-1200.avif 1200w, /images/responsive/lofoten-bridges-winter-1600.avif 1600w" imagesizes="(min-width: 1600px) 1600px, 100vw" />',
 ].join('\n    ');
 
 function writeRoute(routePath, html) {

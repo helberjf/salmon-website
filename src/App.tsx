@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { domAnimation, LazyMotion, MotionConfig } from 'framer-motion';
 import { Route, Switch } from 'wouter';
 import Home from '@/pages/Home';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { RouteFocusManager } from '@/components/layout/RouteFocusManager';
 import { supportedLanguages } from '@/i18n/translations';
+import { watchContactLinks } from '@/utils/contactInterest';
 
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const NorwellPage = lazy(() => import('@/pages/NorwellPage'));
@@ -14,6 +15,9 @@ const TermsOfUse = lazy(() => import('@/pages/TermsOfUse'));
 const NotFound = lazy(() => import('@/pages/not-found'));
 
 function App() {
+  // Os links para #contato informam o assunto do formulário (cotação ou mercado).
+  useEffect(() => watchContactLinks(), []);
+
   return (
     // reducedMotion="user" desativa as animações quando o sistema do visitante
     // estiver configurado para reduzir movimento (prefers-reduced-motion).
