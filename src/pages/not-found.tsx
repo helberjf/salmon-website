@@ -12,8 +12,8 @@ export default function NotFound() {
       className="flex min-h-dvh flex-col items-center justify-center bg-navy px-5 text-center text-white"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-frost">{t('Erro 404')}</p>
-      <h1 className="mt-4 font-serif text-4xl font-semibold">{t('Página não encontrada')}</h1>
-      <p className="mt-4 max-w-md text-frost/80">
+      <h1 className="mt-4 text-4xl font-normal">{t('Página não encontrada')}</h1>
+      <p className="mt-4 max-w-md font-medium text-frost">
         {t('O endereço acessado não existe ou foi movido. Volte para a página inicial da {company}.', { company: company.name })}
       </p>
       <Link

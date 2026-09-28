@@ -10,10 +10,10 @@ export const pages = {
       no: 'Bridge Point | Norsk laks for bedriftsmarkedet i Brasil',
     },
     description: {
-      pt: 'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell. Produtos frescos, congelados e sob medida.',
-      en: 'Commercial representation and B2B supply of Norwegian salmon in Brazil, directly connected to exporter Norwell. Fresh, frozen and tailor-made products.',
-      es: 'Representación comercial y suministro B2B de salmón noruego en Brasil, en conexión directa con la exportadora Norwell. Productos frescos, congelados y a medida.',
-      no: 'Kommersiell representasjon og B2B-leveranser av norsk laks i Brasil, i direkte kontakt med eksportøren Norwell. Ferske, fryste og skreddersydde produkter.',
+      pt: 'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores.',
+      en: "Business consultancy between Norway and Brazil and Norwell's representative in the country: fresh and frozen Norwegian salmon for importers, wholesalers and distributors.",
+      es: 'Consultoría de negocios entre Noruega y Brasil y representante de Norwell en el país: salmón noruego fresco y congelado para importadores, mayoristas y distribuidores.',
+      no: 'Forretningsrådgivning mellom Norge og Brasil og Norwells representant i landet: fersk og fryst norsk laks til importører, grossister og distributører.',
     },
   },
   norwell: {
@@ -58,10 +58,10 @@ export const pages = {
       no: 'Om oss | Bridge Point',
     },
     description: {
-      pt: 'Conheça a Bridge Point, representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim, da diplomacia norueguesa ao comércio de pescados.',
-      en: "Meet Bridge Point, Norwell's representative in Brazil, and the career of its founder, Mai Sissel Tonheim, from Norwegian diplomacy to the seafood trade.",
-      es: 'Conozca Bridge Point, representante de Norwell en Brasil, y la trayectoria de su fundadora, Mai Sissel Tonheim, de la diplomacia noruega al comercio de pescados.',
-      no: 'Bli kjent med Bridge Point, Norwells representant i Brasil, og grunnleggeren Mai Sissel Tonheim – fra norsk diplomati til sjømathandel.',
+      pt: 'Conheça a Bridge Point, consultoria de entrada no mercado brasileiro e representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
+      en: "Meet Bridge Point, a Brazilian market-entry consultancy and Norwell's representative in Brazil, and the career of its founder, Mai Sissel Tonheim.",
+      es: 'Conozca Bridge Point, consultoría de entrada al mercado brasileño y representante de Norwell en Brasil, y la trayectoria de su fundadora, Mai Sissel Tonheim.',
+      no: 'Bli kjent med Bridge Point, rådgiver for etablering i det brasilianske markedet og Norwells representant i Brasil, og grunnleggeren Mai Sissel Tonheim.',
     },
   },
   privacy: {

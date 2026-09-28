@@ -10,7 +10,7 @@ export const company = {
   cnpj: '62.548.504/0001-06',
   foundationYear: '',
   description:
-    'Representação comercial e fornecimento B2B de salmão norueguês no Brasil, em conexão direta com a exportadora Norwell.',
+    'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país, com salmão norueguês para importadores, atacadistas e distribuidores.',
   email: 'mai@bridgepoint.international',
   phone: '+55 21 96569-0982',
   whatsapp: '5521965690982',

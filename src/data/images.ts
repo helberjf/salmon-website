@@ -1,15 +1,17 @@
 export const images = {
   /**
-   * Plano de fundo do topo do site: fotografia institucional da Norwell AS,
-   * exportadora representada no Brasil (fonte: norwell.no).
+   * Plano de fundo do topo da home: Hamnøy, nas Lofoten, no inverno — ilhas
+   * nevadas ligadas por pontes (foto de Tomáš Malík, licença livre do Pexels).
+   * No celular usa um recorte vertical centrado na ponte. Os srcset também
+   * estão no preload de scripts/generate-route-html.mjs — manter os dois iguais.
    */
   heroBackground: {
-    src: '/images/norwell-hero.webp',
+    src: '/images/catalog/lofoten-bridges-winter.webp',
     alt: '',
-  },
-  hero: {
-    src: '/images/catalog/norway-fjord.webp',
-    alt: 'Fiorde norueguês cercado por montanhas nevadas',
+    mobileAvifSrcSet:
+      '/images/responsive/hero-bridge-mobile-480.avif 480w, /images/responsive/hero-bridge-mobile-694.avif 694w',
+    mobileWebpSrcSet:
+      '/images/responsive/hero-bridge-mobile-480.webp 480w, /images/responsive/hero-bridge-mobile-694.webp 694w',
   },
   about: {
     src: '/images/catalog/salmon-farm-mountains.webp',

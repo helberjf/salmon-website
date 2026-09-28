@@ -5,6 +5,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { products } from '@/data/products';
 import { quoteCtaLabel } from '@/data/navigation';
 import { useI18n } from '@/i18n/I18nProvider';
+import { ShoreLine } from '@/components/ui/ShoreLine';
 import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
 
 interface ProductsProps {
@@ -51,10 +52,11 @@ export function Products({ limit, hideSpecNote = false, tone = 'white' }: Produc
                     {t(product.preservation)}
                   </span>
                 </div>
+                <ShoreLine verticalFromSm />
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                   <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-serif text-2xl font-semibold text-navy">{t(product.name)}</h3>
-                    <span aria-hidden="true" className="font-serif text-sm text-ocean/80">0{index + 1}</span>
+                    <h3 className="text-2xl font-light text-navy">{t(product.name)}</h3>
+                    <span aria-hidden="true" className="text-sm font-medium text-ocean">0{index + 1}</span>
                   </div>
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                     {t(product.description)}
@@ -107,7 +109,7 @@ export function Products({ limit, hideSpecNote = false, tone = 'white' }: Produc
 
         {!hideSpecNote && (
           <div className="mt-10 flex flex-col items-start justify-between gap-4 rounded-2xl bg-navy px-6 py-5 text-white sm:flex-row sm:items-center">
-            <p className="max-w-2xl text-sm leading-relaxed text-white/70">
+            <p className="max-w-2xl text-sm font-medium leading-relaxed text-white/80">
               {t(
                 'Trabalhamos também com especificações B, C, D e E-trim e soluções de private label. Disponibilidade, MOQ e condições são confirmadas na cotação.',
               )}

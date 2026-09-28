@@ -1,21 +1,17 @@
 import { useRef } from 'react';
 import { m, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Globe2, ShieldCheck, Ship, Snowflake } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { images } from '@/data/images';
-import { norwell } from '@/data/norwell';
-import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
-import { quoteCtaLabel } from '@/data/navigation';
+import { ShoreLine } from '@/components/ui/ShoreLine';
 import { useI18n } from '@/i18n/I18nProvider';
-import { getResponsiveImageSources, ResponsiveImage } from '@/components/ui/ResponsiveImage';
+import { getResponsiveImageSources } from '@/components/ui/ResponsiveImage';
 
-const trustItems = [
-  { icon: ShieldCheck, label: 'Origem norueguesa' },
-  { icon: Snowflake, label: 'Fresco ou congelado' },
-  { icon: Ship, label: 'Via aérea ou marítima' },
-  { icon: Globe2, label: 'Atendimento em todo o Brasil' },
-];
-
+/**
+ * Topo da home no espírito do site-base: a Bridge Point como ponte de negócios
+ * entre a Noruega e o Brasil. O logotipo grande fica no cabeçalho; a parceria
+ * com a Norwell aparece na faixa do pé, longe dele, e é aprofundada logo abaixo.
+ */
 export function Hero() {
   const { href: localizedHref, t } = useI18n();
   const shouldReduceMotion = useReducedMotion();
@@ -24,26 +20,32 @@ export function Hero() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  // Deslocamento inicial para o retrato do plano de fundo não encostar no cabeçalho.
-  const backdropY = useTransform(scrollYProgress, [0, 1], [48, 168]);
+  const backdropY = useTransform(scrollYProgress, [0, 1], [0, 110]);
   const backgroundSources = getResponsiveImageSources(images.heroBackground.src, 1600);
+  const reveal = (delay: number) => ({
+    initial: shouldReduceMotion ? false : { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.7, delay, ease: 'easeOut' as const },
+  });
 
   return (
-    <section ref={sectionRef} id="inicio" className="relative overflow-hidden bg-navy text-white">
-      {/* Fotografia institucional da Norwell AS (norwell.no) como plano de fundo */}
+    <section
+      ref={sectionRef}
+      id="inicio"
+      className="relative flex flex-col overflow-hidden bg-navy text-white lg:min-h-svh"
+    >
+      {/* Hamnøy, nas Lofoten: ilhas ligadas por pontes — o nome da Bridge Point em uma foto. */}
       <picture>
         <source
           media="(max-width: 639px)"
           type="image/avif"
-          srcSet="/images/responsive/norwell-hero-mobile-480.avif 480w, /images/responsive/norwell-hero-mobile-694.avif 694w"
+          srcSet={images.heroBackground.mobileAvifSrcSet}
           sizes="100vw"
         />
         <source
           media="(max-width: 639px)"
           type="image/webp"
-          srcSet="/images/responsive/norwell-hero-mobile-480.webp 480w, /images/responsive/norwell-hero-mobile-694.webp 694w"
+          srcSet={images.heroBackground.mobileWebpSrcSet}
           sizes="100vw"
         />
         <source
@@ -64,189 +66,103 @@ export function Hero() {
           width={backgroundSources.width}
           height={backgroundSources.height}
           alt=""
-          style={{ y: shouldReduceMotion ? 48 : backdropY }}
-          className="absolute inset-0 h-[112%] w-full scale-105 object-cover object-center opacity-40 sm:opacity-35 lg:opacity-55"
+          style={{ y: shouldReduceMotion ? 0 : backdropY }}
+          className="absolute inset-0 h-[112%] w-full object-cover object-center"
           decoding="async"
           fetchPriority="high"
         />
       </picture>
+      {/* Véus em sjøgrønn: escuros atrás do título e do cabeçalho, abertos no centro da foto. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/60 to-navy/80 lg:bg-gradient-to-r lg:from-navy lg:via-navy/80 lg:to-navy/25"
+        className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/75 to-navy/90 lg:bg-[linear-gradient(to_right,var(--color-navy)_0%,rgb(20_83_83/0.78)_40%,rgb(20_83_83/0.2)_75%,rgb(20_83_83/0.35)_100%)]"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-navy via-navy/10 to-navy/55"
-      />
-      <div aria-hidden="true" className="hero-grid absolute inset-0 opacity-30" />
-      <m.div
-        aria-hidden="true"
-        style={{ y: shouldReduceMotion ? 0 : glowY }}
-        className="absolute -left-40 top-28 h-96 w-96 rounded-full bg-ocean-light/20 blur-3xl"
-      />
-      <m.div
-        aria-hidden="true"
-        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute right-[8%] top-28 hidden h-56 w-56 rounded-full border border-white/10 lg:block"
+        className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/60 lg:from-navy/60 lg:via-transparent lg:to-navy/55"
       />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 pb-20 pt-32 lg:min-h-svh lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:pb-40 lg:pt-36">
-        <div className="max-w-3xl">
-          <m.p
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-frost backdrop-blur"
-          >
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-            {t('Representação comercial · Noruega → Brasil')}
-          </m.p>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pb-10 pt-24 lg:px-8 lg:pb-16 lg:pt-32 xl:pt-44">
+        <div className="grid w-full gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
           <m.h1
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
-            className="text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:max-w-[15ch] sm:text-6xl sm:leading-[0.98] sm:tracking-[-0.035em] lg:max-w-[13ch] lg:text-7xl"
+            {...reveal(0.05)}
+            className="text-[2.1rem] font-normal leading-[1.06] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.6rem] lg:leading-[1.02]"
           >
-            {t('Salmão norueguês,')}{' '}
-            <span className="text-gold">{t('direto dos fiordes.')}</span>
+            {t('Uma ponte de negócios')}{' '}
+            <span className="text-shore">{t('entre a Noruega e o Brasil.')}</span>
           </m.h1>
-          <m.p
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-white/72 sm:text-xl"
-          >
-            {t(
-              'Conectamos empresas brasileiras à exportadora Norwell e a produtores selecionados da costa norueguesa, com especificação sob medida e logística de ponta a ponta.',
-            )}
-          </m.p>
-          <m.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-          >
-            <a
-              href={localizedHref('/#contato')}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
-            >
-              {t(quoteCtaLabel)}
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a
-              href={localizedHref('/sobre')}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-7 py-4 font-bold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/10"
-            >
-              {t('Quem somos')}
-            </a>
-            {/* Terceira ação com peso de link, para não competir com os dois botões. */}
-            <a
-              href={localizedHref('/produtos')}
-              className="group inline-flex min-h-11 items-center justify-center gap-2 px-3 font-bold text-white/85 underline-offset-4 transition-colors hover:text-white hover:underline sm:justify-start"
-            >
-              {t('Ver produtos')}
-              <ArrowRight
-                size={16}
-                aria-hidden="true"
-                className="transition-transform duration-300 group-hover:translate-x-0.5"
-              />
-            </a>
-          </m.div>
 
-          <m.a
-            href={norwell.site}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: 'easeOut' }}
-            className="mt-12 inline-flex max-w-full items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-4 py-4 backdrop-blur transition-colors hover:border-white/30 hover:bg-white/10 sm:gap-4 sm:px-5"
-          >
-            {/* Frase única: quebrada com <br> o leitor de tela juntava as palavras. */}
-            <span className="min-w-0 max-w-[7rem] text-xs font-bold uppercase leading-tight tracking-[0.12em] text-frost sm:max-w-[8.5rem] sm:tracking-[0.16em]">
-              {t('Representante oficial no Brasil')}
-            </span>
-            <span aria-hidden="true" className="h-9 w-px shrink-0 bg-white/20" />
-            <NorwellLogo variant="white" height={26} className="shrink-0" />
-          </m.a>
-        </div>
-
-        <m.div
-          initial={shouldReduceMotion ? false : { opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-          style={{ y: shouldReduceMotion ? 0 : imageY }}
-          /**
-           * Só a partir de lg. Abaixo disso a coluna vira uma tela inteira de
-           * foto decorativa logo depois do texto — e o próprio plano de fundo
-           * da seção já é uma fotografia da origem.
-           */
-          className="relative mx-auto hidden w-full max-w-[540px] lg:mx-0 lg:block"
-        >
-          <div className="absolute -right-4 -top-4 h-full w-full rounded-[2rem] border border-white/10" />
+          {/**
+           * No desktop o texto fica num cartão claro sobre a foto, como os
+           * cartões do exemplo de site do manual da Norwell (p. 18).
+           */}
           <m.div
-            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -right-3 -top-8 z-20 shadow-xl shadow-navy-dark/40 sm:-right-6 sm:-top-10"
+            {...reveal(0.2)}
+            className="lg:overflow-hidden lg:rounded-2xl lg:bg-ice/95 lg:text-navy lg:shadow-2xl lg:shadow-navy-dark/30 lg:backdrop-blur"
           >
-            <SeafoodFromNorway size={88} />
-          </m.div>
-          <m.figure
-            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-[2rem] bg-ocean shadow-2xl shadow-black/30"
-          >
-            <ResponsiveImage
-              src={images.hero.src}
-              alt={t(images.hero.alt)}
-              sizes="(min-width: 1280px) 540px, 42vw"
-              maxWidth={1200}
-              artDirection={[
-                {
-                  media: '(min-width: 1024px)',
-                  avifSrcSet:
-                    '/images/responsive/norway-fjord-portrait-540.avif 540w, /images/responsive/norway-fjord-portrait-1080.avif 1080w',
-                  webpSrcSet:
-                    '/images/responsive/norway-fjord-portrait-540.webp 540w, /images/responsive/norway-fjord-portrait-1080.webp 1080w',
-                  sizes: '(min-width: 1280px) 540px, 42vw',
-                },
-              ]}
-              media="(min-width: 1024px)"
-              preventFallbackDownload
-              className="aspect-[4/5] w-full object-cover object-center"
-              loading="eager"
-            />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy via-navy/25 to-transparent" />
-            <figcaption className="absolute inset-x-0 bottom-0 p-7">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-frost">{t('Costa da Noruega')}</p>
-              <p className="mt-2 max-w-xs font-serif text-2xl font-semibold leading-tight text-white">
-                {t('Qualidade construída na origem')}
+            <ShoreLine className="hidden lg:block" />
+            <div className="lg:p-9">
+              <p className="text-lg font-medium leading-relaxed text-white sm:text-xl lg:font-normal lg:text-navy">
+                {t('Conectamos mercados e criamos oportunidades para empresas que querem crescer entre os dois países.')}
               </p>
-            </figcaption>
-          </m.figure>
-        </m.div>
+              {/* No celular fica só na seção seguinte, que diz o mesmo — assim a faixa da Norwell cabe na primeira tela. */}
+              <p className="mt-3 hidden leading-relaxed text-frost sm:block lg:mt-4 lg:text-muted">
+                {t(
+                  'A Bridge Point ajuda sua empresa a entender o mercado brasileiro, chegar às pessoas certas e transformar contatos em negócios que avançam.',
+                )}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 lg:mt-7">
+                <a
+                  href={localizedHref('/#contato')}
+                  data-contact-interest="market"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost sm:px-6 sm:py-3.5 lg:bg-navy lg:text-white lg:hover:bg-ocean"
+                >
+                  {t('Fale com a Bridge Point')}
+                  <ArrowRight
+                    size={16}
+                    aria-hidden="true"
+                    className="transition-transform duration-300 group-hover:translate-x-0.5"
+                  />
+                </a>
+                <a
+                  href={localizedHref('/sobre')}
+                  className="inline-flex items-center justify-center rounded-full border border-white/30 bg-navy/40 px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:border-white/50 sm:px-6 sm:py-3.5 lg:border-navy/25 lg:bg-transparent lg:text-navy lg:hover:border-navy/50"
+                >
+                  {t('Quem somos')}
+                </a>
+              </div>
+            </div>
+          </m.div>
+        </div>
       </div>
 
-      <div className="relative z-10 border-t border-white/10 bg-navy-dark/70 py-5 backdrop-blur-xl lg:absolute lg:inset-x-0 lg:bottom-0">
-        <ul className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-5 text-xs font-semibold text-white/80 sm:text-sm lg:grid-cols-4 lg:px-8">
-          {trustItems.map(({ icon: Icon, label }, index) => (
-            <m.li
-              key={label}
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.75 + index * 0.09, ease: 'easeOut' }}
-              className="flex items-center gap-2.5"
-            >
-              <Icon size={17} aria-hidden="true" className="text-gold" />
-              {t(label)}
-            </m.li>
-          ))}
-        </ul>
-      </div>
+      {/**
+       * Faixa da parceria principal, ligada à foto pela fjærestreken. Aparece já
+       * na primeira tela do celular e fica longe do logotipo da Bridge Point.
+       */}
+      <m.div {...reveal(0.35)} className="relative z-10 bg-navy">
+        <ShoreLine />
+        <a
+          href={localizedHref('/#parceria-norwell')}
+          className="group mx-auto flex max-w-7xl items-center gap-4 px-5 py-4 sm:gap-6 lg:px-8"
+        >
+          <NorwellLogo variant="negative" height={28} className="shrink-0" />
+          <span aria-hidden="true" className="h-9 w-px shrink-0 bg-white/20" />
+          <span className="min-w-0 flex-1">
+            <span className="block text-xs font-bold uppercase tracking-[0.14em] text-shore-light">
+              {t('Representante oficial da Norwell no Brasil')}
+            </span>
+            <span className="mt-0.5 block text-sm font-medium text-white/85">
+              {t('Salmão norueguês para importadores, atacadistas e distribuidores.')}
+            </span>
+          </span>
+          <ArrowDown
+            size={18}
+            aria-hidden="true"
+            className="hidden shrink-0 text-shore transition-transform duration-300 group-hover:translate-y-0.5 sm:block"
+          />
+        </a>
+      </m.div>
     </section>
   );
 }

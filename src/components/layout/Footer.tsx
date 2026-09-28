@@ -6,6 +6,7 @@ import { norwell } from '@/data/norwell';
 import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
 import { SeafoodFromNorway } from '@/components/ui/SeafoodFromNorway';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
+import { ShoreLine } from '@/components/ui/ShoreLine';
 import { useI18n } from '@/i18n/I18nProvider';
 
 export function Footer() {
@@ -13,8 +14,10 @@ export function Footer() {
   const { href: localizedHref, t } = useI18n();
 
   return (
-    <footer className="bg-navy-dark text-frost">
-      <div aria-hidden="true" className="nordic-stripe h-0.5 w-full opacity-60" />
+    // Fundo sjøgrønn exato: é a única cor escura sobre a qual o manual da
+    // Norwell permite o logotipo em negativo.
+    <footer className="bg-navy font-medium text-frost">
+      <ShoreLine />
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -49,7 +52,7 @@ export function Footer() {
           </div>
 
           <nav aria-label={t('Links do rodapé')}>
-            <h2 className="font-serif text-base font-semibold text-white">{t('Navegação')}</h2>
+            <h2 className="text-base font-bold text-white">{t('Navegação')}</h2>
             <ul className="mt-4 text-sm">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -66,11 +69,11 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="font-serif text-base font-semibold text-white">{t('Contato')}</h2>
+            <h2 className="text-base font-bold text-white">{t('Contato')}</h2>
             <ul className="mt-5 space-y-3.5 text-sm">
               {company.email && (
                 <li className="flex items-start gap-3">
-                  <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
+                  <Mail size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-shore" />
                   <a
                     href={`mailto:${company.email}`}
                     className="inline-block break-all py-1 hover:text-white"
@@ -81,7 +84,7 @@ export function Footer() {
               )}
               {company.phone && (
                 <li className="flex items-start gap-3">
-                  <Phone size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
+                  <Phone size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-shore" />
                   <a
                     href={`tel:+${company.phone.replace(/\D/g, '')}`}
                     className="inline-block py-1 hover:text-white"
@@ -91,7 +94,7 @@ export function Footer() {
                 </li>
               )}
               <li className="flex items-start gap-3">
-                <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-gold" />
+                <MapPin size={16} aria-hidden="true" className="mt-0.5 shrink-0 text-shore" />
                 <span>
                   {company.address && (
                     <>
@@ -106,22 +109,22 @@ export function Footer() {
           </div>
 
           <div>
-            <h2 className="font-serif text-base font-semibold text-white">{t('Atendimento')}</h2>
+            <h2 className="text-base font-bold text-white">{t('Atendimento')}</h2>
             <p className="mt-5 text-sm leading-relaxed text-frost/80">{t(company.serviceArea)}</p>
             <a
               href={norwell.site}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 block w-fit rounded-lg py-1 opacity-90 transition-opacity hover:opacity-100"
+              className="group mt-5 block w-fit rounded-lg py-1"
             >
-              <span className="block text-xs font-bold uppercase tracking-[0.16em] text-frost/60">
+              <span className="block text-xs font-bold uppercase tracking-[0.16em] text-frost/80 transition-colors group-hover:text-white">
                 {t('Parceiro exportador')}
               </span>
-              <NorwellLogo variant="white" height={26} className="mt-2.5" />
+              <NorwellLogo variant="negative" height={30} className="mt-4" />
             </a>
             <div className="mt-6 flex items-center gap-3">
               <SeafoodFromNorway size={54} className="rounded-md" />
-              <p className="text-xs leading-relaxed text-frost/60">
+              <p className="text-xs leading-relaxed text-frost/80">
                 {t('Selo de origem do setor pesqueiro norueguês, exibido pela Norwell AS.')}
               </p>
             </div>
@@ -134,7 +137,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-white/10 pt-7 text-xs text-frost/60">
+        <div className="mt-14 border-t border-white/15 pt-7 text-xs text-frost/80">
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
             <p>
               © {currentYear} {company.legalName || company.name}.

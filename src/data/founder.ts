@@ -13,6 +13,11 @@ export const founder = {
     src: '/images/people/mai-tonheim-flags.webp',
     alt: 'Mai Sissel Tonheim sentada à mesa, entre as bandeiras da Noruega e do Brasil',
   },
+  /** Retrato com o Rio de Janeiro ao fundo, na apresentação da home. */
+  introPhoto: {
+    src: '/images/people/mai-tonheim-portrait.jpg',
+    alt: 'Mai Sissel Tonheim, fundadora da Bridge Point, com o Rio de Janeiro ao fundo',
+  },
   /** Retrato recortado usado no convite final de /sobre. */
   ctaPhoto: {
     src: '/images/people/mai-tonheim-rio.webp',
@@ -50,7 +55,8 @@ export const founder = {
   bio: [
     'Norueguesa e radicada no Rio de Janeiro, Mai construiu uma trajetória de quase 20 anos na diplomacia norueguesa, com atuação no Ministério das Relações Exteriores da Noruega e experiência em diferentes países e contextos internacionais. Entre 2021 e 2025, atuou como vice-cônsul geral da Noruega no Rio de Janeiro.',
     'Ao longo dessa trajetória, desenvolveu experiência em relações institucionais, comunicação estratégica, negociação e cooperação internacional. Foi dessa experiência que nasceu a Bridge Point.',
-    'Hoje, Mai aplica esse conhecimento ao comércio de pescados, conectando empresas brasileiras ao salmão norueguês da Norwell e acompanhando cada relação com continuidade — estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
+    'Hoje, Mai aplica esse conhecimento ao desenvolvimento de negócios, apoiando empresas norueguesas que precisam compreender o mercado brasileiro, estabelecer as conexões certas e conduzir oportunidades com continuidade — como a Norwell, que ela representa no Brasil.',
+    'Sua atuação combina visão de negócios, capacidade de construir relações e acompanhamento consistente. Na Bridge Point, isso significa estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
   ],
   focusAreas: [
     'Entrada no mercado brasileiro',
@@ -76,7 +82,7 @@ export const founder = {
       organization: 'Norwell AS',
       location: 'Rio de Janeiro, Brasil',
       description:
-        'Representação comercial da exportadora norueguesa de pescados no mercado brasileiro, com foco na introdução do salmão norueguês junto a importadores, distribuidores e varejo.',
+        'Representação comercial da exportadora norueguesa de pescados no mercado brasileiro, com foco na introdução do salmão norueguês junto a importadores, atacadistas e distribuidores.',
     },
     {
       period: '2025 — atual',

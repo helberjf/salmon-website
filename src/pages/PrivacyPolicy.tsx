@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
   const controller = { company: company.legalName || company.name, cnpj: company.cnpj };
 
   return (
-    <LegalPage title={t('Política de Privacidade')}>
+    <LegalPage title={t('Política de Privacidade')} updatedAt="28 de setembro de 2026">
       <p>
         {t(
           'Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("Bridge Point"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).',
@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
       <ul>
         <li>
           {t(
-            'Dados informados no formulário de cotação: nome, empresa, cargo, e-mail, telefone/WhatsApp, cidade e estado, tipo de estabelecimento, produto de interesse e, se você quiser, volume, frequência de compra e mensagem.',
+            'Dados informados no formulário de contato: assunto, nome, empresa, e-mail e telefone/WhatsApp; nos pedidos de cotação, também o tipo de empresa e o produto de interesse; e, se você quiser, uma mensagem.',
           )}
         </li>
         <li>

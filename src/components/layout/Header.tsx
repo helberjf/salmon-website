@@ -6,6 +6,7 @@ import { navLinks, quoteCtaLabel } from '@/data/navigation';
 import { useScrolled } from '@/hooks/useScrolled';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
+import { ShoreLine } from '@/components/ui/ShoreLine';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
 import { stripLanguagePrefix } from '@/i18n/routing';
@@ -97,44 +98,74 @@ export function Header() {
         solid ? 'bg-navy/95 shadow-xl shadow-navy-dark/15 backdrop-blur-xl' : 'bg-transparent'
       }`}
     >
-      <div aria-hidden="true" className="nordic-stripe h-[3px] w-full" />
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <ShoreLine thinOnMobile />
+      {/**
+       * No desktop o cabeçalho segue o site-base: links à esquerda, logotipo no
+       * centro e idioma + cotação à direita. No topo da página o logotipo aparece
+       * grande, na versão vertical; ao rolar, vira a versão horizontal compacta.
+       * No celular fica à esquerda, ao lado do botão do menu.
+       */}
+      <div
+        className={`relative mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8 ${
+          solid ? 'py-3' : 'py-4 xl:min-h-36'
+        }`}
+      >
         <a
           href={localizedHref('/#inicio')}
           aria-label={t('Bridge Point — voltar ao início')}
-          className="-my-1 block shrink-0 py-1"
+          className="-my-1 block shrink-0 py-1 xl:absolute xl:left-1/2 xl:top-1/2 xl:z-10 xl:-translate-x-1/2 xl:-translate-y-1/2"
         >
-          <BridgePointLogo variant="white" eager height={32} />
+          <BridgePointLogo
+            variant="white"
+            eager
+            heightFromClass
+            height={44}
+            className={`transition-[height] duration-300 ${solid ? 'h-8' : 'h-11 xl:hidden'}`}
+          />
+          {!solid && (
+            <BridgePointLogo
+              variant="white"
+              layout="vertical"
+              eager
+              heightFromClass
+              height={112}
+              className="hidden h-28 xl:block"
+            />
+          )}
         </a>
 
-        <nav aria-label={t('Navegação principal')} className="hidden items-center gap-5 xl:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={localizedHref(link.href)}
-              aria-current={isLinkActive(link.href, link.sectionId) ? 'location' : undefined}
-              className={`group relative py-1 text-[0.82rem] font-semibold transition-colors hover:text-white ${
-                isLinkActive(link.href, link.sectionId) ? 'text-white' : 'text-white/70'
-              }`}
-            >
-              {t(link.label)}
-              {/* Sublinhado que cresce a partir do centro no hover e fica fixo no item ativo. */}
-              <span
-                aria-hidden="true"
-                className={`absolute -bottom-1 left-0 h-0.5 w-full origin-center bg-gold transition-transform duration-300 group-hover:scale-x-100 ${
-                  isLinkActive(link.href, link.sectionId) ? 'scale-x-100' : 'scale-x-0'
+        <nav aria-label={t('Navegação principal')} className="hidden w-full items-center justify-between xl:flex">
+          <div className="flex items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={localizedHref(link.href)}
+                aria-current={isLinkActive(link.href, link.sectionId) ? 'location' : undefined}
+                className={`group relative py-1 text-[0.82rem] font-semibold transition-colors hover:text-white ${
+                  isLinkActive(link.href, link.sectionId) ? 'text-white' : 'text-white/70'
                 }`}
-              />
+              >
+                {t(link.label)}
+                {/* Sublinhado que cresce a partir do centro no hover e fica fixo no item ativo. */}
+                <span
+                  aria-hidden="true"
+                  className={`absolute -bottom-1 left-0 h-0.5 w-full origin-center bg-shore transition-transform duration-300 group-hover:scale-x-100 ${
+                    isLinkActive(link.href, link.sectionId) ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                />
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-4">
+            <LanguageSelector />
+            <a
+              href={localizedHref('/#contato')}
+              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
+            >
+              {t(quoteCtaLabel)}
+              <ArrowUpRight size={15} aria-hidden="true" />
             </a>
-          ))}
-          <LanguageSelector />
-          <a
-            href={localizedHref('/#contato')}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-navy transition-all hover:-translate-y-0.5 hover:bg-frost"
-          >
-            {t(quoteCtaLabel)}
-            <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
+          </div>
         </nav>
 
         <button

@@ -38,13 +38,20 @@ test.describe('navigation and contact form', () => {
     await expect(page.getByRole('link', { name: 'Bridge Point — voltar ao início' })).toBeVisible();
   });
 
-  test('home hero offers quote, "Quem somos" and products, and contact has a WhatsApp shortcut', async ({ page }) => {
+  test('home hero leads to contact, "Quem somos" and the Norwell partnership, and contact has a WhatsApp shortcut', async ({ page }) => {
     await openApp(page, '/pt');
 
     const hero = page.locator('#inicio');
-    await expect(hero.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
+    await expect(hero.getByRole('link', { name: 'Fale com a Bridge Point' })).toHaveAttribute('href', '/pt#contato');
     await expect(hero.getByRole('link', { name: 'Quem somos' })).toHaveAttribute('href', '/pt/sobre');
-    await expect(hero.getByRole('link', { name: 'Ver produtos' })).toHaveAttribute('href', '/pt/produtos');
+    await expect(hero.getByRole('link', { name: /Representante oficial da Norwell no Brasil/ })).toHaveAttribute(
+      'href',
+      '/pt#parceria-norwell',
+    );
+
+    const partnership = page.locator('#parceria-norwell');
+    await expect(partnership.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
+    await expect(partnership.getByRole('link', { name: 'Ver produtos' })).toHaveAttribute('href', '/pt/produtos');
 
     await page.locator('#contato').scrollIntoViewIfNeeded();
     const contact = page.locator('section#contato');
@@ -77,11 +84,14 @@ test.describe('navigation and contact form', () => {
   });
 
   test('legal pages are final: no template notice and the legal entity is identified', async ({ page }) => {
-    for (const path of ['/pt/privacidade', '/pt/termos']) {
+    for (const [path, updatedAt] of [
+      ['/pt/privacidade', '28 de setembro de 2026'],
+      ['/pt/termos', '26 de setembro de 2026'],
+    ]) {
       await openApp(page, path);
       await expect(page.getByText('modelo institucional básico')).toHaveCount(0);
       await expect(page.locator('main')).toContainText('Bridgepoint Consultancy Ltda,');
-      await expect(page.locator('main')).toContainText('Última atualização: 26 de setembro de 2026.');
+      await expect(page.locator('main')).toContainText(`Última atualização: ${updatedAt}.`);
     }
   });
 

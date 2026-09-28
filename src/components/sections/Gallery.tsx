@@ -17,7 +17,7 @@ export function Gallery() {
             title={t('Um produto, muitas possibilidades')}
             description={t('Cor vibrante, textura delicada e versatilidade para cardápios, varejo e experiências gastronômicas de alto padrão.')}
           />
-          <p className="max-w-xs text-sm leading-relaxed text-white/55">
+          <p className="max-w-xs text-sm font-medium leading-relaxed text-white/75">
             {t('Fotografias do catálogo oficial da empresa e do acervo da Norwell AS.')}
           </p>
         </div>

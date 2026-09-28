@@ -8,49 +8,35 @@
   src: url('/fonts/montserrat-latin-variable.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 500 700;
-  font-display: swap;
-  src: url('/fonts/playfair-display-latin-variable.woff2') format('woff2');
-}
-
 @theme {
   /**
-   * Cores: paleta da Norwell AS (norwell.no) + dourado da bússola do logotipo
-   * Bridge Point (manual "Branding BP 05", Pantone 7502 C).
-   *   #005357  primária Norwell (verde-petróleo)   #c1e4f2  azul-claro Norwell
-   *   #0b6d72  teal do logotipo Norwell            #d3ac68  dourado Bridge Point
-   * Os nomes de token foram mantidos para não quebrar as classes existentes.
+   * Cores do manual de perfil da Norwell (Profilmanual 2016, p. 11), na versão
+   * RGB que o manual pede para tela. Sjøgrønn e fjæregrønn dominam; o texto fica
+   * em branco, nattgrå ou nos verdes. Fjordblå (#093f63) e solgul (#f0b43e) são
+   * cores de apoio e ainda não foram necessárias. O dourado da bússola aparece
+   * só dentro do logotipo Bridge Point.
+   *
+   * Os nomes antigos (navy, ocean, ice...) foram mantidos para não quebrar as
+   * classes existentes. As variações abaixo dos oficiais existem para estados de
+   * hover e para manter texto pequeno acima de 4.5:1.
    */
-  --color-navy: #00383b;
-  --color-navy-dark: #002225;
-  --color-ocean: #005357;
-  --color-ocean-light: #0b6d72;
-  --color-ice: #f4f7f6;
-  --color-mist: #dceaea;
-  --color-slate-blue: #4a6a6b;
-  --color-frost: #c1e4f2;
-  --color-seagrass: #52958a;
-  /* Dourado da bússola Bridge Point. Em texto pequeno sobre o verde escuro use
-     a variação clara, que mantém contraste acima de 4.5:1. */
-  --color-gold: #d3ac68;
-  --color-gold-light: #e6cc98;
-  --color-gold-dark: #7a5a1e;
-  /* Azul-marinho do logotipo Bridge Point */
-  --color-bp-navy: #13324d;
+  --color-navy: #145353; /* Sjøgrønn, PMS 2214: superfícies escuras e títulos */
+  --color-navy-dark: #0d3a3a; /* Sjøgrønn escurecido: sombras e véus sobre foto */
+  --color-ocean: #0e6e73; /* Sjøgrønn mais claro: links, ícones e hover */
+  --color-shore: #78c496; /* Fjæregrønn, PMS 2247: fjærestreken, ícones e destaques */
+  --color-shore-light: #a8dbbc; /* Fjæregrønn clareado: texto pequeno sobre sjøgrønn */
+  --color-frost: #d0eada; /* Fjæregrønn a 35%: texto corrido sobre sjøgrønn */
+  --color-mist: #ddf0e5; /* Fjæregrønn a 25%: fundo de imagens e ícones */
+  --color-ice: #f2f9f5; /* Fjæregrønn a 10%: seções claras */
   /* Vermelho usado só em mensagens de erro do formulário */
   --color-nordic-red: #ba0c2f;
-  --color-norwell: #005357;
-  --color-norwell-dark: #00383b;
 
   --color-background: var(--color-ice);
-  --color-foreground: #01131c;
-  --color-muted: #4a6a6b;
-  --color-border: #d3e3e2;
+  --color-foreground: #3d3d3f; /* Nattgrå */
+  --color-muted: #595a5e; /* Nattgrå clareado: textos de apoio */
+  --color-border: #d4e8dc;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
+  /* Substituta da Sharp Sans No1 do manual, que é paga (ver README). */
   --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
@@ -95,7 +81,6 @@ body {
   h2,
   h3,
   h4 {
-    @apply font-serif;
     text-wrap: balance;
   }
 
@@ -108,7 +93,7 @@ body {
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-ocean-light);
+    outline: 2px solid var(--color-ocean);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -120,33 +105,12 @@ body {
   }
 
   ::selection {
-    background-color: var(--color-frost);
+    background-color: var(--color-shore);
     color: var(--color-navy);
   }
 }
 
 @layer utilities {
-  /* Filete dourado da identidade Bridge Point, com um brilho que percorre a faixa */
-  .nordic-stripe {
-    background: linear-gradient(
-      to right,
-      var(--color-gold) 0 35%,
-      var(--color-gold-light) 50%,
-      var(--color-gold) 65% 100%
-    );
-    background-size: 200% 100%;
-    animation: nordic-drift 14s linear infinite;
-  }
-
-  .hero-grid {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 54px 54px;
-    mask-image: linear-gradient(to bottom, black, transparent 82%);
-    animation: grid-drift 22s linear infinite;
-  }
-
   .ocean-glint {
     background: linear-gradient(
       108deg,
@@ -175,18 +139,6 @@ body {
     border: 1px solid rgb(37 211 102 / 45%);
     border-radius: 9999px;
     animation: whatsapp-ring 2.8s ease-out infinite;
-  }
-}
-
-@keyframes nordic-drift {
-  to {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes grid-drift {
-  to {
-    background-position: 54px 54px;
   }
 }
 

@@ -26,11 +26,10 @@ export function PageHero({
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy pb-24 pt-32 text-white md:pb-36 md:pt-40">
-      <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10 opacity-80" />
+    <section className="relative isolate overflow-hidden bg-navy pb-24 pt-32 text-white md:pb-36 md:pt-40 xl:pt-52">
       <m.div
         aria-hidden="true"
-        className="absolute -right-48 top-12 -z-10 h-[32rem] w-[32rem] rounded-full bg-ocean-light/15 blur-3xl"
+        className="absolute -right-48 top-12 -z-10 h-[32rem] w-[32rem] rounded-full bg-ocean/25 blur-3xl"
         initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.88 }}
         animate={{ opacity: 0.55, scale: 1 }}
         transition={{ duration: 1.1, ease: 'easeOut' }}
@@ -46,12 +45,12 @@ export function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-gold-light">{eyebrow}</p>
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-shore-light">{eyebrow}</p>
+          <h1 className="mt-4 max-w-3xl text-4xl font-normal leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
             {title}
           </h1>
           {description && (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-frost">{description}</p>
+            <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-frost">{description}</p>
           )}
           {actions && <div className="mt-8 flex flex-col gap-3 sm:flex-row">{actions}</div>}
         </m.div>

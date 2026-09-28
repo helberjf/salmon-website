@@ -18,6 +18,11 @@ interface BridgePointLogoProps {
   className?: string;
   /** Imagens acima da dobra (cabeçalho) não devem ser carregadas sob demanda. */
   eager?: boolean;
+  /**
+   * A altura vem das classes em `className` (para animar entre tamanhos);
+   * `height` passa a servir só para a proporção dos atributos da imagem.
+   */
+  heightFromClass?: boolean;
 }
 
 export function BridgePointLogo({
@@ -26,6 +31,7 @@ export function BridgePointLogo({
   height = 36,
   className = '',
   eager = false,
+  heightFromClass = false,
 }: BridgePointLogoProps) {
   const logo = LOGO[layout];
 
@@ -38,7 +44,7 @@ export function BridgePointLogo({
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       className={`w-auto max-w-full object-contain object-left ${className}`}
-      style={{ height }}
+      style={heightFromClass ? undefined : { height }}
     />
   );
 }

@@ -1,65 +1,76 @@
 /**
- * BRIDGE POINT — textos institucionais da página /sobre.
+ * BRIDGE POINT — textos institucionais da home (CompanyIntro) e de /sobre.
  *
- * Público do site: empresas brasileiras que compram salmão norueguês para
- * revender ou servir no país. Base: site-base preparado pela Mai no
- * Squarespace, adaptado a esse público. Ao editar, manter a frase em português
- * como chave e atualizar os catálogos em src/i18n/catalogs.
+ * Posicionamento: primeiro a consultoria de entrada no mercado e de
+ * desenvolvimento de negócios entre Noruega e Brasil; depois, com destaque, a
+ * parceria principal — a representação da Norwell junto a importadores,
+ * atacadistas e distribuidores. Base: site-base preparado pela Mai no
+ * Squarespace. Ao editar, manter a frase em português como chave e atualizar os
+ * catálogos em src/i18n/catalogs.
  */
 export const bridgePoint = {
-  tagline: 'Conectando mercados. Criando oportunidades.',
-  intro: [
-    'Comprar salmão de outro país envolve mais do que escolher um fornecedor. É preciso ter a especificação certa, entender a logística, confiar na origem e contar com alguém que acompanhe cada embarque.',
-    'A Bridge Point representa no Brasil a Norwell AS, exportadora norueguesa de salmão e truta, e conecta importadores, distribuidores, varejo e food service diretamente à origem. Com base no Rio de Janeiro, combinamos experiência internacional, conhecimento do mercado brasileiro e acompanhamento próximo de cada cliente.',
+  /** Home: "Quem somos", logo depois do topo (a ideia do site-base, com texto próprio). */
+  homeIntro: [
+    'A Bridge Point acompanha empresas norueguesas na chegada ao Brasil: explica como o mercado funciona, aproxima as pessoas certas e ajuda cada oportunidade a virar negócio, com clareza e continuidade.',
+    'À frente dela está Mai Sissel Tonheim, que passou 18 anos na diplomacia norueguesa antes de fundar a Bridge Point. Dessa trajetória vêm o olhar internacional, o conhecimento do Brasil e o jeito próximo de conduzir cada relação comercial.',
   ],
+  /** /sobre: "Quem somos". */
+  intro: [
+    'Entrar em um novo mercado envolve mais do que identificar uma oportunidade. É preciso compreender o contexto local, definir prioridades, encontrar os parceiros certos e acompanhar as relações para que uma estratégia avance na prática.',
+    'A Bridge Point é uma consultoria de entrada no mercado. Atua também no desenvolvimento de negócios, apoiando empresas norueguesas a se estabelecer e a atuar no Brasil.',
+    'Com base no Rio de Janeiro, combinamos experiência internacional, conhecimento do mercado brasileiro e acompanhamento próximo para orientar decisões e desenvolver oportunidades comerciais.',
+  ],
+  /** /sobre: destaque da parceria principal, logo depois de "Quem somos". */
+  norwellPartnership:
+    'A Bridge Point atua no desenvolvimento da Norwell no mercado brasileiro, aproximando o salmão norueguês de importadores, atacadistas, distribuidores e parceiros locais — da especificação de cada produto ao acompanhamento dos embarques.',
   services: [
     {
-      title: 'Fornecimento sob medida',
+      title: 'Entrada no mercado',
       items: [
-        'Produtos frescos e congelados',
-        'Cortes, calibres e especificações para cada operação',
-        'Volumes e frequência definidos com o cliente',
-        'Cotação clara, com escopo e condições por escrito',
+        'Compreensão do mercado brasileiro',
+        'Análise de oportunidades',
+        'Definição de prioridades',
+        'Posicionamento e abordagem comercial para o Brasil',
       ],
     },
     {
-      title: 'Importação e logística',
+      title: 'Desenvolvimento de negócios',
       items: [
-        'Envio por via aérea ou marítima',
-        'Documentação de origem e certificações',
-        'Coordenação direta com a exportadora na Noruega',
+        'Identificação de potenciais clientes e parceiros',
+        'Desenvolvimento de relacionamentos e preparação de reuniões',
+        'Acompanhamento comercial',
       ],
     },
     {
-      title: 'Acompanhamento comercial',
+      title: 'Comércio e representação',
       items: [
-        'Programação de embarques',
-        'Pós-venda e ajustes de especificação',
-        'Relacionamento de longo prazo, em português, inglês e norueguês',
+        'Desenvolvimento de operações de importação e exportação',
+        'Representação local, como a da Norwell no Brasil',
+        'Coordenação com parceiros e especialistas de cada projeto',
       ],
     },
   ],
   servicesNote:
-    'Disponibilidade, volumes mínimos e condições comerciais são confirmados em cada cotação.',
+    'A atuação também pode incluir projetos ligados a sustentabilidade, ESG, pesquisa, inovação e novas oportunidades da economia do mar.',
   approach:
-    'Trabalhamos com integridade, transparência e inteligência cultural. Cada fornecimento parte da realidade da sua operação, para que o salmão norueguês chegue com a especificação, o volume e o ritmo de que o seu negócio precisa.',
+    'A Bridge Point trabalha com integridade, discrição, visão e inteligência cultural. Cada projeto parte dos objetivos e do contexto de cada empresa, para transformar uma oportunidade internacional em um caminho comercial claro e possível de executar.',
   method: [
     {
       step: '01',
       title: 'Entender',
-      description: 'Conhecer a sua operação: produtos, volumes, frequência, público e exigências de especificação.',
+      description: 'Compreender os objetivos, o contexto, as prioridades e os desafios do negócio.',
     },
     {
       step: '02',
       title: 'Conectar',
       description:
-        'Levar a demanda à Norwell e aos produtores noruegueses e montar a proposta com a especificação e a rota de fornecimento adequadas.',
+        'Identificar os parceiros e interlocutores relevantes e abrir o diálogo necessário para a oportunidade avançar.',
     },
     {
       step: '03',
       title: 'Desenvolver',
       description:
-        'Acompanhar embarques, documentação e pós-venda, mantendo a relação comercial em movimento.',
+        'Acompanhar as relações, as negociações e os próximos passos, mantendo o projeto em movimento.',
     },
   ],
 };

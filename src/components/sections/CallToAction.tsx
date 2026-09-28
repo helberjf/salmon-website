@@ -26,11 +26,11 @@ export function CallToAction() {
       <div aria-hidden="true" className="ocean-glint absolute inset-0" />
       <div className="relative z-10 mx-auto max-w-3xl px-5 text-center lg:px-8">
         <Reveal>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-gold-light">{t('Próximo embarque')}</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-white md:text-5xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-shore-light">{t('Próximo embarque')}</p>
+          <h2 className="mt-4 text-4xl font-normal leading-tight text-white md:text-5xl">
             {t('O salmão certo para a sua operação começa com uma boa conversa.')}
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
+          <p className="mx-auto mt-5 max-w-2xl text-lg font-medium leading-relaxed text-white/85">
             {t(
               'Conte o produto, o volume e a frequência que procura. Estruturamos a especificação e a rota de fornecimento mais adequadas ao seu negócio.',
             )}
