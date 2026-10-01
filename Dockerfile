@@ -1,6 +1,6 @@
 # Imagens fixadas por versao e digest multi-arquitetura para builds reproduziveis.
 # O Dependabot acompanha novas versoes e digests deste arquivo.
-FROM node:22.23.2-alpine3.24@sha256:c610fcdfb1d5b4740dd70c284ed3cb16bb857e0f7166196e36a5501df7a3aa32 AS build
+FROM node:26.10.0-alpine3.24@sha256:0b36e8c136b94cd4fcf02188228e76c31ad5872eef3fec8cbd2eee500cfd9e80 AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
