@@ -7,7 +7,7 @@ export interface NavLink {
 
 /**
  * Cada item leva a um destino próprio: o início, a Norwell (com um bloco curto
- * sobre a Bridge Point, sua representante), o portfólio com o processo e o
+ * sobre a BridgePoint, sua representante), o portfólio com o processo e o
  * contato. O "Início" repete o link do logotipo de propósito — é o que o
  * comprador procura primeiro. O CTA "Solicitar cotação" também leva ao contato,
  * com peso de botão.

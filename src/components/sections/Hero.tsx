@@ -10,7 +10,7 @@ import { getResponsiveImageSources } from '@/components/ui/ResponsiveImage';
 
 /**
  * Topo da home: a Norwell no Brasil. O logotipo da Norwell fica no cabeçalho,
- * sobre sjøgrønn sólido; a Bridge Point, sua representante no país, assina a
+ * sobre sjøgrønn sólido; a BridgePoint, sua representante no país, assina a
  * faixa do pé e é apresentada mais abaixo, em #representante.
  */
 export function Hero() {
@@ -113,7 +113,7 @@ export function Hero() {
               {/* No celular fica só na faixa do pé, que diz o mesmo — assim ela cabe na primeira tela. */}
               <p className="mt-3 hidden leading-relaxed text-frost sm:block lg:mt-4 lg:text-muted">
                 {t(
-                  'O atendimento é local e em português, pela Bridge Point, representante oficial da Norwell no país.',
+                  'O atendimento é local e em português, pela BridgePoint, representante oficial da Norwell no país.',
                 )}
               </p>
               <div className="mt-6 flex flex-wrap gap-3 lg:mt-7">
@@ -142,7 +142,7 @@ export function Hero() {
 
       {/**
        * Faixa da representante, ligada à foto pela fjærestreken. Aparece já na
-       * primeira tela do celular e leva à apresentação da Bridge Point.
+       * primeira tela do celular e leva à apresentação da BridgePoint.
        */}
       <m.div {...reveal(0.35)} className="relative z-10 bg-navy">
         <ShoreLine />

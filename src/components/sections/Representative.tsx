@@ -9,7 +9,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 
 /**
  * A representante da Norwell no Brasil, em um bloco curto: o site é sobre a
- * Norwell, e a Bridge Point aparece como quem atende o comprador brasileiro.
+ * Norwell, e a BridgePoint aparece como quem atende o comprador brasileiro.
  * Usado na home (destino da faixa do topo, #representante) e em /sobre.
  */
 export function Representative() {
@@ -21,7 +21,7 @@ export function Representative() {
         <div>
           <SectionHeading
             eyebrow={t('Representante no Brasil')}
-            title={t('Atendimento local, pela Bridge Point')}
+            title={t('Atendimento local, pela BridgePoint')}
           />
           <Reveal delay={0.1} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
             <p>{t(bridgePoint.representative)}</p>
@@ -40,7 +40,7 @@ export function Representative() {
             />
             <div className="min-w-0">
               <p className="text-lg font-semibold text-navy">{founder.name}</p>
-              <p className="mt-0.5 text-sm text-muted">{t('Fundadora da Bridge Point')}</p>
+              <p className="mt-0.5 text-sm text-muted">{t('Fundadora da BridgePoint')}</p>
               <a
                 href={founder.linkedin}
                 target="_blank"

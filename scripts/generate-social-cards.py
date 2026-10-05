@@ -142,7 +142,7 @@ def render_card(name: str, config: dict[str, object]) -> None:
     image = add_overlay(image)
     draw = ImageDraw.Draw(image)
 
-    # Marca do site: Norwell; abaixo, a Bridge Point como representante no Brasil.
+    # Marca do site: Norwell; abaixo, a BridgePoint como representante no Brasil.
     image.alpha_composite(brand_logo("norwell-negative", 104), (62, 108))
     draw.rectangle((62, 268, 122, 270), fill=SHORE)
     draw.text((62, 292), "Official representative in Brazil", font=ImageFont.truetype(SANS, 20), fill=FROST)

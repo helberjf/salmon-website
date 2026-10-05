@@ -19,7 +19,7 @@ ADDITIONAL_SOURCES = (
     ROOT / "public" / "images" / "people" / "mai-tonheim-portrait.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-preparation.jpg",
     ROOT / "public" / "images" / "people" / "mai-tonheim-salmon-presentation.jpg",
-    # Recortes com fundo transparente vindos do site-base da Bridge Point.
+    # Recortes com fundo transparente vindos do site-base da BridgePoint.
     ROOT / "public" / "images" / "people" / "mai-tonheim-flags.webp",
     ROOT / "public" / "images" / "people" / "mai-tonheim-rio.webp",
 )

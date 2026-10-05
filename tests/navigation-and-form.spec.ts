@@ -35,11 +35,11 @@ test.describe('navigation and contact form', () => {
     await page.locator('#produtos').scrollIntoViewIfNeeded();
     await expect(primaryNavigation.getByRole('link', { name: 'Início' })).not.toHaveAttribute('aria-current', 'location');
 
-    // A assinatura do site é o logotipo da Norwell, com o da Bridge Point ao lado.
+    // A assinatura do site é o logotipo da Norwell, com o da BridgePoint ao lado.
     const brand = page.getByRole('link', { name: 'Norwell Brasil — voltar ao início' });
     await expect(brand).toBeVisible();
     await expect(brand.locator('img[alt="Norwell AS"]')).toBeVisible();
-    await expect(brand.locator('img[alt="Bridge Point International"]')).toBeVisible();
+    await expect(brand.locator('img[alt="BridgePoint International"]')).toBeVisible();
   });
 
   test('home hero leads to the quote form, the Norwell page and the representative, and contact has a WhatsApp shortcut', async ({ page }) => {
@@ -52,7 +52,7 @@ test.describe('navigation and contact form', () => {
       'href',
       '/pt#representante',
     );
-    await expect(page.locator('#representante').getByRole('img', { name: 'Bridge Point International' })).toBeVisible();
+    await expect(page.locator('#representante').getByRole('img', { name: 'BridgePoint International' })).toBeVisible();
 
     const partnership = page.locator('#parceria-norwell');
     await expect(partnership.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
@@ -71,7 +71,7 @@ test.describe('navigation and contact form', () => {
 
     await expect(page.locator('h1')).toHaveText('Exportadora norueguesa de salmão, com representação no Brasil');
     const representative = page.locator('#representante');
-    await expect(representative.getByRole('heading', { level: 2 })).toHaveText('Atendimento local, pela Bridge Point');
+    await expect(representative.getByRole('heading', { level: 2 })).toHaveText('Atendimento local, pela BridgePoint');
     await expect(representative).toContainText('Mai Sissel Tonheim');
   });
 

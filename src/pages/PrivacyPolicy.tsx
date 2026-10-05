@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
     <LegalPage title={t('Política de Privacidade')} updatedAt="28 de setembro de 2026">
       <p>
         {t(
-          'Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("Bridge Point"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).',
+          'Esta Política explica como a {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("BridgePoint"), trata os dados pessoais de quem visita este website ou entra em contato conosco, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD).',
           controller,
         )}
       </p>

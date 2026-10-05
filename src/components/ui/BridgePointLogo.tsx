@@ -1,5 +1,5 @@
 /**
- * Logotipo oficial da Bridge Point International, vetorizado a partir do
+ * Logotipo oficial da BridgePoint International, vetorizado a partir do
  * manual de marca ("Branding BP 05"): bússola dourada + nome em azul-marinho.
  *
  * `white` é a versão invertida do manual (nome em branco, bússola dourada),
@@ -38,7 +38,7 @@ export function BridgePointLogo({
   return (
     <img
       src={`/brand/${variant === 'white' ? logo.white : logo.color}.svg`}
-      alt="Bridge Point International"
+      alt="BridgePoint International"
       width={Math.round(logo.ratio * height)}
       height={height}
       loading={eager ? 'eager' : 'lazy'}

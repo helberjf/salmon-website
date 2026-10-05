@@ -34,7 +34,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora e representante comercial no Brasil',
     organizationDescription:
-      'A Norwell no Brasil: salmão norueguês para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.',
+      'A Norwell no Brasil: salmão norueguês para importadores, atacadistas e distribuidores, com atendimento local da BridgePoint, representante oficial no país.',
     norwellDescription:
       'Fundada em 1996 em Florø, na costa oeste da Noruega, a Norwell é uma exportadora de porte médio de salmão e truta noruegueses. Cerca de 70% do seu capital pertence aos próprios produtores e 30% a colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta.',
     knowsAbout: ['Salmão norueguês', 'Comércio internacional', 'Food service', 'Distribuição de pescados'],
@@ -46,7 +46,7 @@ const languages = {
     country: 'Brazil',
     founderTitle: 'Founder and commercial representative in Brazil',
     organizationDescription:
-      'Norwell in Brazil: Norwegian salmon for importers, wholesalers and distributors, with local service from Bridge Point, its official representative in the country.',
+      'Norwell in Brazil: Norwegian salmon for importers, wholesalers and distributors, with local service from BridgePoint, its official representative in the country.',
     norwellDescription:
       'Founded in 1996 in Florø, on Norway’s west coast, Norwell is a mid-sized exporter of Norwegian salmon and trout. Around 70% of the company is owned by the farmers themselves and 30% by key employees — an ownership structure that keeps those who raise the fish close to those who export it.',
     knowsAbout: ['Norwegian salmon', 'International trade', 'Food service', 'Seafood distribution'],
@@ -58,7 +58,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora y representante comercial en Brasil',
     organizationDescription:
-      'Norwell en Brasil: salmón noruego para importadores, mayoristas y distribuidores, con atención local de Bridge Point, representante oficial en el país.',
+      'Norwell en Brasil: salmón noruego para importadores, mayoristas y distribuidores, con atención local de BridgePoint, representante oficial en el país.',
     norwellDescription:
       'Fundada en 1996 en Florø, en la costa oeste de Noruega, Norwell es una exportadora de tamaño medio de salmón y trucha noruegos. Cerca del 70% de su capital pertenece a los propios productores y el 30% a colaboradores clave, una estructura societaria que acerca a quien cría el pescado con quien lo exporta.',
     knowsAbout: ['Salmón noruego', 'Comercio internacional', 'Food service', 'Distribución de productos del mar'],
@@ -70,7 +70,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Grunnlegger og kommersiell representant i Brasil',
     organizationDescription:
-      'Norwell i Brasil: norsk laks til importører, grossister og distributører, med lokal oppfølging fra Bridge Point, offisiell representant i landet.',
+      'Norwell i Brasil: norsk laks til importører, grossister og distributører, med lokal oppfølging fra BridgePoint, offisiell representant i landet.',
     norwellDescription:
       'Norwell ble etablert i 1996 i Florø på Vestlandet og er en mellomstor eksportør av norsk laks og ørret. Rundt 70 % eies av oppdretterne selv og 30 % av nøkkelansatte — en eierstruktur som holder dem som produserer fisken tett på dem som eksporterer den.',
     knowsAbout: ['Norsk laks', 'Internasjonal handel', 'Food service', 'Distribusjon av sjømat'],

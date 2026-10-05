@@ -2,13 +2,13 @@ import type { CareerEntry } from '@/types';
 
 /**
  * DADOS DA FUNDADORA — a apresentação (`bio`) é o texto da própria Mai no
- * site-base da Bridge Point; a trajetória segue o perfil público do LinkedIn
+ * site-base da BridgePoint; a trajetória segue o perfil público do LinkedIn
  * (linkedin.com/in/mai-tonheim-iam). Manter descrições fiéis aos cargos reais.
  */
 export const founder = {
   name: 'Mai Sissel Tonheim',
-  title: 'Fundadora da Bridge Point · Representante da Norwell no Brasil',
-  /** Recorte com fundo transparente (site-base da Bridge Point). Sem uso no site atual. */
+  title: 'Fundadora da BridgePoint · Representante da Norwell no Brasil',
+  /** Recorte com fundo transparente (site-base da BridgePoint). Sem uso no site atual. */
   photo: {
     src: '/images/people/mai-tonheim-flags.webp',
     alt: 'Mai Sissel Tonheim sentada à mesa, entre as bandeiras da Noruega e do Brasil',
@@ -16,7 +16,7 @@ export const founder = {
   /** Retrato com o Rio de Janeiro ao fundo, no bloco da representante (Representative). */
   introPhoto: {
     src: '/images/people/mai-tonheim-portrait.jpg',
-    alt: 'Mai Sissel Tonheim, fundadora da Bridge Point, com o Rio de Janeiro ao fundo',
+    alt: 'Mai Sissel Tonheim, fundadora da BridgePoint, com o Rio de Janeiro ao fundo',
   },
   /** Retrato recortado usado no convite final de /sobre. */
   ctaPhoto: {
@@ -51,12 +51,12 @@ export const founder = {
   ],
   linkedin: 'https://www.linkedin.com/in/mai-tonheim-iam/',
   profileHeadline: 'Experiência internacional. Conhecimento local. Relações construídas com confiança.',
-  /** Texto de apresentação escrito pela Mai para o site-base da Bridge Point. */
+  /** Texto de apresentação escrito pela Mai para o site-base da BridgePoint. */
   bio: [
     'Norueguesa e radicada no Rio de Janeiro, Mai construiu uma trajetória de quase 20 anos na diplomacia norueguesa, com atuação no Ministério das Relações Exteriores da Noruega e experiência em diferentes países e contextos internacionais. Entre 2021 e 2025, atuou como vice-cônsul geral da Noruega no Rio de Janeiro.',
-    'Ao longo dessa trajetória, desenvolveu experiência em relações institucionais, comunicação estratégica, negociação e cooperação internacional. Foi dessa experiência que nasceu a Bridge Point.',
+    'Ao longo dessa trajetória, desenvolveu experiência em relações institucionais, comunicação estratégica, negociação e cooperação internacional. Foi dessa experiência que nasceu a BridgePoint.',
     'Hoje, Mai aplica esse conhecimento ao desenvolvimento de negócios, apoiando empresas norueguesas que precisam compreender o mercado brasileiro, estabelecer as conexões certas e conduzir oportunidades com continuidade — como a Norwell, que ela representa no Brasil.',
-    'Sua atuação combina visão de negócios, capacidade de construir relações e acompanhamento consistente. Na Bridge Point, isso significa estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
+    'Sua atuação combina visão de negócios, capacidade de construir relações e acompanhamento consistente. Na BridgePoint, isso significa estar presente não apenas para fazer uma conexão, mas para ajudá-la a avançar comercialmente.',
   ],
   focusAreas: [
     'Entrada no mercado brasileiro',

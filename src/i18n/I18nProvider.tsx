@@ -32,7 +32,7 @@ const STORAGE_KEY = 'nordic-salmon.language';
 const DEFAULT_LANGUAGE: Language = 'pt';
 const HOME_TITLE = 'Norwell Brasil | Salmão Norueguês B2B';
 const SITE_DESCRIPTION =
-  'A Norwell no Brasil: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.';
+  'A Norwell no Brasil: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores, com atendimento local da BridgePoint, representante oficial no país.';
 
 const socialImagesByPage: Record<string, string> = {
   '/': 'home.jpg',
@@ -145,7 +145,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
     return {
       title: 'Sobre a Norwell | Norwell Brasil',
       description:
-        'Fundada em 1996 em Florø, a Norwell exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores, as certificações e a Bridge Point, sua representante no Brasil.',
+        'Fundada em 1996 em Florø, a Norwell exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores, as certificações e a BridgePoint, sua representante no Brasil.',
       path: '/sobre',
       schemaType: 'AboutPage',
       indexable: true,
@@ -156,7 +156,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
     return {
       title: 'Política de Privacidade | Norwell Brasil',
       description:
-        'Saiba como a Bridge Point trata os dados informados em seus canais de contato e solicitações comerciais.',
+        'Saiba como a BridgePoint trata os dados informados em seus canais de contato e solicitações comerciais.',
       path,
       schemaType: 'WebPage',
       indexable: true,
@@ -167,7 +167,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
     return {
       title: 'Termos de Uso | Norwell Brasil',
       description:
-        'Consulte as condições de uso do website institucional da Bridge Point e as informações aplicáveis ao conteúdo publicado.',
+        'Consulte as condições de uso do website institucional da BridgePoint e as informações aplicáveis ao conteúdo publicado.',
       path,
       schemaType: 'WebPage',
       indexable: true,

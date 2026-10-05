@@ -10,10 +10,10 @@ export const pages = {
       no: 'Norwell Brasil | Norsk laks for bedriftsmarkedet',
     },
     description: {
-      pt: 'A Norwell no Brasil: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.',
-      en: 'Norwell in Brazil: fresh and frozen Norwegian salmon for importers, wholesalers and distributors, with local service from Bridge Point, its official representative in the country.',
-      es: 'Norwell en Brasil: salmón noruego fresco y congelado para importadores, mayoristas y distribuidores, con atención local de Bridge Point, representante oficial en el país.',
-      no: 'Norwell i Brasil: fersk og fryst norsk laks til importører, grossister og distributører, med lokal oppfølging fra Bridge Point, offisiell representant i landet.',
+      pt: 'A Norwell no Brasil: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores, com atendimento local da BridgePoint, representante oficial no país.',
+      en: 'Norwell in Brazil: fresh and frozen Norwegian salmon for importers, wholesalers and distributors, with local service from BridgePoint, its official representative in the country.',
+      es: 'Norwell en Brasil: salmón noruego fresco y congelado para importadores, mayoristas y distribuidores, con atención local de BridgePoint, representante oficial en el país.',
+      no: 'Norwell i Brasil: fersk og fryst norsk laks til importører, grossister og distributører, med lokal oppfølging fra BridgePoint, offisiell representant i landet.',
     },
   },
   products: {
@@ -42,10 +42,10 @@ export const pages = {
       no: 'Om Norwell | Norwell Brasil',
     },
     description: {
-      pt: 'Fundada em 1996 em Florø, a Norwell exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores, as certificações e a Bridge Point, sua representante no Brasil.',
-      en: 'Founded in 1996 in Florø, Norwell exports salmon and fjord trout to more than a hundred markets. Get to know its history, values and certifications, and Bridge Point, its representative in Brazil.',
-      es: 'Fundada en 1996 en Florø, Norwell exporta salmón y trucha de fiordo a más de un centenar de mercados. Conozca su historia, sus valores, sus certificaciones y a Bridge Point, su representante en Brasil.',
-      no: 'Norwell ble etablert i 1996 i Florø og eksporterer laks og fjordørret til over hundre markeder. Bli kjent med historien, verdiene, sertifiseringene og Bridge Point, representanten i Brasil.',
+      pt: 'Fundada em 1996 em Florø, a Norwell exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores, as certificações e a BridgePoint, sua representante no Brasil.',
+      en: 'Founded in 1996 in Florø, Norwell exports salmon and fjord trout to more than a hundred markets. Get to know its history, values and certifications, and BridgePoint, its representative in Brazil.',
+      es: 'Fundada en 1996 en Florø, Norwell exporta salmón y trucha de fiordo a más de un centenar de mercados. Conozca su historia, sus valores, sus certificaciones y a BridgePoint, su representante en Brasil.',
+      no: 'Norwell ble etablert i 1996 i Florø og eksporterer laks og fjordørret til over hundre markeder. Bli kjent med historien, verdiene, sertifiseringene og BridgePoint, representanten i Brasil.',
     },
   },
   privacy: {
@@ -58,10 +58,10 @@ export const pages = {
       no: 'Personvernerklæring | Norwell Brasil',
     },
     description: {
-      pt: 'Saiba como a Bridge Point trata os dados informados em seus canais de contato e solicitações comerciais.',
-      en: 'Learn how Bridge Point handles the data provided through its contact channels and commercial enquiries.',
-      es: 'Conozca cómo Bridge Point trata los datos proporcionados a través de sus canales de contacto y solicitudes comerciales.',
-      no: 'Les om hvordan Bridge Point behandler opplysninger som oppgis gjennom kontaktkanalene og kommersielle forespørsler.',
+      pt: 'Saiba como a BridgePoint trata os dados informados em seus canais de contato e solicitações comerciais.',
+      en: 'Learn how BridgePoint handles the data provided through its contact channels and commercial enquiries.',
+      es: 'Conozca cómo BridgePoint trata los datos proporcionados a través de sus canales de contacto y solicitudes comerciales.',
+      no: 'Les om hvordan BridgePoint behandler opplysninger som oppgis gjennom kontaktkanalene og kommersielle forespørsler.',
     },
   },
   terms: {
@@ -74,10 +74,10 @@ export const pages = {
       no: 'Bruksvilkår | Norwell Brasil',
     },
     description: {
-      pt: 'Consulte as condições de uso do website institucional da Bridge Point e as informações aplicáveis ao conteúdo publicado.',
-      en: 'Review the terms of use for Bridge Point’s corporate website and the information applicable to its published content.',
-      es: 'Consulte las condiciones de uso del sitio web corporativo de Bridge Point y la información aplicable al contenido publicado.',
-      no: 'Les bruksvilkårene for Bridge Points nettsted og informasjonen som gjelder for det publiserte innholdet.',
+      pt: 'Consulte as condições de uso do website institucional da BridgePoint e as informações aplicáveis ao conteúdo publicado.',
+      en: 'Review the terms of use for BridgePoint’s corporate website and the information applicable to its published content.',
+      es: 'Consulte las condiciones de uso del sitio web corporativo de BridgePoint y la información aplicable al contenido publicado.',
+      no: 'Les bruksvilkårene for BridgePoints nettsted og informasjonen som gjelder for det publiserte innholdet.',
     },
   },
 };

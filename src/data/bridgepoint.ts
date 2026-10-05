@@ -1,7 +1,7 @@
 /**
- * BRIDGE POINT — representante da Norwell no Brasil. O site usa hoje só
+ * BRIDGEPOINT — representante da Norwell no Brasil. O site usa hoje só
  * `representative`; os demais textos (consultoria, serviços e método) vêm da
- * versão em que a Bridge Point era o assunto principal e estão sem uso.
+ * versão em que a BridgePoint era o assunto principal e estão sem uso.
  *
  * Posicionamento: primeiro a consultoria de entrada no mercado e de
  * desenvolvimento de negócios entre Noruega e Brasil; depois, com destaque, a
@@ -13,21 +13,21 @@
 export const bridgePoint = {
   /** Bloco "Representante no Brasil" (Representative), na home e em /sobre. */
   representative:
-    'A Norwell é representada no Brasil pela Bridge Point, consultoria com base no Rio de Janeiro fundada por Mai Sissel Tonheim, depois de 18 anos na diplomacia norueguesa. É a Bridge Point que atende importadores, atacadistas e distribuidores brasileiros — da especificação de cada produto ao acompanhamento dos embarques.',
+    'A Norwell é representada no Brasil pela BridgePoint, consultoria com base no Rio de Janeiro fundada por Mai Sissel Tonheim, depois de 18 anos na diplomacia norueguesa. É a BridgePoint que atende importadores, atacadistas e distribuidores brasileiros — da especificação de cada produto ao acompanhamento dos embarques.',
   /** Home: "Quem somos", logo depois do topo (a ideia do site-base, com texto próprio). */
   homeIntro: [
-    'A Bridge Point acompanha empresas norueguesas na chegada ao Brasil: explica como o mercado funciona, aproxima as pessoas certas e ajuda cada oportunidade a virar negócio, com clareza e continuidade.',
-    'À frente dela está Mai Sissel Tonheim, que passou 18 anos na diplomacia norueguesa antes de fundar a Bridge Point. Dessa trajetória vêm o olhar internacional, o conhecimento do Brasil e o jeito próximo de conduzir cada relação comercial.',
+    'A BridgePoint acompanha empresas norueguesas na chegada ao Brasil: explica como o mercado funciona, aproxima as pessoas certas e ajuda cada oportunidade a virar negócio, com clareza e continuidade.',
+    'À frente dela está Mai Sissel Tonheim, que passou 18 anos na diplomacia norueguesa antes de fundar a BridgePoint. Dessa trajetória vêm o olhar internacional, o conhecimento do Brasil e o jeito próximo de conduzir cada relação comercial.',
   ],
   /** /sobre: "Quem somos". */
   intro: [
     'Entrar em um novo mercado envolve mais do que identificar uma oportunidade. É preciso compreender o contexto local, definir prioridades, encontrar os parceiros certos e acompanhar as relações para que uma estratégia avance na prática.',
-    'A Bridge Point é uma consultoria de entrada no mercado. Atua também no desenvolvimento de negócios, apoiando empresas norueguesas a se estabelecer e a atuar no Brasil.',
+    'A BridgePoint é uma consultoria de entrada no mercado. Atua também no desenvolvimento de negócios, apoiando empresas norueguesas a se estabelecer e a atuar no Brasil.',
     'Com base no Rio de Janeiro, combinamos experiência internacional, conhecimento do mercado brasileiro e acompanhamento próximo para orientar decisões e desenvolver oportunidades comerciais.',
   ],
   /** /sobre: destaque da parceria principal, logo depois de "Quem somos". */
   norwellPartnership:
-    'A Bridge Point atua no desenvolvimento da Norwell no mercado brasileiro, aproximando o salmão norueguês de importadores, atacadistas, distribuidores e parceiros locais — da especificação de cada produto ao acompanhamento dos embarques.',
+    'A BridgePoint atua no desenvolvimento da Norwell no mercado brasileiro, aproximando o salmão norueguês de importadores, atacadistas, distribuidores e parceiros locais — da especificação de cada produto ao acompanhamento dos embarques.',
   services: [
     {
       title: 'Entrada no mercado',
@@ -58,7 +58,7 @@ export const bridgePoint = {
   servicesNote:
     'A atuação também pode incluir projetos ligados a sustentabilidade, ESG, pesquisa, inovação e novas oportunidades da economia do mar.',
   approach:
-    'A Bridge Point trabalha com integridade, discrição, visão e inteligência cultural. Cada projeto parte dos objetivos e do contexto de cada empresa, para transformar uma oportunidade internacional em um caminho comercial claro e possível de executar.',
+    'A BridgePoint trabalha com integridade, discrição, visão e inteligência cultural. Cada projeto parte dos objetivos e do contexto de cada empresa, para transformar uma oportunidade internacional em um caminho comercial claro e possível de executar.',
   method: [
     {
       step: '01',

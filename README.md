@@ -1,6 +1,6 @@
 # Norwell Brasil — Website Institucional
 
-Site da **Norwell** no Brasil: apresenta a exportadora norueguesa de salmão e o seu portfólio ao comprador brasileiro. A **Bridge Point**, representante oficial da Norwell no país e operadora do site, aparece ao lado da marca e em um bloco curto.
+Site da **Norwell** no Brasil: apresenta a exportadora norueguesa de salmão e o seu portfólio ao comprador brasileiro. A **BridgePoint**, representante oficial da Norwell no país e operadora do site, aparece ao lado da marca e em um bloco curto.
 
 Site estático (SPA) construído com **React + Vite + TypeScript + Tailwind CSS v4**.
 
@@ -25,8 +25,8 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 
 | Rota | Conteúdo |
 |---|---|
-| `/` | Topo "Salmão norueguês da Norwell, com atendimento no Brasil" (com a faixa da Bridge Point no pé), a exportadora em números, a oferta para o mercado brasileiro, 2 produtos em destaque, o bloco da representante (`#representante`), CTA e contato |
-| `/sobre` | A Norwell: atuação no Brasil, história, missão, valores e certificações, por que o salmão norueguês, o bloco curto da representante (Bridge Point e Mai) e galeria |
+| `/` | Topo "Salmão norueguês da Norwell, com atendimento no Brasil" (com a faixa da BridgePoint no pé), a exportadora em números, a oferta para o mercado brasileiro, 2 produtos em destaque, o bloco da representante (`#representante`), CTA e contato |
+| `/sobre` | A Norwell: atuação no Brasil, história, missão, valores e certificações, por que o salmão norueguês, o bloco curto da representante (BridgePoint e Mai) e galeria |
 | `/a-norwell`, `/norwell` | Endereços antigos da página da Norwell; no Nginx fornecido recebem `308` para `/sobre` |
 | `/produtos` | Portfólio completo, processo, quem atendemos, diferenciais e relação de confiança |
 
@@ -36,14 +36,14 @@ botões que levam ao formulário usam o mesmo rótulo, "Solicitar cotação".
 ### Identidade visual
 
 O visual segue o manual de perfil da Norwell (`Brand Norwell_Profilmanual_Original_CMYK.PDF`,
-2016) e a marca do site é o logotipo da Norwell, com o da Bridge Point ao lado.
+2016) e a marca do site é o logotipo da Norwell, com o da BridgePoint ao lado.
 
 - **Assinatura do site**: `src/components/ui/BrandLockup.tsx` junta o logotipo da
-  Norwell (principal) e o da Bridge Point, separados por um fio. Aparece no
+  Norwell (principal) e o da BridgePoint, separados por um fio. Aparece no
   cabeçalho de todas as páginas — por isso o cabeçalho é sempre sjøgrønn sólido,
   nunca transparente sobre a foto do topo. No desktop: links à esquerda,
   assinatura no centro e idioma + cotação à direita.
-- **Logotipo Bridge Point**: vetorizado do manual de marca (`Branding BP 05.pdf`)
+- **Logotipo BridgePoint**: vetorizado do manual de marca (`Branding BP 05.pdf`)
   em `public/brand/bridgepoint-*.svg` e exibido por `src/components/ui/BridgePointLogo.tsx`.
   O dourado da bússola fica só dentro do logotipo. Além da assinatura, aparece na
   faixa do pé do topo da home, no bloco da representante e no rodapé.
@@ -58,7 +58,7 @@ O visual segue o manual de perfil da Norwell (`Brand Norwell_Profilmanual_Origin
 ### Posicionamento
 
 O site é o da Norwell no Brasil: a exportadora, o salmão e o portfólio vêm
-primeiro. A Bridge Point entra como a representante que atende o comprador
+primeiro. A BridgePoint entra como a representante que atende o comprador
 brasileiro — na assinatura do cabeçalho, na faixa do topo e em um bloco curto
 (`src/components/sections/Representative.tsx`), sem página própria. A operação é
 voltada a **importadores que atuam como atacadistas e distribuidores** — eles vêm
@@ -76,7 +76,7 @@ Todo o conteúdo editável está centralizado em `src/data`:
 |---|---|
 | `src/data/company.ts` | Nome, razão social, CNPJ, e-mail, telefone, **WhatsApp**, endereço, redes sociais, URL canônica |
 | `src/data/bridgepoint.ts` | Texto do bloco da representante (`representative`); os demais textos da consultoria estão sem uso |
-| `src/data/founder.ts` | Dados da fundadora da Bridge Point; o site usa hoje o nome, o retrato (`introPhoto`) e o LinkedIn |
+| `src/data/founder.ts` | Dados da fundadora da BridgePoint; o site usa hoje o nome, o retrato (`introPhoto`) e o LinkedIn |
 | `src/data/products.ts` | Produtos: nomes, descrições, conservação, público e imagens |
 | `src/data/images.ts` | Imagens das seções, galeria e processo extraídas do catálogo oficial |
 | `src/data/differentials.ts` | Diferenciais |
@@ -178,7 +178,7 @@ As fotografias em `public/images/catalog` foram extraídas do arquivo institucio
 
 Cada página principal possui um cartão Open Graph/Twitter específico em
 `public/images/social`, sempre com 1200×630 px: painel sjøgrønn sólido com o
-logotipo da Norwell e, abaixo, o da Bridge Point como representante, ligado à
+logotipo da Norwell e, abaixo, o da BridgePoint como representante, ligado à
 foto pela fjærestreken. O build valida dimensões, formato,
 peso e correspondência entre rota e imagem. Para regenerá-los a partir das fotos
 aprovadas e do fundo editorial, use:
@@ -192,7 +192,7 @@ forma determinística pelo script, e os logotipos vêm dos SVGs de `public/brand
 
 ## Material da Norwell AS
 
-A Norwell AS é a exportadora norueguesa que este site apresenta, representada no Brasil pela Bridge Point. Os
+A Norwell AS é a exportadora norueguesa que este site apresenta, representada no Brasil pela BridgePoint. Os
 arquivos abaixo vieram do site oficial (<https://www.norwell.no>) e são usados no
 site com essa atribuição explícita:
 
