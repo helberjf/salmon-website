@@ -1,7 +1,7 @@
 /**
- * Logotipo institucional da Norwell AS (norwell.no), exportadora norueguesa
- * representada no Brasil pela fundadora. Os SVGs foram extraídos do manual de
- * perfil da Norwell (Profilmanual 2016, p. 3–4) com as cores RGB oficiais.
+ * Logotipo institucional da Norwell AS (norwell.no) — a marca deste site, que
+ * apresenta a Norwell no Brasil. Os SVGs foram extraídos do manual de perfil da
+ * Norwell (Profilmanual 2016, p. 3–4) com as cores RGB oficiais.
  *
  * O manual só permite o logotipo colorido sobre branco (`color`) ou, em
  * negativo, sobre sjøgrønn (`negative`, fundo `bg-navy`). Nunca sobre outras
@@ -15,15 +15,29 @@ const LOGO = {
   main: { ratio: 381.49 / 414.82, color: null, negative: 'norwell-main-negative' },
 } as const;
 
-type NorwellLogoProps =
-  | { layout?: 'side'; variant?: 'color' | 'negative'; height?: number; className?: string }
-  | { layout: 'main'; variant: 'negative'; height?: number; className?: string };
+interface NorwellLogoCommonProps {
+  /** Altura renderizada em pixels — a largura acompanha a proporção do arquivo. */
+  height?: number;
+  className?: string;
+  /** Imagens acima da dobra (cabeçalho) não devem ser carregadas sob demanda. */
+  eager?: boolean;
+  /**
+   * A altura vem das classes em `className` (para animar entre tamanhos);
+   * `height` passa a servir só para a proporção dos atributos da imagem.
+   */
+  heightFromClass?: boolean;
+}
+
+type NorwellLogoProps = NorwellLogoCommonProps &
+  ({ layout?: 'side'; variant?: 'color' | 'negative' } | { layout: 'main'; variant: 'negative' });
 
 export function NorwellLogo({
   layout = 'side',
   variant = 'color',
   height = 28,
   className = '',
+  eager = false,
+  heightFromClass = false,
 }: NorwellLogoProps) {
   const logo = LOGO[layout];
   const file = variant === 'negative' ? logo.negative : logo.color;
@@ -34,10 +48,10 @@ export function NorwellLogo({
       alt="Norwell AS"
       width={Math.round(logo.ratio * height)}
       height={height}
-      loading="lazy"
+      loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       className={`w-auto ${className}`}
-      style={{ height }}
+      style={heightFromClass ? undefined : { height }}
     />
   );
 }

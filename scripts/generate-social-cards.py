@@ -1,7 +1,7 @@
 """Generate deterministic Open Graph cards from approved project photography.
 
 The AI-generated fjord backdrop is intentionally kept text-free. All brand text
-is composed here so names remain exact and the six route cards stay consistent.
+is composed here so names remain exact and the five route cards stay consistent.
 """
 
 from __future__ import annotations
@@ -18,7 +18,9 @@ ASSETS = ROOT / "scripts" / "assets"
 SIZE = (1200, 630)
 
 # Cores do manual de perfil da Norwell (as mesmas de src/index.css).
+SEA = (20, 83, 83)  # sjøgrønn, fundo do painel do logotipo
 SEA_DARK = (13, 58, 58)  # sjøgrønn escurecido, para o véu sobre a foto
+PANEL_WIDTH = 520
 SHORE = "#78c496"  # fjæregrønn
 FROST = "#d0eada"  # fjæregrønn a 35%
 
@@ -46,7 +48,7 @@ SANS = available_font(
 CARDS = {
     "home.jpg": {
         "source": ASSETS / "social-base-fjord.png",
-        "label": "DIRECT FROM THE FJORDS",
+        "label": "NORWEGIAN SALMON FOR BRAZIL",
         "focus": (0.50, 0.50),
     },
     "products.jpg": {
@@ -56,13 +58,8 @@ CARDS = {
     },
     "norwell.jpg": {
         "source": PUBLIC / "catalog" / "norway-farm-wide.webp",
-        "label": "NORWELL AS · NORWAY",
+        "label": "NORWELL AS · FLORØ, NORWAY",
         "focus": (0.60, 0.45),
-    },
-    "about.jpg": {
-        "source": PUBLIC / "catalog" / "atlantic-road-bridge.webp",
-        "label": "BRIDGE POINT · MAI SISSEL TONHEIM",
-        "focus": (0.62, 0.50),
     },
     "privacy.jpg": {
         "source": ASSETS / "social-base-fjord.png",
@@ -90,14 +87,15 @@ def fit_cover(source: Path, focus: tuple[float, float]) -> Image.Image:
 
 
 def add_overlay(image: Image.Image) -> Image.Image:
-    overlay = Image.new("RGBA", SIZE, (0, 0, 0, 0))
-    pixels = overlay.load()
-    for x in range(SIZE[0]):
-        ratio = x / SIZE[0]
-        alpha = int(max(52, 232 - ratio * 238))
-        for y in range(SIZE[1]):
-            bottom = max(0, int((y / SIZE[1] - 0.68) * 118))
-            pixels[x, y] = (*SEA_DARK, min(238, alpha + bottom))
+    """Véu leve sobre a foto e painel sjøgrønn sólido à esquerda.
+
+    O manual da Norwell não admite o logotipo sobre fotografia: ele fica no
+    painel sólido, ligado à foto pela fjærestreken.
+    """
+    overlay = Image.new("RGBA", SIZE, (*SEA_DARK, 96))
+    draw = ImageDraw.Draw(overlay)
+    draw.rectangle((0, 0, PANEL_WIDTH, SIZE[1]), fill=(*SEA, 255))
+    draw.rectangle((PANEL_WIDTH, 0, PANEL_WIDTH + 5, SIZE[1]), fill=SHORE)
     return Image.alpha_composite(image.convert("RGBA"), overlay)
 
 
@@ -128,11 +126,11 @@ def draw_document(draw: ImageDraw.ImageDraw) -> None:
         draw.rounded_rectangle((895, y, 895 + width, y + 9), radius=4, fill=SHORE)
 
 
-def brand_logo(height: int = 96) -> Image.Image:
-    """Logotipo oficial (versão invertida) rasterizado do SVG em public/brand."""
+def brand_logo(name: str, height: int) -> Image.Image:
+    """Logotipo oficial (versão em negativo) rasterizado do SVG em public/brand."""
     import fitz  # PyMuPDF renderiza SVG sem dependências nativas extras
 
-    with fitz.open(ROOT / "public" / "brand" / "bridgepoint-horizontal-white.svg") as document:
+    with fitz.open(ROOT / "public" / "brand" / f"{name}.svg") as document:
         page = document[0]
         zoom = height / page.rect.height
         pixmap = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=True)
@@ -144,16 +142,17 @@ def render_card(name: str, config: dict[str, object]) -> None:
     image = add_overlay(image)
     draw = ImageDraw.Draw(image)
 
-    # Fjærestreken: linha fjæregrønn de borda a borda, como no topo do site.
-    draw.rectangle((0, 0, SIZE[0], 5), fill=SHORE)
-    image.alpha_composite(brand_logo(), (62, 140))
-    draw.text((70, 262), "Norway  ·  Brazil", font=ImageFont.truetype(SANS, 24), fill=FROST)
+    # Marca do site: Norwell; abaixo, a Bridge Point como representante no Brasil.
+    image.alpha_composite(brand_logo("norwell-negative", 104), (62, 108))
+    draw.rectangle((62, 268, 122, 270), fill=SHORE)
+    draw.text((62, 292), "Official representative in Brazil", font=ImageFont.truetype(SANS, 20), fill=FROST)
+    image.alpha_composite(brand_logo("bridgepoint-horizontal-white", 40), (62, 332))
 
     letterspaced_text(
         draw,
-        (70, 465),
+        (62, 520),
         str(config["label"]),
-        ImageFont.truetype(SANS_BOLD, 21),
+        ImageFont.truetype(SANS_BOLD, 19),
         "#ffffff",
         3,
     )

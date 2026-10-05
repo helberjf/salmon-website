@@ -13,12 +13,12 @@ server {
     charset utf-8;
 
     # Alias historico: redirecionamento permanente para a rota canonica.
-    location ~ ^/norwell/?$ {
-        return 308 /a-norwell$is_args$args;
+    location ~ ^/(a-norwell|norwell)/?$ {
+        return 308 /sobre$is_args$args;
     }
 
-    location ~ ^/(pt|en|es|no)/norwell/?$ {
-        return 308 /$1/a-norwell$is_args$args;
+    location ~ ^/(pt|en|es|no)/(a-norwell|norwell)/?$ {
+        return 308 /$1/sobre$is_args$args;
     }
 
     # Rotas conhecidas usam HTML estático com metadados localizados.

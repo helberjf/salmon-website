@@ -123,7 +123,6 @@ for (const socialImage of [
   'home.jpg',
   'products.jpg',
   'norwell.jpg',
-  'about.jpg',
   'privacy.jpg',
   'terms.jpg',
 ]) {
@@ -138,8 +137,8 @@ for (const socialImage of [
 }
 
 const sitemap = read('public/sitemap.xml').toString('utf8');
-assert((sitemap.match(/<url>/g) ?? []).length === 24, 'Sitemap must contain 24 localized URLs.');
-assert((sitemap.match(/hreflang="x-default"/g) ?? []).length === 24, 'Sitemap x-default links are incomplete.');
+assert((sitemap.match(/<url>/g) ?? []).length === 20, 'Sitemap must contain 20 localized URLs.');
+assert((sitemap.match(/hreflang="x-default"/g) ?? []).length === 20, 'Sitemap x-default links are incomplete.');
 
 const companySource = read('src/data/company.ts').toString('utf8');
 const siteUrlMatch = companySource.match(/siteUrl:\s*['"]([^'"]+)['"]/);

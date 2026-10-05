@@ -28,8 +28,9 @@ const nginxFiles = [
 ];
 for (const filename of nginxFiles) {
   const nginx = read(filename);
-  assert(nginx.includes('return 308 /a-norwell$is_args$args;'), `Missing /norwell 308 redirect in ${filename}.`);
-  assert(nginx.includes('return 308 /$1/a-norwell$is_args$args;'), `Missing localized Norwell 308 redirect in ${filename}.`);
+  assert(nginx.includes('location ~ ^/(a-norwell|norwell)/?$'), `Missing legacy Norwell routes in ${filename}.`);
+  assert(nginx.includes('return 308 /sobre$is_args$args;'), `Missing legacy Norwell 308 redirect in ${filename}.`);
+  assert(nginx.includes('return 308 /$1/sobre$is_args$args;'), `Missing localized legacy Norwell 308 redirect in ${filename}.`);
   assert(nginx.includes("frame-ancestors 'none'"), `CSP must block framing in ${filename}.`);
   assert(nginx.includes("object-src 'none'"), `CSP must block plugins in ${filename}.`);
   assert(nginx.includes("script-src 'self'"), `CSP must restrict scripts in ${filename}.`);

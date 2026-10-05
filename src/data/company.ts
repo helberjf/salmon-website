@@ -5,17 +5,20 @@
  * Preencha conforme os dados oficiais forem confirmados.
  */
 export const company = {
+  // Empresa que opera o site: a representante da Norwell no Brasil.
   name: 'Bridge Point',
+  // Nome do site, usado nos títulos das páginas e nos metadados.
+  siteName: 'Norwell Brasil',
   legalName: 'Bridgepoint Consultancy Ltda',
   cnpj: '62.548.504/0001-06',
   foundationYear: '',
   description:
-    'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país, com salmão norueguês para importadores, atacadistas e distribuidores.',
+    'A Norwell no Brasil: salmão norueguês para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.',
   email: 'mai@bridgepoint.international',
   phone: '+55 21 96569-0982',
   whatsapp: '5521965690982',
   whatsappMessage:
-    'Olá, Mai! Conheci a Bridge Point pelo website e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.',
+    'Olá, Mai! Conheci a Norwell pelo site e gostaria de conversar sobre o fornecimento de salmão norueguês para a minha empresa.',
   address: '',
   city: 'Rio de Janeiro',
   state: 'RJ',

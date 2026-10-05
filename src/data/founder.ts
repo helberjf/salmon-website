@@ -8,12 +8,12 @@ import type { CareerEntry } from '@/types';
 export const founder = {
   name: 'Mai Sissel Tonheim',
   title: 'Fundadora da Bridge Point · Representante da Norwell no Brasil',
-  /** Recorte com fundo transparente (site-base da Bridge Point), exibido em /sobre#mai. */
+  /** Recorte com fundo transparente (site-base da Bridge Point). Sem uso no site atual. */
   photo: {
     src: '/images/people/mai-tonheim-flags.webp',
     alt: 'Mai Sissel Tonheim sentada à mesa, entre as bandeiras da Noruega e do Brasil',
   },
-  /** Retrato com o Rio de Janeiro ao fundo, na apresentação da home. */
+  /** Retrato com o Rio de Janeiro ao fundo, no bloco da representante (Representative). */
   introPhoto: {
     src: '/images/people/mai-tonheim-portrait.jpg',
     alt: 'Mai Sissel Tonheim, fundadora da Bridge Point, com o Rio de Janeiro ao fundo',

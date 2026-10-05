@@ -7,7 +7,7 @@ export const locales = [
   { code: 'no', htmlLang: 'nb-NO' },
 ] as const;
 
-export const primaryContentPaths = ['/', '/produtos', '/a-norwell', '/sobre'] as const;
+export const primaryContentPaths = ['/', '/produtos', '/sobre'] as const;
 
 export function localizedPath(locale: string, contentPath: string): string {
   return contentPath === '/' ? `/${locale}` : `/${locale}${contentPath}`;

@@ -17,7 +17,7 @@ export const images = {
     src: '/images/catalog/salmon-farm-mountains.webp',
     alt: 'Tanque de criação de salmão em um fiorde norueguês, entre montanhas nevadas',
   },
-  /** Fotografias do site-base da Bridge Point (Squarespace), usadas nos atalhos da home e em /sobre. */
+  /** Fotografias do site-base da Bridge Point (Squarespace). */
   fjordFillet: {
     src: '/images/catalog/fjord-salmon-fillet.webp',
     alt: 'Filé de salmão fresco diante de um fiorde norueguês com montanhas nevadas',

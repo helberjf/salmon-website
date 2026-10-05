@@ -5,7 +5,7 @@ import { useLocation } from 'wouter';
 import { navLinks, quoteCtaLabel } from '@/data/navigation';
 import { useScrolled } from '@/hooks/useScrolled';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
+import { BrandLockup } from '@/components/ui/BrandLockup';
 import { ShoreLine } from '@/components/ui/ShoreLine';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -20,7 +20,8 @@ export function Header() {
   const { href: localizedHref, t } = useI18n();
   const [location] = useLocation();
   const contentLocation = stripLanguagePrefix(location);
-  const canonicalContentLocation = contentLocation === '/norwell' ? '/a-norwell' : contentLocation;
+  const canonicalContentLocation =
+    contentLocation === '/norwell' || contentLocation === '/a-norwell' ? '/sobre' : contentLocation;
   const sectionIds = useMemo(
     () => navLinks.map((link) => link.sectionId).filter(Boolean),
     [],
@@ -95,43 +96,27 @@ export function Header() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        solid ? 'bg-navy/95 shadow-xl shadow-navy-dark/15 backdrop-blur-xl' : 'bg-transparent'
-      }`}
+        solid ? 'shadow-xl shadow-navy-dark/15' : ''
+      } bg-navy`}
     >
       <ShoreLine thinOnMobile />
       {/**
-       * No desktop o cabeçalho segue o site-base: links à esquerda, logotipo no
-       * centro e idioma + cotação à direita. No topo da página o logotipo aparece
-       * grande, na versão vertical; ao rolar, vira a versão horizontal compacta.
-       * No celular fica à esquerda, ao lado do botão do menu.
+       * Fundo sjøgrønn sólido em qualquer posição da página: o manual da Norwell
+       * não admite o logotipo sobre fotografia. No desktop, links à esquerda,
+       * assinatura (Norwell + Bridge Point) no centro e idioma + cotação à
+       * direita; no celular a assinatura fica à esquerda, ao lado do menu.
        */}
       <div
-        className={`relative mx-auto flex max-w-7xl items-center justify-between px-5 lg:px-8 ${
-          solid ? 'py-3' : 'py-4 xl:min-h-36'
+        className={`relative mx-auto flex max-w-7xl items-center justify-between px-5 transition-[padding] duration-300 lg:px-8 ${
+          solid ? 'py-3' : 'py-4 xl:py-5'
         }`}
       >
         <a
           href={localizedHref('/#inicio')}
-          aria-label={t('Bridge Point — voltar ao início')}
+          aria-label={t('Norwell Brasil — voltar ao início')}
           className="-my-1 block shrink-0 py-1 xl:absolute xl:left-1/2 xl:top-1/2 xl:z-10 xl:-translate-x-1/2 xl:-translate-y-1/2"
         >
-          <BridgePointLogo
-            variant="white"
-            eager
-            heightFromClass
-            height={44}
-            className={`transition-[height] duration-300 ${solid ? 'h-8' : 'h-11 xl:hidden'}`}
-          />
-          {!solid && (
-            <BridgePointLogo
-              variant="white"
-              layout="vertical"
-              eager
-              heightFromClass
-              height={112}
-              className="hidden h-28 xl:block"
-            />
-          )}
+          <BrandLockup compact={solid} />
         </a>
 
         <nav aria-label={t('Navegação principal')} className="hidden w-full items-center justify-between xl:flex">

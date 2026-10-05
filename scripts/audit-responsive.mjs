@@ -24,7 +24,7 @@ const baseUrl = (process.argv[2] ?? process.env.AUDIT_BASE_URL ?? 'http://127.0.
 const outDir = fileURLToPath(new URL('../test-results/responsive-audit/', import.meta.url));
 mkdirSync(outDir, { recursive: true });
 
-const routes = ['/', '/a-norwell', '/produtos', '/sobre', '/privacidade', '/termos'];
+const routes = ['/', '/produtos', '/sobre', '/privacidade', '/termos'];
 const languages = ['pt', 'en'];
 const viewports = [
   { name: 'desktop', width: 1440, height: 900 },

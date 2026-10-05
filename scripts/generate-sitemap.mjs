@@ -18,8 +18,7 @@ const languages = [
 const pages = [
   { path: '', priority: '1.0' },
   { path: '/produtos', priority: '0.9' },
-  { path: '/a-norwell', priority: '0.8' },
-  { path: '/sobre', priority: '0.7' },
+  { path: '/sobre', priority: '0.8' },
   { path: '/privacidade', priority: '0.2' },
   { path: '/termos', priority: '0.2' },
 ];

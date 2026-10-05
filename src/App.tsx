@@ -8,7 +8,6 @@ import { supportedLanguages } from '@/i18n/translations';
 import { watchContactLinks } from '@/utils/contactInterest';
 
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
-const NorwellPage = lazy(() => import('@/pages/NorwellPage'));
 const ProductsPage = lazy(() => import('@/pages/ProductsPage'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const TermsOfUse = lazy(() => import('@/pages/TermsOfUse'));
@@ -30,18 +29,19 @@ function App() {
             {supportedLanguages.map((language) => (
               <Route key={`${language}-home`} path={`/${language}`} component={Home} />
             ))}
+            {/* /a-norwell e /norwell são endereços antigos de /sobre; o Nginx os redireciona com 308. */}
             {supportedLanguages.map((language) => (
               <Route
                 key={`${language}-norwell`}
                 path={`/${language}/a-norwell`}
-                component={NorwellPage}
+                component={AboutPage}
               />
             ))}
             {supportedLanguages.map((language) => (
               <Route
                 key={`${language}-norwell-alias`}
                 path={`/${language}/norwell`}
-                component={NorwellPage}
+                component={AboutPage}
               />
             ))}
             {supportedLanguages.map((language) => (
@@ -75,8 +75,8 @@ function App() {
 
             {/* Unprefixed URLs remain language-aware gateways and preserve old links. */}
             <Route path="/" component={Home} />
-            <Route path="/a-norwell" component={NorwellPage} />
-            <Route path="/norwell" component={NorwellPage} />
+            <Route path="/a-norwell" component={AboutPage} />
+            <Route path="/norwell" component={AboutPage} />
             <Route path="/produtos" component={ProductsPage} />
             <Route path="/sobre" component={AboutPage} />
             <Route path="/privacidade" component={PrivacyPolicy} />
