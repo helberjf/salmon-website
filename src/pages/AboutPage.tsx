@@ -15,7 +15,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 
 /**
  * Sobre: a Norwell — a atuação no Brasil, a história, a missão, os valores e as
- * certificações. A Bridge Point, sua representante no país, entra só em um bloco
+ * certificações. A BridgePoint, sua representante no país, entra só em um bloco
  * curto (Representative). /a-norwell e /norwell são endereços antigos desta
  * mesma página.
  */
@@ -28,7 +28,7 @@ export default function AboutPage() {
         eyebrow={t('Sobre a Norwell')}
         title={t('Exportadora norueguesa de salmão, com representação no Brasil')}
         description={t(
-          'A Norwell AS, fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. No Brasil, atende importadores, atacadistas e distribuidores por meio da Bridge Point, sua representante oficial.',
+          'A Norwell AS, fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. No Brasil, atende importadores, atacadistas e distribuidores por meio da BridgePoint, sua representante oficial.',
         )}
         waveClassName="text-ice"
         actions={

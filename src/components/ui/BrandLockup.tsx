@@ -8,7 +8,7 @@ interface BrandLockupProps {
 
 /**
  * Assinatura do site: o logotipo da Norwell como marca principal e, ao lado, o
- * da Bridge Point, sua representante no Brasil. Só sobre sjøgrønn sólido
+ * da BridgePoint, sua representante no Brasil. Só sobre sjøgrønn sólido
  * (`bg-navy`), como o manual da Norwell exige para o logotipo em negativo; o
  * espaço até o fio divisor respeita a área livre de meio símbolo.
  */

@@ -10,7 +10,7 @@ export default function TermsOfUse() {
     <LegalPage title={t('Termos de Uso')} updatedAt="26 de setembro de 2026">
       <p>
         {t(
-          'Estes Termos regulam o uso deste website, mantido pela {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("Bridge Point"). Ao navegar pelo site, você concorda com as condições abaixo.',
+          'Estes Termos regulam o uso deste website, mantido pela {company}, inscrita no CNPJ {cnpj}, com sede no Rio de Janeiro/RJ ("BridgePoint"). Ao navegar pelo site, você concorda com as condições abaixo.',
           owner,
         )}
       </p>
@@ -18,14 +18,14 @@ export default function TermsOfUse() {
       <h2>{t('1. Finalidade do site')}</h2>
       <p>
         {t(
-          'O site apresenta a Bridge Point, a sua atuação como representante da Norwell AS no Brasil e os produtos disponíveis para empresas brasileiras, e permite solicitar cotações.',
+          'O site apresenta a BridgePoint, a sua atuação como representante da Norwell AS no Brasil e os produtos disponíveis para empresas brasileiras, e permite solicitar cotações.',
         )}
       </p>
 
       <h2>{t('2. Informações sem caráter de oferta')}</h2>
       <p>
         {t(
-          'As informações sobre produtos, formatos, especificações, certificações e logística são descritivas e não constituem oferta vinculante. Preços, volumes, disponibilidade, prazos e condições comerciais só valem quando confirmados por escrito em proposta enviada pela Bridge Point.',
+          'As informações sobre produtos, formatos, especificações, certificações e logística são descritivas e não constituem oferta vinculante. Preços, volumes, disponibilidade, prazos e condições comerciais só valem quando confirmados por escrito em proposta enviada pela BridgePoint.',
         )}
       </p>
 
@@ -40,7 +40,7 @@ export default function TermsOfUse() {
       <ul>
         <li>
           {t(
-            'A marca, o logotipo, os textos e a identidade visual da Bridge Point pertencem à {company}.',
+            'A marca, o logotipo, os textos e a identidade visual da BridgePoint pertencem à {company}.',
             owner,
           )}
         </li>
@@ -60,7 +60,7 @@ export default function TermsOfUse() {
       <h2>{t('5. Links externos')}</h2>
       <p>
         {t(
-          'O site contém links para sites de terceiros, como o da Norwell AS, o LinkedIn e o WhatsApp. Esses sites têm termos e políticas próprios, pelos quais a Bridge Point não responde.',
+          'O site contém links para sites de terceiros, como o da Norwell AS, o LinkedIn e o WhatsApp. Esses sites têm termos e políticas próprios, pelos quais a BridgePoint não responde.',
         )}
       </p>
 
@@ -74,7 +74,7 @@ export default function TermsOfUse() {
       <h2>{t('7. Responsabilidade')}</h2>
       <p>
         {t(
-          'Empregamos esforços razoáveis para manter o site disponível e as informações corretas e atualizadas, mas não garantimos a ausência de interrupções ou imprecisões. A Bridge Point não responde por decisões tomadas apenas com base no conteúdo do site, sem confirmação em proposta escrita.',
+          'Empregamos esforços razoáveis para manter o site disponível e as informações corretas e atualizadas, mas não garantimos a ausência de interrupções ou imprecisões. A BridgePoint não responde por decisões tomadas apenas com base no conteúdo do site, sem confirmação em proposta escrita.',
         )}
       </p>
 

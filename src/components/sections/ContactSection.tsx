@@ -131,7 +131,7 @@ export function ContactSection() {
     if (status === 'success') successTitleRef.current?.focus();
   }, [status]);
 
-  // Um botão "Fale com a Bridge Point" ou "Solicitar cotação" na própria página troca o assunto.
+  // Um botão "Fale com a BridgePoint" ou "Solicitar cotação" na própria página troca o assunto.
   useEffect(() => {
     const onInterest = (event: Event) => {
       const next = (event as CustomEvent<ContactInterest>).detail;

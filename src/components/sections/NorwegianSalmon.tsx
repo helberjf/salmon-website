@@ -1,4 +1,4 @@
-import { ChefHat, Dna, MapPin, Search, Snowflake } from 'lucide-react';
+import { BadgeCheck, ChefHat, Dna, MapPin, Search, ShieldCheck, Snowflake } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Reveal } from '@/components/ui/Reveal';
 import { images } from '@/data/images';
@@ -36,6 +36,8 @@ const qualityMarks = [
   { icon: Snowflake, label: 'Águas frias' },
   { icon: Search, label: 'Rastreabilidade' },
   { icon: Dna, label: 'Non-GMO' },
+  { icon: ShieldCheck, label: 'Sem antibióticos' },
+  { icon: BadgeCheck, label: 'Kosher' },
 ];
 
 export function NorwegianSalmon() {

@@ -103,7 +103,7 @@ export function Header() {
       {/**
        * Fundo sjøgrønn sólido em qualquer posição da página: o manual da Norwell
        * não admite o logotipo sobre fotografia. No desktop, links à esquerda,
-       * assinatura (Norwell + Bridge Point) no centro e idioma + cotação à
+       * assinatura (Norwell + BridgePoint) no centro e idioma + cotação à
        * direita; no celular a assinatura fica à esquerda, ao lado do menu.
        */}
       <div

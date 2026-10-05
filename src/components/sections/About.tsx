@@ -58,7 +58,7 @@ export function About() {
             <Reveal delay={0.1} className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 {t(
-                  'Sediada em Florø, a Norwell é uma exportadora norueguesa especializada em salmão, que construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia. No Brasil, é representada oficialmente pela Bridge Point.',
+                  'Sediada em Florø, a Norwell é uma exportadora norueguesa especializada em salmão, que construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia. No Brasil, é representada oficialmente pela BridgePoint.',
                 )}
               </p>
               <p>

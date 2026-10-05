@@ -16,7 +16,7 @@ const ContactSection = lazy(() =>
 /**
  * Home do site da Norwell no Brasil: a exportadora, o que ela oferece ao
  * comprador brasileiro, os produtos em destaque e, em um bloco curto, a
- * Bridge Point, sua representante no país. A profundidade vive nas páginas
+ * BridgePoint, sua representante no país. A profundidade vive nas páginas
  * internas — /sobre e /produtos.
  */
 export default function Home() {
