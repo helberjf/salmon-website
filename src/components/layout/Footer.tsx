@@ -21,8 +21,16 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <BridgePointLogo variant="white" height={40} />
-            <p className="mt-4 text-sm leading-relaxed text-frost/80">{t(company.description)}</p>
+            <a
+              href={norwell.site}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-fit rounded-lg py-1"
+            >
+              <NorwellLogo variant="negative" height={44} />
+              <span className="sr-only">{t('(abre em nova aba)')}</span>
+            </a>
+            <p className="mt-5 text-sm leading-relaxed text-frost/80">{t(company.description)}</p>
             {(company.instagram || company.linkedin) && (
               <div className="mt-6 flex gap-3">
                 {company.instagram && (
@@ -111,16 +119,11 @@ export function Footer() {
           <div>
             <h2 className="text-base font-bold text-white">{t('Atendimento')}</h2>
             <p className="mt-5 text-sm leading-relaxed text-frost/80">{t(company.serviceArea)}</p>
-            <a
-              href={norwell.site}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-5 block w-fit rounded-lg py-1"
-            >
+            <a href={localizedHref('/#representante')} className="group mt-5 block w-fit rounded-lg py-1">
               <span className="block text-xs font-bold uppercase tracking-[0.16em] text-frost/80 transition-colors group-hover:text-white">
-                {t('Parceiro exportador')}
+                {t('Representante oficial no Brasil')}
               </span>
-              <NorwellLogo variant="negative" height={30} className="mt-4" />
+              <BridgePointLogo variant="white" height={30} className="mt-4" />
             </a>
             <div className="mt-6 flex items-center gap-3">
               <SeafoodFromNorway size={54} className="rounded-md" />

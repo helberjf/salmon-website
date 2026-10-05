@@ -14,8 +14,8 @@ const partnership = [
 ];
 
 /**
- * O que a representação da Norwell significa para o cliente brasileiro.
- * Abre a página /a-norwell; os números da exportadora ficam em NorwellStory.
+ * O que a presença da Norwell no Brasil significa para o cliente brasileiro.
+ * Abre a página /sobre; os números da exportadora ficam em NorwellStory.
  */
 export function About() {
   const { t } = useI18n();
@@ -40,7 +40,7 @@ export function About() {
               />
               <div className="relative mx-4 -mt-8 max-w-sm rounded-2xl bg-navy p-6 text-white shadow-2xl sm:absolute sm:-bottom-8 sm:right-8 sm:mx-0 sm:mt-0 sm:max-w-xs">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-shore-light">
-                  {t('Parceiro na origem')}
+                  {t('A exportadora')}
                 </p>
                 <NorwellLogo variant="negative" height={34} className="mt-5" />
                 <p className="mt-5 text-sm font-medium leading-relaxed text-white/80">
@@ -52,13 +52,13 @@ export function About() {
 
           <div className="pt-8 lg:pt-0">
             <SectionHeading
-              eyebrow={t('A parceria')}
+              eyebrow={t('Norwell no Brasil')}
               title={t('Representação oficial, com os dois pés na origem')}
             />
             <Reveal delay={0.1} className="mt-7 space-y-5 text-lg leading-relaxed text-muted">
               <p>
                 {t(
-                  'A Bridge Point representa oficialmente a Norwell no Brasil. Sediada em Florø, a exportadora norueguesa especializada em salmão construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia.',
+                  'Sediada em Florø, a Norwell é uma exportadora norueguesa especializada em salmão, que construiu sua atuação em parceria com produtores da costa da Noruega, combinando escala internacional e proximidade na cadeia. No Brasil, é representada oficialmente pela Bridge Point.',
                 )}
               </p>
               <p>

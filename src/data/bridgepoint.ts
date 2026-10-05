@@ -1,5 +1,7 @@
 /**
- * BRIDGE POINT — textos institucionais da home (CompanyIntro) e de /sobre.
+ * BRIDGE POINT — representante da Norwell no Brasil. O site usa hoje só
+ * `representative`; os demais textos (consultoria, serviços e método) vêm da
+ * versão em que a Bridge Point era o assunto principal e estão sem uso.
  *
  * Posicionamento: primeiro a consultoria de entrada no mercado e de
  * desenvolvimento de negócios entre Noruega e Brasil; depois, com destaque, a
@@ -9,6 +11,9 @@
  * catálogos em src/i18n/catalogs.
  */
 export const bridgePoint = {
+  /** Bloco "Representante no Brasil" (Representative), na home e em /sobre. */
+  representative:
+    'A Norwell é representada no Brasil pela Bridge Point, consultoria com base no Rio de Janeiro fundada por Mai Sissel Tonheim, depois de 18 anos na diplomacia norueguesa. É a Bridge Point que atende importadores, atacadistas e distribuidores brasileiros — da especificação de cada produto ao acompanhamento dos embarques.',
   /** Home: "Quem somos", logo depois do topo (a ideia do site-base, com texto próprio). */
   homeIntro: [
     'A Bridge Point acompanha empresas norueguesas na chegada ao Brasil: explica como o mercado funciona, aproxima as pessoas certas e ajuda cada oportunidade a virar negócio, com clareza e continuidade.',

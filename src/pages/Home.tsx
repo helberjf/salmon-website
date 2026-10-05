@@ -1,9 +1,10 @@
 import { lazy, Suspense, useEffect, useRef, useState, type Ref } from 'react';
 import { PageShell } from '@/components/layout/PageShell';
 import { Hero } from '@/components/sections/Hero';
-import { CompanyIntro } from '@/components/sections/CompanyIntro';
+import { NorwellIntro } from '@/components/sections/NorwellIntro';
 import { NorwellPartnership } from '@/components/sections/NorwellPartnership';
 import { Products } from '@/components/sections/Products';
+import { Representative } from '@/components/sections/Representative';
 import { CallToAction } from '@/components/sections/CallToAction';
 
 const ContactSection = lazy(() =>
@@ -13,19 +14,20 @@ const ContactSection = lazy(() =>
 );
 
 /**
- * Home enxuta, na ordem do site-base: a Bridge Point como ponte de negócios
- * entre a Noruega e o Brasil, quem está por trás dela e, em destaque, a parceria
- * principal com a Norwell e os produtos. A profundidade vive nas páginas
- * internas — /a-norwell, /produtos e /sobre.
+ * Home do site da Norwell no Brasil: a exportadora, o que ela oferece ao
+ * comprador brasileiro, os produtos em destaque e, em um bloco curto, a
+ * Bridge Point, sua representante no país. A profundidade vive nas páginas
+ * internas — /sobre e /produtos.
  */
 export default function Home() {
   return (
-    <PageShell titleSource="Bridge Point | Salmão Norueguês B2B no Brasil">
+    <PageShell titleSource="Norwell Brasil | Salmão Norueguês B2B">
       <Hero />
-      <CompanyIntro />
+      <NorwellIntro />
       <NorwellPartnership />
       {/* Dois destaques fecham uma linha inteira do grid; o resto vive em /produtos. */}
       <Products limit={2} hideSpecNote tone="ice" />
+      <Representative />
       <CallToAction />
       <DeferredContactSection />
     </PageShell>

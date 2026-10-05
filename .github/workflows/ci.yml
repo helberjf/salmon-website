@@ -97,7 +97,8 @@ jobs:
 
           test "$(docker exec bridge-point-site-ci id -u)" = "101"
           test "$(curl --silent --output /dev/null --write-out '%{http_code}' 'http://127.0.0.1:8080/norwell?source=ci')" = "308"
-          test "$(curl --silent --output /dev/null --write-out '%{redirect_url}' 'http://127.0.0.1:8080/pt/norwell?source=ci')" = "http://127.0.0.1:8080/pt/a-norwell?source=ci"
+          test "$(curl --silent --output /dev/null --write-out '%{redirect_url}' 'http://127.0.0.1:8080/pt/norwell?source=ci')" = "http://127.0.0.1:8080/pt/sobre?source=ci"
+          test "$(curl --silent --output /dev/null --write-out '%{redirect_url}' 'http://127.0.0.1:8080/pt/a-norwell?source=ci')" = "http://127.0.0.1:8080/pt/sobre?source=ci"
 
           headers="$(curl --silent --head http://127.0.0.1:8080/)"
           grep --ignore-case --quiet "content-security-policy:.*frame-ancestors 'none'" <<<"$headers"

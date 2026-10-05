@@ -30,15 +30,14 @@ import {
 
 const STORAGE_KEY = 'nordic-salmon.language';
 const DEFAULT_LANGUAGE: Language = 'pt';
-const HOME_TITLE = 'Bridge Point | Salmão Norueguês B2B no Brasil';
+const HOME_TITLE = 'Norwell Brasil | Salmão Norueguês B2B';
 const SITE_DESCRIPTION =
-  'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores.';
+  'A Norwell no Brasil: salmão norueguês fresco e congelado para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.';
 
 const socialImagesByPage: Record<string, string> = {
   '/': 'home.jpg',
   '/produtos': 'products.jpg',
-  '/a-norwell': 'norwell.jpg',
-  '/sobre': 'about.jpg',
+  '/sobre': 'norwell.jpg',
   '/privacidade': 'privacy.jpg',
   '/termos': 'terms.jpg',
 };
@@ -130,20 +129,9 @@ export function detectInitialLanguage(
 function seoForCurrentPath(pathname: string): PageSeo {
   const path = stripLanguagePrefix(pathname).replace(/\/+$/, '') || '/';
 
-  if (path === '/a-norwell' || path === '/norwell') {
-    return {
-      title: 'A Norwell | Bridge Point',
-      description:
-        'Fundada em 1996 em Florø, exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores e as certificações que sustentam cada embarque para o Brasil.',
-      path: '/a-norwell',
-      schemaType: 'AboutPage',
-      indexable: true,
-    };
-  }
-
   if (path === '/produtos') {
     return {
-      title: 'Produtos | Bridge Point',
+      title: 'Produtos | Norwell Brasil',
       description:
         'Todo o portfólio disponível para o mercado brasileiro, com a apresentação e o público indicado de cada item. Especificações e volumes são fechados na cotação.',
       path,
@@ -152,12 +140,13 @@ function seoForCurrentPath(pathname: string): PageSeo {
     };
   }
 
-  if (path === '/sobre') {
+  // /a-norwell e /norwell são endereços antigos da mesma página.
+  if (path === '/sobre' || path === '/a-norwell' || path === '/norwell') {
     return {
-      title: 'Sobre | Bridge Point',
+      title: 'Sobre a Norwell | Norwell Brasil',
       description:
-        'Conheça a Bridge Point, consultoria de entrada no mercado brasileiro e representante da Norwell no Brasil, e a trajetória da fundadora, Mai Sissel Tonheim.',
-      path,
+        'Fundada em 1996 em Florø, a Norwell exporta salmão e truta do fiorde para mais de uma centena de mercados. Conheça a história, os valores, as certificações e a Bridge Point, sua representante no Brasil.',
+      path: '/sobre',
       schemaType: 'AboutPage',
       indexable: true,
     };
@@ -165,7 +154,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
 
   if (path === '/privacidade') {
     return {
-      title: 'Política de Privacidade | Bridge Point',
+      title: 'Política de Privacidade | Norwell Brasil',
       description:
         'Saiba como a Bridge Point trata os dados informados em seus canais de contato e solicitações comerciais.',
       path,
@@ -176,7 +165,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
 
   if (path === '/termos') {
     return {
-      title: 'Termos de Uso | Bridge Point',
+      title: 'Termos de Uso | Norwell Brasil',
       description:
         'Consulte as condições de uso do website institucional da Bridge Point e as informações aplicáveis ao conteúdo publicado.',
       path,
@@ -196,7 +185,7 @@ function seoForCurrentPath(pathname: string): PageSeo {
   }
 
   return {
-    title: 'Página não encontrada | Bridge Point',
+    title: 'Página não encontrada | Norwell Brasil',
     description: SITE_DESCRIPTION,
     path,
     schemaType: 'WebPage',
@@ -445,7 +434,7 @@ export function I18nProvider({ children }: I18nProviderProps) {
           '@type': 'WebSite',
           '@id': `${siteUrl}/#website`,
           url: siteUrl,
-          name: company.name,
+          name: company.siteName,
           inLanguage: htmlLanguage,
           publisher: { '@id': `${siteUrl}/#organization` },
         },
@@ -459,9 +448,7 @@ export function I18nProvider({ children }: I18nProviderProps) {
           isPartOf: { '@id': `${siteUrl}/#website` },
           about:
             page.path === '/sobre'
-              ? { '@id': `${siteUrl}/#mai-tonheim` }
-              : page.path === '/a-norwell'
-                ? { '@id': `${siteUrl}/#norwell` }
+              ? { '@id': `${siteUrl}/#norwell` }
               : { '@id': `${siteUrl}/#organization` },
         },
       ],

@@ -18,16 +18,15 @@ test.describe('navigation and contact form', () => {
 
     const primaryNavigation = page.getByRole('navigation', { name: 'Navegação principal', exact: true });
     const links = primaryNavigation.getByRole('link');
-    await expect(links).toHaveText(['Início', 'Norwell', 'Produtos', 'Sobre', 'Contato', 'Solicitar cotação']);
+    await expect(links).toHaveText(['Início', 'Sobre', 'Produtos', 'Contato', 'Solicitar cotação']);
 
     const hrefs = await links.evaluateAll((elements) =>
       elements.map((element) => element.getAttribute('href')),
     );
     expect(hrefs).toEqual([
       '/pt#inicio',
-      '/pt/a-norwell',
-      '/pt/produtos',
       '/pt/sobre',
+      '/pt/produtos',
       '/pt#contato',
       '/pt#contato',
     ]);
@@ -35,19 +34,25 @@ test.describe('navigation and contact form', () => {
     await expect(primaryNavigation.getByRole('link', { name: 'Início' })).toHaveAttribute('aria-current', 'location');
     await page.locator('#produtos').scrollIntoViewIfNeeded();
     await expect(primaryNavigation.getByRole('link', { name: 'Início' })).not.toHaveAttribute('aria-current', 'location');
-    await expect(page.getByRole('link', { name: 'Bridge Point — voltar ao início' })).toBeVisible();
+
+    // A assinatura do site é o logotipo da Norwell, com o da Bridge Point ao lado.
+    const brand = page.getByRole('link', { name: 'Norwell Brasil — voltar ao início' });
+    await expect(brand).toBeVisible();
+    await expect(brand.locator('img[alt="Norwell AS"]')).toBeVisible();
+    await expect(brand.locator('img[alt="Bridge Point International"]')).toBeVisible();
   });
 
-  test('home hero leads to contact, "Quem somos" and the Norwell partnership, and contact has a WhatsApp shortcut', async ({ page }) => {
+  test('home hero leads to the quote form, the Norwell page and the representative, and contact has a WhatsApp shortcut', async ({ page }) => {
     await openApp(page, '/pt');
 
     const hero = page.locator('#inicio');
-    await expect(hero.getByRole('link', { name: 'Fale com a Bridge Point' })).toHaveAttribute('href', '/pt#contato');
-    await expect(hero.getByRole('link', { name: 'Quem somos' })).toHaveAttribute('href', '/pt/sobre');
+    await expect(hero.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
+    await expect(hero.getByRole('link', { name: 'Conhecer a Norwell' })).toHaveAttribute('href', '/pt/sobre');
     await expect(hero.getByRole('link', { name: /Representante oficial da Norwell no Brasil/ })).toHaveAttribute(
       'href',
-      '/pt#parceria-norwell',
+      '/pt#representante',
     );
+    await expect(page.locator('#representante').getByRole('img', { name: 'Bridge Point International' })).toBeVisible();
 
     const partnership = page.locator('#parceria-norwell');
     await expect(partnership.getByRole('link', { name: 'Solicitar cotação' })).toHaveAttribute('href', '/pt#contato');
@@ -61,17 +66,25 @@ test.describe('navigation and contact form', () => {
     await expect(contact.getByRole('link', { name: '+55 21 96569-0982' })).toHaveAttribute('href', 'tel:+5521965690982');
   });
 
-  test('"Sobre a Mai" jumps to the founder section on the About page', async ({ page }) => {
+  test('About page is about Norwell, with a short block on its representative', async ({ page }) => {
     await openApp(page, '/pt/sobre');
 
-    await page.getByRole('link', { name: 'Sobre a Mai' }).click();
-
-    await expect(page).toHaveURL(/\/pt\/sobre#mai$/);
-    await expect(page.getByRole('heading', { name: 'Mai Sissel Tonheim', level: 2 })).toBeInViewport();
+    await expect(page.locator('h1')).toHaveText('Exportadora norueguesa de salmão, com representação no Brasil');
+    const representative = page.locator('#representante');
+    await expect(representative.getByRole('heading', { level: 2 })).toHaveText('Atendimento local, pela Bridge Point');
+    await expect(representative).toContainText('Mai Sissel Tonheim');
   });
 
-  test('Norwell page links its logo and a dedicated button to the official website', async ({ page }) => {
-    await openApp(page, '/pt/a-norwell');
+  test('legacy Norwell addresses open the About page and point to its canonical URL', async ({ page }) => {
+    for (const path of ['/pt/a-norwell', '/pt/norwell']) {
+      await openApp(page, path);
+      await expect(page.locator('h1')).toHaveText('Exportadora norueguesa de salmão, com representação no Brasil');
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/pt\/sobre$/);
+    }
+  });
+
+  test('About page links the Norwell logo and a dedicated button to the official website', async ({ page }) => {
+    await openApp(page, '/pt/sobre');
 
     const officialButton = page.getByRole('link', { name: /^Visitar o site oficial da Norwell/ }).first();
     await expect(officialButton).toHaveAttribute('href', 'https://www.norwell.no');

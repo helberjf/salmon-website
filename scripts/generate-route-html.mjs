@@ -8,19 +8,21 @@ const distDirectory = join(projectRoot, 'dist');
 const sourceHtml = readFileSync(join(distDirectory, 'index.html'), 'utf8');
 const companySource = readFileSync(join(projectRoot, 'src', 'data', 'company.ts'), 'utf8');
 const siteUrlMatch = companySource.match(/siteUrl:\s*['"]([^'"]+)['"]/);
-const companyNameMatch = companySource.match(/name:\s*['"]([^'"]+)['"]/);
+const companyNameMatch = companySource.match(/\bname:\s*['"]([^'"]+)['"]/);
+const siteNameMatch = companySource.match(/\bsiteName:\s*['"]([^'"]+)['"]/);
 const companyCnpjMatch = companySource.match(/cnpj:\s*['"]([^'"]+)['"]/);
 if (!siteUrlMatch) throw new Error('Could not read siteUrl from src/data/company.ts.');
 if (!companyNameMatch) throw new Error('Could not read name from src/data/company.ts.');
+if (!siteNameMatch) throw new Error('Could not read siteName from src/data/company.ts.');
 if (!companyCnpjMatch) throw new Error('Could not read cnpj from src/data/company.ts.');
 const siteUrl = siteUrlMatch[1].replace(/\/+$/, '');
 const companyName = companyNameMatch[1];
+const siteName = siteNameMatch[1];
 const companyCnpj = companyCnpjMatch[1];
 const socialImagesByPage = {
   '': 'home.jpg',
   '/produtos': 'products.jpg',
-  '/a-norwell': 'norwell.jpg',
-  '/sobre': 'about.jpg',
+  '/sobre': 'norwell.jpg',
   '/privacidade': 'privacy.jpg',
   '/termos': 'terms.jpg',
 };
@@ -32,7 +34,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora e representante comercial no Brasil',
     organizationDescription:
-      'Consultoria de negócios entre Noruega e Brasil e representante da Norwell no país, com salmão norueguês para importadores, atacadistas e distribuidores.',
+      'A Norwell no Brasil: salmão norueguês para importadores, atacadistas e distribuidores, com atendimento local da Bridge Point, representante oficial no país.',
     norwellDescription:
       'Fundada em 1996 em Florø, na costa oeste da Noruega, a Norwell é uma exportadora de porte médio de salmão e truta noruegueses. Cerca de 70% do seu capital pertence aos próprios produtores e 30% a colaboradores-chave — um arranjo societário que aproxima quem cria o peixe de quem o exporta.',
     knowsAbout: ['Salmão norueguês', 'Comércio internacional', 'Food service', 'Distribuição de pescados'],
@@ -44,7 +46,7 @@ const languages = {
     country: 'Brazil',
     founderTitle: 'Founder and commercial representative in Brazil',
     organizationDescription:
-      "Business consultancy between Norway and Brazil and Norwell's representative in the country, supplying Norwegian salmon to importers, wholesalers and distributors.",
+      'Norwell in Brazil: Norwegian salmon for importers, wholesalers and distributors, with local service from Bridge Point, its official representative in the country.',
     norwellDescription:
       'Founded in 1996 in Florø, on Norway’s west coast, Norwell is a mid-sized exporter of Norwegian salmon and trout. Around 70% of the company is owned by the farmers themselves and 30% by key employees — an ownership structure that keeps those who raise the fish close to those who export it.',
     knowsAbout: ['Norwegian salmon', 'International trade', 'Food service', 'Seafood distribution'],
@@ -56,7 +58,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Fundadora y representante comercial en Brasil',
     organizationDescription:
-      'Consultoría de negocios entre Noruega y Brasil y representante de Norwell en el país, con salmón noruego para importadores, mayoristas y distribuidores.',
+      'Norwell en Brasil: salmón noruego para importadores, mayoristas y distribuidores, con atención local de Bridge Point, representante oficial en el país.',
     norwellDescription:
       'Fundada en 1996 en Florø, en la costa oeste de Noruega, Norwell es una exportadora de tamaño medio de salmón y trucha noruegos. Cerca del 70% de su capital pertenece a los propios productores y el 30% a colaboradores clave, una estructura societaria que acerca a quien cría el pescado con quien lo exporta.',
     knowsAbout: ['Salmón noruego', 'Comercio internacional', 'Food service', 'Distribución de productos del mar'],
@@ -68,7 +70,7 @@ const languages = {
     country: 'Brasil',
     founderTitle: 'Grunnlegger og kommersiell representant i Brasil',
     organizationDescription:
-      'Forretningsrådgivning mellom Norge og Brasil og Norwells representant i landet, med norsk laks til importører, grossister og distributører.',
+      'Norwell i Brasil: norsk laks til importører, grossister og distributører, med lokal oppfølging fra Bridge Point, offisiell representant i landet.',
     norwellDescription:
       'Norwell ble etablert i 1996 i Florø på Vestlandet og er en mellomstor eksportør av norsk laks og ørret. Rundt 70 % eies av oppdretterne selv og 30 % av nøkkelansatte — en eierstruktur som holder dem som produserer fisken tett på dem som eksporterer den.',
     knowsAbout: ['Norsk laks', 'Internasjonal handel', 'Food service', 'Distribusjon av sjømat'],
@@ -163,7 +165,7 @@ function structuredData({ canonicalUrl, language, locale, page, title, descripti
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
         url: `${siteUrl}/`,
-        name: companyName,
+        name: siteName,
         inLanguage: locale.html,
         publisher: { '@id': `${siteUrl}/#organization` },
       },
@@ -177,9 +179,7 @@ function structuredData({ canonicalUrl, language, locale, page, title, descripti
         isPartOf: { '@id': `${siteUrl}/#website` },
         about:
           page.path === '/sobre'
-            ? { '@id': `${siteUrl}/#mai-tonheim` }
-            : page.path === '/a-norwell'
-              ? { '@id': `${siteUrl}/#norwell` }
+            ? { '@id': `${siteUrl}/#norwell` }
             : { '@id': `${siteUrl}/#organization` },
       },
     ],
@@ -292,14 +292,17 @@ for (const page of Object.values(pages)) {
   writeRoute(rendered.routePath, rendered.html);
 }
 
-// `/norwell` is a compatibility alias requested by the business. It reuses
-// the canonical `/a-norwell` metadata so search engines see one authoritative URL.
-for (const language of Object.keys(languages)) {
-  const rendered = renderRoute(language, pages.norwell);
-  writeRoute(`/${language}/norwell`, rendered.html);
+// `/a-norwell` and `/norwell` are compatibility aliases of `/sobre`, which is
+// now the single page about Norwell. They reuse its canonical metadata so
+// search engines see one authoritative URL.
+const aboutAliases = ['/a-norwell', '/norwell'];
+for (const alias of aboutAliases) {
+  for (const language of Object.keys(languages)) {
+    writeRoute(`/${language}${alias}`, renderRoute(language, pages.about).html);
+  }
+  writeRoute(alias, renderRoute('pt', pages.about, false).html);
 }
-writeRoute('/norwell', renderRoute('pt', pages.norwell, false).html);
 
 console.log(
-  `Generated static metadata for ${generatedCount} localized routes, ${Object.keys(pages).length} x-default routes and 5 Norwell aliases.`,
+  `Generated static metadata for ${generatedCount} localized routes, ${Object.keys(pages).length} x-default routes and ${aboutAliases.length * (Object.keys(languages).length + 1)} aliases of /sobre.`,
 );

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'wouter';
-import { BridgePointLogo } from '@/components/ui/BridgePointLogo';
+import { BrandLockup } from '@/components/ui/BrandLockup';
 import { ShoreLine } from '@/components/ui/ShoreLine';
 import { LanguageSelector } from '@/components/layout/LanguageSelector';
 import { useI18n } from '@/i18n/I18nProvider';
@@ -31,10 +31,10 @@ export function LegalPage({ title, updatedAt, children }: LegalPageProps) {
           {/* O logotipo é o caminho de volta ao site: sem um segundo botão "voltar". */}
           <Link
             href={localizedHref('/')}
-            aria-label={t('Bridge Point — voltar ao início')}
+            aria-label={t('Norwell Brasil — voltar ao início')}
             className="-my-1 block shrink-0 py-1"
           >
-            <BridgePointLogo variant="white" eager height={32} />
+            <BrandLockup compact />
           </Link>
           <LanguageSelector />
         </div>

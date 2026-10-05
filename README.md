@@ -1,6 +1,6 @@
-# Bridge Point — Website Institucional
+# Norwell Brasil — Website Institucional
 
-Website institucional de empresa especializada na importação e comercialização de **salmão norueguês** no Brasil, apresentando também a trajetória internacional da fundadora, **Mai Tonheim**.
+Site da **Norwell** no Brasil: apresenta a exportadora norueguesa de salmão e o seu portfólio ao comprador brasileiro. A **Bridge Point**, representante oficial da Norwell no país e operadora do site, aparece ao lado da marca e em um bloco curto.
 
 Site estático (SPA) construído com **React + Vite + TypeScript + Tailwind CSS v4**.
 
@@ -25,25 +25,28 @@ flutuantes e `<title>`) e as internas abrem com `src/components/ui/PageHero.tsx`
 
 | Rota | Conteúdo |
 |---|---|
-| `/` | Na ordem do site-base: topo "ponte de negócios entre a Noruega e o Brasil" (com a faixa da Norwell no pé), quem somos (Mai), a parceria principal com a Norwell (salmão para importadores, atacadistas e distribuidores), 2 produtos em destaque, CTA e contato |
-| `/a-norwell` | A Bridge Point como representante da Norwell no Brasil, história, missão, valores e certificações, por que o salmão norueguês e galeria |
-| `/norwell` | Alias histórico; no Nginx fornecido recebe `308` para `/a-norwell` |
+| `/` | Topo "Salmão norueguês da Norwell, com atendimento no Brasil" (com a faixa da Bridge Point no pé), a exportadora em números, a oferta para o mercado brasileiro, 2 produtos em destaque, o bloco da representante (`#representante`), CTA e contato |
+| `/sobre` | A Norwell: atuação no Brasil, história, missão, valores e certificações, por que o salmão norueguês, o bloco curto da representante (Bridge Point e Mai) e galeria |
+| `/a-norwell`, `/norwell` | Endereços antigos da página da Norwell; no Nginx fornecido recebem `308` para `/sobre` |
 | `/produtos` | Portfólio completo, processo, quem atendemos, diferenciais e relação de confiança |
-| `/sobre` | Bridge Point (consultoria de entrada no mercado, destaque da parceria com a Norwell, frentes de atuação e método) e, na mesma página, a fundadora Mai Sissel Tonheim (`/sobre#mai`, botão "Sobre a Mai") |
 
-O menu tem um item por destino (Norwell, Produtos, Sobre, Contato) e todos os
+O menu tem um item por destino (Início, Sobre, Produtos, Contato) e todos os
 botões que levam ao formulário usam o mesmo rótulo, "Solicitar cotação".
 
 ### Identidade visual
 
 O visual segue o manual de perfil da Norwell (`Brand Norwell_Profilmanual_Original_CMYK.PDF`,
-2016), mantendo o logotipo da Bridge Point como marca do site.
+2016) e a marca do site é o logotipo da Norwell, com o da Bridge Point ao lado.
 
+- **Assinatura do site**: `src/components/ui/BrandLockup.tsx` junta o logotipo da
+  Norwell (principal) e o da Bridge Point, separados por um fio. Aparece no
+  cabeçalho de todas as páginas — por isso o cabeçalho é sempre sjøgrønn sólido,
+  nunca transparente sobre a foto do topo. No desktop: links à esquerda,
+  assinatura no centro e idioma + cotação à direita.
 - **Logotipo Bridge Point**: vetorizado do manual de marca (`Branding BP 05.pdf`)
   em `public/brand/bridgepoint-*.svg` e exibido por `src/components/ui/BridgePointLogo.tsx`.
-  O dourado da bússola fica só dentro do logotipo. No desktop o cabeçalho segue o
-  site-base: links à esquerda, logotipo no centro (vertical e grande no topo da
-  página, horizontal ao rolar) e idioma + cotação à direita.
+  O dourado da bússola fica só dentro do logotipo. Além da assinatura, aparece na
+  faixa do pé do topo da home, no bloco da representante e no rodapé.
 - **Cores**: sjøgrønn e fjæregrønn do manual da Norwell dominam; texto em nattgrå
   — tokens em `src/index.css` (ver "Paleta" abaixo).
 - **Fjærestreken**: a linha fjæregrønn de borda a borda que liga foto e bloco de
@@ -54,9 +57,10 @@ O visual segue o manual de perfil da Norwell (`Brand Norwell_Profilmanual_Origin
 
 ### Posicionamento
 
-Primeiro a Bridge Point como consultoria de entrada no mercado e de
-desenvolvimento de negócios entre Noruega e Brasil; em seguida, com destaque, a
-parceria principal: a representação da Norwell no Brasil. A operação de salmão é
+O site é o da Norwell no Brasil: a exportadora, o salmão e o portfólio vêm
+primeiro. A Bridge Point entra como a representante que atende o comprador
+brasileiro — na assinatura do cabeçalho, na faixa do topo e em um bloco curto
+(`src/components/sections/Representative.tsx`), sem página própria. A operação é
 voltada a **importadores que atuam como atacadistas e distribuidores** — eles vêm
 primeiro em "Quem atendemos", no formulário e nos textos de produto.
 
@@ -71,7 +75,8 @@ Todo o conteúdo editável está centralizado em `src/data`:
 | Arquivo | Conteúdo |
 |---|---|
 | `src/data/company.ts` | Nome, razão social, CNPJ, e-mail, telefone, **WhatsApp**, endereço, redes sociais, URL canônica |
-| `src/data/founder.ts` | Dados da fundadora: bio, formação, idiomas, trajetória profissional e **foto** |
+| `src/data/bridgepoint.ts` | Texto do bloco da representante (`representative`); os demais textos da consultoria estão sem uso |
+| `src/data/founder.ts` | Dados da fundadora da Bridge Point; o site usa hoje o nome, o retrato (`introPhoto`) e o LinkedIn |
 | `src/data/products.ts` | Produtos: nomes, descrições, conservação, público e imagens |
 | `src/data/images.ts` | Imagens das seções, galeria e processo extraídas do catálogo oficial |
 | `src/data/differentials.ts` | Diferenciais |
@@ -93,13 +98,13 @@ Em `src/data/company.ts`, o campo `whatsapp` usa o formato internacional apenas 
 
 ### Foto da fundadora
 
-As fotos oficiais de Mai ficam em `public/images/people`. `src/data/founder.ts`
-separa a foto da home, a imagem de abertura da página Sobre e a galeria
-institucional, com textos alternativos e legendas traduzidos.
+As fotos oficiais de Mai ficam em `public/images/people`. O bloco da
+representante usa só o retrato `introPhoto` de `src/data/founder.ts`; as demais
+fotos e a galeria institucional continuam no repositório, sem uso no site atual.
 
 ### Formulário de contato
 
-O formulário atende os dois assuntos da Bridge Point: **cotação de salmão** (padrão) e
+O formulário atende dois assuntos: **cotação de salmão** (padrão) e
 **entrada no mercado brasileiro**. Pede só nome, empresa, e-mail e telefone — na
 cotação, também o tipo de empresa e o produto — e uma mensagem opcional. Ele
 valida, organiza os dados e abre uma conversa real no WhatsApp da representante,
@@ -115,10 +120,9 @@ outra página, é levado direto ao formulário, sem rolagem animada.
 O site oferece português, inglês, espanhol e norueguês. A URL sem prefixo usa o idioma do sistema (ou a preferência salva), enquanto as versões indexáveis usam prefixos estáveis:
 
 - `/pt`, `/en`, `/es` e `/no`
-- `/pt/a-norwell`, `/en/a-norwell`, `/es/a-norwell` e `/no/a-norwell`
-- `/pt/norwell`, `/en/norwell`, `/es/norwell` e `/no/norwell` recebem redirecionamento permanente para a variante canônica quando o Nginx fornecido é usado
-- `/pt/produtos`, `/en/produtos`, `/es/produtos` e `/no/produtos`
-- `/pt/sobre`, `/en/sobre`, `/es/sobre` e `/no/sobre` (mesma estratégia para as páginas legais)
+- `/pt/sobre`, `/en/sobre`, `/es/sobre` e `/no/sobre`
+- `/{pt,en,es,no}/a-norwell` e `/{pt,en,es,no}/norwell` recebem redirecionamento permanente para `/sobre` no mesmo idioma quando o Nginx fornecido é usado
+- `/pt/produtos`, `/en/produtos`, `/es/produtos` e `/no/produtos` (mesma estratégia para as páginas legais)
 
 Trocar o idioma mantém a página atual e atualiza a URL. A opção **Sistema** remove o prefixo e volta à detecção automática. As URLs antigas sem prefixo continuam funcionando como gateways compatíveis.
 
@@ -127,10 +131,10 @@ idioma ativo. Português usa diretamente as frases-fonte e não baixa catálogo.
 
 Metadados de título e descrição, canonical, `hreflang`, Open Graph, Twitter Cards e JSON-LD são atualizados conforme o idioma e a página. O `sitemap.xml` lista todas as variantes localizadas; a raiz sem prefixo é indicada como `x-default`.
 
-Durante o build, o script `generate-route-html.mjs` cria HTML estático para as 24 rotas localizadas, os seis gateways `x-default` e os cinco aliases compatíveis da Norwell. Assim, crawlers e previews de redes sociais recebem os metadados corretos mesmo sem executar JavaScript. `verify-build.mjs` valida esses arquivos automaticamente.
+Durante o build, o script `generate-route-html.mjs` cria HTML estático para as 20 rotas localizadas, os cinco gateways `x-default` e os dez endereços antigos da página da Norwell (`/a-norwell` e `/norwell`). Assim, crawlers e previews de redes sociais recebem os metadados corretos mesmo sem executar JavaScript. `verify-build.mjs` valida esses arquivos automaticamente.
 
-Nos exemplos Nginx, os aliases `/norwell` e `/{pt,en,es,no}/norwell` retornam
-`308 Permanent Redirect`, preservando idioma e query string. Os HTMLs de
+Nos exemplos Nginx, `/a-norwell`, `/norwell` e as variantes com idioma retornam
+`308 Permanent Redirect` para `/sobre`, preservando idioma e query string. Os HTMLs de
 compatibilidade continuam no build para hospedagens estáticas que não oferecem
 redirecionamentos no servidor.
 
@@ -173,7 +177,9 @@ As fotografias em `public/images/catalog` foram extraídas do arquivo institucio
 ## Imagens sociais
 
 Cada página principal possui um cartão Open Graph/Twitter específico em
-`public/images/social`, sempre com 1200×630 px. O build valida dimensões, formato,
+`public/images/social`, sempre com 1200×630 px: painel sjøgrønn sólido com o
+logotipo da Norwell e, abaixo, o da Bridge Point como representante, ligado à
+foto pela fjærestreken. O build valida dimensões, formato,
 peso e correspondência entre rota e imagem. Para regenerá-los a partir das fotos
 aprovadas e do fundo editorial, use:
 
@@ -182,11 +188,11 @@ python scripts/generate-social-cards.py
 ```
 
 O fundo-fonte sem texto fica em `scripts/assets`; toda tipografia é aplicada de
-forma determinística pelo script para preservar exatamente o nome Bridge Point.
+forma determinística pelo script, e os logotipos vêm dos SVGs de `public/brand`.
 
 ## Material da Norwell AS
 
-A Norwell AS é a exportadora norueguesa representada no Brasil pela fundadora. Os
+A Norwell AS é a exportadora norueguesa que este site apresenta, representada no Brasil pela Bridge Point. Os
 arquivos abaixo vieram do site oficial (<https://www.norwell.no>) e são usados no
 site com essa atribuição explícita:
 
@@ -204,8 +210,8 @@ cores sobre branco ou, em negativo, sobre sjøgrønn (`bg-navy`) — nunca sobre
 fotos ou outras cores — e pede uma área livre de meio símbolo ao redor.
 
 O logotipo é renderizado pelo componente `src/components/ui/NorwellLogo.tsx` e
-aparece no topo (assinatura "Representante oficial no Brasil"), na página
-`/a-norwell` (logotipo principal com o slogan no estilo "payoff": fjæregrønn,
+aparece no cabeçalho de todas as páginas (assinatura do site), na home, na página
+`/sobre` (logotipo principal com o slogan no estilo "payoff": fjæregrønn,
 em inglês original e alinhado à base do logotipo) e no rodapé.
 
 ### Paleta
@@ -231,9 +237,11 @@ não foram necessárias.
 Todos os pares de texto/fundo do site foram conferidos contra o mínimo de
 4.5:1 (3:1 para texto grande) da WCAG AA.
 
-> **Antes de publicar:** confirmar com a Norwell AS a autorização de uso das
-> fotografias, do logotipo e do selo "Seafood from Norway" (marca licenciada pelo
-> Norwegian Seafood Council a exportadores autorizados).
+> **Antes de publicar:** o site agora se apresenta como o site da Norwell no
+> Brasil e usa o logotipo dela como marca. Confirmar com a Norwell AS, por
+> escrito, a autorização para isso, para o nome "Norwell Brasil" e para o uso das
+> fotografias e do selo "Seafood from Norway" (marca licenciada pelo Norwegian
+> Seafood Council a exportadores autorizados).
 ## Foto do topo da home
 
 `public/images/catalog/lofoten-bridges-winter.webp` — Hamnøy, nas Lofoten, no

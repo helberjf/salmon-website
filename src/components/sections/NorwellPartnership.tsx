@@ -1,4 +1,4 @@
-import { ArrowRight, Globe2, ShieldCheck, Ship, Snowflake } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Globe2, ShieldCheck, Ship, Snowflake } from 'lucide-react';
 import { Link } from 'wouter';
 import { NorwellLogo } from '@/components/ui/NorwellLogo';
 import { Reveal } from '@/components/ui/Reveal';
@@ -17,8 +17,7 @@ const trustItems = [
 ];
 
 /**
- * A parceria principal da Bridge Point, com o destaque que o salmão da Norwell
- * tinha no topo da home: representação oficial, público (importadores,
+ * A oferta da Norwell para o Brasil: o salmão, o público (importadores,
  * atacadistas e distribuidores) e o caminho para a cotação.
  */
 export function NorwellPartnership() {
@@ -31,7 +30,7 @@ export function NorwellPartnership() {
         <div>
           <Reveal>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-shore-light">
-              {t('Principal parceria')}
+              {t('Para o mercado brasileiro')}
             </p>
             <h2 className="mt-5 text-4xl font-normal leading-[1.05] tracking-[-0.03em] md:text-6xl">
               {t('Salmão norueguês,')}{' '}
@@ -71,7 +70,7 @@ export function NorwellPartnership() {
                 {t('Ver produtos')}
               </Link>
               <Link
-                href={localizedHref('/a-norwell')}
+                href={localizedHref('/sobre')}
                 className="group inline-flex min-h-11 items-center justify-center gap-2 px-3 font-bold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline sm:justify-start"
               >
                 {t('Conhecer a Norwell')}
@@ -101,14 +100,14 @@ export function NorwellPartnership() {
                 href={norwell.site}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-5 px-6 py-5 transition-colors hover:bg-navy-dark"
+                className="flex items-center justify-between gap-5 px-6 py-5 transition-colors hover:bg-navy-dark"
               >
-                <span className="min-w-0 max-w-[9rem] text-xs font-bold uppercase leading-tight tracking-[0.14em] text-frost">
-                  {t('Representante oficial no Brasil')}
-                </span>
-                <span aria-hidden="true" className="h-9 w-px shrink-0 bg-white/20" />
                 <NorwellLogo variant="negative" height={30} className="shrink-0" />
-                <span className="sr-only">{t('(abre em nova aba)')}</span>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-white">
+                  norwell.no
+                  <span className="sr-only">{t('(abre em nova aba)')}</span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </span>
               </a>
             </figcaption>
           </figure>

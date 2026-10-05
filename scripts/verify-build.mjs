@@ -16,8 +16,7 @@ const contentPaths = [...pagesByPath.keys()];
 const socialImagesByPath = {
   '': 'home.jpg',
   '/produtos': 'products.jpg',
-  '/a-norwell': 'norwell.jpg',
-  '/sobre': 'about.jpg',
+  '/sobre': 'norwell.jpg',
   '/privacidade': 'privacy.jpg',
   '/termos': 'terms.jpg',
 };
@@ -149,42 +148,46 @@ for (const contentPath of contentPaths) {
   }
 }
 
-for (const [language, htmlLanguage] of Object.entries(languages)) {
-  const aliasPath = `/${language}/norwell`;
-  const canonicalPath = `/${language}/a-norwell`;
-  const aliasHtml = readFileSync(join(distDirectory, `${aliasPath.slice(1)}.html`), 'utf8');
-  const aliasDirectoryHtml = readFileSync(
-    join(distDirectory, aliasPath.slice(1), 'index.html'),
-    'utf8',
-  );
-  const canonicalHtml = readFileSync(
-    join(distDirectory, `${canonicalPath.slice(1)}.html`),
-    'utf8',
-  );
+// `/a-norwell` and `/norwell` are compatibility aliases of `/sobre`.
+const aboutAliases = ['/a-norwell', '/norwell'];
+for (const alias of aboutAliases) {
+  for (const [language, htmlLanguage] of Object.entries(languages)) {
+    const aliasPath = `/${language}${alias}`;
+    const canonicalPath = `/${language}/sobre`;
+    const aliasHtml = readFileSync(join(distDirectory, `${aliasPath.slice(1)}.html`), 'utf8');
+    const aliasDirectoryHtml = readFileSync(
+      join(distDirectory, aliasPath.slice(1), 'index.html'),
+      'utf8',
+    );
+    const canonicalHtml = readFileSync(
+      join(distDirectory, `${canonicalPath.slice(1)}.html`),
+      'utf8',
+    );
 
-  assert(aliasDirectoryHtml === aliasHtml, `Norwell alias files differ: ${aliasPath}`);
-  assert(aliasHtml === canonicalHtml, `Norwell alias metadata differs: ${aliasPath}`);
-  assert(aliasHtml.includes(`<html lang="${htmlLanguage}">`), `Wrong alias lang: ${aliasPath}`);
+    assert(aliasDirectoryHtml === aliasHtml, `Alias files differ: ${aliasPath}`);
+    assert(aliasHtml === canonicalHtml, `Alias metadata differs: ${aliasPath}`);
+    assert(aliasHtml.includes(`<html lang="${htmlLanguage}">`), `Wrong alias lang: ${aliasPath}`);
+    assert(
+      aliasHtml.includes(`<link rel="canonical" href="${siteUrl}${canonicalPath}" />`),
+      `Wrong alias canonical: ${aliasPath}`,
+    );
+  }
+
+  const aliasHtml = readFileSync(join(distDirectory, `${alias.slice(1)}.html`), 'utf8');
   assert(
-    aliasHtml.includes(`<link rel="canonical" href="${siteUrl}${canonicalPath}" />`),
-    `Wrong Norwell alias canonical: ${aliasPath}`,
+    aliasHtml === readFileSync(join(distDirectory, alias.slice(1), 'index.html'), 'utf8'),
+    `Unprefixed alias files differ: ${alias}`,
+  );
+  assert(
+    aliasHtml === readFileSync(join(distDirectory, 'sobre.html'), 'utf8'),
+    `Unprefixed alias metadata differs from the canonical route: ${alias}`,
+  );
+  assert(
+    aliasHtml.includes(`<link rel="canonical" href="${siteUrl}/sobre" />`),
+    `Wrong unprefixed alias canonical: ${alias}`,
   );
 }
 
-const norwellAliasHtml = readFileSync(join(distDirectory, 'norwell.html'), 'utf8');
-assert(
-  norwellAliasHtml === readFileSync(join(distDirectory, 'norwell', 'index.html'), 'utf8'),
-  'Unprefixed Norwell alias files differ.',
-);
-assert(
-  norwellAliasHtml === readFileSync(join(distDirectory, 'a-norwell.html'), 'utf8'),
-  'Unprefixed Norwell alias metadata differs from the canonical route.',
-);
-assert(
-  norwellAliasHtml.includes(`<link rel="canonical" href="${siteUrl}/a-norwell" />`),
-  'Wrong unprefixed Norwell alias canonical.',
-);
-
 console.log(
-  `Verified static metadata for ${verifiedCount} localized routes, ${contentPaths.length} x-default routes and 5 Norwell aliases.`,
+  `Verified static metadata for ${verifiedCount} localized routes, ${contentPaths.length} x-default routes and ${aboutAliases.length * (Object.keys(languages).length + 1)} aliases of /sobre.`,
 );

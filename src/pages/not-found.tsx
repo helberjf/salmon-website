@@ -14,7 +14,7 @@ export default function NotFound() {
       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-frost">{t('Erro 404')}</p>
       <h1 className="mt-4 text-4xl font-normal">{t('Página não encontrada')}</h1>
       <p className="mt-4 max-w-md font-medium text-frost">
-        {t('O endereço acessado não existe ou foi movido. Volte para a página inicial da {company}.', { company: company.name })}
+        {t('O endereço acessado não existe ou foi movido. Volte para a página inicial da {company}.', { company: company.siteName })}
       </p>
       <Link
         href={localizedHref('/')}
