@@ -12,3 +12,9 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 salmon-website-codigo.zip
+
+# Local AI assistant files
+.claude/
+.openclaw/
+.superpowers/
+docs/superpowers/
